@@ -1,11 +1,11 @@
-build
-cbuild
-CMakeCache.txt
-CMakeFiles
-Makefile
-cmake_install.cmake
-install_manifest.txt
-.DS_Store
-wbuild
+avida/build
+avida/cbuild
+avida/CMakeCache.txt
+avida/CMakeFiles
+avida/Makefile
+avida/cmake_install.cmake
+avida/install_manifest.txt
+avida/wbuild
 
+.DS_Store
 
