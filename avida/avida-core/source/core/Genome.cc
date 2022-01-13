@@ -54,7 +54,6 @@ void cHardwareManager::SetupPropertyMap(PropertyMap& props, const Apto::String& 
 
 Avida::Genome::Genome() : m_hw_type(-1) { ; }
 
-// std::map<Apto::String, std::vector<int>>
 Avida::Genome::Genome(HardwareTypeID hw, const PropertyMap& props, GeneticRepresentationPtr rep, const std::map<Apto::String, std::vector<int>>& mut_info)
   : m_hw_type(hw), m_representation(rep), m_mut_info(mut_info)
 {
@@ -63,7 +62,12 @@ Avida::Genome::Genome(HardwareTypeID hw, const PropertyMap& props, GeneticRepres
   // Copy over properties
   m_props.SetValue(s_prop_id_instset, props.Get(s_prop_id_instset).StringValue());
 
-  m_mut_info["A"] = std::vector<int>();
+  // ////////////////////////////////////////////////
+  // if (!m_mut_info.count("A")) {
+  //   m_mut_info["A"] = std::vector<int>();
+  // }
+  // m_mut_info["A"].emplace_back(m_mut_info["A"].size());
+  // ////////////////////////////////////////////////
 }
 
 Avida::Genome::Genome(const Apto::String& genome_str)
@@ -73,14 +77,24 @@ Avida::Genome::Genome(const Apto::String& genome_str)
   m_hw_type = Apto::StrAs(str.Pop(','));
   m_props.SetValue(s_prop_id_instset, str.Pop(','));
   m_representation = GeneticRepresentationPtr(new InstructionSequence(str));
-  m_mut_info["B"] = std::vector<int>();
+  // ////////////////////////////////////////////////
+  // if (!m_mut_info.count("B")) {
+  //   m_mut_info["B"] = std::vector<int>();
+  // }
+  // m_mut_info["B"].emplace_back(m_mut_info["B"].size());
+  // ////////////////////////////////////////////////
 }
 
 Avida::Genome::Genome(const Genome& genome)
 : m_hw_type(genome.m_hw_type), m_representation(genome.m_representation->Clone()), m_mut_info(genome.m_mut_info)
 {
   m_props.SetValue(s_prop_id_instset, genome.m_props.Get(s_prop_id_instset).StringValue().Clone());
-  m_mut_info["C"] = std::vector<int>();
+  // ////////////////////////////////////////////////
+  // if (!m_mut_info.count("C")) {
+  //   m_mut_info["C"] = std::vector<int>();
+  // }
+  // m_mut_info["C"].emplace_back(m_mut_info["C"].size());
+  // ////////////////////////////////////////////////
 }
 
 
@@ -113,7 +127,12 @@ Avida::Genome& Avida::Genome::operator=(const Genome& genome)
   m_representation = genome.m_representation->Clone();
 
   m_mut_info = genome.m_mut_info;
-  m_mut_info["E"] = std::vector<int>();
+  // ////////////////////////////////////////////////
+  // if (!m_mut_info.count("E")) {
+  //   m_mut_info["E"] = std::vector<int>();
+  // }
+  // m_mut_info["E"].emplace_back(m_mut_info["E"].size());
+  // ////////////////////////////////////////////////
 
   return *this;
 }
@@ -140,17 +159,22 @@ bool Avida::Genome::LegacySave(void* dfp) const
   df.Write(m_representation->AsString(), "Genome Sequence", "sequence");
 
   // -- Mutation information --
-  // std::ostream mut_stream;
   Apto::String mut_string;
   mut_string += "(";
-  mut_string += Apto::AsStr((int)m_mut_info.size());
+  bool first=true;
   for (auto const& x : m_mut_info) {
-    mut_string += " ";
+    if (!first) {
+      mut_string += ",";
+    } else {
+      first=false;
+    }
     mut_string += x.first;
+    for (size_t i = 0; i < x.second.size(); ++i) {
+      mut_string += Apto::FormatStr(":%d", x.second[i]);
+    }
   }
   mut_string += ")";
-  df.Write(mut_string, "Mutations", "mutations");
-
+  df.Write(mut_string, "Mutation Information", "mutation_info");
 
   return false;
 }

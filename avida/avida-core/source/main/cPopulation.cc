@@ -668,7 +668,6 @@ bool cPopulation::ActivateOffspring(cAvidaContext& ctx, const Genome& offspring_
   }
 
   // @AML: Is this where we're losing mutation information?
-  // std::cout << " D?" << offspring_genome.GetMutInfo().count("D") << std::endl;
   Genome temp(parent_organism->GetGenome().HardwareType(), parent_organism->GetGenome().Properties(), tmpHostGenome, offspring_genome.GetMutInfo());
   birth_chamber.SubmitOffspring(ctx, temp, parent_organism, offspring_array, merit_array);
 

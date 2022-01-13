@@ -310,8 +310,13 @@ int cHardwareBase::Divide_DoMutations(cAvidaContext& ctx, double mut_multiplier,
   m_organism->GetPhenotype().SetDivType(mut_multiplier);
 
   // @AML: test mutation output
-  offspring_gen.GetMutInfo()["D"] = std::vector<int>({1,2,3});
-  // offspring_gen.Properties()
+  ////////////////////////////////////////////////
+  // auto& offspring_mut_info=offspring_gen.GetMutInfo();
+  // if (!offspring_mut_info.count("D")) {
+  //   offspring_mut_info["D"] = std::vector<int>();
+  // }
+  // offspring_mut_info["D"].emplace_back(offspring_mut_info["D"].size());
+  ////////////////////////////////////////////////
 
   // All slip, translocation, and LGT mutations should happen first, so that there is a chance
   // of getting a point mutation within one copy in the same divide.
@@ -633,6 +638,8 @@ void cHardwareBase::doSlipMutation(cAvidaContext& ctx, InstructionSequence& geno
 
   InstructionSequence genome_copy = InstructionSequence(genome);
 
+  auto& mut_info=genome.GetMutInfo();
+
   // All combinations except beginning to past end allowed
   if (from < 0) from = ctx.GetRandom().GetInt(genome_copy.GetSize() + 1);
   int to = (from == 0) ? ctx.GetRandom().GetInt(genome_copy.GetSize()) : ctx.GetRandom().GetInt(genome_copy.GetSize() + 1);
@@ -702,8 +709,7 @@ void cHardwareBase::doSlipMutation(cAvidaContext& ctx, InstructionSequence& geno
               break;
 
               //Scrambled order
-            case 3:
-            {
+            case 3: {
               int copy_index = ctx.GetRandom().GetInt(insertion_length - i);
               int test = 0;
               int passed = copy_index;
@@ -717,8 +723,8 @@ void cHardwareBase::doSlipMutation(cAvidaContext& ctx, InstructionSequence& geno
               }
               genome[from + i] = genome[to + copy_index];
               copied_so_far[copy_index] = true;
-            }
               break;
+            }
 
               //Empty (nop-C)
             case 4:
