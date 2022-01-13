@@ -309,6 +309,10 @@ int cHardwareBase::Divide_DoMutations(cAvidaContext& ctx, double mut_multiplier,
 
   m_organism->GetPhenotype().SetDivType(mut_multiplier);
 
+  // @AML: test mutation output
+  offspring_gen.GetMutInfo()["D"] = std::vector<int>({1,2,3});
+  // offspring_gen.Properties()
+
   // All slip, translocation, and LGT mutations should happen first, so that there is a chance
   // of getting a point mutation within one copy in the same divide.
 
@@ -646,7 +650,7 @@ void cHardwareBase::doSlipMutation(cAvidaContext& ctx, InstructionSequence& geno
       }
       // If we have lines to insert...
       if (num_mut > 0) {
-        // Build a sorted list of the sites where mutations occured
+        // Build a sorted list of the sites where mutations occurred
         Apto::Array<int> mut_sites(num_mut);
         for (int i = 0; i < num_mut; i++) mut_sites[i] = ctx.GetRandom().GetUInt(genome.GetSize() + 1);
         Apto::QSort(mut_sites);
@@ -668,7 +672,7 @@ void cHardwareBase::doSlipMutation(cAvidaContext& ctx, InstructionSequence& geno
         genome.Remove(site);
       }
     }
-  // Handle slip mutation normally. 
+  // Handle slip mutation normally.
   } else {
     // If insertion/deletion length would cause genome to violate the min/max genome size,
     //  do not mutate.
