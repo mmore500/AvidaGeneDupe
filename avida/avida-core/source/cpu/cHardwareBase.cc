@@ -688,7 +688,9 @@ void cHardwareBase::doSlipMutation(cAvidaContext& ctx, InstructionSequence& geno
     //  do not mutate.
     if (!((insertion_length > 0 && (genome.GetSize() + insertion_length) > max_genome_size) ||
         (insertion_length < 0 && (genome.GetSize() + insertion_length) < min_genome_size))) {
-      // @AML: TODO - update mut info
+      // @AML: TODO - evaluate whether we want a map here instead of a vector
+      mut_info.emplace_back("slip_div", std::vector<int>({insertion_length, from, to}));
+      auto& slip_info = mut_info.back();
       // Resize child genome
       genome.Resize(genome.GetSize() + insertion_length);
       // Fill insertion

@@ -49,7 +49,7 @@ namespace Avida {
   // MutationInfo
   struct MutationInfo {
     Apto::String m_name;
-    std::vector<int> m_data;
+    std::vector<int> m_data; // @AML: Should this be a map string:int instead of a vector?
 
     MutationInfo()=default;
     MutationInfo(
