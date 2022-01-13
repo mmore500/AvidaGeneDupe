@@ -54,7 +54,7 @@ void cHardwareManager::SetupPropertyMap(PropertyMap& props, const Apto::String& 
 
 Avida::Genome::Genome() : m_hw_type(-1) { ; }
 
-Avida::Genome::Genome(HardwareTypeID hw, const PropertyMap& props, GeneticRepresentationPtr rep, const std::map<Apto::String, std::vector<int>>& mut_info)
+Avida::Genome::Genome(HardwareTypeID hw, const PropertyMap& props, GeneticRepresentationPtr rep, const mut_infos_t& mut_info)
   : m_hw_type(hw), m_representation(rep), m_mut_info(mut_info)
 {
   assert(rep);
@@ -62,12 +62,9 @@ Avida::Genome::Genome(HardwareTypeID hw, const PropertyMap& props, GeneticRepres
   // Copy over properties
   m_props.SetValue(s_prop_id_instset, props.Get(s_prop_id_instset).StringValue());
 
-  // ////////////////////////////////////////////////
-  // if (!m_mut_info.count("A")) {
-  //   m_mut_info["A"] = std::vector<int>();
-  // }
-  // m_mut_info["A"].emplace_back(m_mut_info["A"].size());
-  // ////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // m_mut_info.emplace_back("A", std::vector<int>{0});
+  ////////////////////////////////////////////////
 }
 
 Avida::Genome::Genome(const Apto::String& genome_str)
@@ -78,10 +75,7 @@ Avida::Genome::Genome(const Apto::String& genome_str)
   m_props.SetValue(s_prop_id_instset, str.Pop(','));
   m_representation = GeneticRepresentationPtr(new InstructionSequence(str));
   // ////////////////////////////////////////////////
-  // if (!m_mut_info.count("B")) {
-  //   m_mut_info["B"] = std::vector<int>();
-  // }
-  // m_mut_info["B"].emplace_back(m_mut_info["B"].size());
+  // m_mut_info.emplace_back("B", std::vector<int>{0});
   // ////////////////////////////////////////////////
 }
 
@@ -90,10 +84,7 @@ Avida::Genome::Genome(const Genome& genome)
 {
   m_props.SetValue(s_prop_id_instset, genome.m_props.Get(s_prop_id_instset).StringValue().Clone());
   // ////////////////////////////////////////////////
-  // if (!m_mut_info.count("C")) {
-  //   m_mut_info["C"] = std::vector<int>();
-  // }
-  // m_mut_info["C"].emplace_back(m_mut_info["C"].size());
+  // m_mut_info.emplace_back("C", std::vector<int>{0});
   // ////////////////////////////////////////////////
 }
 
@@ -128,10 +119,7 @@ Avida::Genome& Avida::Genome::operator=(const Genome& genome)
 
   m_mut_info = genome.m_mut_info;
   // ////////////////////////////////////////////////
-  // if (!m_mut_info.count("E")) {
-  //   m_mut_info["E"] = std::vector<int>();
-  // }
-  // m_mut_info["E"].emplace_back(m_mut_info["E"].size());
+  // m_mut_info.emplace_back("E", std::vector<int>{0});
   // ////////////////////////////////////////////////
 
   return *this;
@@ -162,15 +150,14 @@ bool Avida::Genome::LegacySave(void* dfp) const
   Apto::String mut_string;
   mut_string += "(";
   bool first=true;
-  for (auto const& x : m_mut_info) {
-    if (!first) {
-      mut_string += ",";
-    } else {
-      first=false;
-    }
-    mut_string += x.first;
-    for (size_t i = 0; i < x.second.size(); ++i) {
-      mut_string += Apto::FormatStr(":%d", x.second[i]);
+  for (size_t mut_i = 0; mut_i < m_mut_info.size(); ++mut_i) {
+    if (mut_i) mut_string += "|";
+    mut_string += m_mut_info[mut_i].GetName();
+    mut_string += ":";
+    // mut_string += Apto::FormatStr("%s:", );
+    for (size_t d_i = 0; d_i < m_mut_info[mut_i].m_data.size(); ++d_i) {
+      if (d_i) mut_string += ",";
+      mut_string += Apto::AsStr(m_mut_info[mut_i].m_data[d_i]);
     }
   }
   mut_string += ")";

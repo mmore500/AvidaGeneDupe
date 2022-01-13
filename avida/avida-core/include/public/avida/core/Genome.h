@@ -46,12 +46,33 @@ namespace Avida {
     LIB_EXPORT virtual bool Serialize(ArchivePtr ar) const = 0;
   };
 
+  // MutationInfo
+  struct MutationInfo {
+    Apto::String m_name;
+    std::vector<int> m_data;
+
+    MutationInfo()=default;
+    MutationInfo(
+      const Apto::String& name,
+      const std::vector<int>& data
+    ) :
+      m_name(name),
+      m_data(data)
+    { ; }
+
+    const Apto::String& GetName() const { return m_name; }
+    std::vector<int>& GetData() { return m_data; }
+    const std::vector<int>& GetData() const { return m_data; }
+  };
+
 
   // Genome - genetic and epi-genetic heritable information
   // --------------------------------------------------------------------------------------------------------------
 
   class Genome
   {
+  public:
+    using mut_infos_t=std::vector<MutationInfo>;
   private:
     class InstSetPropertyMap;
 
@@ -60,11 +81,12 @@ namespace Avida {
     GeneticRepresentationPtr m_representation;
     Apto::Map<Apto::String, Apto::SmartPtr<EpigeneticObject> > m_epigenetic_objs;
 
-    std::map<Apto::String, std::vector<int>> m_mut_info;
+    // std::map<Apto::String, std::vector<int>> m_mut_info;
+    std::vector<MutationInfo> m_mut_info;
 
   public:
     LIB_EXPORT Genome();
-    LIB_EXPORT Genome(HardwareTypeID hw, const PropertyMap& props, GeneticRepresentationPtr rep, const std::map<Apto::String, std::vector<int>>& mut_info=std::map<Apto::String, std::vector<int>>());
+    LIB_EXPORT Genome(HardwareTypeID hw, const PropertyMap& props, GeneticRepresentationPtr rep, const mut_infos_t& mut_info=mut_infos_t());
     LIB_EXPORT explicit Genome(const Apto::String& genome_str);
     LIB_EXPORT Genome(const Genome& genome);
 
@@ -95,8 +117,8 @@ namespace Avida {
     }
 
     // Mutation information
-    std::map<Apto::String, std::vector<int>>& GetMutInfo() { return m_mut_info; }
-    const std::map<Apto::String, std::vector<int>>& GetMutInfo() const { return m_mut_info; }
+    mut_infos_t& GetMutInfo() { return m_mut_info; }
+    const mut_infos_t& GetMutInfo() const { return m_mut_info; }
 
     // Conversion
     LIB_EXPORT Apto::String AsString() const;

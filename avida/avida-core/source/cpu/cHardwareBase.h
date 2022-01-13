@@ -275,7 +275,10 @@ protected:
   // --------  Mutation Helper Methods  --------
   bool doUniformMutation(cAvidaContext& ctx, InstructionSequence& genome);
   void doUniformCopyMutation(cAvidaContext& ctx, cHeadCPU& head);
-  void doSlipMutation(cAvidaContext& ctx, InstructionSequence& genome, int from = -1);
+
+  void doSlipMutation(cAvidaContext& ctx, InstructionSequence& genome, int from = -1); // @AML: This version creates a throw-away mutation information object to pass through.
+  void doSlipMutation(cAvidaContext& ctx, InstructionSequence& genome, std::vector<MutationInfo>& mut_info, int from = -1); // @AML: Add this to allow extraction of slip mutation information. Keep original so I don't
+
   void doTransMutation(cAvidaContext& ctx, InstructionSequence& genome, int from = -1);
   void doLGTMutation(cAvidaContext& ctx, InstructionSequence& genome);
 

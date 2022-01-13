@@ -311,7 +311,7 @@ int cHardwareBase::Divide_DoMutations(cAvidaContext& ctx, double mut_multiplier,
 
   // @AML: test mutation output
   ////////////////////////////////////////////////
-  // auto& offspring_mut_info=offspring_gen.GetMutInfo();
+  auto& offspring_mut_info=offspring_gen.GetMutInfo();
   // if (!offspring_mut_info.count("D")) {
   //   offspring_mut_info["D"] = std::vector<int>();
   // }
@@ -322,17 +322,17 @@ int cHardwareBase::Divide_DoMutations(cAvidaContext& ctx, double mut_multiplier,
   // of getting a point mutation within one copy in the same divide.
 
   // Divide Slip Mutations - NOT COUNTED.
-  if (m_organism->TestDivideSlip(ctx)) doSlipMutation(ctx, offspring_genome);
+  if (m_organism->TestDivideSlip(ctx)) doSlipMutation(ctx, offspring_genome, offspring_mut_info);
 
   // Poisson Slip Mutations - NOT COUNTED
   unsigned int num_poisson_slip = m_organism->NumDividePoissonSlip(ctx);
-  for (unsigned int i = 0; i < num_poisson_slip; i++) { doSlipMutation(ctx, offspring_genome);  }
+  for (unsigned int i = 0; i < num_poisson_slip; i++) { doSlipMutation(ctx, offspring_genome, offspring_mut_info);  }
 
   // Slip Mutations (per site) - NOT COUNTED
   if (m_organism->GetDivSlipProb() > 0) {
     int num_mut = ctx.GetRandom().GetRandBinomial(offspring_genome.GetSize(),
                                                   m_organism->GetDivSlipProb() / mut_multiplier);
-    for (int i = 0; i < num_mut; i++) doSlipMutation(ctx, offspring_genome);
+    for (int i = 0; i < num_mut; i++) doSlipMutation(ctx, offspring_genome, offspring_mut_info);
   }
 
 
@@ -628,7 +628,12 @@ void cHardwareBase::doUniformCopyMutation(cAvidaContext& ctx, cHeadCPU& head)
 // This can cause large deletions or tandem duplications.
 // Unlucky organisms might exceed the allowed length (randomly) if these mutations occur.
 //  -- @AML: Modified to disallow mutations that cause genome to shrink/grow beyond allowed size.
-void cHardwareBase::doSlipMutation(cAvidaContext& ctx, InstructionSequence& genome, int from)
+void cHardwareBase::doSlipMutation(cAvidaContext& ctx, InstructionSequence& genome, int from) {
+  std::vector<MutationInfo> temp_mut_info;
+  doSlipMutation(ctx, genome, temp_mut_info, from);
+}
+
+void cHardwareBase::doSlipMutation(cAvidaContext& ctx, InstructionSequence& genome, std::vector<MutationInfo>& mut_info, int from)
 {
   const int slip_fill_mode = m_world->GetConfig().SLIP_FILL_MODE.Get();
   int max_genome_size = m_world->GetConfig().MAX_GENOME_SIZE.Get();
@@ -637,8 +642,6 @@ void cHardwareBase::doSlipMutation(cAvidaContext& ctx, InstructionSequence& geno
   if (!min_genome_size || min_genome_size < MIN_GENOME_LENGTH) min_genome_size = MIN_GENOME_LENGTH;
 
   InstructionSequence genome_copy = InstructionSequence(genome);
-
-  auto& mut_info=genome.GetMutInfo();
 
   // All combinations except beginning to past end allowed
   if (from < 0) from = ctx.GetRandom().GetInt(genome_copy.GetSize() + 1);
@@ -685,6 +688,7 @@ void cHardwareBase::doSlipMutation(cAvidaContext& ctx, InstructionSequence& geno
     //  do not mutate.
     if (!((insertion_length > 0 && (genome.GetSize() + insertion_length) > max_genome_size) ||
         (insertion_length < 0 && (genome.GetSize() + insertion_length) < min_genome_size))) {
+      // @AML: TODO - update mut info
       // Resize child genome
       genome.Resize(genome.GetSize() + insertion_length);
       // Fill insertion
