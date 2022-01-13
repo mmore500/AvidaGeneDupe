@@ -57,10 +57,10 @@ class cAnalyzeGenotypeLink
 private:
   cAnalyzeGenotype *m_parent;
   tList<cAnalyzeGenotype> m_child_list;
-  
+
 public:
   cAnalyzeGenotypeLink() : m_parent(NULL) { m_child_list.Clear(); }
-  
+
   void SetParent(cAnalyzeGenotype* parent) { m_parent = parent; }
   cAnalyzeGenotype* GetParent() { return m_parent; }
   tList<cAnalyzeGenotype>& GetChildList() { return m_child_list; }
@@ -78,19 +78,19 @@ private:
   Genome m_genome;        // Full Genome
   cString name;              // Name, if one was provided in loading
   cCPUTestInfo m_cpu_test_info; // Use this test info
-  
+
   struct sGenotypeDatastore : public Apto::RefCountObject<Apto::ThreadSafe>
   {
     mutable Apto::RWLock rwlock;
     mutable Apto::Map<int, cGenotypeData*> dmap;
-    
+
     sGenotypeDatastore() { ; }
     sGenotypeDatastore(const sGenotypeDatastore& ds) : Apto::RefCountObject<Apto::ThreadSafe>(ds) { ; } // Note that data objects are not copied right now
-    
+
     ~sGenotypeDatastore();
   };
   Apto::SmartPtr<sGenotypeDatastore, Apto::InternalRCObject> m_data;
-  
+
   cString aligned_sequence;  // Sequence (in ASCII) after alignment
   cString tag;               // All genotypes in a batch can be tagged
 
@@ -112,6 +112,7 @@ private:
   int depth;
   cString m_cells;
   cString m_gest_offsets;
+  cString m_mutation_info;
 
   // Group 2 : Basic Execution Stats (Obtained from test CPUs)
   int length;
@@ -156,14 +157,14 @@ private:
     int neg_count;
     int neut_count;
     int pos_count;
-    
+
     // Extra calculations based off of double knockouts...
     bool has_pair_info;  // Have these calculations been made?
     int pair_dead_count;
     int pair_neg_count;
     int pair_neut_count;
     int pair_pos_count;
-    
+
     bool has_chart_info; // Keep a chart of which sites affect which tasks?
     Apto::Array< Apto::Array<int> > task_counts;
 
@@ -172,7 +173,7 @@ private:
       neg_count = 0;
       neut_count = 0;
       pos_count = 0;
-      
+
       has_pair_info = false;
       pair_dead_count = 0;
       pair_neg_count = 0;
@@ -182,7 +183,7 @@ private:
       has_chart_info = false;
       task_counts.Resize(0);
     }
-    
+
     cAnalyzeKnockouts() { Reset(); }
   };
   mutable cAnalyzeKnockouts* knockout_stats;
@@ -192,10 +193,10 @@ private:
   // Group 5 : More complex stats (obtained indvidually, through tests)
   cString task_order;
 
-  
+
   // Group 6: Phenotypic Plasticity
   mutable cPhenPlastSummary* m_phenplast_stats;
-  
+
   int NumCompare(double new_val, double old_val) const {
     if (new_val == old_val) return  0;
     else if (new_val == 0)       return -2;
@@ -210,7 +211,7 @@ private:
   void CheckLand() const;
   void CheckPhenPlast() const;
   void SummarizePhenotypicPlasticity(const cPhenPlastGenotype& pp) const;
-  
+
   static tDataCommandManager<cAnalyzeGenotype>* buildDataCommandManager();
 
 
@@ -219,18 +220,18 @@ public:
   cAnalyzeGenotype(cWorld* world, const Genome& genome);
   cAnalyzeGenotype(const cAnalyzeGenotype& _gen);
   ~cAnalyzeGenotype();
-  
+
   static void Initialize();
   static tDataCommandManager<cAnalyzeGenotype>& GetDataCommandManager();
-  
+
   class ReadToken;
   ReadToken* GetReadToken() const { m_data->rwlock.ReadLock(); return new ReadToken(this); }
 
   void SetGenotypeData(int data_id, cGenotypeData* data);
   cGenotypeData* GetGenotypeData(ReadToken* tk, int data_id) const { tk->Validate(this); return m_data->dmap.GetWithDefault(data_id, NULL); }
-  
+
   void SetCPUTestInfo(cCPUTestInfo& in_cpu_test_info) { m_cpu_test_info = in_cpu_test_info; }
-  
+
   void Recalculate(cAvidaContext& ctx, cCPUTestInfo* test_info = NULL, cAnalyzeGenotype* parent_genotype = NULL, int num_trials = 1);
   void PrintTasks(std::ofstream& fp, int min_task = 0, int max_task = -1);
   void PrintTasksQuality(std::ofstream& fp, int min_task = 0, int max_task = -1);
@@ -260,6 +261,7 @@ public:
   void SetCells(const cString& cells) { m_cells = cells; }
   void SetGestOffsets(const cString& gest_offsets) { m_gest_offsets = gest_offsets; }
   void SetGenome(Genome& genome) {m_genome = genome;};
+  void SetMutationInfo(const cString& mutation_info) { m_mutation_info = mutation_info; }
 
   void SetLength(int _length) { length = _length; }
   void SetCopyLength(int _length) { copy_length = _length; }
@@ -335,6 +337,7 @@ public:
   int GetDepth() const { return depth; }
   const cString& GetCells() const { return m_cells; }
   const cString& GetGestOffsets() const { return m_gest_offsets; }
+  const cString& GetMutationInfo() const { return m_mutation_info; }
 
   const cString& GetParentMuts() const { return parent_muts; }
 
@@ -355,7 +358,7 @@ public:
   int GetKOPair_PosCount() const;
   int GetKOPair_Complexity() const;
   const Apto::Array< Apto::Array<int> > & GetKO_TaskCounts() const;
-  
+
   // Landscape accessors
   double GetFracDead() const  { CheckLand(); return m_land->GetProbDead(); }
   double GetFracNeg() const { CheckLand(); return m_land->GetProbNeg(); }
@@ -364,7 +367,7 @@ public:
   double GetComplexity() const { CheckLand(); return m_land->GetComplexity(); }
   double GetLandscapeFitness() const { CheckLand(); return m_land->GetAveFitness(); }
 
-  
+
   // Phenotypic Plasticity accessors
   int    GetNumPhenotypes()     const { CheckPhenPlast(); return m_phenplast_stats->m_num_phenotypes; }
   double GetPhenotypicEntropy() const { CheckPhenPlast(); return m_phenplast_stats->m_phenotypic_entropy; }
@@ -377,15 +380,15 @@ public:
   double GetLikelyFitness()     const { CheckPhenPlast(); return m_phenplast_stats->m_likely_fitness; }
   int    GetNumTrials()         const { CheckPhenPlast(); return m_phenplast_stats->m_recalculate_trials; }
   double GetViableProbability()  const { CheckPhenPlast(); return m_phenplast_stats->m_viable_probability; }
-  double GetTaskProbability(int task_id) const { 
+  double GetTaskProbability(int task_id) const {
     if (task_id >= m_world->GetEnvironment().GetNumTasks()) return 0.0;
     CheckPhenPlast();
     return m_phenplast_stats->m_task_probabilities[task_id];
   }
   cString DescTaskProb(int task_id) const;
   Apto::Array<double> GetTaskProbabilities() const { CheckPhenPlast(); return m_phenplast_stats->m_task_probabilities; }
-    
-  
+
+
   double GetFitnessRatio() const { return fitness_ratio; }
   double GetEfficiencyRatio() const { return efficiency_ratio; }
   double GetCompMeritRatio() const { return comp_merit_ratio; }
@@ -414,14 +417,14 @@ public:
   }
   const Apto::Array<int>& GetTaskCounts() const { return task_counts; }
   cString DescTask(int task_id) const;
-  
+
   double GetTaskQuality(int task_id) const {
 	  if (task_id >= task_counts.GetSize()) return 0;
 	  return task_qualities[task_id];
   }
   const Apto::Array<double>& GetTaskQualities() const { return task_qualities; }
-  
-  
+
+
   // number of different tasks performed
   int GetTotalTaskCount() const {
   	int total_task_count = 0;
@@ -429,7 +432,7 @@ public:
   	{ if (task_counts[i] > 0) total_task_count++; }
   	return total_task_count;
   }
-  
+
   // total number of tasks performed, including multiple performances
   int GetTotalTaskPerformanceCount() const {
   	int total_task_performance_count = 0;
@@ -437,7 +440,7 @@ public:
   	{ total_task_performance_count += task_counts[i]; }
   	return total_task_performance_count;
   }
-  
+
   int GetEnvInput(int input_id) const{
     if (input_id >= m_env_inputs.GetSize()) return 0;
     return m_env_inputs[input_id];
@@ -446,19 +449,19 @@ public:
     return m_env_inputs;
   }
   cString DescEnvInput(int input_id) const { return cStringUtil::Stringf("task.%d", input_id); }
-  
+
   double GetRBinTotal(int resource_id) const {
     if (resource_id >= rbins_total.GetSize()) return -1;
     return rbins_total[resource_id];
   }
   cString DescRTot(int resource_id) const { return cStringUtil::Stringf("Resource %d Total", resource_id);}
-  
+
   double GetRBinAvail(int resource_id) const {
     if (resource_id >= rbins_avail.GetSize()) return -1;
     return rbins_avail[resource_id];
   }
   cString DescRAvail(int resource_id) const { return cStringUtil::Stringf("Resource %d Available", resource_id);}
-  
+
   int GetRSpec(int spec_id) const {
     if (spec_id >= collect_spec_counts.GetSize() || spec_id < 0) return -1;
     return collect_spec_counts[spec_id];
@@ -503,22 +506,22 @@ public:
   */
   bool operator==(const cAnalyzeGenotype& in) const { return &in == this; }
 
-  
-  cAnalyzeGenotypeLink& GetLink() { return m_link; }  
+
+  cAnalyzeGenotypeLink& GetLink() { return m_link; }
   cAnalyzeGenotype* GetParent() { return GetLink().GetParent(); }
-  
+
   void LinkParent(cAnalyzeGenotype *parent) {
     if (GetParent() && GetParent() != parent) GetParent()->GetLink().RemoveChild(this);
     GetLink().SetParent(parent);
     if (parent) parent->GetLink().AddChild(this);
   }
-  
+
   void LinkChild(cAnalyzeGenotype &child) { child.LinkParent(this); }
-  
+
   void UnlinkParent() { LinkParent(0); }
-  
+
   tList<cAnalyzeGenotype>& GetChildList() { return GetLink().GetChildList(); }
-  
+
   void UnlinkChildren()
   {
     tListIterator<cAnalyzeGenotype> it(GetChildList());
@@ -526,15 +529,15 @@ public:
       it.Get()->UnlinkParent();
     }
   }
-  
+
   void Unlink()
   {
     UnlinkParent();
     UnlinkChildren();
   }
-  
+
   bool HasChild(cAnalyzeGenotype &child) { return GetLink().FindChild(&child); }
-  
+
   bool UnlinkChild(cAnalyzeGenotype &child)
   {
     if(HasChild(child)) {
@@ -544,8 +547,8 @@ public:
       return false;
     }
   }
-  
-  
+
+
   class ReadToken
   {
     friend class cAnalyzeGenotype;
@@ -556,13 +559,13 @@ public:
     ReadToken& operator=(const ReadToken&); // @not_implemented
 
     inline ReadToken(const cAnalyzeGenotype* ptr) : m_ptr(ptr) { ; }
-    
+
     inline void Validate(const cAnalyzeGenotype* ptr) { assert(ptr == m_ptr); (void) ptr; }
-    
+
   public:
     ~ReadToken() { m_ptr->m_data->rwlock.ReadUnlock(); }
   };
-    
+
 };
 
 #endif
