@@ -8,4 +8,4 @@ avida/install_manifest.txt
 avida/wbuild
 
 .DS_Store
-
+.vscode
