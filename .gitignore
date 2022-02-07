@@ -6,6 +6,7 @@ avida/Makefile
 avida/cmake_install.cmake
 avida/install_manifest.txt
 avida/wbuild
+avida
 
 .DS_Store
 
