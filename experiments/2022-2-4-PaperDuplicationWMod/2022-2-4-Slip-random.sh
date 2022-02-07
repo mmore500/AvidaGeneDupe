@@ -31,13 +31,13 @@ cd ${RUN_DIR}
 
 #Don't use the asterisk: actually write everything out so you know what you're working with!
 
-cp ${CONFIG_DIR}/avida
-cp ${CONFIG_DIR}/avida.cfg
-cp ${CONFIG_DIR}/default-heads.org
-cp ${CONFIG_DIR}/environment.cfg
-cp ${CONFIG_DIR}/events.cfg
-cp ${CONFIG_DIR}/instset-heads___sensors_NONE.cfg
-cp ${CONFIG_DIR}/analyze.cfg
+cp ${CONFIG_DIR}/avida .
+cp ${CONFIG_DIR}/avida.cfg .
+cp ${CONFIG_DIR}/default-heads.org .
+cp ${CONFIG_DIR}/environment.cfg .
+cp ${CONFIG_DIR}/events.cfg .
+cp ${CONFIG_DIR}/instset-heads___sensors_NONE.cfg .
+cp ${CONFIG_DIR}/analyze.cfg .
 
 EXECUTE="avida -s ${SEED} -set COPY_MUT_PROB 0.0 -set COPY_INS_PROB 0.0 -set COPY_DEL_PROB 0.0 -set DIVIDE_INS_PROB 0.0 -set DIVIDE_DEL_PROB 0.0 -set DIVIDE_SLIP_PROB 0.05 -set SLIP_FILL_MODE 2"
 echo ${EXECUTE} > cmd.log
