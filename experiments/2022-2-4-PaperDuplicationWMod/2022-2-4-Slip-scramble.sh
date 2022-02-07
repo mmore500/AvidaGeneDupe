@@ -1,7 +1,7 @@
 #!/bin/bash
 # The interpreter used to execute the script
 
-#SBATCH --job-name=AvidaGeneDupe_Slip-NOP
+#SBATCH --job-name=AvidaGeneDupe_Slip-scramble
 #SBATCH --mail-type=BEGIN,END,FAIL
 #SBATCH --mail-user=clhaynes@umich.edu
 #SBATCH --nodes=1
@@ -15,10 +15,10 @@
 USERNAME=clhaynes
 EXPERIMENT_ID=2022-2-4-PaperDuplicationWMod
 
-OUTPUT_DIR=/scratch/zamanlh_root/zamanlh0/${USERNAME}/Slip-NOP
+OUTPUT_DIR=/scratch/zamanlh_root/zamanlh0/${USERNAME}/Slip-scramble
 CONFIG_DIR=/home/${USERNAME}/AvidaGeneDupe/experiments/${EXPERIMENT_ID}/hpcc/config
 
-SEED_OFFSET=1000
+SEED_OFFSET=1210
 SEED=$((SEED_OFFSET + SLURM_ARRAY_TASK_ID - 1))
 
 JOB_ID=${SLURM_ARRAY_TASK_ID}
@@ -39,7 +39,7 @@ cp ${CONFIG_DIR}/events.cfg
 cp ${CONFIG_DIR}/instset-heads___sensors_NONE.cfg
 cp ${CONFIG_DIR}/analyze.cfg
 
-EXECUTE="avida -s ${SEED} -set COPY_MUT_PROB 0.0 -set COPY_INS_PROB 0.0 -set COPY_DEL_PROB 0.0 -set DIVIDE_INS_PROB 0.0 -set DIVIDE_DEL_PROB 0.0 -set DIVIDE_SLIP_PROB 0.05 -set SLIP_FILL_MODE 1"
+EXECUTE="avida -s ${SEED} -set COPY_MUT_PROB 0.0 -set COPY_INS_PROB 0.0 -set COPY_DEL_PROB 0.0 -set DIVIDE_INS_PROB 0.0 -set DIVIDE_DEL_PROB 0.0 -set DIVIDE_SLIP_PROB 0.05 -set SLIP_FILL_MODE 3"
 echo ${EXECUTE} > cmd.log
 ./${EXECUTE} > run.log
 ./${EXECUTE} -a > analyze.log

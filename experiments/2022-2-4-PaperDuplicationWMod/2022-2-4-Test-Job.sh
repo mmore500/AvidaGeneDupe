@@ -1,21 +1,21 @@
 #!/bin/bash
 # The interpreter used to execute the script
 
-#SBATCH --job-name=AvidaGeneDupe_Baseline-Treatment
+#SBATCH --job-name=AvidaGeneDupe_Test-Job
 #SBATCH --mail-type=BEGIN,END,FAIL
 #SBATCH --mail-user=clhaynes@umich.edu
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --mem=4g
-#SBATCH --time=00-04:00:00
+#SBATCH --time=00-00:01:00
 #SBATCH --account=zamanlh0
-#SBATCH --array=1-30
+#SBATCH --array=1-5
 
 # -- I like to define helpful variables up top --
 USERNAME=clhaynes
 EXPERIMENT_ID=2022-2-4-PaperDuplicationWMod
 
-OUTPUT_DIR=/scratch/zamanlh_root/zamanlh0/${USERNAME}/Baseline-Treatment
+OUTPUT_DIR=/scratch/zamanlh_root/zamanlh0/${USERNAME}/Test-Job
 CONFIG_DIR=/home/${USERNAME}/AvidaGeneDupe/experiments/${EXPERIMENT_ID}/hpcc/config
 
 SEED_OFFSET=1000
