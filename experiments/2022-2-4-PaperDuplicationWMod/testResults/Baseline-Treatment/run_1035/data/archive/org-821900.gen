@@ -1,0 +1,130 @@
+# Mon Feb  7 17:16:33 2022
+# Filename........: archive/org-821900.gen
+# Update Output...: N/A
+# Is Viable.......: 1
+# Repro Cycle Size: 0
+# Depth to Viable.: 0
+# 
+# Generation: 0
+# Merit...........: 12544.000000
+# Gestation Time..: 232
+# Fitness.........: 54.068966
+# Errors..........: 4
+# Genome Size.....: 101
+# Copied Size.....: 101
+# Executed Size...: 98
+# Offspring.......: SELF
+# 
+# Tasks Performed:
+# not 1 (1.000000)
+# nand 1 (1.000000)
+# and 1 (1.000000)
+# orn 1 (1.000000)
+# or 1 (1.000000)
+# andn 1 (1.000000)
+# nor 1 (1.000000)
+# xor 0 (0.000000)
+# equ 0 (0.000000)
+
+
+h-alloc
+h-search
+nop-C
+nop-A
+mov-head
+nop-C
+nop-C
+IO
+shift-l
+nop-C
+shift-l
+nop-A
+nop-C
+pop
+nop-C
+if-n-equ
+nop-C
+nop-C
+jmp-head
+nop-C
+nop-B
+nop-A
+push
+nop-C
+if-less
+nop-C
+sub
+nop-C
+nop-C
+nand
+nop-C
+IO
+nop-C
+nand
+nop-C
+IO
+nop-C
+h-alloc
+nand
+nand
+add
+nop-C
+nop-C
+h-alloc
+inc
+nop-C
+nop-C
+nop-B
+nop-B
+IO
+nop-C
+h-copy
+nop-C
+nop-C
+sub
+nop-C
+swap
+if-less
+nop-C
+IO
+nop-C
+set-flow
+push
+pop
+nop-C
+nop-C
+nand
+swap-stk
+IO
+nop-C
+nop-C
+h-divide
+nop-C
+sub
+nop-C
+IO
+nop-C
+nop-X
+IO
+shift-l
+nop-C
+shift-r
+nop-C
+h-divide
+inc
+nop-X
+h-alloc
+if-n-equ
+h-alloc
+set-flow
+h-search
+h-copy
+if-label
+nop-C
+nop-A
+h-divide
+h-copy
+h-copy
+mov-head
+nop-A
+nop-B
