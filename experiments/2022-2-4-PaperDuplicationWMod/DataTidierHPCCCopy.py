@@ -22,6 +22,8 @@ class Treatment():
 for subdir in os.listdir(dataDir):
     if '.' in subdir:
         continue
+    elif 'Test-Job' in subdir:
+        continue
     treatment = Treatment(os.path.join(dataDir,subdir))
     Treatments.append(treatment)
 
