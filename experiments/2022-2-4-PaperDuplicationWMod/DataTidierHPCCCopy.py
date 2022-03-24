@@ -114,7 +114,8 @@ def makeTidy(treatmentArray):
                             runName = folderName
                     runParts = runName.split('_')
                     runNum = runParts[-1]
-                    data_writer.writerow([treatmentName,*treatmentParameters[treatmentName],runNum,ID,updateBorn,numTasks])
+                    params = treatmentParameters[treatmentName]
+                    data_writer.writerow([treatmentName,params[0],params[1],params[2],params[3],params[4],params[5],params[6],runNum,ID,updateBorn,numTasks])
 
 linDatFile = ".dat"
 
