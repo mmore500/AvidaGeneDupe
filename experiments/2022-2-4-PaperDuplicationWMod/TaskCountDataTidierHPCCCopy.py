@@ -2,7 +2,7 @@ import os
 import csv
 import sys
 
-dataDir = '/scratch/zamanlh_root/zamanlh0/clhaynes/2022-2-4-PaperDuplicationWMod'
+dataDir = './'
 runDirectories = []
 Treatments = []
 treatmentParameters = {"Baseline-Treatment":[0.0025, 0.0, 0.0, 0.05, 0.05, 0.0, 0],
