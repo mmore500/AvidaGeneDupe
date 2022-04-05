@@ -2,11 +2,16 @@ import os
 import csv
 import sys
 
-dataDir = '/Users/cameronhaynes/Documents/VSCodeGitProjects/AvidaGeneDupe/experiments/2022-2-4-PaperDuplicationWMod/testResults'
+dataDir = '/scratch/zamanlh_root/zamanlh0/clhaynes/2022-2-4-PaperDuplicationWMod'
 runDirectories = []
 Treatments = []
 treatmentParameters = {"Baseline-Treatment":[0.0025, 0.0, 0.0, 0.05, 0.05, 0.0, 0],
-"Slip-NOP":[0.0, 0.0, 0.0, 0.0, 0.0, 0.05, 1]}
+"Slip-NOP":[0.0, 0.0, 0.0, 0.0, 0.0, 0.05, 1],
+"Slip-duplicate":[0.0, 0.0, 0.0, 0.0, 0.0, 0.05, 0],
+"Slip-scatter":[0.0, 0.0, 0.0, 0.0, 0.0, 0.05, 5],
+"Slip-scramble":[0.0, 0.0, 0.0, 0.0, 0.0, 0.05, 3],
+"Slip-random":[0.0, 0.0, 0.0, 0.0, 0.0, 0.05, 2],
+"High-Mutation":[0.0025,0.0075,0.0075,0.05,0.05,0.0,0]}
 
 class Treatment():
     def __init__(self,treatmentPath):
