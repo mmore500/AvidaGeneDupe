@@ -6,7 +6,7 @@ date: '2022-03-17'
 
 ```{r}
 library(ggplot2)
-setwd("/Users/cameronhaynes/Documents/VSCodeGitProjects/AvidaGeneDupe/experiments/2022-2-4-PaperDuplicationWMod/TidiedData")
+setwd("/Users/cameronhaynes/Documents/VSCodeGitProjects/AvidaGeneDupe/experiments/2022-3-29-PaperDuplication/TidiedData")
 data <- read.csv("FinalDominantTaskCounts.csv")
 names(data)
 ggplot(data,aes(x=Treatment,y=Task.Count,color=Treatment,fill=Treatment)) + #Add color=Replicate with a replicate column to plot each curve seperately 
@@ -15,7 +15,8 @@ ggplot(data,aes(x=Treatment,y=Task.Count,color=Treatment,fill=Treatment)) + #Add
   theme_minimal() +
   theme(legend.position = 'none')#+ facet_grid(Treatment~.) # Uncomment to plot faceted by treatment
 
-ggsave("finalDominantTaskCountViolin.pdf")
+ggsave("ModifiedReplicationFinalDominantTaskCountViolin.pdf")
+```
 ```
 ```{r}
 library(ggplot2)
@@ -26,3 +27,12 @@ ggplot(data, aes(x=Time,y=Tasks.Present,color=Treatment,fill=Treatment)) +
   stat_summary(geom="line",fun=mean)
 
 ```
+```{r}
+library(ggplot2)
+setwd("/Users/cameronhaynes/Documents/VSCodeGitProjects/AvidaGeneDupe/experiments/2022-3-29-PaperDuplication/TidiedData")
+data <- read.csv("TaskCountTimeCourse.csv")
+names(data)
+ggplot(data, aes(x=Time,y=Tasks.Present,color=Treatment,fill=Treatment)) +
+  stat_summary(geom="line",fun=mean)
+```
+
