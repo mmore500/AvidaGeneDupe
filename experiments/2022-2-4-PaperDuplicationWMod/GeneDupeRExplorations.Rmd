@@ -6,15 +6,19 @@ date: '2022-03-17'
 
 ```{r}
 library(ggplot2)
-setwd("/Users/cameronhaynes/Documents/VSCodeGitProjects/AvidaGeneDupe/experiments/2022-2-4-PaperDuplicationWMod/")
-data <- read.csv("TaskCounts.csv")
+setwd("/Users/cameronhaynes/Documents/VSCodeGitProjects/AvidaGeneDupe/experiments/2022-2-4-PaperDuplicationWMod/TidiedData")
+data <- read.csv("FinalDominantTaskCounts.csv")
 names(data)
 ggplot(data,aes(x=Treatment,y=Task.Count,color=Treatment,fill=Treatment)) + #Add color=Replicate with a replicate column to plot each curve seperately 
   geom_violin() +
-  geom_boxplot()  +
   geom_jitter(alpha = 0.2) +
   theme_minimal() +
   theme(legend.position = 'none')#+ facet_grid(Treatment~.) # Uncomment to plot faceted by treatment
 
-ggsave("taskCountViolin.pdf")
+#ggsave("finalDominantTaskCountViolin.pdf")
+```
+```{r}
+ggplot(data, aes(x=Update.Born,y=Task.Count,color=Treatment,fill=Treatment)) +
+  stat_summary(geom="line",fun=mean)
+
 ```
