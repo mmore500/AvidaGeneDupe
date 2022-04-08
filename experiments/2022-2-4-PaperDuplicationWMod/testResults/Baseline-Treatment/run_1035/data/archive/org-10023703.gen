@@ -1,0 +1,146 @@
+# Mon Feb  7 17:16:34 2022
+# Filename........: archive/org-10023703.gen
+# Update Output...: N/A
+# Is Viable.......: 1
+# Repro Cycle Size: 0
+# Depth to Viable.: 0
+# 
+# Generation: 0
+# Merit...........: 14592.000000
+# Gestation Time..: 215
+# Fitness.........: 67.869767
+# Errors..........: 0
+# Genome Size.....: 117
+# Copied Size.....: 117
+# Executed Size...: 114
+# Offspring.......: SELF
+# 
+# Tasks Performed:
+# not 1 (1.000000)
+# nand 1 (1.000000)
+# and 1 (1.000000)
+# orn 1 (1.000000)
+# or 1 (1.000000)
+# andn 1 (1.000000)
+# nor 1 (1.000000)
+# xor 0 (0.000000)
+# equ 0 (0.000000)
+
+
+nop-X
+h-alloc
+set-flow
+set-flow
+nop-A
+inc
+mov-head
+nop-C
+IO
+nop-C
+push
+h-divide
+inc
+shift-r
+nop-C
+nop-X
+dec
+set-flow
+nop-C
+h-copy
+inc
+nop-A
+h-search
+if-less
+nop-C
+dec
+swap-stk
+set-flow
+IO
+sub
+nop-C
+h-divide
+h-copy
+h-copy
+nand
+swap
+IO
+nop-C
+nand
+nop-C
+IO
+nop-C
+push
+nand
+nand
+add
+nop-C
+set-flow
+nop-C
+inc
+nop-C
+inc
+nop-A
+nop-C
+IO
+nop-C
+h-copy
+if-less
+sub
+nop-C
+swap
+IO
+nop-C
+get-head
+nop-C
+if-label
+h-copy
+nop-B
+h-copy
+push
+h-copy
+h-copy
+pop
+nop-C
+nand
+nop-B
+IO
+nop-C
+if-less
+pop
+h-copy
+h-divide
+h-copy
+sub
+nop-C
+IO
+nop-C
+IO
+h-copy
+h-copy
+nop-C
+h-copy
+IO
+get-head
+shift-r
+nop-B
+h-copy
+dec
+nop-B
+nop-X
+get-head
+h-search
+nop-A
+h-search
+h-copy
+if-label
+nop-C
+nop-A
+h-divide
+h-copy
+h-copy
+h-copy
+h-copy
+h-copy
+mov-head
+nop-A
+nop-B

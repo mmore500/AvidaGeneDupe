@@ -1,0 +1,22 @@
+#filetype genotype_data
+#format id update_born task task task task task task task task task viable gest_time efficiency length sequence 
+
+# Legend:
+# 1: Genotype ID
+# 2: Update Born
+# 3: Not
+# 4: Nand
+# 5: And
+# 6: OrNot
+# 7: Or
+# 8: AndNot
+# 9: Nor
+# 10: Xor
+# 11: Equals
+# 12: Is Viable (0/1)
+# 13: Gestation Time
+# 14: Rep. Efficiency
+# 15: Genome Length
+# 16: Genome Sequence
+
+19313260 199692 1 1 1 1 1 1 1 0 1 1 213 0.525822 114 zlwzjasgcvuazhahobybqmsaouaxvytcrvucycucycxuuscdbmctasaycftcrvycojoAdvvvpcvubvyccoatcvycvywptymwnkdizvfcaxvvvvvgab 
