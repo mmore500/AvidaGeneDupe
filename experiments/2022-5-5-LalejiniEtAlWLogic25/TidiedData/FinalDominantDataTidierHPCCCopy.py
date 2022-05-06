@@ -66,6 +66,9 @@ def countTasks(organismString):
         tasks = analyzeOutputs[2:11]
     elif(len(analyzeOutputs) == 17):
         tasks = analyzeOutputs[3:12]
+    elif(len(analyzeOutputs) == 33):
+        #Recall: array slicing drops the element at the top index
+        tasks = analyzeOutputs[2:27]
     else:
         print("Improper Data String Length")
         sys.exit(0)
