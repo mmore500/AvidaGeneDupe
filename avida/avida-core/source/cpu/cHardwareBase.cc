@@ -643,11 +643,58 @@ void cHardwareBase::doSlipMutation(cAvidaContext& ctx, InstructionSequence& geno
 
   InstructionSequence genome_copy = InstructionSequence(genome);
 
-  // All combinations except beginning to past end allowed
-  if (from < 0) from = ctx.GetRandom().GetInt(genome_copy.GetSize() + 1);
-  int to = (from == 0) ? ctx.GetRandom().GetInt(genome_copy.GetSize()) : ctx.GetRandom().GetInt(genome_copy.GetSize() + 1);
+  int to=0;
+  int insertion_length=0;
+  const int cfg_slip_size = m_world->GetConfig().SLIP_SIZE.Get();
+  const size_t orig_genome_len = genome_copy.GetSize();
 
-  int insertion_length = (from - to);
+  // If cfg slip size is <= 0, choose slip size/direction randomly.
+  if (cfg_slip_size <= 0) {
+    // All combinations except beginning to past end allowed
+    if (from < 0) from = ctx.GetRandom().GetInt(orig_genome_len + 1);
+    to = (from == 0) ? ctx.GetRandom().GetInt(orig_genome_len) : ctx.GetRandom().GetInt(orig_genome_len + 1);
+    // duplication is when from > to; deletion is when to > from
+    insertion_length = (from - to);
+
+  // Otherwise, control slip length.
+  } else {
+    // duplication (insertion length > 0) or deletion (insertion length < 0)?
+    insertion_length = (ctx.GetRandom().P(0.5)) ? cfg_slip_size : -1*cfg_slip_size;
+
+    // If fixed slip size is bigger than the genome, slip mutation fails.
+    if (cfg_slip_size >= orig_genome_len) return;
+
+    // Choose a valid 'from' value for the given insertion length.
+    if (insertion_length > 0) {
+      // Duplication! Make sure there's enough room before 'from' for fixed insertion length.
+      // Pick a valid 'from'
+      if (from < 0) {
+        from = ctx.GetRandom().GetInt(insertion_length, orig_genome_len + 1);
+      } else if ((from - insertion_length < 0) || (from == 0 && ((from - insertion_length) == orig_genome_len))) {
+        return; // genome not big enough for chosen from value
+      }
+      // calculate 'to' based on from and insertion length
+      to = from - insertion_length;
+      assert(to >= 0);
+      assert(from >= insertion_length && from <= orig_genome_len);
+    } else {
+      // Deletion! Make sure there's enough room after 'from' for fixed deletion length.
+      if (from < 0) {
+        // Pick a valid 'from' value.
+        from = ctx.GetRandom().GetInt(0, orig_genome_len-cfg_slip_size);
+      } else if ( ((from-insertion_length) >= orig_genome_len) || (from==0 && (from-insertion_length)==orig_genome_len) ) {
+        return; // genome not big enough for chosen 'from' value
+      }
+      to = from - insertion_length;
+      // if (to > orig_genome_len) {
+      //   std::cout << orig_genome_len << " " << from << " " << to << " " << insertion_length << std::endl;
+      // }
+      assert(to <= orig_genome_len);
+      assert(to >= cfg_slip_size);
+      assert(from >= 0);
+    }
+
+  }
 
   if (slip_fill_mode == 5) {
     // If slip fill mode is 5, instead of slip mutation: rain down point insertions/deletions.
