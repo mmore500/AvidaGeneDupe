@@ -309,21 +309,30 @@ int cHardwareBase::Divide_DoMutations(cAvidaContext& ctx, double mut_multiplier,
 
   m_organism->GetPhenotype().SetDivType(mut_multiplier);
 
+  // @AML: test mutation output
+  ////////////////////////////////////////////////
+  auto& offspring_mut_info=offspring_gen.GetMutInfo();
+  // if (!offspring_mut_info.count("D")) {
+  //   offspring_mut_info["D"] = std::vector<int>();
+  // }
+  // offspring_mut_info["D"].emplace_back(offspring_mut_info["D"].size());
+  ////////////////////////////////////////////////
+
   // All slip, translocation, and LGT mutations should happen first, so that there is a chance
   // of getting a point mutation within one copy in the same divide.
 
   // Divide Slip Mutations - NOT COUNTED.
-  if (m_organism->TestDivideSlip(ctx)) doSlipMutation(ctx, offspring_genome);
+  if (m_organism->TestDivideSlip(ctx)) doSlipMutation(ctx, offspring_genome, offspring_mut_info);
 
   // Poisson Slip Mutations - NOT COUNTED
   unsigned int num_poisson_slip = m_organism->NumDividePoissonSlip(ctx);
-  for (unsigned int i = 0; i < num_poisson_slip; i++) { doSlipMutation(ctx, offspring_genome);  }
+  for (unsigned int i = 0; i < num_poisson_slip; i++) { doSlipMutation(ctx, offspring_genome, offspring_mut_info);  }
 
   // Slip Mutations (per site) - NOT COUNTED
   if (m_organism->GetDivSlipProb() > 0) {
     int num_mut = ctx.GetRandom().GetRandBinomial(offspring_genome.GetSize(),
                                                   m_organism->GetDivSlipProb() / mut_multiplier);
-    for (int i = 0; i < num_mut; i++) doSlipMutation(ctx, offspring_genome);
+    for (int i = 0; i < num_mut; i++) doSlipMutation(ctx, offspring_genome, offspring_mut_info);
   }
 
 
@@ -619,7 +628,12 @@ void cHardwareBase::doUniformCopyMutation(cAvidaContext& ctx, cHeadCPU& head)
 // This can cause large deletions or tandem duplications.
 // Unlucky organisms might exceed the allowed length (randomly) if these mutations occur.
 //  -- @AML: Modified to disallow mutations that cause genome to shrink/grow beyond allowed size.
-void cHardwareBase::doSlipMutation(cAvidaContext& ctx, InstructionSequence& genome, int from)
+void cHardwareBase::doSlipMutation(cAvidaContext& ctx, InstructionSequence& genome, int from) {
+  std::vector<MutationInfo> temp_mut_info;
+  doSlipMutation(ctx, genome, temp_mut_info, from);
+}
+
+void cHardwareBase::doSlipMutation(cAvidaContext& ctx, InstructionSequence& genome, std::vector<MutationInfo>& mut_info, int from)
 {
   const int slip_fill_mode = m_world->GetConfig().SLIP_FILL_MODE.Get();
   int max_genome_size = m_world->GetConfig().MAX_GENOME_SIZE.Get();
@@ -629,11 +643,58 @@ void cHardwareBase::doSlipMutation(cAvidaContext& ctx, InstructionSequence& geno
 
   InstructionSequence genome_copy = InstructionSequence(genome);
 
-  // All combinations except beginning to past end allowed
-  if (from < 0) from = ctx.GetRandom().GetInt(genome_copy.GetSize() + 1);
-  int to = (from == 0) ? ctx.GetRandom().GetInt(genome_copy.GetSize()) : ctx.GetRandom().GetInt(genome_copy.GetSize() + 1);
+  int to=0;
+  int insertion_length=0;
+  const int cfg_slip_size = m_world->GetConfig().SLIP_SIZE.Get();
+  const size_t orig_genome_len = genome_copy.GetSize();
 
-  int insertion_length = (from - to);
+  // If cfg slip size is <= 0, choose slip size/direction randomly.
+  if (cfg_slip_size <= 0) {
+    // All combinations except beginning to past end allowed
+    if (from < 0) from = ctx.GetRandom().GetInt(orig_genome_len + 1);
+    to = (from == 0) ? ctx.GetRandom().GetInt(orig_genome_len) : ctx.GetRandom().GetInt(orig_genome_len + 1);
+    // duplication is when from > to; deletion is when to > from
+    insertion_length = (from - to);
+
+  // Otherwise, control slip length.
+  } else {
+    // duplication (insertion length > 0) or deletion (insertion length < 0)?
+    insertion_length = (ctx.GetRandom().P(0.5)) ? cfg_slip_size : -1*cfg_slip_size;
+
+    // If fixed slip size is bigger than the genome, slip mutation fails.
+    if (cfg_slip_size >= orig_genome_len) return;
+
+    // Choose a valid 'from' value for the given insertion length.
+    if (insertion_length > 0) {
+      // Duplication! Make sure there's enough room before 'from' for fixed insertion length.
+      // Pick a valid 'from'
+      if (from < 0) {
+        from = ctx.GetRandom().GetInt(insertion_length, orig_genome_len + 1);
+      } else if ((from - insertion_length < 0) || (from == 0 && ((from - insertion_length) == orig_genome_len))) {
+        return; // genome not big enough for chosen from value
+      }
+      // calculate 'to' based on from and insertion length
+      to = from - insertion_length;
+      assert(to >= 0);
+      assert(from >= insertion_length && from <= orig_genome_len);
+    } else {
+      // Deletion! Make sure there's enough room after 'from' for fixed deletion length.
+      if (from < 0) {
+        // Pick a valid 'from' value.
+        from = ctx.GetRandom().GetInt(0, orig_genome_len-cfg_slip_size);
+      } else if ( ((from-insertion_length) >= orig_genome_len) || (from==0 && (from-insertion_length)==orig_genome_len) ) {
+        return; // genome not big enough for chosen 'from' value
+      }
+      to = from - insertion_length;
+      // if (to > orig_genome_len) {
+      //   std::cout << orig_genome_len << " " << from << " " << to << " " << insertion_length << std::endl;
+      // }
+      assert(to <= orig_genome_len);
+      assert(to >= cfg_slip_size);
+      assert(from >= 0);
+    }
+
+  }
 
   if (slip_fill_mode == 5) {
     // If slip fill mode is 5, instead of slip mutation: rain down point insertions/deletions.
@@ -646,7 +707,7 @@ void cHardwareBase::doSlipMutation(cAvidaContext& ctx, InstructionSequence& geno
       }
       // If we have lines to insert...
       if (num_mut > 0) {
-        // Build a sorted list of the sites where mutations occured
+        // Build a sorted list of the sites where mutations occurred
         Apto::Array<int> mut_sites(num_mut);
         for (int i = 0; i < num_mut; i++) mut_sites[i] = ctx.GetRandom().GetUInt(genome.GetSize() + 1);
         Apto::QSort(mut_sites);
@@ -668,12 +729,15 @@ void cHardwareBase::doSlipMutation(cAvidaContext& ctx, InstructionSequence& geno
         genome.Remove(site);
       }
     }
-  // Handle slip mutation normally. 
+  // Handle slip mutation normally.
   } else {
     // If insertion/deletion length would cause genome to violate the min/max genome size,
     //  do not mutate.
     if (!((insertion_length > 0 && (genome.GetSize() + insertion_length) > max_genome_size) ||
         (insertion_length < 0 && (genome.GetSize() + insertion_length) < min_genome_size))) {
+      // @AML: TODO - evaluate whether we want a map here instead of a vector
+      mut_info.emplace_back("slip_div", std::vector<int>({insertion_length, from, to}));
+      auto& slip_info = mut_info.back();
       // Resize child genome
       genome.Resize(genome.GetSize() + insertion_length);
       // Fill insertion
@@ -698,8 +762,7 @@ void cHardwareBase::doSlipMutation(cAvidaContext& ctx, InstructionSequence& geno
               break;
 
               //Scrambled order
-            case 3:
-            {
+            case 3: {
               int copy_index = ctx.GetRandom().GetInt(insertion_length - i);
               int test = 0;
               int passed = copy_index;
@@ -713,8 +776,8 @@ void cHardwareBase::doSlipMutation(cAvidaContext& ctx, InstructionSequence& geno
               }
               genome[from + i] = genome[to + copy_index];
               copied_so_far[copy_index] = true;
-            }
               break;
+            }
 
               //Empty (nop-C)
             case 4:

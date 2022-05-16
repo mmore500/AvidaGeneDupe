@@ -31,10 +31,10 @@
 
 
 namespace Avida {
-  
+
   // Class Declarations
   // --------------------------------------------------------------------------------------------------------------
-  
+
   class Archive;
   class Context;
   class Feedback;
@@ -51,17 +51,18 @@ namespace Avida {
   class World;
   class WorldDriver;
   class WorldFacet;
+  struct MutationInfo;
 
-  
+
   // Enumeration Declarations
-  // --------------------------------------------------------------------------------------------------------------  
-  
+  // --------------------------------------------------------------------------------------------------------------
+
   enum AbortCondition {
     INVALID_CONFIG = 2,
     IO_ERROR = 3,
     INTERNAL_ERROR = 50
   };
-  
+
   enum DriverEvent {
     THREAD_START,
     THREAD_END
@@ -69,40 +70,40 @@ namespace Avida {
 
 
   // Type Declarations
-  // --------------------------------------------------------------------------------------------------------------  
-  
+  // --------------------------------------------------------------------------------------------------------------
+
   typedef int Update; // Discrete unit of activity in Avida
-    
+
   typedef Apto::Malloc::FixedSegment<32, Apto::Malloc::TCFreeList<Apto::BasicMalloc>, Apto::BasicMalloc> SmallObjectMalloc;
-  
+
   typedef Apto::SmartPtr<Archive> ArchivePtr;
   typedef Apto::SmartPtr<const Archive> ConstArchivePtr;
-  
+
   typedef Apto::String ArchiveObjectID;
   typedef Apto::String ArchiveObjectType;
   typedef Apto::Set<ArchiveObjectID> ArchiveObjectIDSet;
   typedef Apto::SmartPtr<ArchiveObjectIDSet> ArchiveObjectIDSetPtr;
   typedef Apto::SmartPtr<const ArchiveObjectIDSet> ConstArchiveObjectIDSetPtr;
-  
+
   typedef Apto::SmartPtr<GeneticRepresentation> GeneticRepresentationPtr;
   typedef Apto::SmartPtr<const GeneticRepresentation> ConstGeneticRepresentationPtr;
-  
+
   typedef Apto::Functor<bool, Apto::TL::Create<GeneticRepresentationPtr>, SmallObjectMalloc> GeneticRepresentationProcessFunctor;
   typedef Apto::Functor<bool, Apto::TL::Create<ConstGeneticRepresentationPtr>, SmallObjectMalloc> ConstGeneticRepresentationProcessFunctor;
   typedef Apto::Map<Apto::String, GeneticRepresentationProcessFunctor> GeneticRepresentationDispatchTable;
   typedef Apto::Map<Apto::String, ConstGeneticRepresentationProcessFunctor> ConstGeneticRepresentationDispatchTable;
-  
+
   typedef Apto::SmartPtr<InstructionSequence> InstructionSequencePtr;
   typedef Apto::SmartPtr<const InstructionSequence> ConstInstructionSequencePtr;
-  
+
   typedef Apto::SmartPtr<Genome> GenomePtr;
   typedef Apto::SmartPtr<const Genome> ConstGenomePtr;
-  
+
   typedef int HardwareTypeID;
-  
+
   typedef Apto::SmartPtr<InstructionSequence> InstructionSequencePtr;
   typedef Apto::SmartPtr<const InstructionSequence> ConstInstructionSequencePtr;
-  
+
   typedef Apto::SmartPtr<Property> PropertyPtr;
   typedef Apto::String PropertyID;
   typedef Apto::String PropertyTypeID;
@@ -112,17 +113,16 @@ namespace Avida {
   typedef Apto::SmartPtr<PropertyMap> PropertyMapPtr;
   typedef Apto::SmartPtr<const PropertyMap> ConstPropertyMapPtr;
   typedef Apto::Map<PropertyID, Apto::String, Apto::DefaultHashBTree, Apto::ImplicitDefault> PropertyDescriptionMap;
-  
+
   typedef Apto::String WorldFacetID;
   typedef Apto::SmartPtr<WorldFacet, Apto::InternalRCObject> WorldFacetPtr;
   typedef Apto::Functor<WorldFacetPtr, Apto::TL::Create<ArchivePtr>, SmallObjectMalloc> WorldFacetDeserializeFunctor;
-  
+
   typedef Apto::Functor<void, Apto::TL::Create<DriverEvent>, SmallObjectMalloc> DriverCallback;
 
-  
   // Constant Declarations
-  // --------------------------------------------------------------------------------------------------------------  
-  
+  // --------------------------------------------------------------------------------------------------------------
+
   extern Update UPDATE_CONCURRENT;
 };
 

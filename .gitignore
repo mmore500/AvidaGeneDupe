@@ -9,4 +9,6 @@ avida/wbuild
 avida
 
 .DS_Store
+.vscode
 
+local/

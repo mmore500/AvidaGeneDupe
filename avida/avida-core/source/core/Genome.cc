@@ -24,6 +24,8 @@
 
 #include "avida/core/Genome.h"
 
+#include <iostream>
+
 #include "apto/core/Set.h"
 #include "avida/core/Feedback.h"
 #include "avida/core/InstructionSequence.h"
@@ -52,13 +54,17 @@ void cHardwareManager::SetupPropertyMap(PropertyMap& props, const Apto::String& 
 
 Avida::Genome::Genome() : m_hw_type(-1) { ; }
 
-Avida::Genome::Genome(HardwareTypeID hw, const PropertyMap& props, GeneticRepresentationPtr rep)
-  : m_hw_type(hw), m_representation(rep)
+Avida::Genome::Genome(HardwareTypeID hw, const PropertyMap& props, GeneticRepresentationPtr rep, const mut_infos_t& mut_info)
+  : m_hw_type(hw), m_representation(rep), m_mut_info(mut_info)
 {
   assert(rep);
-  
+
   // Copy over properties
   m_props.SetValue(s_prop_id_instset, props.Get(s_prop_id_instset).StringValue());
+
+  ////////////////////////////////////////////////
+  // m_mut_info.emplace_back("A", std::vector<int>{0});
+  ////////////////////////////////////////////////
 }
 
 Avida::Genome::Genome(const Apto::String& genome_str)
@@ -68,12 +74,18 @@ Avida::Genome::Genome(const Apto::String& genome_str)
   m_hw_type = Apto::StrAs(str.Pop(','));
   m_props.SetValue(s_prop_id_instset, str.Pop(','));
   m_representation = GeneticRepresentationPtr(new InstructionSequence(str));
+  // ////////////////////////////////////////////////
+  // m_mut_info.emplace_back("B", std::vector<int>{0});
+  // ////////////////////////////////////////////////
 }
 
 Avida::Genome::Genome(const Genome& genome)
-: m_hw_type(genome.m_hw_type), m_representation(genome.m_representation->Clone())
+: m_hw_type(genome.m_hw_type), m_representation(genome.m_representation->Clone()), m_mut_info(genome.m_mut_info)
 {
   m_props.SetValue(s_prop_id_instset, genome.m_props.Get(s_prop_id_instset).StringValue().Clone());
+  // ////////////////////////////////////////////////
+  // m_mut_info.emplace_back("C", std::vector<int>{0});
+  // ////////////////////////////////////////////////
 }
 
 
@@ -89,7 +101,7 @@ bool Avida::Genome::operator==(const Genome& genome) const
   // Simple hardware type comparision
   if (m_hw_type != genome.m_hw_type) return false;
   if (m_props != genome.m_props) return false;
-  
+
   assert(m_representation);
   assert(genome.m_representation);
   if (*m_representation != *genome.m_representation) return false;
@@ -100,11 +112,16 @@ bool Avida::Genome::operator==(const Genome& genome) const
 Avida::Genome& Avida::Genome::operator=(const Genome& genome)
 {
   m_hw_type = genome.m_hw_type;
-  
+
   m_props.SetValue(s_prop_id_instset, genome.m_props.Get(s_prop_id_instset).StringValue());
 
   m_representation = genome.m_representation->Clone();
-  
+
+  m_mut_info = genome.m_mut_info;
+  // ////////////////////////////////////////////////
+  // m_mut_info.emplace_back("E", std::vector<int>{0});
+  // ////////////////////////////////////////////////
+
   return *this;
 }
 
@@ -128,6 +145,24 @@ bool Avida::Genome::LegacySave(void* dfp) const
   df.Write(m_hw_type, "Hardware Type ID", "hw_type");
   df.Write(m_props.Get(s_prop_id_instset).StringValue(), "Inst Set Name" , "inst_set");
   df.Write(m_representation->AsString(), "Genome Sequence", "sequence");
+
+  // -- Mutation information --
+  Apto::String mut_string;
+  mut_string += "(";
+  bool first=true;
+  for (size_t mut_i = 0; mut_i < m_mut_info.size(); ++mut_i) {
+    if (mut_i) mut_string += "|";
+    mut_string += m_mut_info[mut_i].GetName();
+    mut_string += ":";
+    // mut_string += Apto::FormatStr("%s:", );
+    for (size_t d_i = 0; d_i < m_mut_info[mut_i].m_data.size(); ++d_i) {
+      if (d_i) mut_string += ",";
+      mut_string += Apto::AsStr(m_mut_info[mut_i].m_data[d_i]);
+    }
+  }
+  mut_string += ")";
+  df.Write(mut_string, "Mutation Information", "mutation_info");
+
   return false;
 }
 
@@ -163,7 +198,7 @@ bool Avida::Genome::InstSetPropertyMap::SetValue(const PropertyID& p_id, const d
 bool Avida::Genome::InstSetPropertyMap::operator==(const PropertyMap& p) const
 {
   if (p.GetSize() == 1 && p.Has(s_prop_id_instset) && p.Get(s_prop_id_instset) == m_inst_set) return true;
-  
+
   return false;
 }
 
