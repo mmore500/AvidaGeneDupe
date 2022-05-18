@@ -708,8 +708,10 @@ void cHardwareBase::doSlipMutation(cAvidaContext& ctx, InstructionSequence& geno
 
   }
 
-  if (slip_fill_mode == 5) {
+  if (slip_fill_mode == 5 || slip_fill_mode == 7) {
     // If slip fill mode is 5, instead of slip mutation: rain down point insertions/deletions.
+    // If slip fill mode is 7, instead of slip mutation: rain down point insertions/deletions,
+    //   but insertions are from would-be duplicated sequence.
     if (insertion_length > 0) {
       // Insertions!
       int num_mut = insertion_length;
@@ -721,11 +723,17 @@ void cHardwareBase::doSlipMutation(cAvidaContext& ctx, InstructionSequence& geno
       if (num_mut > 0) {
         // Build a sorted list of the sites where mutations occurred
         Apto::Array<int> mut_sites(num_mut);
-        for (int i = 0; i < num_mut; i++) mut_sites[i] = ctx.GetRandom().GetUInt(genome.GetSize() + 1);
+        for (int i = 0; i < num_mut; i++) {
+          mut_sites[i] = ctx.GetRandom().GetUInt(genome.GetSize() + 1);
+        }
         Apto::QSort(mut_sites);
         // Actually do the mutations (in reverse sort order)
         for (int i = mut_sites.GetSize() - 1; i >= 0; i--) {
-          genome.Insert(mut_sites[i], m_inst_set->GetRandomInst(ctx));
+          if (slip_fill_mode==5) {
+            genome.Insert(mut_sites[i], m_inst_set->GetRandomInst(ctx)); // Inserts random instruction.
+          } else if (slip_fill_mode==7) {
+            genome.Insert(mut_sites[i], genome_copy[to + i]); // Marches up duplicated sequence backwards (inserting in random locations)
+          }
         }
       }
     } else {
