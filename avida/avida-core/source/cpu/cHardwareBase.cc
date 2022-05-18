@@ -716,6 +716,12 @@ void cHardwareBase::doSlipMutation(cAvidaContext& ctx, InstructionSequence& geno
     return;
   }
 
+  // Mutation should not violate genome size constraints.
+  assert(
+    !((insertion_length > 0 && (genome.GetSize() + insertion_length) > max_genome_size) ||
+      (insertion_length < 0 && (genome.GetSize() + insertion_length) < min_genome_size))
+  );
+
   if (slip_fill_mode == 5 || slip_fill_mode == 7) {
     // If slip fill mode is 5, instead of slip mutation: rain down point insertions/deletions.
     // If slip fill mode is 7, instead of slip mutation: rain down point insertions/deletions,
@@ -753,18 +759,41 @@ void cHardwareBase::doSlipMutation(cAvidaContext& ctx, InstructionSequence& geno
         genome.Remove(site);
       }
     }
+
   // Handle de-localized slip mutation
   } else if (slip_fill_mode==8) {
 
+    // Resize the child genome
+    genome.Resize(genome.GetSize() + insertion_length);
+
+    // Pick a new location for insertion
+    const int ins_loc = ctx.GetRandom().GetInt(orig_genome_len+1);
+
+    // Fill insertion
+    if (insertion_length > 0) {
+      // Copy sequence to:insertion_length into new_from:insertion_length
+      for (int i = 0; i < insertion_length; ++i) {
+        genome[ins_loc + i] = genome_copy[to + i];
+      }
+      // Copy everything after ins_loc + insertion length
+      for (int i = 0; i < orig_genome_len - ins_loc; ++i) {
+        genome[ins_loc + insertion_length + i] = genome_copy[ins_loc + i];
+      }
+    // Handle deletion as in a normal slip mutation
+    } else {
+      for (int i = 0; i < genome_copy.GetSize() - to; i++) {
+        genome[from + i] = genome_copy[to + i];
+      }
+    }
+
+    if (m_world->GetVerbosity() >= VERBOSE_DETAILS) {
+      std::cout << "SLIP MUTATION from=" << from << " to=" << to << " ins_loc=" << ins_loc << std::endl;
+      std::cout << "Parent: " << genome_copy.AsString()   << std::endl;
+      std::cout << "Offspring: " << genome.AsString() << std::endl;
+    }
 
   // Handle slip mutation normally.
   } else {
-
-    // Mutation should not violate genome size constraints.
-    assert(
-      !((insertion_length > 0 && (genome.GetSize() + insertion_length) > max_genome_size) ||
-        (insertion_length < 0 && (genome.GetSize() + insertion_length) < min_genome_size))
-    );
 
     // @AML: TODO - evaluate whether we want a map here instead of a vector
     mut_info.emplace_back("slip_div", std::vector<int>({insertion_length, from, to}));
@@ -836,14 +865,15 @@ void cHardwareBase::doSlipMutation(cAvidaContext& ctx, InstructionSequence& geno
 
     // Deletion / remaining genome
     if (insertion_length < 0) insertion_length = 0;
-    for (int i = insertion_length; i < genome_copy.GetSize() - to; i++) genome[from + i] = genome_copy[to + i];
+    for (int i = insertion_length; i < genome_copy.GetSize() - to; i++) {
+      genome[from + i] = genome_copy[to + i];
+    }
 
     if (m_world->GetVerbosity() >= VERBOSE_DETAILS) {
       cout << "SLIP MUTATION from " << from << " to " << to << endl;
       cout << "Parent: " << genome_copy.AsString()   << endl;
       cout << "Offspring: " << genome.AsString() << endl;
     }
-    // }
   }
 }
 
