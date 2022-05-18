@@ -60,7 +60,6 @@ def getDatFileHeaders(datFile):
     with open(datFile,'r') as dataF:
         datFileLines = dataF.readlines()
         formatLineTerms = (datFileLines[1].split())[1:]
-        print(formatLineTerms)
         for k,term in enumerate(formatLineTerms):
             if term == 'task_list':
                 formatLineTerms[k] = 'Task Count'
@@ -202,7 +201,6 @@ def informAndMakeTidy(treatmentArray):
                 runParts = runName.split('_')
                 runNum = runParts[-1]
                 infoTypes = getDatFileHeaders(replicateData)
-                print(infoTypes)
                 params = treatmentParameters[treatmentName]
                 for k,type in enumerate(infoTypes):
                     data_writer.writerow([treatmentName,params[0],params[1],params[2],params[3],params[4],params[5],params[6],runNum,type,information[k]])
