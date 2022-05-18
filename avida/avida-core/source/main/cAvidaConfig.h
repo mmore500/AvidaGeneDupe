@@ -348,7 +348,7 @@ public:
   CONFIG_ADD_VAR(INJECT_INS_PROB, double, 0.0, "Insertion rate (per site, applied on inject)");
   CONFIG_ADD_VAR(INJECT_DEL_PROB, double, 0.0, "Deletion rate (per site, applied on inject)");
 
-  CONFIG_ADD_VAR(SLIP_FILL_MODE, int, 0, "Fill insertions from slip mutations with:\n0 = Duplication\n1 = nop-X\n2 = Random\n3 = Scrambled\n4 = nop-C");
+  CONFIG_ADD_VAR(SLIP_FILL_MODE, int, 0, "Fill insertions from slip mutations with:\n0 = Duplication\n1 = nop-X\n2 = Random\n3 = Scrambled\n4 = nop-C\n5 = Scatter \n6 = Random from genome \n7 = Scatter from duplicated sequence \n8 = de-localized duplication");
   CONFIG_ADD_VAR(SLIP_COPY_MODE, int, 0, "How to handle 'on-copy' slip mutations:\n0 = actual read head slip\n1 = instant large mutation (obeys slip mode)");
   CONFIG_ADD_VAR(SLIP_SIZE, int, 0, "If this is > 0, it controls the size of slip mutations (both insertions and deletions).");
   CONFIG_ADD_VAR(TRANS_FILL_MODE, int, 0, "Fill insertions from translocation mutations with:\n0 = Duplication\n1 = Scrambled");
