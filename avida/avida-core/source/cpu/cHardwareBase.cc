@@ -628,6 +628,18 @@ void cHardwareBase::doUniformCopyMutation(cAvidaContext& ctx, cHeadCPU& head)
 // This can cause large deletions or tandem duplications.
 // Unlucky organisms might exceed the allowed length (randomly) if these mutations occur.
 //  -- @AML: Modified to disallow mutations that cause genome to shrink/grow beyond allowed size.
+/***
+ * Slip modes:
+  - 0: Slip-duplicate, exactly duplicate sequence
+  - 1: Slip-nop, Empty (nop-X)
+  - 2: Slip-random, Random
+  - 3: Slip-scramble, duplicate but in scrambled order
+  - 4: Empty (nop-C)
+  - 5: Slip-scatter, insert random instructions at random locations throughout the genome
+  - 6: Slip-random, but draw random instructions from genome.
+  - 7: Slip-scatter-dup, insert would-be duplicated instructions at random locations throughout the genome
+  - 8:
+*/
 void cHardwareBase::doSlipMutation(cAvidaContext& ctx, InstructionSequence& genome, int from) {
   std::vector<MutationInfo> temp_mut_info;
   doSlipMutation(ctx, genome, temp_mut_info, from);
@@ -747,19 +759,22 @@ void cHardwareBase::doSlipMutation(cAvidaContext& ctx, InstructionSequence& geno
         for (int i = 0; i < insertion_length; i++) {
           switch (slip_fill_mode) {
               //Duplication
-            case 0:
+            case 0: {
               genome[from + i] = genome_copy[to + i];
               break;
+            }
 
               //Empty (nop-X)
-            case 1:
+            case 1: {
               genome[from + i] = m_inst_set->GetInst("nop-X");
               break;
+            }
 
               //Random
-            case 2:
+            case 2: {
               genome[from + i] = m_inst_set->GetRandomInst(ctx);
               break;
+            }
 
               //Scrambled order
             case 3: {
@@ -780,13 +795,22 @@ void cHardwareBase::doSlipMutation(cAvidaContext& ctx, InstructionSequence& geno
             }
 
               //Empty (nop-C)
-            case 4:
+            case 4: {
               genome[from + i] = m_inst_set->GetInst("nop-C");
               break;
+            }
 
-            default:
+              // Random, but pulled from original genome
+            case 6: {
+              const int rand_site = ctx.GetRandom().GetUInt(genome_copy.GetSize());
+              genome[from+i] = genome_copy[rand_site];
+              break;
+            }
+
+            default: {
               ctx.Driver().Feedback().Error("Unknown SLIP_FILL_MODE");
               ctx.Driver().Abort(Avida::INVALID_CONFIG);
+            }
           }
         }
       }
