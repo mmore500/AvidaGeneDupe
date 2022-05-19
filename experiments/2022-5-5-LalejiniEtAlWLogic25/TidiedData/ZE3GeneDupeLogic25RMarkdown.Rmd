@@ -19,6 +19,8 @@ ggsave("Logic25FinalDominantTaskCountViolin.pdf")
 
 ```
 
+Anyone else feel like the fact that the mean of High Mutation has 0 tasks out of the Logic 25 is weird where in the Logic 9, the mean is at 7 or so even though those tasks are more elaborate?
+
 
 ```{r}
 library(ggplot2)

@@ -1,3 +1,4 @@
+from ctypes import sizeof
 import os
 import csv
 import numpy as np
@@ -121,10 +122,12 @@ def createDatAnalyzeCfg(datFile):
         knockoutDatFile(datFile,f)
 
 def executeInfoAnalysis(runDir):
-    configDir = "/Users/cameronhaynes/Documents/VSCodeGitProjects/AvidaGeneDupe/experiments/2022-2-4-PaperDuplicationWMod/testResults/hpcc/config"
-    os.system("cp /Users/cameronhaynes/Documents/VSCodeGitProjects/AvidaGeneDupe/avida/cbuild/work/avida {}".format(runDir))
+    stream = os.popen('pwd')
+    pwd = stream.read().rstrip()
+    experimentName = pwd.split('/')[-1]
+    configDir = os.path.join("~/AvidaGeneDupe/experiments/","{}/hpcc/config".format(experimentName))
+    os.system("cp ~/AvidaGeneDupe/avida/cbuild/work/avida {}".format(runDir))
     os.chdir(runDir)
-    os.system("pwd")
     os.system('cp {}/avida.cfg .'.format(configDir)) 
     os.system('cp {}/default-heads.org .'.format(configDir))
     os.system('cp {}/environment.cfg .'.format(configDir))
@@ -169,7 +172,23 @@ def getInformation(replicateData):
     
     return information
 
-def informAndMakeTidy(treatmentArray):
+def getCodingSites(replicateData):
+    datFileContents = getOrganisms(replicateData)
+    (organisms,analyzedOrganism) = (datFileContents[:-1],datFileContents[-1])
+
+    #Next step: add Avida Parameters and Replicate ID
+
+    organismsMetrics = getMetrics(analyzedOrganism)
+    codingSites = np.zeros(organismsMetrics.size)
+    for org in organisms:
+        #Note that the absolute value is only being taken of the difference, so it should be proper
+        comparedMetrics = getMetrics(org)
+        codingSitesPresent = [1 if (organismsMetrics[k] - comparedMetrics[k]) != 0 else 0 for k in range(0,organismsMetrics.size)]
+        codingSites = codingSites + np.array(codingSitesPresent)
+    
+    return codingSites
+
+def informAndMakeTidy(treatmentArray, useCodingSites = True):
     with open('FinalDominantInfo.csv', mode='w') as tidyDat:
 
         data_writer = csv.writer(tidyDat, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
@@ -191,7 +210,7 @@ def informAndMakeTidy(treatmentArray):
                 treatmentData.append(os.path.join(runDir,"data/detail_Org0FitnessDifferences.dat"))
 
             for replicateData in treatmentData:
-                information = getInformation(replicateData)
+                information = getCodingSites(replicateData) if useCodingSites else getInformation(replicateData)
                 runName = None
                 for folderName in replicateData.split('/'):
                     if 'run_' not in folderName:
