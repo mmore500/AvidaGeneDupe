@@ -96,7 +96,7 @@ def knockoutDatGenome(dest,genome,orgCount):
     dest.write('SET_BATCH {} \n\n'.format(orgCount))
     dest.writelines(knuckOutGenomes)
     dest.write('RECALC\n\n')
-    dest.write('DETAIL detail_Org{}FitnessDifferences.dat task_list gest_time comp_merit merit fitness efficiency\n\n'.format(orgCount))
+    dest.write('DETAIL detail_Org{}FitnessDifferences.dat task_list gest_time comp_merit merit fitness efficiency length\n\n'.format(orgCount))
 
 def knockoutDatFile(datFile,dest):
     os.system('pwd')
@@ -160,7 +160,7 @@ def getMetrics(organismString):
             presentTasks +=1
 
     #Thus, having counted the number of tasks presently indicated by the task list, we can now just concatenate the rest of the metrics
-    metrics = [float(output) for output in analyzeOutputs[1:]]
+    metrics = [float(output) for output in analyzeOutputs[1:-1]]
     metrics = [float(presentTasks)] + metrics
 
     return np.array(metrics)
@@ -195,11 +195,18 @@ def getCodingSites(replicateData):
     
     return codingSites
 
+def getLength(replicateData):
+    datFileContents = getOrganisms(replicateData)
+    analyzedOrganism = datFileContents[-1]
+    
+    length = int(analyzedOrganism.split()[-1])
+    return length
+
 def informAndMakeTidy(treatmentArray, useCodingSites = True):
     with open('FinalDominantInfo.csv', mode='w') as tidyDat:
 
         data_writer = csv.writer(tidyDat, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-        data_writer.writerow(['Treatment',"COPY_MUT_PROB","COPY_INS_PROB","COPY_DEL_PROB","DIVIDE_INS_PROB","DIVIDE_DEL_PROB","DIVIDE_SLIP_PROB","SLIP_FILL_MODE",'Replicate #','Information Type','Information'])
+        data_writer.writerow(['Treatment',"COPY_MUT_PROB","COPY_INS_PROB","COPY_DEL_PROB","DIVIDE_INS_PROB","DIVIDE_DEL_PROB","DIVIDE_SLIP_PROB","SLIP_FILL_MODE",'Replicate #','Information Type','Information','Information Concentration'])
 
         for treatment in treatmentArray:
             treatmentName = treatment.treatmentName
@@ -215,6 +222,7 @@ def informAndMakeTidy(treatmentArray, useCodingSites = True):
 
             for replicateData in treatmentData:
                 information = getCodingSites(replicateData) if useCodingSites else getInformation(replicateData)
+                length = getLength(replicateData)
                 runName = None
                 for folderName in replicateData.split('/'):
                     if 'run_' not in folderName:
@@ -226,7 +234,7 @@ def informAndMakeTidy(treatmentArray, useCodingSites = True):
                 infoTypes = getDatFileHeaders(replicateData)
                 params = treatmentParameters[treatmentName]
                 for k,type in enumerate(infoTypes):
-                    data_writer.writerow([treatmentName,params[0],params[1],params[2],params[3],params[4],params[5],params[6],runNum,type,information[k]])
+                    data_writer.writerow([treatmentName,params[0],params[1],params[2],params[3],params[4],params[5],params[6],runNum,type,information[k],information[k]/length])
                 
 
 linDatFile = ".dat"

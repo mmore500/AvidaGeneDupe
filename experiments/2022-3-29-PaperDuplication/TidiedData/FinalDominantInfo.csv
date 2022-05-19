@@ -1,0 +1,1261 @@
+Treatment,COPY_MUT_PROB,COPY_INS_PROB,COPY_DEL_PROB,DIVIDE_INS_PROB,DIVIDE_DEL_PROB,DIVIDE_SLIP_PROB,SLIP_FILL_MODE,Replicate #,Information Type,Information
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1637,Task Count,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1637,gest_time,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1637,comp_merit,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1637,merit,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1637,fitness,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1637,efficiency,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1643,Task Count,74.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1643,gest_time,117.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1643,comp_merit,74.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1643,merit,116.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1643,fitness,117.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1643,efficiency,117.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1622,Task Count,129.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1622,gest_time,149.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1622,comp_merit,129.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1622,merit,147.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1622,fitness,149.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1622,efficiency,149.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1640,Task Count,98.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1640,gest_time,113.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1640,comp_merit,98.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1640,merit,112.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1640,fitness,113.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1640,efficiency,113.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1638,Task Count,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1638,gest_time,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1638,comp_merit,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1638,merit,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1638,fitness,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1638,efficiency,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1644,Task Count,104.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1644,gest_time,115.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1644,comp_merit,104.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1644,merit,113.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1644,fitness,115.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1644,efficiency,115.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1623,Task Count,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1623,gest_time,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1623,comp_merit,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1623,merit,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1623,fitness,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1623,efficiency,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1627,Task Count,47.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1627,gest_time,155.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1627,comp_merit,47.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1627,merit,157.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1627,fitness,160.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1627,efficiency,160.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1641,Task Count,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1641,gest_time,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1641,comp_merit,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1641,merit,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1641,fitness,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1641,efficiency,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1639,Task Count,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1639,gest_time,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1639,comp_merit,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1639,merit,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1639,fitness,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1639,efficiency,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1645,Task Count,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1645,gest_time,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1645,comp_merit,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1645,merit,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1645,fitness,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1645,efficiency,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1649,Task Count,54.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1649,gest_time,156.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1649,comp_merit,54.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1649,merit,153.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1649,fitness,156.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1649,efficiency,156.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1624,Task Count,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1624,gest_time,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1624,comp_merit,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1624,merit,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1624,fitness,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1624,efficiency,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1630,Task Count,52.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1630,gest_time,167.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1630,comp_merit,52.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1630,merit,165.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1630,fitness,167.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1630,efficiency,167.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1628,Task Count,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1628,gest_time,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1628,comp_merit,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1628,merit,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1628,fitness,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1628,efficiency,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1634,Task Count,103.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1634,gest_time,79.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1634,comp_merit,103.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1634,merit,103.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1634,fitness,103.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1634,efficiency,101.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1646,Task Count,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1646,gest_time,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1646,comp_merit,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1646,merit,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1646,fitness,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1646,efficiency,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1625,Task Count,97.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1625,gest_time,374.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1625,comp_merit,97.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1625,merit,318.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1625,fitness,374.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1625,efficiency,374.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1631,Task Count,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1631,gest_time,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1631,comp_merit,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1631,merit,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1631,fitness,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1631,efficiency,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1629,Task Count,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1629,gest_time,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1629,comp_merit,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1629,merit,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1629,fitness,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1629,efficiency,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1635,Task Count,164.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1635,gest_time,183.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1635,comp_merit,164.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1635,merit,182.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1635,fitness,183.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1635,efficiency,183.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1647,Task Count,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1647,gest_time,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1647,comp_merit,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1647,merit,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1647,fitness,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1647,efficiency,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1626,Task Count,163.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1626,gest_time,179.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1626,comp_merit,163.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1626,merit,179.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1626,fitness,179.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1626,efficiency,179.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1620,Task Count,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1620,gest_time,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1620,comp_merit,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1620,merit,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1620,fitness,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1620,efficiency,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1632,Task Count,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1632,gest_time,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1632,comp_merit,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1632,merit,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1632,fitness,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1632,efficiency,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1636,Task Count,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1636,gest_time,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1636,comp_merit,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1636,merit,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1636,fitness,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1636,efficiency,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1648,Task Count,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1648,gest_time,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1648,comp_merit,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1648,merit,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1648,fitness,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1648,efficiency,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1642,Task Count,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1642,gest_time,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1642,comp_merit,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1642,merit,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1642,fitness,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1642,efficiency,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1621,Task Count,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1621,gest_time,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1621,comp_merit,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1621,merit,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1621,fitness,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1621,efficiency,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1633,Task Count,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1633,gest_time,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1633,comp_merit,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1633,merit,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1633,fitness,100.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1633,efficiency,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1533,Task Count,46.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1533,gest_time,112.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1533,comp_merit,46.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1533,merit,116.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1533,fitness,116.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1533,efficiency,116.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1545,Task Count,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1545,gest_time,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1545,comp_merit,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1545,merit,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1545,fitness,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1545,efficiency,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1551,Task Count,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1551,gest_time,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1551,comp_merit,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1551,merit,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1551,fitness,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1551,efficiency,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1549,Task Count,88.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1549,gest_time,112.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1549,comp_merit,88.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1549,merit,119.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1549,fitness,119.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1549,efficiency,119.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1555,Task Count,53.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1555,gest_time,109.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1555,comp_merit,53.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1555,merit,107.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1555,fitness,112.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1555,efficiency,112.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1530,Task Count,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1530,gest_time,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1530,comp_merit,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1530,merit,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1530,fitness,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1530,efficiency,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1534,Task Count,44.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1534,gest_time,112.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1534,comp_merit,44.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1534,merit,111.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1534,fitness,112.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1534,efficiency,112.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1546,Task Count,98.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1546,gest_time,121.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1546,comp_merit,98.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1546,merit,121.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1546,fitness,121.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1546,efficiency,121.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1540,Task Count,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1540,gest_time,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1540,comp_merit,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1540,merit,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1540,fitness,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1540,efficiency,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1552,Task Count,69.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1552,gest_time,113.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1552,comp_merit,69.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1552,merit,113.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1552,fitness,113.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1552,efficiency,113.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1556,Task Count,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1556,gest_time,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1556,comp_merit,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1556,merit,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1556,fitness,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1556,efficiency,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1531,Task Count,47.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1531,gest_time,115.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1531,comp_merit,47.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1531,merit,115.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1531,fitness,115.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1531,efficiency,115.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1535,Task Count,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1535,gest_time,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1535,comp_merit,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1535,merit,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1535,fitness,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1535,efficiency,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1541,Task Count,96.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1541,gest_time,121.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1541,comp_merit,96.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1541,merit,117.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1541,fitness,121.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1541,efficiency,121.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1539,Task Count,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1539,gest_time,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1539,comp_merit,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1539,merit,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1539,fitness,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1539,efficiency,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1553,Task Count,53.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1553,gest_time,102.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1553,comp_merit,53.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1553,merit,110.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1553,fitness,110.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1553,efficiency,110.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1557,Task Count,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1557,gest_time,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1557,comp_merit,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1557,merit,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1557,fitness,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1557,efficiency,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1536,Task Count,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1536,gest_time,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1536,comp_merit,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1536,merit,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1536,fitness,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1536,efficiency,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1542,Task Count,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1542,gest_time,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1542,comp_merit,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1542,merit,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1542,fitness,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1542,efficiency,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1558,Task Count,103.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1558,gest_time,121.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1558,comp_merit,103.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1558,merit,120.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1558,fitness,121.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1558,efficiency,121.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1537,Task Count,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1537,gest_time,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1537,comp_merit,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1537,merit,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1537,fitness,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1537,efficiency,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1543,Task Count,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1543,gest_time,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1543,comp_merit,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1543,merit,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1543,fitness,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1543,efficiency,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1547,Task Count,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1547,gest_time,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1547,comp_merit,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1547,merit,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1547,fitness,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1547,efficiency,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1559,Task Count,95.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1559,gest_time,114.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1559,comp_merit,95.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1559,merit,112.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1559,fitness,114.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1559,efficiency,114.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1538,Task Count,46.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1538,gest_time,121.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1538,comp_merit,46.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1538,merit,121.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1538,fitness,121.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1538,efficiency,121.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1532,Task Count,66.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1532,gest_time,121.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1532,comp_merit,66.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1532,merit,121.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1532,fitness,121.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1532,efficiency,121.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1544,Task Count,95.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1544,gest_time,118.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1544,comp_merit,95.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1544,merit,116.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1544,fitness,118.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1544,efficiency,118.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1550,Task Count,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1550,gest_time,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1550,comp_merit,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1550,merit,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1550,fitness,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1550,efficiency,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1548,Task Count,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1548,gest_time,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1548,comp_merit,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1548,merit,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1548,fitness,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1548,efficiency,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1554,Task Count,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1554,gest_time,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1554,comp_merit,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1554,merit,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1554,fitness,100.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1554,efficiency,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1566,Task Count,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1566,gest_time,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1566,comp_merit,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1566,merit,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1566,fitness,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1566,efficiency,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1572,Task Count,35.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1572,gest_time,72.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1572,comp_merit,35.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1572,merit,95.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1572,fitness,97.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1572,efficiency,97.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1588,Task Count,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1588,gest_time,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1588,comp_merit,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1588,merit,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1588,fitness,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1588,efficiency,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1567,Task Count,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1567,gest_time,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1567,comp_merit,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1567,merit,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1567,fitness,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1567,efficiency,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1573,Task Count,42.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1573,gest_time,74.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1573,comp_merit,42.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1573,merit,53.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1573,fitness,96.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1573,efficiency,77.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1577,Task Count,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1577,gest_time,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1577,comp_merit,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1577,merit,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1577,fitness,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1577,efficiency,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1589,Task Count,28.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1589,gest_time,81.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1589,comp_merit,28.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1589,merit,95.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1589,fitness,97.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1589,efficiency,97.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1568,Task Count,45.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1568,gest_time,74.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1568,comp_merit,45.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1568,merit,98.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1568,fitness,99.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1568,efficiency,99.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1562,Task Count,46.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1562,gest_time,75.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1562,comp_merit,46.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1562,merit,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1562,fitness,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1562,efficiency,99.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1574,Task Count,41.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1574,gest_time,79.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1574,comp_merit,41.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1574,merit,101.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1574,fitness,101.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1574,efficiency,101.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1580,Task Count,43.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1580,gest_time,75.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1580,comp_merit,43.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1580,merit,97.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1580,fitness,97.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1580,efficiency,96.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1578,Task Count,231.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1578,gest_time,233.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1578,comp_merit,231.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1578,merit,233.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1578,fitness,233.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1578,efficiency,233.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1584,Task Count,42.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1584,gest_time,73.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1584,comp_merit,42.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1584,merit,93.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1584,fitness,94.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1584,efficiency,94.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1563,Task Count,46.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1563,gest_time,61.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1563,comp_merit,46.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1563,merit,97.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1563,fitness,97.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1563,efficiency,97.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1575,Task Count,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1575,gest_time,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1575,comp_merit,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1575,merit,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1575,fitness,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1575,efficiency,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1581,Task Count,90.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1581,gest_time,71.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1581,comp_merit,90.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1581,merit,102.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1581,fitness,103.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1581,efficiency,102.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1579,Task Count,39.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1579,gest_time,86.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1579,comp_merit,39.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1579,merit,47.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1579,fitness,94.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1579,efficiency,87.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1585,Task Count,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1585,gest_time,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1585,comp_merit,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1585,merit,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1585,fitness,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1585,efficiency,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1560,Task Count,99.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1560,gest_time,99.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1560,comp_merit,99.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1560,merit,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1560,fitness,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1560,efficiency,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1564,Task Count,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1564,gest_time,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1564,comp_merit,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1564,merit,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1564,fitness,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1564,efficiency,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1576,Task Count,41.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1576,gest_time,79.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1576,comp_merit,41.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1576,merit,98.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1576,fitness,98.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1576,efficiency,98.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1570,Task Count,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1570,gest_time,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1570,comp_merit,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1570,merit,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1570,fitness,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1570,efficiency,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1582,Task Count,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1582,gest_time,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1582,comp_merit,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1582,merit,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1582,fitness,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1582,efficiency,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1586,Task Count,39.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1586,gest_time,86.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1586,comp_merit,39.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1586,merit,102.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1586,fitness,102.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1586,efficiency,102.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1561,Task Count,39.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1561,gest_time,68.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1561,comp_merit,39.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1561,merit,94.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1561,fitness,96.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1561,efficiency,94.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1565,Task Count,39.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1565,gest_time,70.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1565,comp_merit,39.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1565,merit,53.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1565,fitness,88.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1565,efficiency,72.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1571,Task Count,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1571,gest_time,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1571,comp_merit,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1571,merit,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1571,fitness,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1571,efficiency,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1569,Task Count,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1569,gest_time,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1569,comp_merit,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1569,merit,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1569,fitness,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1569,efficiency,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1583,Task Count,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1583,gest_time,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1583,comp_merit,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1583,merit,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1583,fitness,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1583,efficiency,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1587,Task Count,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1587,gest_time,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1587,comp_merit,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1587,merit,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1587,fitness,100.0
+High-Mutation,0.0025,0.0075,0.0075,0.05,0.05,0.0,0,1587,efficiency,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1676,Task Count,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1676,gest_time,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1676,comp_merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1676,merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1676,fitness,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1676,efficiency,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1655,Task Count,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1655,gest_time,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1655,comp_merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1655,merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1655,fitness,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1655,efficiency,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1661,Task Count,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1661,gest_time,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1661,comp_merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1661,merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1661,fitness,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1661,efficiency,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1659,Task Count,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1659,gest_time,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1659,comp_merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1659,merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1659,fitness,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1659,efficiency,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1665,Task Count,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1665,gest_time,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1665,comp_merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1665,merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1665,fitness,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1665,efficiency,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1677,Task Count,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1677,gest_time,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1677,comp_merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1677,merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1677,fitness,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1677,efficiency,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1656,Task Count,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1656,gest_time,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1656,comp_merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1656,merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1656,fitness,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1656,efficiency,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1650,Task Count,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1650,gest_time,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1650,comp_merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1650,merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1650,fitness,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1650,efficiency,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1662,Task Count,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1662,gest_time,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1662,comp_merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1662,merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1662,fitness,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1662,efficiency,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1666,Task Count,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1666,gest_time,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1666,comp_merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1666,merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1666,fitness,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1666,efficiency,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1678,Task Count,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1678,gest_time,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1678,comp_merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1678,merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1678,fitness,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1678,efficiency,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1672,Task Count,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1672,gest_time,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1672,comp_merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1672,merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1672,fitness,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1672,efficiency,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1651,Task Count,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1651,gest_time,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1651,comp_merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1651,merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1651,fitness,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1651,efficiency,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1663,Task Count,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1663,gest_time,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1663,comp_merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1663,merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1663,fitness,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1663,efficiency,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1667,Task Count,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1667,gest_time,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1667,comp_merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1667,merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1667,fitness,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1667,efficiency,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1673,Task Count,99.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1673,gest_time,99.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1673,comp_merit,99.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1673,merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1673,fitness,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1673,efficiency,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1652,Task Count,66.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1652,gest_time,139.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1652,comp_merit,66.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1652,merit,139.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1652,fitness,139.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1652,efficiency,139.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1670,Task Count,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1670,gest_time,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1670,comp_merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1670,merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1670,fitness,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1670,efficiency,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1668,Task Count,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1668,gest_time,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1668,comp_merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1668,merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1668,fitness,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1668,efficiency,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1674,Task Count,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1674,gest_time,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1674,comp_merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1674,merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1674,fitness,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1674,efficiency,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1653,Task Count,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1653,gest_time,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1653,comp_merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1653,merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1653,fitness,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1653,efficiency,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1657,Task Count,109.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1657,gest_time,119.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1657,comp_merit,109.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1657,merit,117.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1657,fitness,119.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1657,efficiency,119.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1671,Task Count,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1671,gest_time,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1671,comp_merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1671,merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1671,fitness,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1671,efficiency,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1669,Task Count,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1669,gest_time,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1669,comp_merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1669,merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1669,fitness,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1669,efficiency,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1675,Task Count,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1675,gest_time,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1675,comp_merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1675,merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1675,fitness,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1675,efficiency,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1679,Task Count,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1679,gest_time,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1679,comp_merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1679,merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1679,fitness,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1679,efficiency,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1654,Task Count,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1654,gest_time,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1654,comp_merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1654,merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1654,fitness,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1654,efficiency,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1660,Task Count,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1660,gest_time,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1660,comp_merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1660,merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1660,fitness,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1660,efficiency,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1658,Task Count,46.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1658,gest_time,72.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1658,comp_merit,46.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1658,merit,101.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1658,fitness,101.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1658,efficiency,101.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1664,Task Count,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1664,gest_time,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1664,comp_merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1664,merit,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1664,fitness,100.0
+Slip-random,0.0,0.0,0.0,0.0,0.0,0.05,2,1664,efficiency,100.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1593,Task Count,74.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1593,gest_time,161.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1593,comp_merit,74.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1593,merit,160.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1593,fitness,161.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1593,efficiency,161.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1604,Task Count,115.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1604,gest_time,382.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1604,comp_merit,115.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1604,merit,361.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1604,fitness,382.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1604,efficiency,382.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1616,Task Count,121.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1616,gest_time,666.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1616,comp_merit,121.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1616,merit,637.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1616,fitness,673.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1616,efficiency,673.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1590,Task Count,124.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1590,gest_time,532.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1590,comp_merit,124.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1590,merit,508.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1590,fitness,532.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1590,efficiency,532.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1601,Task Count,241.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1601,gest_time,244.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1601,comp_merit,241.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1601,merit,244.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1601,fitness,244.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1601,efficiency,244.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1594,Task Count,172.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1594,gest_time,866.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1594,comp_merit,172.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1594,merit,830.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1594,fitness,866.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1594,efficiency,866.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1605,Task Count,153.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1605,gest_time,602.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1605,comp_merit,153.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1605,merit,602.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1605,fitness,602.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1605,efficiency,602.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1617,Task Count,112.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1617,gest_time,126.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1617,comp_merit,112.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1617,merit,124.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1617,fitness,126.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1617,efficiency,126.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1591,Task Count,126.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1591,gest_time,741.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1591,comp_merit,126.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1591,merit,717.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1591,fitness,744.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1591,efficiency,744.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1602,Task Count,576.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1602,gest_time,603.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1602,comp_merit,576.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1602,merit,595.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1602,fitness,603.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1602,efficiency,603.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1595,Task Count,284.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1595,gest_time,310.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1595,comp_merit,284.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1595,merit,309.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1595,fitness,310.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1595,efficiency,310.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1606,Task Count,191.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1606,gest_time,196.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1606,comp_merit,191.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1606,merit,196.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1606,fitness,196.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1606,efficiency,196.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1599,Task Count,119.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1599,gest_time,543.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1599,comp_merit,119.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1599,merit,506.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1599,fitness,543.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1599,efficiency,543.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1618,Task Count,357.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1618,gest_time,364.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1618,comp_merit,357.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1618,merit,365.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1618,fitness,365.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1618,efficiency,365.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1612,Task Count,155.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1612,gest_time,846.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1612,comp_merit,155.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1612,merit,846.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1612,fitness,846.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1612,efficiency,846.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1603,Task Count,82.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1603,gest_time,270.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1603,comp_merit,82.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1603,merit,252.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1603,fitness,271.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1603,efficiency,271.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1596,Task Count,132.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1596,gest_time,729.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1596,comp_merit,132.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1596,merit,732.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1596,fitness,733.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1596,efficiency,733.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1607,Task Count,87.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1607,gest_time,208.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1607,comp_merit,87.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1607,merit,206.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1607,fitness,208.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1607,efficiency,208.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1613,Task Count,104.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1613,gest_time,622.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1613,comp_merit,104.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1613,merit,605.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1613,fitness,631.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1613,efficiency,631.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1597,Task Count,112.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1597,gest_time,615.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1597,comp_merit,112.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1597,merit,586.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1597,fitness,617.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1597,efficiency,617.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1610,Task Count,100.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1610,gest_time,368.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1610,comp_merit,100.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1610,merit,359.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1610,fitness,368.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1610,efficiency,368.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1608,Task Count,106.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1608,gest_time,363.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1608,comp_merit,106.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1608,merit,343.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1608,fitness,368.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1608,efficiency,368.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1614,Task Count,581.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1614,gest_time,588.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1614,comp_merit,581.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1614,merit,588.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1614,fitness,588.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1614,efficiency,588.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1598,Task Count,584.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1598,gest_time,589.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1598,comp_merit,584.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1598,merit,588.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1598,fitness,589.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1598,efficiency,589.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1592,Task Count,71.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1592,gest_time,329.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1592,comp_merit,71.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1592,merit,313.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1592,fitness,336.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1592,efficiency,336.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1611,Task Count,85.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1611,gest_time,316.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1611,comp_merit,85.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1611,merit,311.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1611,fitness,316.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1611,efficiency,316.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1609,Task Count,116.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1609,gest_time,808.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1609,comp_merit,116.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1609,merit,790.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1609,fitness,813.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1609,efficiency,811.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1615,Task Count,199.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1615,gest_time,667.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1615,comp_merit,199.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1615,merit,651.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1615,fitness,671.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1615,efficiency,671.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1619,Task Count,108.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1619,gest_time,760.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1619,comp_merit,108.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1619,merit,724.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1619,fitness,761.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1619,efficiency,761.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1600,Task Count,248.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1600,gest_time,255.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1600,comp_merit,248.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1600,merit,255.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1600,fitness,256.0
+Slip-duplicate,0.0,0.0,0.0,0.0,0.0,0.05,0,1600,efficiency,256.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1682,Task Count,52.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1682,gest_time,129.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1682,comp_merit,52.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1682,merit,112.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1682,fitness,129.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1682,efficiency,129.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1686,Task Count,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1686,gest_time,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1686,comp_merit,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1686,merit,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1686,fitness,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1686,efficiency,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1705,Task Count,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1705,gest_time,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1705,comp_merit,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1705,merit,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1705,fitness,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1705,efficiency,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1698,Task Count,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1698,gest_time,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1698,comp_merit,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1698,merit,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1698,fitness,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1698,efficiency,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1709,Task Count,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1709,gest_time,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1709,comp_merit,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1709,merit,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1709,fitness,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1709,efficiency,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1683,Task Count,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1683,gest_time,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1683,comp_merit,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1683,merit,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1683,fitness,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1683,efficiency,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1687,Task Count,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1687,gest_time,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1687,comp_merit,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1687,merit,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1687,fitness,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1687,efficiency,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1706,Task Count,55.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1706,gest_time,74.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1706,comp_merit,55.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1706,merit,106.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1706,fitness,106.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1706,efficiency,106.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1700,Task Count,99.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1700,gest_time,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1700,comp_merit,99.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1700,merit,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1700,fitness,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1700,efficiency,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1699,Task Count,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1699,gest_time,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1699,comp_merit,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1699,merit,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1699,fitness,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1699,efficiency,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1684,Task Count,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1684,gest_time,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1684,comp_merit,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1684,merit,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1684,fitness,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1684,efficiency,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1690,Task Count,107.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1690,gest_time,115.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1690,comp_merit,107.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1690,merit,112.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1690,fitness,115.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1690,efficiency,115.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1688,Task Count,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1688,gest_time,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1688,comp_merit,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1688,merit,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1688,fitness,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1688,efficiency,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1701,Task Count,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1701,gest_time,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1701,comp_merit,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1701,merit,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1701,fitness,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1701,efficiency,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1694,Task Count,104.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1694,gest_time,162.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1694,comp_merit,104.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1694,merit,160.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1694,fitness,162.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1694,efficiency,162.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1685,Task Count,110.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1685,gest_time,137.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1685,comp_merit,110.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1685,merit,137.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1685,fitness,137.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1685,efficiency,137.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1691,Task Count,122.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1691,gest_time,144.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1691,comp_merit,122.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1691,merit,143.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1691,fitness,144.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1691,efficiency,144.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1689,Task Count,98.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1689,gest_time,107.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1689,comp_merit,98.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1689,merit,105.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1689,fitness,107.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1689,efficiency,107.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1702,Task Count,105.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1702,gest_time,127.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1702,comp_merit,105.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1702,merit,125.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1702,fitness,127.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1702,efficiency,127.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1695,Task Count,271.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1695,gest_time,282.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1695,comp_merit,271.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1695,merit,281.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1695,fitness,282.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1695,efficiency,282.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1680,Task Count,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1680,gest_time,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1680,comp_merit,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1680,merit,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1680,fitness,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1680,efficiency,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1692,Task Count,62.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1692,gest_time,76.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1692,comp_merit,62.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1692,merit,108.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1692,fitness,108.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1692,efficiency,108.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1703,Task Count,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1703,gest_time,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1703,comp_merit,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1703,merit,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1703,fitness,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1703,efficiency,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1696,Task Count,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1696,gest_time,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1696,comp_merit,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1696,merit,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1696,fitness,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1696,efficiency,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1707,Task Count,41.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1707,gest_time,84.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1707,comp_merit,41.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1707,merit,110.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1707,fitness,110.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1707,efficiency,110.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1681,Task Count,110.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1681,gest_time,143.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1681,comp_merit,110.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1681,merit,141.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1681,fitness,143.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1681,efficiency,143.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1693,Task Count,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1693,gest_time,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1693,comp_merit,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1693,merit,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1693,fitness,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1693,efficiency,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1704,Task Count,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1704,gest_time,121.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1704,comp_merit,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1704,merit,121.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1704,fitness,121.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1704,efficiency,121.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1697,Task Count,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1697,gest_time,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1697,comp_merit,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1697,merit,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1697,fitness,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1697,efficiency,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1708,Task Count,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1708,gest_time,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1708,comp_merit,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1708,merit,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1708,fitness,100.0
+Slip-scatter,0.0,0.0,0.0,0.0,0.0,0.05,5,1708,efficiency,100.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1714,Task Count,78.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1714,gest_time,173.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1714,comp_merit,78.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1714,merit,171.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1714,fitness,173.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1714,efficiency,173.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1726,Task Count,117.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1726,gest_time,163.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1726,comp_merit,117.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1726,merit,162.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1726,fitness,163.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1726,efficiency,163.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1732,Task Count,142.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1732,gest_time,148.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1732,comp_merit,142.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1732,merit,148.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1732,fitness,148.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1732,efficiency,148.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1736,Task Count,80.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1736,gest_time,183.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1736,comp_merit,80.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1736,merit,181.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1736,fitness,183.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1736,efficiency,183.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1711,Task Count,405.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1711,gest_time,462.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1711,comp_merit,405.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1711,merit,464.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1711,fitness,464.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1711,efficiency,464.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1715,Task Count,77.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1715,gest_time,354.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1715,comp_merit,77.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1715,merit,341.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1715,fitness,354.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1715,efficiency,354.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1727,Task Count,98.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1727,gest_time,100.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1727,comp_merit,98.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1727,merit,100.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1727,fitness,100.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1727,efficiency,100.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1733,Task Count,213.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1733,gest_time,218.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1733,comp_merit,213.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1733,merit,217.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1733,fitness,218.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1733,efficiency,218.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1737,Task Count,69.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1737,gest_time,168.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1737,comp_merit,69.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1737,merit,159.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1737,fitness,168.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1737,efficiency,168.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1712,Task Count,205.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1712,gest_time,293.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1712,comp_merit,205.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1712,merit,278.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1712,fitness,293.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1712,efficiency,293.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1716,Task Count,100.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1716,gest_time,100.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1716,comp_merit,100.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1716,merit,100.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1716,fitness,100.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1716,efficiency,100.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1728,Task Count,235.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1728,gest_time,251.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1728,comp_merit,235.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1728,merit,250.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1728,fitness,251.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1728,efficiency,251.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1722,Task Count,129.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1722,gest_time,428.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1722,comp_merit,129.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1722,merit,421.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1722,fitness,428.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1722,efficiency,428.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1734,Task Count,222.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1734,gest_time,235.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1734,comp_merit,222.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1734,merit,235.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1734,fitness,235.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1734,efficiency,235.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1738,Task Count,98.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1738,gest_time,462.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1738,comp_merit,98.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1738,merit,418.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1738,fitness,475.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1738,efficiency,475.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1713,Task Count,403.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1713,gest_time,427.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1713,comp_merit,403.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1713,merit,426.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1713,fitness,427.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1713,efficiency,427.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1717,Task Count,42.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1717,gest_time,162.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1717,comp_merit,42.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1717,merit,174.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1717,fitness,174.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1717,efficiency,174.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1723,Task Count,78.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1723,gest_time,198.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1723,comp_merit,78.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1723,merit,197.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1723,fitness,198.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1723,efficiency,198.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1735,Task Count,98.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1735,gest_time,332.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1735,comp_merit,98.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1735,merit,316.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1735,fitness,332.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1735,efficiency,332.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1739,Task Count,264.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1739,gest_time,275.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1739,comp_merit,264.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1739,merit,273.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1739,fitness,275.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1739,efficiency,275.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1720,Task Count,225.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1720,gest_time,232.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1720,comp_merit,225.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1720,merit,230.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1720,fitness,232.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1720,efficiency,232.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1718,Task Count,99.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1718,gest_time,412.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1718,comp_merit,99.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1718,merit,396.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1718,fitness,412.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1718,efficiency,412.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1724,Task Count,133.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1724,gest_time,141.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1724,comp_merit,133.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1724,merit,139.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1724,fitness,141.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1724,efficiency,141.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1730,Task Count,133.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1730,gest_time,186.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1730,comp_merit,133.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1730,merit,186.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1730,fitness,186.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1730,efficiency,186.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1721,Task Count,82.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1721,gest_time,236.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1721,comp_merit,82.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1721,merit,232.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1721,fitness,236.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1721,efficiency,236.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1719,Task Count,233.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1719,gest_time,234.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1719,comp_merit,233.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1719,merit,234.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1719,fitness,234.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1719,efficiency,234.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1725,Task Count,193.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1725,gest_time,217.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1725,comp_merit,193.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1725,merit,216.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1725,fitness,217.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1725,efficiency,217.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1731,Task Count,115.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1731,gest_time,322.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1731,comp_merit,115.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1731,merit,316.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1731,fitness,322.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1731,efficiency,322.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1729,Task Count,84.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1729,gest_time,234.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1729,comp_merit,84.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1729,merit,229.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1729,fitness,234.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1729,efficiency,234.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1710,Task Count,99.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1710,gest_time,206.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1710,comp_merit,99.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1710,merit,205.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1710,fitness,206.0
+Slip-scramble,0.0,0.0,0.0,0.0,0.0,0.05,3,1710,efficiency,206.0

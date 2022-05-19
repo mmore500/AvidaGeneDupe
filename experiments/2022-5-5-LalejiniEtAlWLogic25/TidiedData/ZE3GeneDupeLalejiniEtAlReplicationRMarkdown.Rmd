@@ -17,3 +17,17 @@ ggplot(data,aes(x=Treatment,y=Task.Count,color=Treatment,fill=Treatment)) + #Add
 
 ggsave("LalejiniEtAlReplicationFinalDominantGenomeLengthsViolin.pdf")
 ```
+
+```{r}
+library(ggplot2)
+setwd("/Users/cameronhaynes/Documents/VSCodeGitProjects/AvidaGeneDupe/experiments/2022-3-29-PaperDuplication/TidiedData")
+data <- read.csv("FinalDominantInfo.csv")
+names(data)
+ggplot(data,aes(x=Treatment,y=Information,color=Treatment,fill=Treatment)) + #Add color=Replicate with a replicate column to plot each curve seperately 
+  geom_violin() +
+  geom_jitter(alpha = 0.2) +
+  theme_minimal() +
+  theme(legend.position = 'none') + facet_grid(Information.Type~.) # Uncomment to plot faceted by treatment
+
+ggsave("LalejiniEtAlReplicationFinalDominantInfo.pdf")
+```
