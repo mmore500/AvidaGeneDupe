@@ -13,6 +13,11 @@ treatmentParameters = {"Baseline-Treatment":[0.0025, 0.0, 0.0, 0.05, 0.05, 0.0, 
 "Slip-scramble":[0.0, 0.0, 0.0, 0.0, 0.0, 0.05, 3],
 "Slip-random":[0.0, 0.0, 0.0, 0.0, 0.0, 0.05, 2],
 "High-Mutation":[0.0025,0.0075,0.0075,0.05,0.05,0.0,0]}
+stream = os.popen('pwd')
+pwd = stream.read().rstrip()
+experimentDir = pwd
+experimentName = pwd.split('/')[-1]
+
 
 class Treatment():
     def __init__(self,treatmentPath):
@@ -93,6 +98,7 @@ def knockoutDatGenome(dest,genome,orgCount):
     dest.write('DETAIL detail_Org{}FitnessDifferences.dat task_list gest_time comp_merit merit fitness efficiency\n\n'.format(orgCount))
 
 def knockoutDatFile(datFile,dest):
+    os.system('pwd')
     with open(datFile,'r') as X:
         lines = X.readlines()
         orgCount = 0
@@ -122,9 +128,6 @@ def createDatAnalyzeCfg(datFile):
         knockoutDatFile(datFile,f)
 
 def executeInfoAnalysis(runDir):
-    stream = os.popen('pwd')
-    pwd = stream.read().rstrip()
-    experimentName = pwd.split('/')[-1]
     configDir = os.path.join("~/AvidaGeneDupe/experiments/","{}/hpcc/config".format(experimentName))
     os.system("cp ~/AvidaGeneDupe/avida/cbuild/work/avida {}".format(runDir))
     os.chdir(runDir)
