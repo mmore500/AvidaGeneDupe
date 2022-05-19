@@ -112,8 +112,11 @@ def knockoutDatFile(datFile,dest):
             knockoutDatGenome(dest,genome,orgCount)
             orgCount+=1
 
-def createDatAnalyzeCfg(datFile):
-        f = open('informationAnalyzer.cfg','w')
+def createDatAnalyzeCfg(runDir):
+        datDir = os.path.join(runDir,"data")
+        datFile = os.path.join(datDir,"detail_MostNumerous.dat")
+        configFile = os.path.join(datDir,'informationAnalyzer.cfg')
+        f = open(configFile,'w')
         preamble = ['################################################################################################\n',
                     '# This file is used to setup avida when it is in analysis-only mode, which can be triggered by\n'
                     '# running "avida -a".\n',
@@ -201,10 +204,7 @@ def informAndMakeTidy(treatmentArray, useCodingSites = True):
             treatmentName = treatment.treatmentName
             
             for runDir in treatment.runDirectories:
-                dataDir = os.path.join(runDir,"data")
-                infoFile = os.path.join(dataDir,"detail_MostNumerous.dat")
-                os.chdir(dataDir)
-                createDatAnalyzeCfg(infoFile)
+                createDatAnalyzeCfg(runDir)
                 executeInfoAnalysis(runDir)
                 
             
