@@ -3,7 +3,7 @@ import os
 import csv
 import numpy as np
 
-dataDir = './'
+
 runDirectories = []
 Treatments = []
 treatmentParameters = {"Baseline-Treatment":[0.0025, 0.0, 0.0, 0.05, 0.05, 0.0, 0],
@@ -16,6 +16,7 @@ treatmentParameters = {"Baseline-Treatment":[0.0025, 0.0, 0.0, 0.05, 0.05, 0.0, 
 stream = os.popen('pwd')
 pwd = stream.read().rstrip()
 experimentDir = pwd
+dataDir = pwd
 experimentName = pwd.split('/')[-1]
 
 
