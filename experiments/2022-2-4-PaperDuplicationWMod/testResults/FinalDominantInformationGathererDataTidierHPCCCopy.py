@@ -66,7 +66,7 @@ def getOrganisms(filePath):
 def getDatFileHeaders(datFile):
     with open(datFile,'r') as dataF:
         datFileLines = dataF.readlines()
-        formatLineTerms = (datFileLines[1].split())[1:]
+        formatLineTerms = (datFileLines[1].split())[1:-1]
         for k,term in enumerate(formatLineTerms):
             if term == 'task_list':
                 formatLineTerms[k] = 'Task Count'
@@ -99,7 +99,7 @@ def knockoutDatGenome(dest,genome,orgCount):
     dest.write('DETAIL detail_Org{}FitnessDifferences.dat task_list gest_time comp_merit merit fitness efficiency length\n\n'.format(orgCount))
 
 def knockoutDatFile(datFile,dest):
-    os.system('pwd')
+    #os.system('pwd')
     with open(datFile,'r') as X:
         lines = X.readlines()
         orgCount = 0
@@ -210,6 +210,7 @@ def informAndMakeTidy(treatmentArray, useCodingSites = True):
 
         for treatment in treatmentArray:
             treatmentName = treatment.treatmentName
+            print(treatmentName)
             
             for runDir in treatment.runDirectories:
                 createDatAnalyzeCfg(runDir)
