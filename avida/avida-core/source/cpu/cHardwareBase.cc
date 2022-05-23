@@ -628,6 +628,18 @@ void cHardwareBase::doUniformCopyMutation(cAvidaContext& ctx, cHeadCPU& head)
 // This can cause large deletions or tandem duplications.
 // Unlucky organisms might exceed the allowed length (randomly) if these mutations occur.
 //  -- @AML: Modified to disallow mutations that cause genome to shrink/grow beyond allowed size.
+/***
+ * Slip modes:
+  - 0: Slip-duplicate, exactly duplicate sequence
+  - 1: Slip-nop, Empty (nop-X)
+  - 2: Slip-random, Random
+  - 3: Slip-scramble, duplicate but in scrambled order
+  - 4: Empty (nop-C)
+  - 5: Slip-scatter, insert random instructions at random locations throughout the genome
+  - 6: Slip-random, but draw random instructions from genome.
+  - 7: Slip-scatter-dup, insert would-be duplicated instructions at random locations throughout the genome
+  - 8: Delocalized slip-duplication
+*/
 void cHardwareBase::doSlipMutation(cAvidaContext& ctx, InstructionSequence& genome, int from) {
   std::vector<MutationInfo> temp_mut_info;
   doSlipMutation(ctx, genome, temp_mut_info, from);
@@ -693,113 +705,174 @@ void cHardwareBase::doSlipMutation(cAvidaContext& ctx, InstructionSequence& geno
       assert(to >= cfg_slip_size);
       assert(from >= 0);
     }
-
   }
 
-  if (slip_fill_mode == 5) {
+  // If insertion/deletion length would cause genome to violate the min/max genome size,
+  //  do not mutate. (bail out)
+  if (
+    (insertion_length > 0 && (genome.GetSize() + insertion_length) > max_genome_size) ||
+    (insertion_length < 0 && (genome.GetSize() + insertion_length) < min_genome_size)
+  ) {
+    return;
+  }
+
+  // Mutation should not violate genome size constraints.
+  assert(
+    !((insertion_length > 0 && (genome.GetSize() + insertion_length) > max_genome_size) ||
+      (insertion_length < 0 && (genome.GetSize() + insertion_length) < min_genome_size))
+  );
+
+  if (slip_fill_mode == 5 || slip_fill_mode == 7) {
     // If slip fill mode is 5, instead of slip mutation: rain down point insertions/deletions.
+    // If slip fill mode is 7, instead of slip mutation: rain down point insertions/deletions,
+    //   but insertions are from would-be duplicated sequence.
     if (insertion_length > 0) {
       // Insertions!
       int num_mut = insertion_length;
-      // If would make creature too big, insert up to max_genome_size
-      if (num_mut + genome.GetSize() > max_genome_size) {
-        num_mut = max_genome_size - genome.GetSize();
-      }
+      // Mutations should not violate max genome size.
+      assert(num_mut + genome.GetSize() <= max_genome_size);
       // If we have lines to insert...
       if (num_mut > 0) {
         // Build a sorted list of the sites where mutations occurred
         Apto::Array<int> mut_sites(num_mut);
-        for (int i = 0; i < num_mut; i++) mut_sites[i] = ctx.GetRandom().GetUInt(genome.GetSize() + 1);
+        for (int i = 0; i < num_mut; i++) {
+          mut_sites[i] = ctx.GetRandom().GetUInt(genome.GetSize() + 1);
+        }
         Apto::QSort(mut_sites);
         // Actually do the mutations (in reverse sort order)
         for (int i = mut_sites.GetSize() - 1; i >= 0; i--) {
-          genome.Insert(mut_sites[i], m_inst_set->GetRandomInst(ctx));
+          if (slip_fill_mode==5) {
+            genome.Insert(mut_sites[i], m_inst_set->GetRandomInst(ctx)); // Inserts random instruction.
+          } else if (slip_fill_mode==7) {
+            genome.Insert(mut_sites[i], genome_copy[to + i]); // Marches up duplicated sequence backwards (inserting in random locations)
+          }
         }
       }
     } else {
       // Deletions!
       int num_mut = -1 * insertion_length;
-      // If would make creature too small, delete down to min_genome_size
-      if (genome.GetSize() - num_mut < min_genome_size) {
-        num_mut = genome.GetSize() - min_genome_size;
-      }
+      // Mutations should not violate genome size constraints.
+      assert((genome.GetSize() - num_mut) >= min_genome_size);
       // If we have lines to delete...
       for (int i = 0; i < num_mut; i++) {
         int site = ctx.GetRandom().GetUInt(genome.GetSize());
         genome.Remove(site);
       }
     }
+
+  // Handle de-localized slip mutation
+  } else if (slip_fill_mode==8) {
+
+    // Resize the child genome
+    genome.Resize(genome.GetSize() + insertion_length);
+
+    // Pick a new location for insertion
+    const int ins_loc = ctx.GetRandom().GetInt(orig_genome_len+1);
+
+    // Fill insertion
+    if (insertion_length > 0) {
+      // Copy sequence to:insertion_length into new_from:insertion_length
+      for (int i = 0; i < insertion_length; ++i) {
+        genome[ins_loc + i] = genome_copy[to + i];
+      }
+      // Copy everything after ins_loc + insertion length
+      for (int i = 0; i < orig_genome_len - ins_loc; ++i) {
+        genome[ins_loc + insertion_length + i] = genome_copy[ins_loc + i];
+      }
+    // Handle deletion as in a normal slip mutation
+    } else {
+      for (int i = 0; i < genome_copy.GetSize() - to; i++) {
+        genome[from + i] = genome_copy[to + i];
+      }
+    }
+
+    if (m_world->GetVerbosity() >= VERBOSE_DETAILS) {
+      std::cout << "SLIP MUTATION from=" << from << " to=" << to << " ins_loc=" << ins_loc << std::endl;
+      std::cout << "Parent: " << genome_copy.AsString()   << std::endl;
+      std::cout << "Offspring: " << genome.AsString() << std::endl;
+    }
+
   // Handle slip mutation normally.
   } else {
-    // If insertion/deletion length would cause genome to violate the min/max genome size,
-    //  do not mutate.
-    if (!((insertion_length > 0 && (genome.GetSize() + insertion_length) > max_genome_size) ||
-        (insertion_length < 0 && (genome.GetSize() + insertion_length) < min_genome_size))) {
-      // @AML: TODO - evaluate whether we want a map here instead of a vector
-      mut_info.emplace_back("slip_div", std::vector<int>({insertion_length, from, to}));
-      auto& slip_info = mut_info.back();
-      // Resize child genome
-      genome.Resize(genome.GetSize() + insertion_length);
-      // Fill insertion
-      if (insertion_length > 0) {
-        Apto::Array<bool> copied_so_far(insertion_length);
-        copied_so_far.SetAll(false);
-        for (int i = 0; i < insertion_length; i++) {
-          switch (slip_fill_mode) {
-              //Duplication
-            case 0:
-              genome[from + i] = genome_copy[to + i];
-              break;
 
-              //Empty (nop-X)
-            case 1:
-              genome[from + i] = m_inst_set->GetInst("nop-X");
-              break;
+    // @AML: TODO - evaluate whether we want a map here instead of a vector
+    mut_info.emplace_back("slip_div", std::vector<int>({insertion_length, from, to}));
+    auto& slip_info = mut_info.back();
+    // Resize child genome
+    genome.Resize(genome.GetSize() + insertion_length);
+    // Fill insertion
+    if (insertion_length > 0) {
+      Apto::Array<bool> copied_so_far(insertion_length);
+      copied_so_far.SetAll(false);
+      for (int i = 0; i < insertion_length; i++) {
+        switch (slip_fill_mode) {
+            //Duplication
+          case 0: {
+            genome[from + i] = genome_copy[to + i];
+            break;
+          }
 
-              //Random
-            case 2:
-              genome[from + i] = m_inst_set->GetRandomInst(ctx);
-              break;
+            //Empty (nop-X)
+          case 1: {
+            genome[from + i] = m_inst_set->GetInst("nop-X");
+            break;
+          }
 
-              //Scrambled order
-            case 3: {
-              int copy_index = ctx.GetRandom().GetInt(insertion_length - i);
-              int test = 0;
-              int passed = copy_index;
-              while (passed >= 0) {
-                if (copied_so_far[test]) {
-                  copy_index++;
-                } else { //this one hasn't been chosen, so we count it.
-                  passed--;
-                }
-                test++;
+            //Random
+          case 2: {
+            genome[from + i] = m_inst_set->GetRandomInst(ctx);
+            break;
+          }
+
+            //Scrambled order
+          case 3: {
+            int copy_index = ctx.GetRandom().GetInt(insertion_length - i);
+            int test = 0;
+            int passed = copy_index;
+            while (passed >= 0) {
+              if (copied_so_far[test]) {
+                copy_index++;
+              } else { //this one hasn't been chosen, so we count it.
+                passed--;
               }
-              genome[from + i] = genome[to + copy_index];
-              copied_so_far[copy_index] = true;
-              break;
+              test++;
             }
+            genome[from + i] = genome[to + copy_index];
+            copied_so_far[copy_index] = true;
+            break;
+          }
 
-              //Empty (nop-C)
-            case 4:
-              genome[from + i] = m_inst_set->GetInst("nop-C");
-              break;
+            //Empty (nop-C)
+          case 4: {
+            genome[from + i] = m_inst_set->GetInst("nop-C");
+            break;
+          }
 
-            default:
-              ctx.Driver().Feedback().Error("Unknown SLIP_FILL_MODE");
-              ctx.Driver().Abort(Avida::INVALID_CONFIG);
+            // Random, but pulled from original genome
+          case 6: {
+            const int rand_site = ctx.GetRandom().GetUInt(genome_copy.GetSize());
+            genome[from+i] = genome_copy[rand_site];
+            break;
+          }
+
+          default: {
+            ctx.Driver().Feedback().Error("Unknown SLIP_FILL_MODE");
+            ctx.Driver().Abort(Avida::INVALID_CONFIG);
           }
         }
       }
+    }
 
-      // Deletion / remaining genome
-      if (insertion_length < 0) insertion_length = 0;
-      for (int i = insertion_length; i < genome_copy.GetSize() - to; i++) genome[from + i] = genome_copy[to + i];
+    // Deletion / remaining genome
+    if (insertion_length < 0) insertion_length = 0;
+    for (int i = insertion_length; i < genome_copy.GetSize() - to; i++) {
+      genome[from + i] = genome_copy[to + i];
+    }
 
-      if (m_world->GetVerbosity() >= VERBOSE_DETAILS) {
-        cout << "SLIP MUTATION from " << from << " to " << to << endl;
-        cout << "Parent: " << genome_copy.AsString()   << endl;
-        cout << "Offspring: " << genome.AsString() << endl;
-      }
+    if (m_world->GetVerbosity() >= VERBOSE_DETAILS) {
+      cout << "SLIP MUTATION from " << from << " to " << to << endl;
+      cout << "Parent: " << genome_copy.AsString()   << endl;
+      cout << "Offspring: " << genome.AsString() << endl;
     }
   }
 }
