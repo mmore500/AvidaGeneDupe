@@ -70,8 +70,6 @@ class sBatchFileArchetype():
         'python InfoAnalyzerGenerator.py\n\n']
 
         analysisExecution = ['EXECUTE="avida -s {} -set COPY_MUT_PROB {} -set COPY_INS_PROB {} -set COPY_DEL_PROB {} -set DIVIDE_INS_PROB {} -set DIVIDE_DEL_PROB {} -set DIVIDE_SLIP_PROB {} -set SLIP_FILL_MODE {}"\n'.format('${SEED}',treatment.params[0],treatment.params[1],treatment.params[2],treatment.params[3],treatment.params[4],treatment.params[5],treatment.params[6]),
-                'echo ${EXECUTE} > cmd.log\n',
-                './${EXECUTE} > run.log\n',
                 './${EXECUTE} -set ANALYZE_FILE data/informationAnalyzer.cfg -a > analyze.log\n\n',
                 'rm avida\n',
                 'rm avida.cfg\n',
@@ -104,7 +102,7 @@ Treatments.append(baseline)
 highMut = Treatment('High-Mutation',[0.0025,0.0075,0.0075,0.05,0.05,0.05,0])
 Treatments.append(highMut)
 
-LalejiniEtAlRemix = sBatchFileArchetype('clhaynes',experimentID,30,"00-04:00:00",'zamanlh1')
+LalejiniEtAlRemix = sBatchFileArchetype('clhaynes','2022-5-5',experimentID,30,"00-04:00:00",'zamanlh1')
 for k,treat in enumerate(Treatments):
     LalejiniEtAlRemix.writeFile(treat,k)
 
