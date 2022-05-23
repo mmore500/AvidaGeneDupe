@@ -49,7 +49,7 @@ class sBatchFileArchetype():
 
         lalejiniPreamble = ['USERNAME={}\n'.format(self.username),
                            'EXPERIMENT_ID={}-{}\n'.format(self.date,self.experimentID),
-                           'OUTPUT_DIR=/scratch/zamanlh_root/{}/{}/{}/{}\n'.format(self.account,'${USERNAME}','${EXPERIMENT_ID}',treatment.name),
+                           'OUTPUT_DIR=/scratch/zamanlh_root/zamanlh0/{}/{}/{}\n'.format('${USERNAME}','${EXPERIMENT_ID}',treatment.name),
                            'CONFIG_DIR=/home/${USERNAME}/AvidaGeneDupe/experiments/${EXPERIMENT_ID}/hpcc/config\n',
                            'SEED_OFFSET={}\n\n'.format(seedStart)]
         
@@ -104,7 +104,7 @@ Treatments.append(baseline)
 highMut = Treatment('High-Mutation',[0.0025,0.0075,0.0075,0.05,0.05,0.05,0])
 Treatments.append(highMut)
 
-LalejiniEtAlRemix = sBatchFileArchetype('clhaynes','2022-5-5',experimentName, 30)
+LalejiniEtAlRemix = sBatchFileArchetype('clhaynes','2022-5-5',experimentName,30,"00-04:00:00",'zamanlh1')
 for k,treat in enumerate(Treatments):
     LalejiniEtAlRemix.writeFile(treat,k)
 
