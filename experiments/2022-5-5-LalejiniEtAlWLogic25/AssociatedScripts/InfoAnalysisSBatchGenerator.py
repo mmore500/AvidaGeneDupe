@@ -5,7 +5,7 @@ import os
 
 stream = os.popen('pwd')
 pwd = stream.read().rstrip()
-experimentName = pwd.split('/')[-1]
+experimentName = pwd.split('/')[-2]
 
 class Treatment():
     def __init__(self,name,params):
