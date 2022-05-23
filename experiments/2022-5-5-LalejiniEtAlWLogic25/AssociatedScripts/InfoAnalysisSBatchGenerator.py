@@ -55,7 +55,6 @@ class sBatchFileArchetype():
         
         runDirSetup = ['SEED=$((SEED_OFFSET + SLURM_ARRAY_TASK_ID - 1))\n','JOB_ID=${SLURM_ARRAY_TASK_ID}\n',
                 'RUN_DIR=${OUTPUT_DIR}/run_${SEED}\n\n',
-                'mkdir -p ${RUN_DIR}\n\n',
                 'cd ${RUN_DIR}\n\n',
                 "#Don't use the asterisk: actually write everything out so you know what you're working with!\n\n",
                 'cp ${CONFIG_DIR}/avida .\n',
