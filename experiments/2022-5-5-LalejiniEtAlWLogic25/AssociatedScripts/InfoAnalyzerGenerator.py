@@ -7,7 +7,9 @@ pwd = stream.read().rstrip()
 runDir = pwd
 
 def knockItOut(genomeString,instructionIndex):
-    return (genomeString[:instructionIndex] + genomeString[instructionIndex + 1:])
+    knuckOutGenome = list(genomeString)
+    knuckOutGenome[instructionIndex] = 'A'
+    return "".join(knuckOutGenome)
 
 def knockoutDatGenome(dest,genome,orgCount):
     knuckOutGenomes = []

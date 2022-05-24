@@ -82,9 +82,11 @@ def getUpdateBorn(organismString):
     analyzeOutputs = organismString.split()
     updateBorn = analyzeOutputs[1]
     return updateBorn
-
+    
 def knockItOut(genomeString,instructionIndex):
-    return (genomeString[:instructionIndex] + genomeString[instructionIndex + 1:])
+    knuckOutGenome = list(genomeString)
+    knuckOutGenome[instructionIndex] = 'A'
+    return "".join(knuckOutGenome)
 
 def knockoutDatGenome(dest,genome,orgCount):
     knuckOutGenomes = []
