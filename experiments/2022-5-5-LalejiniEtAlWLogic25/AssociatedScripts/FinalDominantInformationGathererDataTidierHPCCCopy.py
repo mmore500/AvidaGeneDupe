@@ -241,7 +241,7 @@ def informAndMakeTidy(treatmentArray, useCodingSites = True):
     with open('FinalDominantInfo.csv', mode='w') as tidyDat:
 
         data_writer = csv.writer(tidyDat, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-        data_writer.writerow(['Treatment',"COPY_MUT_PROB","COPY_INS_PROB","COPY_DEL_PROB","DIVIDE_INS_PROB","DIVIDE_DEL_PROB","DIVIDE_SLIP_PROB","SLIP_FILL_MODE",'Replicate #','Length','Task Coding Sites Average','Task Coding Sites Standard Deviation'.'Information Type','Information','Information Concentration'])
+        data_writer.writerow(['Treatment',"COPY_MUT_PROB","COPY_INS_PROB","COPY_DEL_PROB","DIVIDE_INS_PROB","DIVIDE_DEL_PROB","DIVIDE_SLIP_PROB","SLIP_FILL_MODE",'Replicate #','Length','Task Coding Sites Average','Task Coding Sites Standard Deviation','Information Type','Information','Information Concentration'])
 
         for treatment in treatmentArray:
             treatmentName = treatment.treatmentName
