@@ -1,6 +1,8 @@
+from asyncio import tasks
 from ctypes import sizeof
 import os
 import csv
+from webbrowser import get
 import numpy as np
 
 
@@ -167,6 +169,37 @@ def getMetrics(organismString):
 
     return np.array(metrics)
 
+def getTasks(organismString):
+    analyzeOutputs = organismString.split()
+    
+    tasks = analyzeOutputs[0]
+    for k,task in enumerate(tasks):
+        tasks[k] = int(task)
+
+    return np.array(tasks)
+
+def getTaskCodingSitesOverRun(replicateData):
+    datFileContents = getOrganisms(replicateData)
+    (organisms,analyzedOrganism) = (datFileContents[:-1],datFileContents[-1])
+
+    #Next step: add Avida Parameters and Replicate ID
+
+    organismsTasks = getTasks(analyzedOrganism)
+    taskCounts = np.zeros(organismsTasks.size)
+    for org in organisms:
+        #Note that the absolute value is only being taken of the difference, so it should be proper
+        taskCounts = taskCounts + np.abs(organismsTasks + (-1*getTasks(org)))
+    
+    return taskCounts
+
+def getTaskCodingSitesMetrics(replicateData):
+    taskCodingSites = getTaskCodingSitesOverRun(replicateData)
+
+    averageCodingSites = np.mean(taskCodingSites)
+    stDevCodingSites = np.std(taskCodingSites)
+    return (averageCodingSites, stDevCodingSites)
+
+
 def getInformation(replicateData):
     datFileContents = getOrganisms(replicateData)
     (organisms,analyzedOrganism) = (datFileContents[:-1],datFileContents[-1])
@@ -208,7 +241,7 @@ def informAndMakeTidy(treatmentArray, useCodingSites = True):
     with open('FinalDominantInfo.csv', mode='w') as tidyDat:
 
         data_writer = csv.writer(tidyDat, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-        data_writer.writerow(['Treatment',"COPY_MUT_PROB","COPY_INS_PROB","COPY_DEL_PROB","DIVIDE_INS_PROB","DIVIDE_DEL_PROB","DIVIDE_SLIP_PROB","SLIP_FILL_MODE",'Replicate #','Information Type','Information','Information Concentration'])
+        data_writer.writerow(['Treatment',"COPY_MUT_PROB","COPY_INS_PROB","COPY_DEL_PROB","DIVIDE_INS_PROB","DIVIDE_DEL_PROB","DIVIDE_SLIP_PROB","SLIP_FILL_MODE",'Replicate #','Length','Task Coding Sites Average','Task Coding Sites Standard Deviation'.'Information Type','Information','Information Concentration'])
 
         for treatment in treatmentArray:
             treatmentName = treatment.treatmentName
@@ -226,6 +259,7 @@ def informAndMakeTidy(treatmentArray, useCodingSites = True):
             for replicateData in treatmentData:
                 information = getCodingSites(replicateData) if useCodingSites else getInformation(replicateData)
                 length = getLength(replicateData)
+                (averageTaskCodingSites, stDevTaskCodingSites) = getTaskCodingSitesMetrics(replicateData)
                 runName = None
                 for folderName in replicateData.split('/'):
                     if 'run_' not in folderName:
@@ -237,7 +271,7 @@ def informAndMakeTidy(treatmentArray, useCodingSites = True):
                 infoTypes = getDatFileHeaders(replicateData)
                 params = treatmentParameters[treatmentName]
                 for k,type in enumerate(infoTypes):
-                    data_writer.writerow([treatmentName,params[0],params[1],params[2],params[3],params[4],params[5],params[6],runNum,type,information[k],information[k]/length])
+                    data_writer.writerow([treatmentName,params[0],params[1],params[2],params[3],params[4],params[5],params[6],runNum,length, averageTaskCodingSites,stDevTaskCodingSites, type,information[k],information[k]/length])
                 
 
 linDatFile = ".dat"
