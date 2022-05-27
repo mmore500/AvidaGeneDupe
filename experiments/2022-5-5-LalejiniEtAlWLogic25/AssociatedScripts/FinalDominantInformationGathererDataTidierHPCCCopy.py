@@ -169,7 +169,7 @@ def getMetrics(organismString):
 def getTasks(organismString):
     analyzeOutputs = organismString.split()
     
-    tasks = analyzeOutputs[0].split()
+    tasks = list(analyzeOutputs[0])
     for k,task in enumerate(tasks):
         tasks[k] = int(task)
 
@@ -192,8 +192,11 @@ def getTaskCodingSitesOverRun(replicateData):
 def getTaskCodingSitesMetrics(replicateData):
     taskCodingSites = getTaskCodingSitesOverRun(replicateData)
 
-    averageCodingSites = np.mean(taskCodingSites)
-    stDevCodingSites = np.std(taskCodingSites)
+    originalOrganism = getOrganisms(replicateData)[-1]
+    originalTasksPresent = getTasks(originalOrganism)
+
+    averageCodingSites = np.mean(taskCodingSites[np.where(originalTasksPresent > 0)])
+    stDevCodingSites = np.std(taskCodingSites[np.where(originalTasksPresent > 0)])
     return (averageCodingSites, stDevCodingSites)
 
 
