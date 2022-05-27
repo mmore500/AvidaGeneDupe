@@ -169,7 +169,7 @@ def getMetrics(organismString):
 def getTasks(organismString):
     analyzeOutputs = organismString.split()
     
-    tasks = analyzeOutputs[0]
+    tasks = analyzeOutputs[0].split()
     for k,task in enumerate(tasks):
         tasks[k] = int(task)
 
