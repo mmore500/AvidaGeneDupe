@@ -169,7 +169,7 @@ def getTaskCodingSitesOverRun(replicateData):
     codingSites = []
     for k, org in enumerate(organisms):
         #Note that the absolute value is only being taken of the difference, so it should be proper
-        if(getTasks(org) != organismsTasks):
+        if(organismsTasks - getTasks(org) == np.zeros(organismsTasks.size)):
             codingSites.append(k)
 
     return codingSites
