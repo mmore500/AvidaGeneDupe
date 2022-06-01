@@ -61,7 +61,7 @@ ggplot(data[data$Treatment.x=="High-Mutation",],aes(x=Task.Count,y=Information.C
 
 ```{r}
 library(ggplot2)
-setwd("/Users/cameronhaynes/Documents/VSCodeGitProjects/AvidaGeneDupe/experiments/2022-3-29-LalejiniEtAlReplication/TidiedData")
+setwd("/Users/cameronhaynes/Documents/VSCodeGitProjects/AvidaGeneDupe/experiments/2022-3-29-PaperDuplication/TidiedData")
 data1 <- read.csv("FinalDominantInfo.csv")
 data2 <- read.csv("FinalDominantTaskCounts.csv")
 data = merge(data1[data1$Information.Type=="Task Count",],data2, by = c("Replicate.."))
@@ -76,4 +76,41 @@ ggplot(data,aes(x=Treatment.x,y=CodingSites.Per.Task,color=Treatment.x,fill=Trea
 
 ggsave("LalejiniEtAlReplicationFinalDominantCodingSitesPerTask.pdf")
 
+```
+
+```{r}
+library(ggplot2)
+setwd("/Users/cameronhaynes/Documents/VSCodeGitProjects/AvidaGeneDupe/experiments/2022-3-29-PaperDuplication/TidiedData")
+data1 <- read.csv("FinalDominantInfo.csv")
+data2 <- read.csv("FinalDominantTaskCounts.csv")
+data = merge(data1[data1$Information.Type=="Task Count",],data2, by = c("Replicate.."))
+names(data)
+data$CodingSites.Per.Task <- data$Information / data$Task.Count
+names(data)
+ggplot(data,aes(x=Treatment.x,y=Task.Coding.Sites.Average,color=Treatment.x,fill=Treatment.x)) + #Add color=Replicate with a replicate column to plot each curve seperately 
+  geom_violin() +
+  geom_jitter(alpha = 0.2) +
+  theme_minimal() +
+  theme(legend.position = 'none')
+
+ggsave("LalejiniEtAlReplicationRealFinalDominantCodingSitesPerTask.pdf")
+```
+
+```{r}
+library(ggplot2)
+setwd("/Users/cameronhaynes/Documents/VSCodeGitProjects/AvidaGeneDupe/experiments/2022-3-29-PaperDuplication/TidiedData")
+data1 <- read.csv("FinalDominantInfo.csv")
+data2 <- read.csv("FinalDominantTaskCounts.csv")
+data = merge(data1[data1$Information.Type=="Task Count",],data2, by = c("Replicate.."))
+names(data)
+data$CodingSites.Per.Task <- data$Information / data$Task.Count
+data$Task.Genomic.Overlap <- (data$Task.Coding.Sites.Average - data$CodingSites.Per.Task)/data$Length
+names(data)
+ggplot(data,aes(x=Treatment.x,y=Task.Genomic.Overlap,color=Treatment.x,fill=Treatment.x)) + #Add color=Replicate with a replicate column to plot each curve seperately 
+  geom_violin() +
+  geom_jitter(alpha = 0.2) +
+  theme_minimal() +
+  theme(legend.position = 'none')
+
+ggsave("LalejiniEtAlReplicationFinalDominantOverlap.pdf")
 ```
