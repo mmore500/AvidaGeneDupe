@@ -169,8 +169,17 @@ def getTaskCodingSitesOverRun(replicateData):
     codingSites = []
     for k, org in enumerate(organisms):
         #Note that the absolute value is only being taken of the difference, so it should be proper
-        if(organismsTasks - getTasks(org) == np.zeros(organismsTasks.size)):
+        same = 1
+        for k in organismsTasks.size:
+            localTasks = getTasks(org)
+            if organismsTasks[k] == localTasks[k]:
+                same*=1
+            else:
+                same*=0
+        if(same == 0):
             codingSites.append(k)
+        else:
+            continue
 
     return codingSites
 
