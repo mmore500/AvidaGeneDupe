@@ -30,6 +30,8 @@ for subdir in os.listdir(dataDir):
         continue
     elif 'Test-Job' in subdir:
         continue
+    elif 'hpcc' in subdir:
+        continue
     treatment = Treatment(os.path.join(dataDir,subdir))
     Treatments.append(treatment)
 
@@ -180,7 +182,7 @@ def getTaskCodingSitesOverRun(replicateData):
             codingSites.append(k)
         else:
             continue
-        print(codingSites)
+
     return codingSites
 
 def writeTaskCodingSites(runDir,codingSites):
