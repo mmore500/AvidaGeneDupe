@@ -180,7 +180,7 @@ def writeTaskCodingSites(runDir,codingSites):
     with open(writeDirectory,'w') as f:
         for site in codingSites:
             f.write('{},'.format(site))
-        f.write(len(codingSites))
+        f.write("{}".format(len(codingSites)))
 
 def writeExperimentTaskCodingSites(treatmentArray):
     for treatment in treatmentArray:
