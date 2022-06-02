@@ -166,38 +166,13 @@ def getTaskCodingSitesOverRun(replicateData):
     #Next step: add Avida Parameters and Replicate ID
 
     organismsTasks = getTasks(analyzedOrganism)
-    sameCodingSites = []
-    normalCodingSites = []
+    codingSites = []
     for idx, org in enumerate(organisms):
         #Note that the absolute value is only being taken of the difference, so it should be proper
         
-        comparison = organismsTasks == getTasks(org)
-
-        sameBoolean = True
-        for truthValue in comparison:
-            if truthValue == False:
-                sameBoolean = False
-            else:
-                continue
-        
-        if(sameBoolean):
-            normalCodingSites.append(idx)
-            
-        same = 1
-        for k in np.arange(organismsTasks.size):
-            localTasks = getTasks(org)
-            if organismsTasks[k] == localTasks[k]:
-                same*=1
-            else:
-                same*=0
-        if(same == 0):
-            sameCodingSites.append(idx)
-        else:
-            continue
-
-        print(sameCodingSites)
-        print(normalCodingSites)
-    codingSites = normalCodingSites
+        comparison = np.abs(organismsTasks - getTasks(org))
+        if(np.sum(comparison) == 0):
+            codingSites.append(idx)
     return codingSites
 
 def writeTaskCodingSites(runDir,codingSites):
