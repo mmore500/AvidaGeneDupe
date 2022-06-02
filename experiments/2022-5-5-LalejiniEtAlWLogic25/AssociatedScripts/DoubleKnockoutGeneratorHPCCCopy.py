@@ -129,7 +129,10 @@ def knockoutDatGenome(runDir,genome,orgCount, doubleKnockoutPrep = False):
         
 def knockoutDatFile(runDir, doubleKnockoutPrep = False):
     #os.system('pwd')
-    datFile = os.path.join(runDir,"data/singleKnockouts.dat")
+    if(doubleKnockoutPrep):
+        datFile = os.path.join(runDir,"data/detail_MostNumerous.dat")
+    else:
+        datFile = os.path.join(runDir,"data/singleKnockouts.dat")
     with open(datFile,'r') as X:
         lines = X.readlines()
         orgCount = 0
