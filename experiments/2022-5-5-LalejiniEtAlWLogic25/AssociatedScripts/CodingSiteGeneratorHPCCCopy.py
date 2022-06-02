@@ -192,11 +192,11 @@ def writeExperimentTaskCodingSites(treatmentArray):
             
         treatmentData = []
         for runDir in treatment.runDirectories:
-            treatmentData.append(os.path.join(runDir,"data/detail_Org0FitnessDifferences.dat"))
-
-        for replicateData in treatmentData:
+            replicateData = os.path.join(runDir,"data/detail_Org0FitnessDifferences.dat")
             taskCodingSites = getTaskCodingSitesOverRun(replicateData)
             writeTaskCodingSites(runDir,taskCodingSites)
+
+            
 
 linDatFile = ".dat"
 
