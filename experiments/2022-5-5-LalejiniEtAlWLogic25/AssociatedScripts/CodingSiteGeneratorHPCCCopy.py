@@ -171,7 +171,7 @@ def getTaskCodingSitesOverRun(replicateData):
         #Note that the absolute value is only being taken of the difference, so it should be proper
         
         comparison = np.abs(organismsTasks - getTasks(org))
-        if(np.sum(comparison) == 0):
+        if(np.sum(comparison) != 0):
             codingSites.append(idx)
     return codingSites
 
