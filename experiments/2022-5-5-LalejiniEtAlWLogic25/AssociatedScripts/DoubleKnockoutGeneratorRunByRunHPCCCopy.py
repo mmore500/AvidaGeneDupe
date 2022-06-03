@@ -3,40 +3,11 @@ import csv
 import numpy as np
 
 
-runDirectories = []
-Treatments = []
-treatmentParameters = {"Baseline-Treatment":[0.0025, 0.0, 0.0, 0.05, 0.05, 0.0, 0],
-"Slip-NOP":[0.0, 0.0, 0.0, 0.0, 0.0, 0.05, 1],
-"Slip-duplicate":[0.0, 0.0, 0.0, 0.0, 0.0, 0.05, 0],
-"Slip-scatter":[0.0, 0.0, 0.0, 0.0, 0.0, 0.05, 5],
-"Slip-scramble":[0.0, 0.0, 0.0, 0.0, 0.0, 0.05, 3],
-"Slip-random":[0.0, 0.0, 0.0, 0.0, 0.0, 0.05, 2],
-"High-Mutation":[0.0025,0.0075,0.0075,0.05,0.05,0.0,0]}
 stream = os.popen('pwd')
 pwd = stream.read().rstrip()
-experimentDir = pwd
-dataDir = pwd
-experimentName = pwd.split('/')[-1]
+runDir = pwd
 
-
-class Treatment():
-    def __init__(self,treatmentPath):
-        self.treatmentDir = treatmentPath
-        self.runDirectories = []
-        self.treatmentName = self.treatmentDir.split('/')[-1]
-
-for subdir in os.listdir(dataDir):
-    if '.' in subdir:
-        continue
-    elif 'Test-Job' in subdir:
-        continue
-    treatment = Treatment(os.path.join(dataDir,subdir))
-    Treatments.append(treatment)
-
-    for run_dir in os.listdir(treatment.treatmentDir):
-        if not 'run_' in run_dir:
-            continue
-        treatment.runDirectories.append(os.path.join(treatment.treatmentDir,run_dir))
+experimentName = pwd.split('/')[-2]
 
 #Use r"Path" to avoid any problems from special characters
 def getOrganisms(filePath):
@@ -62,26 +33,6 @@ def getOrganisms(filePath):
         else:
             print("Error: please check code")
 
-def getDatFileHeaders(datFile):
-    with open(datFile,'r') as dataF:
-        datFileLines = dataF.readlines()
-        formatLineTerms = (datFileLines[1].split())[1:-1]
-        for k,term in enumerate(formatLineTerms):
-            if term == 'task_list':
-                formatLineTerms[k] = 'Task Count'
-        return formatLineTerms
-
-
-def getOrganismID(organismString):
-    analyzeOutputs = organismString.split()
-    ID = analyzeOutputs[0]
-    return ID
-
-def getUpdateBorn(organismString):
-    analyzeOutputs = organismString.split()
-    updateBorn = analyzeOutputs[1]
-    return updateBorn
-    
 def knockItOut(genomeString,instructionIndex):
     knuckOutGenome = list(genomeString)
     knuckOutGenome[instructionIndex] = 'A'
@@ -185,47 +136,10 @@ def executeInfoAnalysis(runDir):
     os.system('rm events.cfg')
     os.system('rm instset-heads___sensors_NONE.cfg')
 
-
-def getTasks(organismString):
-    analyzeOutputs = organismString.split()
-    
-    tasks = list(analyzeOutputs[0])
-    for k,task in enumerate(tasks):
-        tasks[k] = int(task)
-
-    return np.array(tasks)
-
-def getTaskCodingSitesOverRun(replicateData):
-    datFileContents = getOrganisms(replicateData)
-    (organisms,analyzedOrganism) = (datFileContents[:-1],datFileContents[-1])
-
-    #Next step: add Avida Parameters and Replicate ID
-
-    organismsTasks = getTasks(analyzedOrganism)
-    codingSites = []
-    for k, org in enumerate(organisms):
-        #Note that the absolute value is only being taken of the difference, so it should be proper
-        if(getTasks(org) != organismsTasks):
-            codingSites.append(k)
-
-    return codingSites
-
-def writeTaskCodingSites(runDir,codingSites):
-    writeDirectory = os.path.join(runDir,"data/codingSites.txt")
-    with open(writeDirectory,'w') as f:
-        for site in codingSites:
-            f.write('{},'.format(site))
-
-def runDoubleKnockoutAnalysis(treatmentArray):
-    for treatment in treatmentArray:
-        treatmentName = treatment.treatmentName
-        print(treatmentName)
-        
-        for runDir in treatment.runDirectories:
-            createDatDoubleKnockoutAnalyzeCfg(runDir)
-            executeInfoAnalysis(runDir)
+def runDoubleKnockoutAnalysis():
+        createDatDoubleKnockoutAnalyzeCfg(runDir)
+        executeInfoAnalysis(runDir)
             
-
 linDatFile = ".dat"
 
-runDoubleKnockoutAnalysis(Treatments)
+runDoubleKnockoutAnalysis()

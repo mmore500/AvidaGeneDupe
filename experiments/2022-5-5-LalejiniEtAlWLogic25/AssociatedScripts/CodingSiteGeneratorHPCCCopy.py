@@ -196,8 +196,6 @@ def writeExperimentTaskCodingSites(treatmentArray):
             taskCodingSites = getTaskCodingSitesOverRun(replicateData)
             writeTaskCodingSites(runDir,taskCodingSites)
 
-            
-
 linDatFile = ".dat"
 
 writeExperimentTaskCodingSites(Treatments)

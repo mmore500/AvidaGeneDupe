@@ -72,85 +72,6 @@ def getDatFileHeaders(datFile):
         return formatLineTerms
 
 
-def getOrganismID(organismString):
-    analyzeOutputs = organismString.split()
-    ID = analyzeOutputs[0]
-    return ID
-
-def getUpdateBorn(organismString):
-    analyzeOutputs = organismString.split()
-    updateBorn = analyzeOutputs[1]
-    return updateBorn
-    
-def knockItOut(genomeString,instructionIndex):
-    knuckOutGenome = list(genomeString)
-    knuckOutGenome[instructionIndex] = 'A'
-    return "".join(knuckOutGenome)
-
-def knockoutDatGenome(dest,genome,orgCount):
-    knuckOutGenomes = []
-    for instructionIndex,inst in enumerate(genome):
-        knuckOutGenome = knockItOut(genome,instructionIndex)
-        knuckOutGenomes.append('LOAD_SEQUENCE ' + knuckOutGenome + '\n')
-    writeFile = dest
-    knuckOutGenomes.append('LOAD_SEQUENCE ' + genome + '\n')
-    dest.write('SET_BATCH {} \n\n'.format(orgCount))
-    dest.writelines(knuckOutGenomes)
-    dest.write('RECALC\n\n')
-    dest.write('DETAIL detail_Org{}FitnessDifferences.dat task_list gest_time comp_merit merit fitness efficiency viable length\n\n'.format(orgCount))
-
-def knockoutDatFile(datFile,dest):
-    #os.system('pwd')
-    with open(datFile,'r') as X:
-        lines = X.readlines()
-        orgCount = 0
-        for k,line in enumerate(lines):
-            if('#' in line):
-                continue
-            if(len(line) <= 1):
-                continue
-            orgData = line.split()
-            genome = orgData[-1]
-            knockoutDatGenome(dest,genome,orgCount)
-            orgCount+=1
-
-def createDatAnalyzeCfg(runDir):
-        datDir = os.path.join(runDir,"data")
-        datFile = os.path.join(datDir,"detail_MostNumerous.dat")
-        configFile = os.path.join(datDir,'informationAnalyzer.cfg')
-        f = open(configFile,'w')
-        preamble = ['################################################################################################\n',
-                    '# This file is used to setup avida when it is in analysis-only mode, which can be triggered by\n'
-                    '# running "avida -a".\n',
-                    '#\n', 
-                    '# Please see the documentation in documentation/analyze.html for information on how to use\n',
-                    '# analyze mode.\n',
-                    '################################################################################################\n',
-                    '\n',
-                    '\n']
-        f.writelines(preamble)
-        
-        knockoutDatFile(datFile,f)
-
-def executeInfoAnalysis(runDir):
-    configDir = os.path.join("~/AvidaGeneDupe/experiments/","{}/hpcc/config".format(experimentName))
-    os.system("cp ~/AvidaGeneDupe/avida/cbuild/work/avida {}".format(runDir))
-    os.chdir(runDir)
-    os.system('cp {}/avida.cfg .'.format(configDir)) 
-    os.system('cp {}/default-heads.org .'.format(configDir))
-    os.system('cp {}/environment.cfg .'.format(configDir))
-    os.system('cp {}/events.cfg .'.format(configDir))
-    os.system('cp {}/instset-heads___sensors_NONE.cfg .'.format(configDir))
-    os.system("./avida -set ANALYZE_FILE data/informationAnalyzer.cfg -a > analyze.log")
-    os.system('rm avida')
-    os.system('rm avida.cfg')
-    os.system('rm default-heads.org')
-    os.system('rm environment.cfg')
-    os.system('rm events.cfg')
-    os.system('rm instset-heads___sensors_NONE.cfg')
-
-
-
 def getMetrics(organismString):
     presentTasks = 0
     analyzeOutputs = organismString.split()
@@ -175,98 +96,88 @@ def getTasks(organismString):
 
     return np.array(tasks)
 
-def getTaskCodingSitesOverRun(replicateData):
-    datFileContents = getOrganisms(replicateData)
-    (organisms,analyzedOrganism) = (datFileContents[:-1],datFileContents[-1])
+def isSiteRedundant(nonCodingSiteData):
+    siteDatFileContents = getOrganisms(nonCodingSiteData)
+    (organisms,analyzedOrganism) = (siteDatFileContents[:-1],siteDatFileContents[-1])
 
     #Next step: add Avida Parameters and Replicate ID
 
     organismsTasks = getTasks(analyzedOrganism)
-    codingSites = []
-    for k, org in enumerate(organisms):
-        #Note that the absolute value is only being taken of the difference, so it should be proper
-        if(getTasks(org) != organismsTasks):
-            codingSites.append(k)
-
-    return codingSites
-
-def writeCodingSites(codingSites):
-    with open('codingSites.txt','w') as f:
-        for site in codingSites:
-            f.write('{},'.format(site))
-
-def getInformation(replicateData):
-    datFileContents = getOrganisms(replicateData)
-    (organisms,analyzedOrganism) = (datFileContents[:-1],datFileContents[-1])
-
-    #Next step: add Avida Parameters and Replicate ID
-
-    organismsMetrics = getMetrics(analyzedOrganism)
-    information = np.zeros(organismsMetrics.size)
+    taskCounts = np.zeros(organismsTasks.size)
     for org in organisms:
         #Note that the absolute value is only being taken of the difference, so it should be proper
-        information = information + np.abs(organismsMetrics + (-1*getMetrics(org)))
+        taskCounts = taskCounts + np.abs(organismsTasks + (-1*getTasks(org)))
     
-    return information
+    if(np.sum(taskCounts) > 0):
+        return True
+    else:
+        return False
 
-def getCodingSites(replicateData):
-    datFileContents = getOrganisms(replicateData)
-    (organisms,analyzedOrganism) = (datFileContents[:-1],datFileContents[-1])
+def retrieveCodingSites(runDir):
+    f = open(os.path.join(runDir,'data/codingSites.txt'),'r')
+    codingSites = f.readlines()[0].split(',')
+    codingSites.pop()
 
-    #Next step: add Avida Parameters and Replicate ID
+    for k, site in enumerate(codingSites):
+        codingSites[k] = int(site)
+    codingSites = np.array(codingSites)
+    f.close()
 
-    organismsMetrics = getMetrics(analyzedOrganism)
-    codingSites = np.zeros(organismsMetrics.size)
-    for org in organisms:
-        #Note that the absolute value is only being taken of the difference, so it should be proper
-        comparedMetrics = getMetrics(org)
-        codingSitesPresent = [1 if (organismsMetrics[k] - comparedMetrics[k]) != 0 else 0 for k in range(0,organismsMetrics.size)]
-        codingSites = codingSites + np.array(codingSitesPresent)
+def filterNonCodingSites(codingSites, runDir):
+    genomeLength = getLength(runDir)
+
+    possibleIndices = np.arange(genomeLength)
     
-    return codingSites
+    nonCodingIndices = [idx for idx in possibleIndices if idx not in codingSites]
+    return nonCodingIndices
 
-def getLength(replicateData):
+def getLength(runDir):
+    replicateData = os.path.join(runDir, 'data/detail_MostNumerous.dat')
     datFileContents = getOrganisms(replicateData)
     analyzedOrganism = datFileContents[-1]
     
-    length = int(analyzedOrganism.split()[-1])
+    #-2 is used here because the length is being pulled from the MostNumerous.dat file in which the length is second-to-last
+    length = int(analyzedOrganism.split()[-2])
     return length
 
 def informAndMakeTidy(treatmentArray, useCodingSites = True):
     with open('FinalDominantInfo.csv', mode='w') as tidyDat:
 
         data_writer = csv.writer(tidyDat, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-        data_writer.writerow(['Treatment',"COPY_MUT_PROB","COPY_INS_PROB","COPY_DEL_PROB","DIVIDE_INS_PROB","DIVIDE_DEL_PROB","DIVIDE_SLIP_PROB","SLIP_FILL_MODE",'Replicate #','Length','Task Coding Sites Average','Task Coding Sites Standard Deviation','Information Type','Information','Information Concentration'])
+        data_writer.writerow(['Treatment',"COPY_MUT_PROB","COPY_INS_PROB","COPY_DEL_PROB","DIVIDE_INS_PROB","DIVIDE_DEL_PROB","DIVIDE_SLIP_PROB","SLIP_FILL_MODE",'Replicate #','Length', 'Number of Coding Sites', 'Fraction of Redundant Non-Coding Sites'])
 
         for treatment in treatmentArray:
             treatmentName = treatment.treatmentName
             print(treatmentName)
-            
-            for runDir in treatment.runDirectories:
-                createDatAnalyzeCfg(runDir)
-                executeInfoAnalysis(runDir)
                 
-            
-            treatmentData = []
             for runDir in treatment.runDirectories:
-                treatmentData.append(os.path.join(runDir,"data/detail_Org0FitnessDifferences.dat"))
+                #Get contents of run directory
+                runDirContents = os.listdir(runDir)
+                #Filter out the dat files from the double knockout generator
+                nonCodingSiteDatList = [file for file in runDirContents if "detail_Org" in file]
+                #Get back redundancy result
+                redundantSites = 0
+                for siteFile in nonCodingSiteDatList:
+                    if(isSiteRedundant(siteFile)):
+                        redundantSites+=1
+                
+                #Normalize number of redundant non-coding sites by total number of non-coding sites
+                codingSites = retrieveCodingSites(runDir)
+                nonCodingSites = filterNonCodingSites(codingSites,runDir)
+                nonCodingRedundantFrac = redundantSites/len(nonCodingSites)
+                
+                length = getLength(runDir)
 
-            for replicateData in treatmentData:
-                information = getCodingSites(replicateData) if useCodingSites else getInformation(replicateData)
-                length = getLength(replicateData)
-                (averageTaskCodingSites, stDevTaskCodingSites) = getTaskCodingSitesMetrics(replicateData)
                 runName = None
-                for folderName in replicateData.split('/'):
+                for folderName in runDir.split('/'):
                     if 'run_' not in folderName:
                         continue
                     else:
                         runName = folderName
                 runParts = runName.split('_')
                 runNum = runParts[-1]
-                infoTypes = getDatFileHeaders(replicateData)
                 params = treatmentParameters[treatmentName]
-                for k,type in enumerate(infoTypes):
-                    data_writer.writerow([treatmentName,params[0],params[1],params[2],params[3],params[4],params[5],params[6],runNum,length, averageTaskCodingSites,stDevTaskCodingSites, type,information[k],information[k]/length])
+                data_writer.writerow([treatmentName,params[0],params[1],params[2],params[3],params[4],params[5],params[6],runNum,length, len(codingSites), nonCodingRedundantFrac])
                 
 
 linDatFile = ".dat"
