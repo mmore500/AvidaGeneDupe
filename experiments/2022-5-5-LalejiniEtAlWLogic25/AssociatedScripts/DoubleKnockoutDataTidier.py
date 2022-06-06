@@ -122,6 +122,7 @@ def retrieveCodingSites(runDir):
         codingSites[k] = int(site)
     codingSites = np.array(codingSites)
     f.close()
+    return codingSites
 
 def filterNonCodingSites(codingSites, runDir):
     genomeLength = getLength(runDir)
@@ -160,7 +161,7 @@ def informAndMakeTidy(treatmentArray, useCodingSites = True):
                 for siteFile in nonCodingSiteDatList:
                     if(isSiteRedundant(siteFile)):
                         redundantSites+=1
-                print(redundantSites)
+                
                 #Normalize number of redundant non-coding sites by total number of non-coding sites
                 codingSites = retrieveCodingSites(runDir)
                 nonCodingSites = filterNonCodingSites(codingSites,runDir)
