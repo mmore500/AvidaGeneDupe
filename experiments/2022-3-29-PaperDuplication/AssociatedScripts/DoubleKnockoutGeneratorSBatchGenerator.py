@@ -57,16 +57,19 @@ class sBatchFileArchetype():
                 'RUN_DIR=${OUTPUT_DIR}/run_${SEED}\n\n',
                 'cd ${RUN_DIR}\n\n',
                 "#Don't use the asterisk: actually write everything out so you know what you're working with!\n\n",
+                'pwd\n\n',
                 'cp ${CONFIG_DIR}/avida .\n',
                 'cp ${CONFIG_DIR}/avida.cfg .\n',
                 'cp ${CONFIG_DIR}/default-heads.org .\n',
                 'cp ${CONFIG_DIR}/environment.cfg .\n',
                 'cp ${CONFIG_DIR}/events.cfg .\n',
                 'cp ${CONFIG_DIR}/instset-heads___sensors_NONE.cfg .\n',
-                'cp ${CONFIG_DIR}/analyze.cfg .\n\n']
+                'cp ${CONFIG_DIR}/analyze.cfg .\n\n',
+                'cd ${RUN_DIR}\n\n',
+                "#Don't use the asterisk: actually write everything out so you know what you're working with!\n\n",
+                'pwd\n\n',]
         
         runPythonScript = ['cp /home/${USERNAME}/AvidaGeneDupe/experiments/${EXPERIMENT_ID}/AssociatedScripts/DoubleKnockoutGeneratorRunByRunHPCCCopy.py ${RUN_DIR} \n',
-        'pwd\n',
         'python DoubleKnockoutGeneratorRunByRunHPCCCopy.py\n\n']
         
         with open('{}-{}DoubleKnockout.sh'.format(self.date,treatment.name),'w') as f:
