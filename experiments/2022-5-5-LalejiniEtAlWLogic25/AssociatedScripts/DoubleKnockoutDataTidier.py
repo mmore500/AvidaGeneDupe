@@ -136,7 +136,6 @@ def filterNonCodingSites(codingSites, runDir):
     genomeLength = getLength(runDir)
 
     possibleIndices = np.arange(genomeLength)
-    print(type(codingSites))
     nonCodingIndices = [idx for idx in possibleIndices if idx not in codingSites]
     return nonCodingIndices
 
