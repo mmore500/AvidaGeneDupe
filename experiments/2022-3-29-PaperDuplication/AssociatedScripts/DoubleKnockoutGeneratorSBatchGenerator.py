@@ -66,7 +66,7 @@ class sBatchFileArchetype():
                 'cp ${CONFIG_DIR}/analyze.cfg .\n\n']
         
         runPythonScript = ['cp /home/${USERNAME}/AvidaGeneDupe/experiments/${EXPERIMENT_ID}/AssociatedScripts/DoubleKnockoutGeneratorRunByRunHPCCCopy.py ${RUN_DIR} \n',
-        'pwd',
+        'pwd\n',
         'python DoubleKnockoutGeneratorRunByRunHPCCCopy.py\n\n']
         
         with open('{}-{}DoubleKnockout.sh'.format(self.date,treatment.name),'w') as f:
