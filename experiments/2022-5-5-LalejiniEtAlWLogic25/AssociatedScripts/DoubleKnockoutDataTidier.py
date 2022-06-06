@@ -127,19 +127,17 @@ def filterNonCodingSites(codingSites, runDir):
     genomeLength = getLength(runDir)
 
     possibleIndices = np.arange(genomeLength)
-    print(type(possibleIndices))
+    print(type(codingSites))
     nonCodingIndices = [idx for idx in possibleIndices if idx not in codingSites]
     return nonCodingIndices
 
 def getLength(runDir):
-    print(runDir)
     replicateData = os.path.join(runDir, 'data/detail_MostNumerous.dat')
     datFileContents = getOrganisms(replicateData)
     analyzedOrganism = datFileContents[-1]
     
     #-2 is used here because the length is being pulled from the MostNumerous.dat file in which the length is second-to-last
     length = int(analyzedOrganism.split()[-2])
-    print(length)
     return length
 
 def informAndMakeTidy(treatmentArray, useCodingSites = True):
@@ -162,7 +160,7 @@ def informAndMakeTidy(treatmentArray, useCodingSites = True):
                 for siteFile in nonCodingSiteDatList:
                     if(isSiteRedundant(siteFile)):
                         redundantSites+=1
-                
+                print(redundantSites)
                 #Normalize number of redundant non-coding sites by total number of non-coding sites
                 codingSites = retrieveCodingSites(runDir)
                 nonCodingSites = filterNonCodingSites(codingSites,runDir)
