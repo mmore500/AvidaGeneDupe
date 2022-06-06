@@ -30,6 +30,14 @@ for subdir in os.listdir(dataDir):
         continue
     elif 'Test-Job' in subdir:
         continue
+    elif 'Slip-NOP' in subdir:
+        continue
+    elif 'Slip-random' in subdir:
+        continue
+    elif 'Slip-scatter' in subdir:
+        continue
+    elif 'High-Mutation' in subdir:
+        continue
     treatment = Treatment(os.path.join(dataDir,subdir))
     Treatments.append(treatment)
 
