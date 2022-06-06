@@ -80,20 +80,21 @@ class sBatchFileArchetype():
         print('Finished writing {}-{}DoubleKnockout.sh'.format(self.date,treatment.name))
 
 Treatments = []
+baseline = Treatment('Baseline-Treatment',[0.0025,0,0,0.05,0.05,0,0])
+Treatments.append(baseline)
+highMut = Treatment('High-Mutation',[0.0025,0.0075,0.0075,0.05,0.05,0.05,0])
+Treatments.append(highMut)
 slipDupe = Treatment('Slip-duplicate',[0.0025,0,0,0.05,0.05,0.05,0])
 Treatments.append(slipDupe)
-slipScramble = Treatment('Slip-scramble',[0.0025,0,0,0.05,0.05,0.05,3])
-Treatments.append(slipScramble)
 slipNOP = Treatment('Slip-NOP',[0.0025,0,0,0.05,0.05,0.05,1])
 Treatments.append(slipNOP)
 slipRandom = Treatment('Slip-random',[0.0025,0,0,0.05,0.05,0.05,2])
 Treatments.append(slipRandom)
 slipScatter = Treatment('Slip-scatter',[0.0025,0,0,0.05,0.05,0.05,5])
 Treatments.append(slipScatter)
-baseline = Treatment('Baseline-Treatment',[0.0025,0,0,0.05,0.05,0,0])
-Treatments.append(baseline)
-highMut = Treatment('High-Mutation',[0.0025,0.0075,0.0075,0.05,0.05,0.05,0])
-Treatments.append(highMut)
+slipScramble = Treatment('Slip-scramble',[0.0025,0,0,0.05,0.05,0.05,3])
+Treatments.append(slipScramble)
+
 
 LalejiniEtAlRemix = sBatchFileArchetype('clhaynes','2022-3-29',experimentID,30,"00-04:00:00",'zamanlh1')
 for k,treat in enumerate(Treatments):
