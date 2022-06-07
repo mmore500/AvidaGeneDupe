@@ -149,10 +149,16 @@ def executeInfoAnalysis(runDir):
     os.system('rm events.cfg')
     os.system('rm instset-heads___sensors_NONE.cfg')
 
+def getLength(replicateData):
+    datFileContents = getOrganisms(replicateData)
+    analyzedOrganism = datFileContents[-1]
+    
+    length = int(analyzedOrganism.split()[-1])
+    return length
 
 def getTasks(organismString):
     analyzeOutputs = organismString.split()
-    
+
     tasks = list(analyzeOutputs[0])
     for k,task in enumerate(tasks):
         tasks[k] = int(task)
@@ -166,20 +172,33 @@ def getTaskCodingSitesOverRun(replicateData):
     #Next step: add Avida Parameters and Replicate ID
 
     organismsTasks = getTasks(analyzedOrganism)
-    codingSites = []
+
+    genomeLength = getLength(replicateData)
+
+    codingSites = np.zeros((genomeLength,len(organismsTasks)))
     for idx, org in enumerate(organisms):
         #Note that the absolute value is only being taken of the difference, so it should be proper
         
         comparison = np.abs(organismsTasks - getTasks(org))
-        if(np.sum(comparison) != 0):
-            codingSites.append(idx)
+        codingSites[idx,:] = comparison
+
     return codingSites
 
 def writeTaskCodingSites(runDir,codingSites):
     writeDirectory = os.path.join(runDir,"data/codingSites.txt")
     with open(writeDirectory,'w') as f:
-        for site in codingSites:
-            f.write('{},'.format(site))
+        lengthOfGenome = codingSites.shape[0]
+        codingSitesToWrite = []
+        
+        for j in range(codingSites.shape[1]):
+            possibleSites = np.arange(lengthOfGenome)
+            sitesOfCoding = np.where(codingSites[:,j] > 0)
+            codingSitesToWrite.append(possibleSites[sitesOfCoding])
+
+        for k, blank in enumerate(codingSitesToWrite):
+            for site in codingSitesToWrite[k]:
+                f.write('{},'.format(site))
+            f.write('\n')
 
 def writeExperimentTaskCodingSites(treatmentArray):
     for treatment in treatmentArray:

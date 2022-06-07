@@ -89,26 +89,13 @@ def knockItOut(genomeString,instructionIndex):
 
 def knockoutDatGenome(runDir,genome,orgCount, doubleKnockoutPrep = False):
     knuckOutGenomes = []
-    f = open(os.path.join(runDir,'data/codingSites.txt'),'r')
-    codingSites = f.readlines()[0].split(',')
-    codingSites.pop()
-
-    for k, site in enumerate(codingSites):
-        codingSites[k] = int(site)
-    codingSites = np.array(codingSites)
-    f.close()
-
-    possibleIndices = np.arange(len(genome))
-    
-    nonCodingIndices = [idx for idx in possibleIndices if idx not in codingSites]
-    
     if(doubleKnockoutPrep):
-        for instructionIndex in nonCodingIndices:
+        for instructionIndex in np.arange(len(genome)):
             knuckOutGenome = knockItOut(genome,instructionIndex)
             knuckOutGenomes.append(knuckOutGenome + '\n')   
             
     else:
-        for instructionIndex in nonCodingIndices:
+        for instructionIndex in np.arange(len(genome)):
             knuckOutGenome = knockItOut(genome,instructionIndex)   
             knuckOutGenomes.append('LOAD_SEQUENCE ' + knuckOutGenome + '\n')
     
