@@ -7,7 +7,7 @@ stream = os.popen('pwd')
 pwd = stream.read().rstrip()
 runDir = pwd
 
-experimentName = pwd.split('/')[-2]
+experimentName = pwd.split('/')[-3]
 
 #Use r"Path" to avoid any problems from special characters
 def getOrganisms(filePath):
