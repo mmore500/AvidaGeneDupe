@@ -162,10 +162,10 @@ def informAndMakeTidy(treatmentArray, useCodingSites = True):
                 #Get contents of run directory
                 runDirContents = os.listdir(runDir)
                 #Filter out the dat files from the double knockout generator
-                nonCodingSiteDatList = [file for file in runDirContents if "detail_Org" in file]
+                genomeSiteDatList = [file for file in runDirContents if "detail_Org" in file]
                 #Get back redundancy result
-                redundantSites = 0
-                for siteFile in nonCodingSiteDatList:
+                redundantSites = 
+                for siteFile in genomeSiteDatList:
                     if(isSiteRedundant(siteFile)):
                         redundantSites+=1
                 
