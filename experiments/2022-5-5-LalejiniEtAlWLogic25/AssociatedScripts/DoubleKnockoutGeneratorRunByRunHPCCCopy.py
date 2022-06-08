@@ -60,7 +60,7 @@ def knockoutDatGenome(runDir,genome,orgCount, doubleKnockoutPrep = False):
     
     else:
         knuckOutGenomes.append('LOAD_SEQUENCE ' + genome + '\n')
-        configFile = open(os.path.join(runDir,'data/informationAnalyzer.cfg'),'a')
+        configFile = open(os.path.join(runDir,'data/doubleKnockoutInformationAnalyzer.cfg'),'a')
         configFile.write('SET_BATCH {} \n\n'.format(orgCount))
         configFile.writelines(knuckOutGenomes)
         configFile.write('RECALC\n\n')
