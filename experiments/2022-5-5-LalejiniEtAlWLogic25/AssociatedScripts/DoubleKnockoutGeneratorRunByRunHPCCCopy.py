@@ -110,14 +110,7 @@ def createDatDoubleKnockoutAnalyzeCfg(runDir):
         knockoutDatFile(runDir)
 
 def executeInfoAnalysis(runDir):
-    configDir = os.path.join("~/AvidaGeneDupe/experiments/","{}/hpcc/config".format(experimentName))
-    os.system("cp ~/AvidaGeneDupe/avida/cbuild/work/avida {}".format(runDir))
     os.chdir(runDir)
-    os.system('cp {}/avida.cfg .'.format(configDir)) 
-    os.system('cp {}/default-heads.org .'.format(configDir))
-    os.system('cp {}/environment.cfg .'.format(configDir))
-    os.system('cp {}/events.cfg .'.format(configDir))
-    os.system('cp {}/instset-heads___sensors_NONE.cfg .'.format(configDir))
     os.system("./avida -set ANALYZE_FILE data/informationAnalyzer.cfg -a > analyze.log")
     os.system('rm avida')
     os.system('rm avida.cfg')
