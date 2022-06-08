@@ -64,7 +64,7 @@ def knockoutDatGenome(runDir,genome,orgCount, doubleKnockoutPrep = False):
         configFile.write('SET_BATCH {} \n\n'.format(orgCount))
         configFile.writelines(knuckOutGenomes)
         configFile.write('RECALC\n\n')
-        configFile.write('DETAIL detail_Org{}FitnessDifferences.dat task_list gest_time comp_merit merit fitness efficiency viable length\n\n'.format(orgCount))
+        configFile.write('DETAIL detail_DoubleOrg{}FitnessDifferences.dat task_list gest_time comp_merit merit fitness efficiency viable length\n\n'.format(orgCount))
         configFile.close()
         
         
@@ -92,7 +92,7 @@ def knockoutDatFile(runDir, doubleKnockoutPrep = False):
 
 def createDatDoubleKnockoutAnalyzeCfg(runDir):
         datDir = os.path.join(runDir,"data")
-        configFile = os.path.join(datDir,'informationAnalyzer.cfg')
+        configFile = os.path.join(datDir,'doubleKnockoutInformationAnalyzer.cfg')
         f = open(configFile,'w')
         preamble = ['################################################################################################\n',
                     '# This file is used to setup avida when it is in analysis-only mode, which can be triggered by\n'
@@ -111,7 +111,7 @@ def createDatDoubleKnockoutAnalyzeCfg(runDir):
 
 def executeInfoAnalysis(runDir):
     os.chdir(runDir)
-    os.system("./avida -set ANALYZE_FILE data/informationAnalyzer.cfg -a > analyze.log")
+    os.system("./avida -set ANALYZE_FILE data/doubleKnockoutInformationAnalyzer.cfg -a > doubleKnockoutAnalyze.log")
     os.system('rm avida')
     os.system('rm avida.cfg')
     os.system('rm default-heads.org')
