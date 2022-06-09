@@ -43,13 +43,11 @@ def knockoutDatGenome(runDir,genome,orgCount, doubleKnockoutPrep = False):
     
     if(doubleKnockoutPrep):
         for instructionIndex in np.arange(len(genome)):
-            print(len(genome))
             knuckOutGenome = knockItOut(genome,instructionIndex)
             knuckOutGenomes.append(knuckOutGenome + '\n')   
             
     else:
         for instructionIndex in np.arange(len(genome)):
-            print(len(genome))
             knuckOutGenome = knockItOut(genome,instructionIndex)   
             knuckOutGenomes.append('LOAD_SEQUENCE ' + knuckOutGenome + '\n')
     
