@@ -42,7 +42,7 @@ class sBatchFileArchetype():
                  '#SBATCH --mail-user={}@umich.edu\n'.format(self.username),
                  '#SBATCH --nodes=1\n',
                  '#SBATCH --ntasks-per-node=1\n',
-                 '#SBATCH --mem=4g\n',
+                 '#SBATCH --mem=8g\n',
                  '#SBATCH --time={}\n'.format(self.time),
                  '#SBATCH --account={}\n'.format(self.account),
                  '#SBATCH --array=1-{}\n\n'.format(self.arrayLength)]
