@@ -129,7 +129,7 @@ def retrieveCodingSites(runDir):
 
     codingSites = []
 
-    for k,line in codingSiteLines:
+    for k,line in enumerate(codingSiteLines):
         codingSiteLines[k] = [int(site) for site in line]
         codingSites.append(np.array(codingSiteLines[k]))
     f.close()
