@@ -123,20 +123,25 @@ def isSiteRedundant(nonCodingSiteData):
 
 def retrieveCodingSites(runDir):
     f = open(os.path.join(runDir,'data/codingSites.txt'),'r')
-    codingSites = f.readlines()[0].split(',')
-    codingSites.pop()
+    codingSiteLines = f.readlines()
+    for j,line in enumerate(codingSiteLines):
+        codingSiteLines[j] = line.rstrip().split(',')
 
-    for k, site in enumerate(codingSites):
-        codingSites[k] = int(site)
-    codingSites = np.array(codingSites)
+    codingSites = []
+
+    for k,line in codingSiteLines:
+        codingSiteLines[k] = [int(site) for site in line]
+        codingSites.append(np.array(codingSiteLines[k]))
     f.close()
     return codingSites
 
 def filterNonCodingSites(codingSites, runDir):
     genomeLength = getLength(runDir)
-
     possibleIndices = np.arange(genomeLength)
-    nonCodingIndices = [idx for idx in possibleIndices if idx not in codingSites]
+
+    nonCodingIndices = []
+    for taskSites in codingSites:
+        nonCodingIndices.append(np.array([idx for idx in possibleIndices if idx not in taskSites]))
     return nonCodingIndices
 
 def getLength(runDir):
@@ -162,18 +167,27 @@ def informAndMakeTidy(treatmentArray, useCodingSites = True):
                 #Get contents of run directory
                 runDirContents = os.listdir(runDir)
                 #Filter out the dat files from the double knockout generator
-                genomeSiteDatList = [file for file in runDirContents if "detail_Org" in file]
+                genomeSiteDatList = [file for file in runDirContents if "detail_DoubleOrg" in file]
                 #Get back redundancy result
-                redundantSites = 
+                
+                exampleOrganism = getOrganisms(os.path.join(runDir,'data/detail_DoubleOrg0FitnessDifferences.dat'))[-1]
+                organismTasks = getTasks(exampleOrganism)
+                taskCount = len(organismTasks)
+
+                redundantSites = np.zeros(taskCount)
                 for siteFile in genomeSiteDatList:
-                    if(isSiteRedundant(siteFile)):
-                        redundantSites+=1
+                    for k in np.arange(taskCount):
+                        if(isSiteRedundant(siteFile,k)):
+                            redundantSites[k]= redundantSites[k] + 1
                 
                 #Normalize number of redundant non-coding sites by total number of non-coding sites
                 codingSites = retrieveCodingSites(runDir)
                 nonCodingSites = filterNonCodingSites(codingSites,runDir)
-                nonCodingRedundantFrac = redundantSites/len(nonCodingSites)
-                
+
+                nonCodingRedundantFrac = np.arange(taskCount)
+                for j in np.arange(taskCount):
+                    nonCodingRedundantFrac[k] = redundantSites[k]/len(nonCodingSites[k])
+
                 length = getLength(runDir)
 
                 runName = None
@@ -185,7 +199,7 @@ def informAndMakeTidy(treatmentArray, useCodingSites = True):
                 runParts = runName.split('_')
                 runNum = runParts[-1]
                 params = treatmentParameters[treatmentName]
-                data_writer.writerow([treatmentName,params[0],params[1],params[2],params[3],params[4],params[5],params[6],runNum,length, len(codingSites), nonCodingRedundantFrac])
+                data_writer.writerow([treatmentName,params[0],params[1],params[2],params[3],params[4],params[5],params[6],runNum,length, len(codingSites), np.sum(nonCodingRedundantFrac)/taskCount])
                 
 
 linDatFile = ".dat"
