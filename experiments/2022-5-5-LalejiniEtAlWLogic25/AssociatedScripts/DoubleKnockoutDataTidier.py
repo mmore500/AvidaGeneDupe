@@ -104,19 +104,19 @@ def getTasks(organismString):
 
     return np.array(tasks)
 
-def isSiteRedundant(nonCodingSiteData):
+def isSiteRedundant(nonCodingSiteData,k):
     siteDatFileContents = getOrganisms(nonCodingSiteData)
     (organisms,analyzedOrganism) = (siteDatFileContents[:-1],siteDatFileContents[-1])
 
     #Next step: add Avida Parameters and Replicate ID
 
     organismsTasks = getTasks(analyzedOrganism)
-    taskCounts = np.zeros(organismsTasks.size)
+    taskCounts = 0
     for org in organisms:
         #Note that the absolute value is only being taken of the difference, so it should be proper
-        taskCounts = taskCounts + np.abs(organismsTasks + (-1*getTasks(org)))
+        taskCounts = taskCounts + np.abs(organismsTasks + (-1*getTasks(org)))[k]
     
-    if(np.sum(taskCounts) > 0):
+    if(taskCounts > 0):
         return True
     else:
         return False
