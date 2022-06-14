@@ -181,6 +181,7 @@ def informAndMakeTidy(treatmentArray, useCodingSites = True):
                 taskCount = len(organismTasks)
 
                 redundantSites = np.zeros(taskCount)
+                
                 for siteFile in genomeSiteDatList:
                     for k in np.arange(taskCount):
                         if(isSiteRedundant(siteFile,k)):
@@ -190,7 +191,8 @@ def informAndMakeTidy(treatmentArray, useCodingSites = True):
                 codingSites = retrieveCodingSites(runDir)
                 nonCodingSites = filterNonCodingSites(codingSites,runDir)
 
-                nonCodingRedundantFrac = np.arange(taskCount)
+                #I'm trying to see if my testbed actually functioned, so this shouldn't be permanent
+                nonCodingRedundantFrac = np.zeros(taskCount)
                 for j in np.arange(taskCount):
                     nonCodingRedundantFrac[j] = redundantSites[j]/len(nonCodingSites[j])
 

@@ -16,7 +16,7 @@ stream = os.popen('pwd')
 pwd = stream.read().rstrip()
 experimentDir = pwd
 dataDir = pwd
-experimentName = os.path.join(pwd.split('/')[-2],pwd.split('/')[-1])
+experimentName = pwd.split('/')[-1]
 
 
 class Treatment():
@@ -181,6 +181,7 @@ def informAndMakeTidy(treatmentArray, useCodingSites = True):
                 taskCount = len(organismTasks)
 
                 redundantSites = np.zeros(taskCount)
+
                 for siteFile in genomeSiteDatList:
                     for k in np.arange(taskCount):
                         if(isSiteRedundant(siteFile,k)):
