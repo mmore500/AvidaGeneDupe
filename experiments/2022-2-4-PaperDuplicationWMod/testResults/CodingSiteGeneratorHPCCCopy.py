@@ -16,7 +16,7 @@ stream = os.popen('pwd')
 pwd = stream.read().rstrip()
 experimentDir = pwd
 dataDir = pwd
-experimentName = pwd.split('/')[-1]
+experimentName = os.path.join(pwd.split('/')[-2],pwd.split('/')[-1])
 
 
 class Treatment():
@@ -31,6 +31,8 @@ for subdir in os.listdir(dataDir):
     elif 'Test-Job' in subdir:
         continue
     elif 'hpcc' in subdir:
+        continue
+    elif 'experimentName' in subdir:
         continue
     treatment = Treatment(os.path.join(dataDir,subdir))
     Treatments.append(treatment)
@@ -135,9 +137,18 @@ def createDatAnalyzeCfg(runDir):
         knockoutDatFile(datFile,f)
 
 def executeInfoAnalysis(runDir):
-    configDir = os.path.join("~/AvidaGeneDupe/experiments/","{}/hpcc/config".format(experimentName))
-    os.system("cp ~/AvidaGeneDupe/avida/cbuild/work/avida {}".format(runDir))
+    stream = os.popen('uname')
+    systemName = stream.read().rstrip()
+    if systemName == "Darwin":
+        preamble = "/Users/cameronhaynes/Documents/VSCodeGitProjects/AvidaGeneDupe"
+    elif systemName == "Linux":
+        preamble = "~/AvidaGeneDupe"
+
+    configDir = os.path.join(os.path.join(preamble,"experiments"),"{}/hpcc/config".format(experimentName))
+    
+    os.system("cp {} {}".format(os.path.join(preamble,'avida/cbuild/work/avida'),runDir))
     os.chdir(runDir)
+    
     os.system('cp {}/avida.cfg .'.format(configDir)) 
     os.system('cp {}/default-heads.org .'.format(configDir))
     os.system('cp {}/environment.cfg .'.format(configDir))
@@ -151,10 +162,16 @@ def executeInfoAnalysis(runDir):
     os.system('rm events.cfg')
     os.system('rm instset-heads___sensors_NONE.cfg')
 
+def getLength(replicateData):
+    datFileContents = getOrganisms(replicateData)
+    analyzedOrganism = datFileContents[-1]
+    
+    length = int(analyzedOrganism.split()[-1])
+    return length
 
 def getTasks(organismString):
     analyzeOutputs = organismString.split()
-    
+
     tasks = list(analyzeOutputs[0])
     for k,task in enumerate(tasks):
         tasks[k] = int(task)
@@ -168,28 +185,33 @@ def getTaskCodingSitesOverRun(replicateData):
     #Next step: add Avida Parameters and Replicate ID
 
     organismsTasks = getTasks(analyzedOrganism)
-    codingSites = []
-    for k, org in enumerate(organisms):
+
+    genomeLength = getLength(replicateData)
+
+    codingSites = np.zeros((genomeLength,len(organismsTasks)))
+    for idx, org in enumerate(organisms):
         #Note that the absolute value is only being taken of the difference, so it should be proper
-        same = 1
-        for k in np.arange(organismsTasks.size):
-            localTasks = getTasks(org)
-            if organismsTasks[k] == localTasks[k]:
-                same*=1
-            else:
-                same*=0
-        if(same == 0):
-            codingSites.append(k)
-        else:
-            continue
+        
+        comparison = np.abs(organismsTasks - getTasks(org))
+        codingSites[idx,:] = comparison
 
     return codingSites
 
 def writeTaskCodingSites(runDir,codingSites):
     writeDirectory = os.path.join(runDir,"data/codingSites.txt")
     with open(writeDirectory,'w') as f:
-        for site in codingSites:
-            f.write('{},'.format(site))
+        lengthOfGenome = codingSites.shape[0]
+        codingSitesToWrite = []
+        
+        for j in range(codingSites.shape[1]):
+            possibleSites = np.arange(lengthOfGenome)
+            sitesOfCoding = np.where(codingSites[:,j] > 0)
+            codingSitesToWrite.append(possibleSites[sitesOfCoding])
+
+        for k, blank in enumerate(codingSitesToWrite):
+            for site in codingSitesToWrite[k]:
+                f.write('{},'.format(site))
+            f.write('\n')
 
 def writeExperimentTaskCodingSites(treatmentArray):
     for treatment in treatmentArray:
@@ -202,9 +224,7 @@ def writeExperimentTaskCodingSites(treatmentArray):
             
         treatmentData = []
         for runDir in treatment.runDirectories:
-            treatmentData.append(os.path.join(runDir,"data/detail_Org0FitnessDifferences.dat"))
-
-        for replicateData in treatmentData:
+            replicateData = os.path.join(runDir,"data/detail_Org0FitnessDifferences.dat")
             taskCodingSites = getTaskCodingSitesOverRun(replicateData)
             writeTaskCodingSites(runDir,taskCodingSites)
 

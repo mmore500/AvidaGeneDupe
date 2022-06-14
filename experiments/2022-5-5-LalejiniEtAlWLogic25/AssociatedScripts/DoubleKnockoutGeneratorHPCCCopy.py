@@ -156,8 +156,16 @@ def createDatDoubleKnockoutAnalyzeCfg(runDir):
         knockoutDatFile(runDir)
 
 def executeInfoAnalysis(runDir):
-    configDir = os.path.join("~/AvidaGeneDupe/experiments/","{}/hpcc/config".format(experimentName))
-    os.system("cp ~/AvidaGeneDupe/avida/cbuild/work/avida {}".format(runDir))
+    stream = os.popen('uname')
+    systemName = stream.read().rstrip()
+    if systemName == "Darwin":
+        preamble = "/Users/cameronhaynes/Documents/VSCodeGitProjects/AvidaGeneDupe"
+    elif systemName == "Linux":
+        preamble = "~/AvidaGeneDupe"
+
+    configDir = os.path.join(os.path.join(preamble,"experiments"),"{}/hpcc/config".format(experimentName))
+    
+    os.system("cp {} {}".format(os.path.join(preamble,'avida/cbuild/work/avida'),runDir))
     os.chdir(runDir)
     os.system('cp {}/avida.cfg .'.format(configDir)) 
     os.system('cp {}/default-heads.org .'.format(configDir))
