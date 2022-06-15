@@ -191,7 +191,7 @@ def informAndMakeTidy(treatmentArray, useCodingSites = True):
                 codingSites = retrieveCodingSites(runDir)
                 nonCodingSites = filterNonCodingSites(codingSites,runDir)
 
-                nonCodingRedundantFrac = np.arange(taskCount)
+                nonCodingRedundantFrac = np.zeros(taskCount)
                 for j in np.arange(taskCount):
                     nonCodingRedundantFrac[j] = redundantSites[j]/len(nonCodingSites[j])
 

@@ -1,5 +1,5 @@
 Treatment,COPY_MUT_PROB,COPY_INS_PROB,COPY_DEL_PROB,DIVIDE_INS_PROB,DIVIDE_DEL_PROB,DIVIDE_SLIP_PROB,SLIP_FILL_MODE,Replicate #,Length,Fraction of Redundant Non-Coding Sites
-Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1095,116,0.113402061856
-Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1035,114,1.36547707557
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1095,115,98.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1035,114,886.0
 Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1075,100,0.0
-Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1055,116,0.206594071385
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1055,115,200.0

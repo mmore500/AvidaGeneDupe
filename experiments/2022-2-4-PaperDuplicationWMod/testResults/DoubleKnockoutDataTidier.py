@@ -181,11 +181,11 @@ def informAndMakeTidy(treatmentArray, useCodingSites = True):
                 taskCount = len(organismTasks)
 
                 redundantSites = np.zeros(taskCount)
-                
                 for siteFile in genomeSiteDatList:
                     for k in np.arange(taskCount):
                         if(isSiteRedundant(siteFile,k)):
                             redundantSites[k]= redundantSites[k] + 1
+    
                 
                 #Normalize number of redundant non-coding sites by total number of non-coding sites
                 codingSites = retrieveCodingSites(runDir)
@@ -194,7 +194,7 @@ def informAndMakeTidy(treatmentArray, useCodingSites = True):
                 #I'm trying to see if my testbed actually functioned, so this shouldn't be permanent
                 nonCodingRedundantFrac = np.zeros(taskCount)
                 for j in np.arange(taskCount):
-                    nonCodingRedundantFrac[j] = redundantSites[j]/len(nonCodingSites[j])
+                    nonCodingRedundantFrac[j] = redundantSites[j] #/len(nonCodingSites[j])
 
                 length = getLength(runDir)
 
@@ -207,7 +207,7 @@ def informAndMakeTidy(treatmentArray, useCodingSites = True):
                 runParts = runName.split('_')
                 runNum = runParts[-1]
                 params = treatmentParameters[treatmentName]
-                data_writer.writerow([treatmentName,params[0],params[1],params[2],params[3],params[4],params[5],params[6],runNum,length, np.sum(nonCodingRedundantFrac)/taskCount])
+                data_writer.writerow([treatmentName,params[0],params[1],params[2],params[3],params[4],params[5],params[6],runNum,length, np.sum(nonCodingRedundantFrac)])
                 
 
 linDatFile = ".dat"
