@@ -20,5 +20,5 @@ cd ${INPUT_DIR}
 #Don't use the asterisk: actually write everything out so you know what you're working with!
 
 cp /home/${USERNAME}/AvidaGeneDupe/experiments/${EXPERIMENT_ID}/AssociatedScripts/DoubleKnockoutDataTidier.py ${INPUT_DIR} 
-python DoubleKnockoutDataTidier.py
+python DoubleKnockoutDataTidier.py > pythonOutput.log
 
