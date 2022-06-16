@@ -108,7 +108,7 @@ def getTasks(organismString):
 
     return np.array(tasks)
 
-def isSiteRedundant(nonCodingSiteData,k):
+def isSiteRedundant(codingSites,nonCodingSiteData,siteNum,k):
     siteDatFileContents = getOrganisms(nonCodingSiteData)
     (organisms,analyzedOrganism) = (siteDatFileContents[:-1],siteDatFileContents[-1])
 
@@ -116,6 +116,12 @@ def isSiteRedundant(nonCodingSiteData,k):
 
     organismsTasks = getTasks(analyzedOrganism)
     taskCounts = 0
+
+    taskCodingSites = codingSites[k]
+
+    if siteNum in taskCodingSites:
+        return False
+
     for org in organisms:
         #Note that the absolute value is only being taken of the difference, so it should be proper
         taskCounts = taskCounts + np.abs(organismsTasks[k] + (-1*getTasks(org)[k]))
@@ -180,16 +186,18 @@ def informAndMakeTidy(treatmentArray, useCodingSites = True):
                 organismTasks = getTasks(exampleOrganism)
                 taskCount = len(organismTasks)
 
-                redundantSites = np.zeros(taskCount)
-
-                for siteFile in genomeSiteDatList:
-                    for k in np.arange(taskCount):
-                        if(isSiteRedundant(siteFile,k)):
-                            redundantSites[k]= redundantSites[k] + 1
-                
-                #Normalize number of redundant non-coding sites by total number of non-coding sites
                 codingSites = retrieveCodingSites(runDir)
                 nonCodingSites = filterNonCodingSites(codingSites,runDir)
+
+                redundantSites = np.zeros(taskCount)
+
+                for j,siteFile in enumerate(genomeSiteDatList):
+                    for k in np.arange(taskCount):
+                        if(isSiteRedundant(codingSites,siteFile,j,k)):
+                            redundantSites[k]= redundantSites[k] + 1
+                
+                
+                #Normalize number of redundant non-coding sites by total number of non-coding sites
 
                 nonCodingRedundantFrac = np.zeros(taskCount)
                 for j in np.arange(taskCount):
