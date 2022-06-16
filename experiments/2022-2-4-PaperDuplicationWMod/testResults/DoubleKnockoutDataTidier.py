@@ -122,9 +122,12 @@ def isSiteRedundant(codingSites,nonCodingSiteData,siteNum,k):
     if siteNum in taskCodingSites:
         return False
 
-    for org in organisms:
-        #Note that the absolute value is only being taken of the difference, so it should be proper
-        taskCounts = taskCounts + np.abs(organismsTasks[k] + (-1*getTasks(org)[k]))
+    for i,org in enumerate(organisms):
+        if i in taskCodingSites:
+            continue
+        else:
+            #Note that the absolute value is only being taken of the difference, so it should be proper
+            taskCounts = taskCounts + np.abs(organismsTasks[k] + (-1*getTasks(org)[k]))
     
     if(taskCounts > 0):
         return True
@@ -202,8 +205,6 @@ def informAndMakeTidy(treatmentArray, useCodingSites = True):
                 #I'm trying to see if my testbed actually functioned, so this shouldn't be permanent
                 nonCodingRedundantFrac = np.zeros(taskCount)
                 for j in np.arange(taskCount):
-                    if(len(genomeSiteDatList) <= len(nonCodingSites[j])):
-                        taskCount -= 1
                     nonCodingRedundantFrac[j] = redundantSites[j]/len(nonCodingSites[j])
 
                 length = getLength(runDir)

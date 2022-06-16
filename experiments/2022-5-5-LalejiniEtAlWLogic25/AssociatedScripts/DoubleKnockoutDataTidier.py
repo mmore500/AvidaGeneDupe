@@ -122,10 +122,17 @@ def isSiteRedundant(codingSites,nonCodingSiteData,siteNum,k):
     if siteNum in taskCodingSites:
         return False
 
-    for org in organisms:
-        #Note that the absolute value is only being taken of the difference, so it should be proper
-        taskCounts = taskCounts + np.abs(organismsTasks[k] + (-1*getTasks(org)[k]))
-    
+    #This extracts the value, 0 or 1, of the kth task in the original organism and each knockout
+    #and compares their values. If their values are different, taskCounts is incremented.
+    for i,org in enumerate(organisms):
+        if i in taskCodingSites:
+            continue
+        else:
+            #Note that the absolute value is only being taken of the difference, so it should be proper
+            taskCounts = taskCounts + np.abs(organismsTasks[k] + (-1*getTasks(org)[k]))
+     
+    #Then, if there are any knockouts such that that task doesn't retain the original value,
+    #we know that there is redundancy in that task.
     if(taskCounts > 0):
         return True
     else:
