@@ -9,7 +9,7 @@
 #SBATCH --mem=4g
 #SBATCH --time=00-04:00:00
 #SBATCH --account=zamanlh0
-#SBATCH --array=1-30
+#SBATCH --array=1-1
 
 # -- I like to define helpful variables up top --
 module load gcc/11.2.0
