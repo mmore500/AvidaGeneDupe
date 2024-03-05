@@ -12,6 +12,8 @@
 #SBATCH --array=1-30
 
 # -- I like to define helpful variables up top --
+module load gcc/11.2.0
+
 USERNAME=clhaynes
 EXPERIMENT_ID=2022-3-29-PaperDuplication
 
