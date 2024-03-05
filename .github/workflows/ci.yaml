@@ -11,7 +11,7 @@ on:
 jobs:
   latex:
     name: Latex Build
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     container:
       image: ghcr.io/mmore500/teximage:sha-77b8179
       # github actions requires root to access mounted volumes
