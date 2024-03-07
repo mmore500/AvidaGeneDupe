@@ -1,6 +1,7 @@
 import os
 import csv
 import numpy as np
+import pandas as pd
 
 
 runDirectories = []
@@ -24,11 +25,22 @@ class Treatment():
         self.treatmentDir = treatmentPath
         self.runDirectories = []
         self.treatmentName = self.treatmentDir.split('/')[-1]
+        self.treatmentDataframe = pd.DataFrame(columns = ["Task Coding Sites", "Length"])
 
 for subdir in os.listdir(dataDir):
     if '.' in subdir:
         continue
     elif 'Test-Job' in subdir:
+        continue
+    elif 'Slip-scramble' in subdir:
+        continue
+    elif 'Slip-scatter' in subdir:
+        continue
+    elif 'Slip-NOP' in subdir:
+        continue
+    elif 'Slip-random' in subdir:
+        continue
+    elif 'High-Mutation' in subdir:
         continue
     treatment = Treatment(os.path.join(dataDir,subdir))
     Treatments.append(treatment)
@@ -81,6 +93,15 @@ def getUpdateBorn(organismString):
     analyzeOutputs = organismString.split()
     updateBorn = analyzeOutputs[1]
     return updateBorn
+
+def getLength(runDir):
+    replicateData = os.path.join(runDir, 'data/detail_MostNumerous.dat')
+    datFileContents = getOrganisms(replicateData)
+    analyzedOrganism = datFileContents[-1]
+    
+    #-2 is used here because the length is being pulled from the MostNumerous.dat file in which the length is second-to-last
+    length = int(analyzedOrganism.split()[-2])
+    return length
     
 def knockItOut(genomeString,instructionIndex):
     knuckOutGenome = list(genomeString)
@@ -159,21 +180,46 @@ def getTasks(organismString):
 
     return np.array(tasks)
 
-def getTaskCodingSitesOverRun(replicateData):
+def getTaskCodingSitesOverRun(runDir):
+    replicateData = os.path.join(runDir,"data/detail_Org0FitnessDifferences.dat")
     datFileContents = getOrganisms(replicateData)
-    (organisms,analyzedOrganism) = (datFileContents[:-1],datFileContents[-1])
+    (knockoutOrganisms,analyzedOrganism) = (datFileContents[:-1],datFileContents[-1])
 
     #Next step: add Avida Parameters and Replicate ID
 
     organismsTasks = getTasks(analyzedOrganism)
-    codingSites = []
-    for idx, org in enumerate(organisms):
-        #Note that the absolute value is only being taken of the difference, so it should be proper
+    
+    #codingSites is now a numpy array of boolean values; each row, col corresponds to task, genome site
+    #and gives 1 if coding site, 0 if not
+    codingSites = [[] for k in range(9)]
+
+    for site, knockoutOrg in enumerate(knockoutOrganisms):
+        knockoutOrganismTasks = getTasks(knockoutOrg)
         
-        comparison = np.abs(organismsTasks - getTasks(org))
-        if(np.sum(comparison) != 0):
-            codingSites.append(idx)
+        for j in range(9):
+            if organismsTasks != knockoutOrganismTasks:
+                codingSites[j].append(site)
+
     return codingSites
+
+def writeTaskCodingSitesInPandasDataFrame(treatment, runDir, taskCodingSites):
+    runDirElements = runDir.split('/')
+    runName = runDirElements[-1]
+
+    taskNames = ["NOT",
+                 "NAND",
+                 "AND",
+                 "ORNOT",
+                 "OR",
+                 "ANDNOT",
+                 "NOR",
+                 "XOR",
+                 "EQUALS"]
+
+    genomeLength = getLength(runDir)
+
+    for k in range(9):
+        treatment.treatmentDataframe.loc[f"{runName}," + f"{taskNames[k]}"] = taskCodingSites[k] + [genomeLength]
 
 def writeTaskCodingSites(runDir,codingSites):
     writeDirectory = os.path.join(runDir,"data/codingSites.txt")
@@ -192,14 +238,15 @@ def writeExperimentTaskCodingSites(treatmentArray):
             
         treatmentData = []
         for runDir in treatment.runDirectories:
-            replicateData = os.path.join(runDir,"data/detail_Org0FitnessDifferences.dat")
-            taskCodingSites = getTaskCodingSitesOverRun(replicateData)
-            writeTaskCodingSites(runDir,taskCodingSites)
+            taskCodingSites = getTaskCodingSitesOverRun(runDir)
+            writeTaskCodingSitesInPandasDataFrame(treatment, runDir, taskCodingSites)
 
 linDatFile = ".dat"
 
 writeExperimentTaskCodingSites(Treatments)
 
+for treatment in Treatments:
+    treatment.treatmentDataframe.to_csv(f"{treatment.treatmentName}-TaskCodingSites.csv")
 
 
 
