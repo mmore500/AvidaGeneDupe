@@ -247,6 +247,7 @@ linDatFile = ".dat"
 writeExperimentTaskCodingSites(Treatments)
 
 for treatment in Treatments:
+    print(treatment.treatmentDataframe)
     treatment.treatmentDataframe.to_csv(f"./{treatment.treatmentName}-TaskCodingSites.csv")
 
 
