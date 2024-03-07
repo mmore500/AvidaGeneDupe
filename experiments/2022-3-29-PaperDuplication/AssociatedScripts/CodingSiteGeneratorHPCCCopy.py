@@ -246,9 +246,11 @@ linDatFile = ".dat"
 
 writeExperimentTaskCodingSites(Treatments)
 
+counter = 0
 for treatment in Treatments:
     print(treatment.treatmentDataframe)
-    treatment.treatmentDataframe.to_csv(f"./{treatment.treatmentName}-TaskCodingSites.csv")
+    treatment.treatmentDataframe.to_csv(f"{counter}-TaskCodingSites.csv")
+    counter += 1
 
 
 
