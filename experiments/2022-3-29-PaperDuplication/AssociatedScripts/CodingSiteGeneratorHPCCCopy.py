@@ -28,6 +28,7 @@ class Treatment():
         self.treatmentDataframe = pd.DataFrame(columns = ["Task Coding Sites", "Length"])
 
 for subdir in os.listdir(dataDir):
+    print(dataDir)
     if '.' in subdir:
         continue
     elif 'Test-Job' in subdir:
