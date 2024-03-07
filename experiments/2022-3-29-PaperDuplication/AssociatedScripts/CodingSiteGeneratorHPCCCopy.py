@@ -191,13 +191,13 @@ def getTaskCodingSitesOverRun(runDir):
     
     #codingSites is now a numpy array of boolean values; each row, col corresponds to task, genome site
     #and gives 1 if coding site, 0 if not
-    codingSites = [[] for k in range(9)]
+    codingSites = [[] for k in range(len(organismsTasks))]
 
     for site, knockoutOrg in enumerate(knockoutOrganisms):
         knockoutOrganismTasks = getTasks(knockoutOrg)
         
-        for j in range(9):
-            if organismsTasks != knockoutOrganismTasks:
+        for j in range(len(organismsTasks)):
+            if organismsTasks[j] != knockoutOrganismTasks[j]:
                 codingSites[j].append(site)
 
     return codingSites
