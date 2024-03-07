@@ -28,7 +28,6 @@ class Treatment():
         self.treatmentDataframe = pd.DataFrame(columns = ["Task Coding Sites", "Length"])
 
 for subdir in os.listdir(dataDir):
-    print(dataDir)
     if '.' in subdir:
         continue
     elif 'Test-Job' in subdir:
@@ -155,8 +154,8 @@ def createDatAnalyzeCfg(runDir):
         knockoutDatFile(datFile,f)
 
 def executeInfoAnalysis(runDir):
-    configDir = os.path.join("~/AvidaGeneDupe/experiments/","{}/hpcc/config".format(experimentName))
-    os.system("cp ~/AvidaGeneDupe/avida/cbuild/work/avida {}".format(runDir))
+    configDir = os.path.join("~/Documents/AvidaGeneDupe/experiments/","{}/hpcc/config".format(experimentName))
+    os.system("cp ~/Documents/AvidaGeneDupe/avida/cbuild/work/avida {}".format(runDir))
     os.chdir(runDir)
     os.system('cp {}/avida.cfg .'.format(configDir)) 
     os.system('cp {}/default-heads.org .'.format(configDir))
