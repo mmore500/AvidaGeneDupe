@@ -219,7 +219,8 @@ def writeTaskCodingSitesInPandasDataFrame(treatment, runDir, taskCodingSites):
     genomeLength = getLength(runDir)
 
     for k in range(9):
-        treatment.treatmentDataframe.loc[f"{runName}," + f"{taskNames[k]}"] = taskCodingSites[k] + [genomeLength]
+        rowName = f"{runName}," + f"{taskNames[k]}"
+        treatment.treatmentDataframe.loc[rowName] = [taskCodingSites[k], genomeLength]
 
 def writeTaskCodingSites(runDir,codingSites):
     writeDirectory = os.path.join(runDir,"data/codingSites.txt")
