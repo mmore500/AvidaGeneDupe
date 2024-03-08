@@ -209,6 +209,8 @@ def getTaskCodingSitesOverRun(runDir):
                 if organismsTasks[j] != knockoutOrganismTasks[j]:
                     codingSites[j].append(site)
 
+    viabilitySites = sorted(list(viabilitySites))
+    
     return codingSites, viabilitySites
 
 def writeTaskCodingSitesInPandasDataFrame(treatment, runDir, taskCodingSites, viabilitySites):
