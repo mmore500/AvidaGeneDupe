@@ -40,6 +40,10 @@ comm==0.2.1
     # via
     #   ipykernel
     #   ipywidgets
+contourpy==1.2.0
+    # via matplotlib
+cycler==0.12.1
+    # via matplotlib
 debugpy==1.8.0
     # via ipykernel
 decorator==5.1.1
@@ -55,6 +59,8 @@ executing==2.0.1
     # via stack-data
 fastjsonschema==2.19.1
     # via nbformat
+fonttools==4.49.0
+    # via matplotlib
 fqdn==1.5.1
     # via jsonschema
 idna==3.6
@@ -149,10 +155,16 @@ jupyterlab-server==2.25.2
     #   notebook
 jupyterlab-widgets==3.0.9
     # via ipywidgets
+kiwisolver==1.4.5
+    # via matplotlib
 markupsafe==2.1.4
     # via
     #   jinja2
     #   nbconvert
+matplotlib==3.8.3
+    # via
+    #   -r requirements.in
+    #   seaborn
 matplotlib-inline==0.1.6
     # via
     #   ipykernel
@@ -186,7 +198,12 @@ notebook-shim==0.2.3
     #   jupyterlab
     #   notebook
 numpy==1.26.3
-    # via pandas
+    # via
+    #   -r requirements.in
+    #   contourpy
+    #   matplotlib
+    #   pandas
+    #   seaborn
 overrides==7.7.0
     # via jupyter-server
 packaging==23.2
@@ -195,12 +212,15 @@ packaging==23.2
     #   jupyter-server
     #   jupyterlab
     #   jupyterlab-server
+    #   matplotlib
     #   nbconvert
     #   pytest
     #   qtconsole
     #   qtpy
 pandas==1.5.3
-    # via -r requirements.in
+    # via
+    #   -r requirements.in
+    #   seaborn
 pandocfilters==1.5.1
     # via nbconvert
 parso==0.8.3
@@ -209,6 +229,8 @@ pathspec==0.12.1
     # via black
 pexpect==4.9.0
     # via ipython
+pillow==10.2.0
+    # via matplotlib
 platformdirs==4.1.0
     # via
     #   black
@@ -237,12 +259,15 @@ pygments==2.17.2
     #   jupyter-console
     #   nbconvert
     #   qtconsole
+pyparsing==3.1.2
+    # via matplotlib
 pytest==8.0.0
     # via -r requirements.in
 python-dateutil==2.8.2
     # via
     #   arrow
     #   jupyter-client
+    #   matplotlib
     #   pandas
 python-json-logger==2.0.7
     # via jupyter-events
@@ -281,6 +306,8 @@ rpds-py==0.17.1
     #   jsonschema
     #   referencing
 ruff==0.1.15
+    # via -r requirements.in
+seaborn==0.13.2
     # via -r requirements.in
 send2trash==1.8.2
     # via jupyter-server
