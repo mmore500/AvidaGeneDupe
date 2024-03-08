@@ -25,7 +25,7 @@ class Treatment():
         self.treatmentDir = treatmentPath
         self.runDirectories = []
         self.treatmentName = self.treatmentDir.split('/')[-1]
-        self.treatmentDataframe = pd.DataFrame(columns = ["Task Coding Sites", "Length"])
+        self.treatmentDataframe = pd.DataFrame(columns = ["Task Coding Sites", "Length", "Viability Sites"])
 
 for subdir in os.listdir(dataDir):
     if '.' in subdir:
