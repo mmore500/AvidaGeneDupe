@@ -25,7 +25,7 @@ class Treatment():
         self.treatmentDir = treatmentPath
         self.runDirectories = []
         self.treatmentName = self.treatmentDir.split('/')[-1]
-        self.treatmentDataframe = pd.DataFrame(columns = ["Task Coding Sites", "Length", "Viability Sites"])
+        self.treatmentDataframe = pd.DataFrame(columns = ["Task Coding Sites", "Number of Task Coding Sites", "Viability Sites", "Number of Viability Sites", "Genome Length"])
 
 for subdir in os.listdir(dataDir):
     if '.' in subdir:
@@ -210,7 +210,7 @@ def getTaskCodingSitesOverRun(runDir):
                     codingSites[j].append(site)
 
     viabilitySites = sorted(list(viabilitySites))
-    
+
     return codingSites, viabilitySites
 
 def writeTaskCodingSitesInPandasDataFrame(treatment, runDir, taskCodingSites, viabilitySites):
@@ -231,7 +231,7 @@ def writeTaskCodingSitesInPandasDataFrame(treatment, runDir, taskCodingSites, vi
 
     for k in range(9):
         rowName = f"{runName}," + f"{taskNames[k]}"
-        treatment.treatmentDataframe.loc[rowName] = [taskCodingSites[k], genomeLength, viabilitySites]
+        treatment.treatmentDataframe.loc[rowName] = [taskCodingSites[k], len(taskCodingSites[k]), viabilitySites, len(viabilitySites), genomeLength]
 
 def writeTaskCodingSites(runDir,codingSites):
     writeDirectory = os.path.join(runDir,"data/codingSites.txt")
