@@ -25,7 +25,7 @@ class Treatment():
         self.treatmentDir = treatmentPath
         self.runDirectories = []
         self.treatmentName = self.treatmentDir.split('/')[-1]
-        self.treatmentDataframe = pd.DataFrame(columns = ["Task Coding Sites", "Number of Task Coding Sites", "Viability Sites", "Number of Viability Sites", "Genome Length"])
+        self.treatmentDataframe = pd.DataFrame(columns = ["Task Coding Sites", "Number of Task Coding Sites", "Number of Unique Coding Sites", "Viability Sites", "Number of Viability Sites", "Genome Length"])
 
 for subdir in os.listdir(dataDir):
     if '.' in subdir:
@@ -192,6 +192,9 @@ def getTaskCodingSitesOverRun(runDir):
     #codingSites is now a numpy array of boolean values; each row, col corresponds to task, genome site
     #and gives 1 if coding site, 0 if not
     codingSites = [[] for k in range(len(organismsTasks))]
+
+    numCodingSites = 0
+
     viabilitySites = set()
 
     for site, knockoutOrg in enumerate(knockoutOrganisms):
@@ -205,15 +208,20 @@ def getTaskCodingSitesOverRun(runDir):
         if viabilitySite:
             viabilitySites.add(site)
         else:
+            codingSite = False
             for j in range(len(organismsTasks)):
                 if organismsTasks[j] != knockoutOrganismTasks[j]:
+                    codingSite = True
                     codingSites[j].append(site)
+            
+            if codingSite:
+                numCodingSites = numCodingSites + 1
 
     viabilitySites = sorted(list(viabilitySites))
 
-    return codingSites, viabilitySites
+    return codingSites, viabilitySites, numCodingSites
 
-def writeTaskCodingSitesInPandasDataFrame(treatment, runDir, taskCodingSites, viabilitySites):
+def writeTaskCodingSitesInPandasDataFrame(treatment, runDir, taskCodingSites, viabilitySites, numUniqueCodingSites):
     runDirElements = runDir.split('/')
     runName = runDirElements[-1]
 
@@ -231,7 +239,7 @@ def writeTaskCodingSitesInPandasDataFrame(treatment, runDir, taskCodingSites, vi
 
     for k in range(9):
         rowName = f"{runName}," + f"{taskNames[k]}"
-        treatment.treatmentDataframe.loc[rowName] = [taskCodingSites[k], len(taskCodingSites[k]), viabilitySites, len(viabilitySites), genomeLength]
+        treatment.treatmentDataframe.loc[rowName] = [taskCodingSites[k], len(taskCodingSites[k]), numUniqueCodingSites, viabilitySites, len(viabilitySites), genomeLength]
 
 def writeTaskCodingSites(runDir,codingSites):
     writeDirectory = os.path.join(runDir,"data/codingSites.txt")
@@ -250,8 +258,8 @@ def writeExperimentTaskCodingSites(treatmentArray):
             
         treatmentData = []
         for runDir in treatment.runDirectories:
-            taskCodingSites, viabilitySites = getTaskCodingSitesOverRun(runDir)
-            writeTaskCodingSitesInPandasDataFrame(treatment, runDir, taskCodingSites, viabilitySites)
+            taskCodingSites, viabilitySites, numUniqueCodingSites = getTaskCodingSitesOverRun(runDir)
+            writeTaskCodingSitesInPandasDataFrame(treatment, runDir, taskCodingSites, viabilitySites, numUniqueCodingSites)
 
 linDatFile = ".dat"
 
