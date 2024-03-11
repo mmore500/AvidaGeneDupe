@@ -237,9 +237,14 @@ def writeTaskCodingSitesInPandasDataFrame(treatment, runDir, taskCodingSites, vi
 
     genomeLength = getLength(runDir)
 
+    fracCodingSites = numUniqueCodingSites / genomeLength
+    fracViabilitySites = len(viabilitySites) / genomeLength
+
+    viabilityToCodingRatio = fracViabilitySites / fracCodingSites
+
     for k in range(9):
         rowName = f"{runName}," + f"{taskNames[k]}"
-        treatment.treatmentDataframe.loc[rowName] = [taskCodingSites[k], len(taskCodingSites[k]), numUniqueCodingSites, viabilitySites, len(viabilitySites), genomeLength, numUniqueCodingSites / genomeLength, len(viabilitySites) / genomeLength]
+        treatment.treatmentDataframe.loc[rowName] = [taskCodingSites[k], len(taskCodingSites[k]), numUniqueCodingSites, viabilitySites, len(viabilitySites), genomeLength, fracCodingSites, fracViabilitySites, viabilityToCodingRatio]
 
 def writeTaskCodingSites(runDir,codingSites):
     writeDirectory = os.path.join(runDir,"data/codingSites.txt")
