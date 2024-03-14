@@ -2,7 +2,9 @@ import os
 import csv
 import numpy as np
 import pandas as pd
+import sys
 
+desiredUpdateToAnalyze = sys.argv[1]
 
 runDirectories = []
 Treatments = []
@@ -146,7 +148,12 @@ def knockoutDatFile(datFile,dest):
 
 def createDatAnalyzeCfg(runDir):
         datDir = os.path.join(runDir,"data")
-        datFile = os.path.join(datDir,"detail_MostNumerous.dat")
+
+        if (desiredUpdateToAnalyze == 200000):
+            datFile = os.path.join(datDir,"detail_MostNumerous.dat")
+        else:
+            datFile = os.path.join(datDir,f"detail_{desiredUpdateToAnalyze}_MostNumerous.dat")
+            
         configFile = os.path.join(datDir,'informationAnalyzer.cfg')
         f = open(configFile,'w')
         preamble = ['################################################################################################\n',
