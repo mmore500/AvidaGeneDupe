@@ -35,7 +35,7 @@ cd ${RUN_DIR}
 
 cp ${CONFIG_DIR}/avida .
 cp ${CONFIG_DIR}/avida.cfg .
-cp ${CONFIG_DIR}/default-heads.org .
+cp ${CONFIG_DIR}/default-headsWithNOP-X.org .
 cp ${CONFIG_DIR}/environment.cfg .
 cp ${CONFIG_DIR}/events.cfg .
 cp ${CONFIG_DIR}/instset-heads___sensors_NONE.cfg .
