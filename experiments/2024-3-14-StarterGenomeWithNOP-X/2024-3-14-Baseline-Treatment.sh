@@ -15,7 +15,7 @@
 module load gcc/11.2.0
 
 USERNAME=clhaynes
-EXPERIMENT_ID=2022-3-14-StarterGenomeWithNOP-X
+EXPERIMENT_ID=2024-3-14-StarterGenomeWithNOP-X
 
 OUTPUT_DIR=/scratch/zamanlh_root/zamanlh0/${USERNAME}/${EXPERIMENT_ID}/Baseline-Treatment
 CONFIG_DIR=/home/${USERNAME}/Documents/AvidaGeneDupe/experiments/${EXPERIMENT_ID}/hpcc/config

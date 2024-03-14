@@ -15,7 +15,7 @@
 module load gcc/11.2.0
 
 USERNAME=clhaynes
-EXPERIMENT_ID=2022-3-14-StarterGenomeWithNOP-X
+EXPERIMENT_ID=2024-3-14-StarterGenomeWithNOP-X
 
 OUTPUT_DIR=/scratch/zamanlh_root/zamanlh0/${USERNAME}/${EXPERIMENT_ID}/Slip-scramble
 CONFIG_DIR=/home/${USERNAME}/Documents/AvidaGeneDupe/experiments/${EXPERIMENT_ID}/hpcc/config
@@ -35,7 +35,7 @@ cd ${RUN_DIR}
 
 cp ${CONFIG_DIR}/avida .
 cp ${CONFIG_DIR}/avida.cfg .
-cp ${CONFIG_DIR}/default-heads.org .
+cp ${CONFIG_DIR}/default-headsWithNOP-X.org .
 cp ${CONFIG_DIR}/environment.cfg .
 cp ${CONFIG_DIR}/events.cfg .
 cp ${CONFIG_DIR}/instset-heads___sensors_NONE.cfg .
