@@ -6,6 +6,7 @@ h-search   # Locate the end of the organism
 nop-C      #
 nop-A      #
 mov-head   # Place write-head at beginning of offspring.
+nop-C      #
 nop-X      #
 nop-X      #
 nop-X      #
@@ -90,8 +91,7 @@ nop-X      #
 nop-X      #
 nop-X      #
 nop-X      #
-nop-X      #
-nop-X      #
+nop-C      #
 h-search   # Mark the beginning of the copy loop
 h-copy     # Do the copy
 if-label   # If we're done copying....

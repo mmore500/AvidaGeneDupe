@@ -9,7 +9,7 @@
 #SBATCH --mem=400m
 #SBATCH --time=00-04:00:00
 #SBATCH --account=zamanlh0
-#SBATCH --array=1-30
+#SBATCH --array=1-1
 
 # -- I like to define helpful variables up top --
 module load gcc/11.2.0
@@ -48,7 +48,7 @@ echo ${EXECUTE} > cmd.log
 
 rm avida
 rm avida.cfg
-rm default-heads.org
+rm default-headsWithNOP-X.org
 rm environment.cfg
 rm events.cfg
 rm instset-heads___sensors_NONE.cfg

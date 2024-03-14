@@ -48,7 +48,7 @@ echo ${EXECUTE} > cmd.log
 
 rm avida
 rm avida.cfg
-rm default-heads.org
+rm default-headsWithNOP-X.org
 rm environment.cfg
 rm events.cfg
 rm instset-heads___sensors_NONE.cfg
