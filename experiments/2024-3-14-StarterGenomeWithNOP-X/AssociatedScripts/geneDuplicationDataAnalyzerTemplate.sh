@@ -6,11 +6,12 @@ TREATMENT=$treatment
 NUM_REPLICATES=$numReplicates
 ANALYSISTIME=$updateAtWhichToAnalyze
 
-OUTPUT_DIR=/scratch/zamanlh_root/zamanlh0/$${USERNAME}/$${EXPERIMENT_ID}/$${TREATMENT}
+EXPERIMENT_DIR=/scratch/zamanlh_root/zamanlh0/$${USERNAME}/$${EXPERIMENT_ID}
+OUTPUT_DIR=$${EXPERIMENT_DIR}/$${TREATMENT}
 CONFIG_DIR=/home/$${USERNAME}/Documents/AvidaGeneDupe/experiments/$${EXPERIMENT_ID}/hpcc/config
 ASSOCIATED_SCRIPTS_DIR=/home/$${USERNAME}/Documents/AvidaGeneDupe/experiments/$${EXPERIMENT_ID}/AssociatedScripts
 
-cp $${ASSOCIATED_SCRIPTS_DIR}/CodingSiteGeneratorHPCCCopy.py $${OUTPUT_DIR}
+cp $${ASSOCIATED_SCRIPTS_DIR}/CodingSiteGeneratorHPCCCopy.py $${EXPERIMENT_DIR}
 
 python3 $${ASSOCIATED_SCRIPTS_DIR}/CreateAnalyzeConfig.py $${ANALYSISTIME}
 
@@ -49,4 +50,5 @@ do
 
 done
 
-cd $${OUTPUT_DIR}
+cd $${EXPERIMENT_DIR}
+python3 CodingSiteGenerator.py
