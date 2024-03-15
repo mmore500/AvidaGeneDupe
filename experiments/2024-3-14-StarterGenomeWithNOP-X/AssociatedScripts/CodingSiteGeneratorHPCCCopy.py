@@ -149,10 +149,7 @@ def knockoutDatFile(datFile,dest):
 def createDatAnalyzeCfg(runDir):
         datDir = os.path.join(runDir,"data")
 
-        if (desiredUpdateToAnalyze == 200000):
-            datFile = os.path.join(datDir,"detail_MostNumerous.dat")
-        else:
-            datFile = os.path.join(datDir,f"detail_{desiredUpdateToAnalyze}_MostNumerous.dat")
+        datFile = os.path.join(datDir,f"detail_MostNumerousAt{desiredUpdateToAnalyze}.dat")
             
         configFile = os.path.join(datDir,'informationAnalyzer.cfg')
         f = open(configFile,'w')
@@ -289,7 +286,7 @@ writeExperimentTaskCodingSites(Treatments)
 counter = 0
 for treatment in Treatments:
     print(treatment.treatmentDataframe)
-    treatment.treatmentDataframe.to_csv(f"{experimentDir}/{experimentName}-{treatment.treatmentName}-TaskCodingSitesWithViabilitySites.csv")
+    treatment.treatmentDataframe.to_csv(f"{experimentDir}/{experimentName}-{treatment.treatmentName}-TaskCodingSitesWithViabilitySitesAtUpdate{desiredUpdateToAnalyze}.csv")
     counter += 1
 
 

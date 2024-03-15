@@ -4,7 +4,7 @@ USERNAME=clhaynes
 EXPERIMENT_ID=2024-3-14-StarterGenomeWithNOP-X
 TREATMENT=$treatment
 NUM_REPLICATES=$numReplicates
-ANALYSISTIME=$updateAtWhichToAnalyze
+ANALYSIS_TIME=$updateAtWhichToAnalyze
 
 EXPERIMENT_DIR=/scratch/zamanlh_root/zamanlh0/$${USERNAME}/$${EXPERIMENT_ID}
 OUTPUT_DIR=$${EXPERIMENT_DIR}/$${TREATMENT}
@@ -13,7 +13,7 @@ ASSOCIATED_SCRIPTS_DIR=/home/$${USERNAME}/Documents/AvidaGeneDupe/experiments/$$
 
 cp $${ASSOCIATED_SCRIPTS_DIR}/CodingSiteGeneratorHPCCCopy.py $${EXPERIMENT_DIR}
 
-python3 $${ASSOCIATED_SCRIPTS_DIR}/CreateAnalyzeConfig.py $${ANALYSISTIME}
+python3 $${ASSOCIATED_SCRIPTS_DIR}/CreateAnalyzeConfig.py $${ANALYSIS_TIME}
 
 SEED_OFFSET=$seedOffset
 
@@ -51,4 +51,4 @@ do
 done
 
 cd $${EXPERIMENT_DIR}
-python3 CodingSiteGeneratorHPCCCopy.py
+python3 CodingSiteGeneratorHPCCCopy.py $${ANALYSIS_TIME}
