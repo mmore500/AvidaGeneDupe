@@ -15,7 +15,7 @@ python3 $${ASSOCIATED_SCRIPTS_DIR}/CreateAnalyzeConfig.py $${ANALYSIS_TIME}
 
 SEED_OFFSET=$seedOffset
 
-for ((iter=0; iter<=NUM_REPLICATES; iter++ ))
+for ((iter=0; iter<NUM_REPLICATES; iter++ ))
 do
     SEED=$$(($${iter} + $${SEED_OFFSET}))
 
