@@ -8,4 +8,6 @@ cp $${ASSOCIATED_SCRIPTS_DIR}/CodingSiteGeneratorHPCCCopy.py $${EXPERIMENT_DIR}
 ANALYSIS_TIME=`python3 RunGeneDuplicationAvidaAnalysisScript.py`
 
 cd ${EXPERIMENT_DIR}
+
+module load gcc/11.2.0
 python3 CodingSiteGeneratorHPCCCopy.py ${ANALYSIS_TIME}

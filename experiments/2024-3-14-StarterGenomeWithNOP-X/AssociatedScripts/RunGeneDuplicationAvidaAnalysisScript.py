@@ -36,4 +36,4 @@ for treatmentInQuestion in possibleTreatments:
         
         os.system('bash geneDuplicationDataAnalyzer.sh')
 
-updateToAnalyze
+int(updateToAnalyze)
