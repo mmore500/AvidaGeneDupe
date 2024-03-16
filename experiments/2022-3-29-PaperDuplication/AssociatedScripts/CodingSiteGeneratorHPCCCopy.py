@@ -36,6 +36,8 @@ for subdir in os.listdir(dataDir):
         continue
     elif 'Slip-scatter' in subdir:
         continue
+    elif 'Slip-scramble' in subdir:
+        continue
     elif 'Slip-NOP' in subdir:
         continue
     elif 'Slip-random' in subdir:
