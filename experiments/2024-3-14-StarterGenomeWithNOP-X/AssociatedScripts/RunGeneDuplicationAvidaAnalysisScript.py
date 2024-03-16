@@ -1,9 +1,10 @@
 from string import Template
 import os
+import sys
 
 numberOfReplicates = 30
-experimentID = input("What is the name of the experiment you're analyzing? ")
-updateToAnalyze = input("At which update (multiple of 500) do you want to analyze the population? ")
+experimentID = sys.argv[1]
+updateToAnalyze = sys.argv[2]
 
 validTreatments = ["Baseline-Treatment", "Slip-duplicate", "Slip-scramble"]
 
