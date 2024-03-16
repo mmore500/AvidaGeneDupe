@@ -34,8 +34,6 @@ for subdir in os.listdir(dataDir):
         continue
     elif 'Test-Job' in subdir:
         continue
-    elif 'Slip-scramble' in subdir:
-        continue
     elif 'Slip-scatter' in subdir:
         continue
     elif 'Slip-NOP' in subdir:
@@ -149,10 +147,7 @@ def knockoutDatFile(datFile,dest):
 def createDatAnalyzeCfg(runDir):
         datDir = os.path.join(runDir,"data")
 
-        if (desiredUpdateToAnalyze == 200000):
-            datFile = os.path.join(datDir,"detail_MostNumerous.dat")
-        else:
-            datFile = os.path.join(datDir,f"detail_{desiredUpdateToAnalyze}_MostNumerous.dat")
+        datFile = os.path.join(datDir,f"detail_MostNumerousAt{desiredUpdateToAnalyze}.dat")
             
         configFile = os.path.join(datDir,'informationAnalyzer.cfg')
         f = open(configFile,'w')
@@ -170,6 +165,9 @@ def createDatAnalyzeCfg(runDir):
         knockoutDatFile(datFile,f)
 
 def executeInfoAnalysis(runDir):
+    #To accommodate the appropriate gcc compiler not being automatically loaded
+    os.system('module load gcc/11.2.0')
+
     configDir = os.path.join("~/Documents/AvidaGeneDupe/experiments/","{}/hpcc/config".format(experimentName))
     os.system("cp ~/Documents/AvidaGeneDupe/avida/cbuild/work/avida {}".format(runDir))
     os.chdir(runDir)
@@ -256,7 +254,10 @@ def writeTaskCodingSitesInPandasDataFrame(treatment, runDir, taskCodingSites, vi
     fracCodingSites = numUniqueCodingSites / genomeLength
     fracViabilitySites = len(viabilitySites) / genomeLength
 
-    viabilityToCodingRatio = fracViabilitySites / fracCodingSites
+    try:
+        viabilityToCodingRatio = fracViabilitySites / fracCodingSites
+    except(ZeroDivisionError):
+        viabilityToCodingRatio = 0
 
     for k in range(9):
         rowName = f"{runName}," + f"{taskNames[k]}"
@@ -289,7 +290,7 @@ writeExperimentTaskCodingSites(Treatments)
 counter = 0
 for treatment in Treatments:
     print(treatment.treatmentDataframe)
-    treatment.treatmentDataframe.to_csv(f"{experimentDir}/{experimentName}-{treatment.treatmentName}-TaskCodingSitesWithViabilitySites.csv")
+    treatment.treatmentDataframe.to_csv(f"{experimentDir}/{experimentName}-{treatment.treatmentName}-TaskCodingSitesWithViabilitySitesAtUpdate{desiredUpdateToAnalyze}.csv")
     counter += 1
 
 
