@@ -4,6 +4,7 @@ import sys
 
 numberOfReplicates = 30
 experimentID = sys.argv[1]
+print(experimentID)
 updateToAnalyze = sys.argv[2]
 
 validTreatments = ["Baseline-Treatment", "Slip-duplicate", "Slip-scramble"]
