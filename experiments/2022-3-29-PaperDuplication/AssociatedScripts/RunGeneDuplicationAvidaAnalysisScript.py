@@ -29,7 +29,8 @@ for treatmentInQuestion in possibleTreatments:
                                                                         updateAtWhichToAnalyze=updateToAnalyze,
                                                                         seedOffset=parameters["Seed Offset"],
                                                                         divSlipProb=parameters["Slip Mutation Probability"],
-                                                                        slipFillMode=parameters["Slip Fill Mode"])
+                                                                        slipFillMode=parameters["Slip Fill Mode"],
+                                                                        experimentalID=experimentID)
 
         with open('geneDuplicationDataAnalyzer.sh', 'w') as f:
             f.write(dataAnalysisScriptString)

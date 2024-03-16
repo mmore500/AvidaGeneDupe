@@ -1,7 +1,7 @@
 module load gcc/11.2.0
 
 USERNAME=clhaynes
-EXPERIMENT_ID=2024-3-14-StarterGenomeWithNOP-X
+EXPERIMENT_ID=$experimentalID
 TREATMENT=$treatment
 NUM_REPLICATES=$numReplicates
 ANALYSIS_TIME=$updateAtWhichToAnalyze
