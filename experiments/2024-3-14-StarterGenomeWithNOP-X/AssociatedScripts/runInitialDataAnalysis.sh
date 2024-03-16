@@ -6,9 +6,9 @@ EXPERIMENT_DIR=/scratch/zamanlh_root/zamanlh0/${USERNAME}/${EXPERIMENT_ID}
 cp CodingSiteGeneratorHPCCCopy.py ${EXPERIMENT_DIR}
 
 echo "Experiment: ${EXPERIMENT_ID}"
-read "At which update (multiple of 500) do you want to analyze the population? " UPDATE_TO_ANALYZE
+read "At which update (multiple of 500) do you want to analyze the population? " ANALYSIS_TIME
 
-python3 RunGeneDuplicationAvidaAnalysisScript.py ${EXPERIMENT_ID} ${UPDATE_TO_ANALYZE}
+python3 RunGeneDuplicationAvidaAnalysisScript.py ${EXPERIMENT_ID} ${ANALYSIS_TIME}
 
 cd ${EXPERIMENT_DIR}
 
