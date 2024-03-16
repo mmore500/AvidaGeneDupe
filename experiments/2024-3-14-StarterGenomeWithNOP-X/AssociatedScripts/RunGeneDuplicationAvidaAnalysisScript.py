@@ -9,7 +9,7 @@ validTreatments = ["Baseline-Treatment", "Slip-duplicate", "Slip-scramble"]
 
 treatmentParameters = {"Baseline-Treatment" : {"Seed Offset" : 1530, "Slip Mutation Probability" : 0.0, "Slip Fill Mode" : 0},
                        "Slip-duplicate" : {"Seed Offset" : 1590, "Slip Mutation Probability" : 0.05, "Slip Fill Mode" : 0},
-                       "Slip-scramble" : {"Seed Offset" : 1710, "Slip Mutation Probability" : 0.05, "Slip Fill Mode" : 0}}
+                       "Slip-scramble" : {"Seed Offset" : 1710, "Slip Mutation Probability" : 0.05, "Slip Fill Mode" : 3}}
 
 possibleTreatments = os.listdir(f'/scratch/zamanlh_root/zamanlh0/clhaynes/{experimentID}')
 
