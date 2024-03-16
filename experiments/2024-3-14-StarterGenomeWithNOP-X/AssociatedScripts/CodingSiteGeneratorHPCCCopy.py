@@ -254,7 +254,10 @@ def writeTaskCodingSitesInPandasDataFrame(treatment, runDir, taskCodingSites, vi
     fracCodingSites = numUniqueCodingSites / genomeLength
     fracViabilitySites = len(viabilitySites) / genomeLength
 
-    viabilityToCodingRatio = fracViabilitySites / fracCodingSites
+    try:
+        viabilityToCodingRatio = fracViabilitySites / fracCodingSites
+    except(ZeroDivisionError):
+        viabilityToCodingRatio = 0
 
     for k in range(9):
         rowName = f"{runName}," + f"{taskNames[k]}"
