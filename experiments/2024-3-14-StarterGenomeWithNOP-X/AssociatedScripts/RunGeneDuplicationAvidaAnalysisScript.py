@@ -36,4 +36,5 @@ for treatmentInQuestion in possibleTreatments:
         
         os.system('bash geneDuplicationDataAnalyzer.sh')
 
+#So that an integer, not a string, will be passed to the bash script
 int(updateToAnalyze)
