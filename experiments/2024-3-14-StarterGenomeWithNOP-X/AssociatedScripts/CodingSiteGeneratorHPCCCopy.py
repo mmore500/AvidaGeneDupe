@@ -34,8 +34,6 @@ for subdir in os.listdir(dataDir):
         continue
     elif 'Test-Job' in subdir:
         continue
-    elif 'Slip-scramble' in subdir:
-        continue
     elif 'Slip-scatter' in subdir:
         continue
     elif 'Slip-NOP' in subdir:
