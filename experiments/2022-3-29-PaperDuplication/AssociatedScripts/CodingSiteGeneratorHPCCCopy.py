@@ -95,7 +95,7 @@ def getUpdateBorn(organismString):
     return updateBorn
 
 def getLength(runDir):
-    replicateData = os.path.join(runDir, 'data/detail_MostNumerous.dat')
+    replicateData = os.path.join(runDir, f'data/detail_MostNumerousAt{desiredUpdateToAnalyze}.dat')
     datFileContents = getOrganisms(replicateData)
     analyzedOrganism = datFileContents[-1]
     
@@ -104,7 +104,7 @@ def getLength(runDir):
     return length
 
 def getGenome(runDir):
-    replicateData = os.path.join(runDir, 'data/detail_MostNumerous.dat')
+    replicateData = os.path.join(runDir, f'data/detail_MostNumerousAt{desiredUpdateToAnalyze}.dat')
     datFileContents = getOrganisms(replicateData)
     analyzedOrganism = datFileContents[-1]
     
