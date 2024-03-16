@@ -1,5 +1,5 @@
 USERNAME=clhaynes
-EXPERIMENT_ID=2024-3-14-StarterGenomeWithNOP-X
+EXPERIMENT_ID=2022-3-29-PaperDuplication
 
 EXPERIMENT_DIR=/scratch/zamanlh_root/zamanlh0/${USERNAME}/${EXPERIMENT_ID}
 
