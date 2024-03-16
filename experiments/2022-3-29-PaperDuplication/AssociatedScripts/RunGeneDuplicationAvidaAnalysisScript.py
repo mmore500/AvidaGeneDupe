@@ -6,7 +6,7 @@ numberOfReplicates = 30
 experimentID = sys.argv[1]
 updateToAnalyze = sys.argv[2]
 
-validTreatments = ["Baseline-Treatment", "Slip-duplicate", "Slip-scramble"]
+validTreatments = ["Baseline-Treatment", "Slip-duplicate"]
 
 treatmentParameters = {"Baseline-Treatment" : {"Seed Offset" : 1530, "Slip Mutation Probability" : 0.0, "Slip Fill Mode" : 0},
                        "Slip-duplicate" : {"Seed Offset" : 1590, "Slip Mutation Probability" : 0.05, "Slip Fill Mode" : 0}}
