@@ -167,18 +167,21 @@ def createDatAnalyzeCfg(runDir):
         knockoutDatFile(datFile,f)
 
 def executeInfoAnalysis(runDir):
+    #To accommodate the appropriate gcc compiler not being automatically loaded
+    os.system('module load gcc/11.2.0')
+
     configDir = os.path.join("~/Documents/AvidaGeneDupe/experiments/","{}/hpcc/config".format(experimentName))
     os.system("cp ~/Documents/AvidaGeneDupe/avida/cbuild/work/avida {}".format(runDir))
     os.chdir(runDir)
     os.system('cp {}/avida.cfg .'.format(configDir)) 
-    os.system('cp {}/default-heads.org .'.format(configDir))
+    os.system('cp {}/default-headsWithNOP-X.org .'.format(configDir))
     os.system('cp {}/environment.cfg .'.format(configDir))
     os.system('cp {}/events.cfg .'.format(configDir))
     os.system('cp {}/instset-heads___sensors_NONE.cfg .'.format(configDir))
     os.system("./avida -set ANALYZE_FILE data/informationAnalyzer.cfg -a > analyze.log")
     os.system('rm avida')
     os.system('rm avida.cfg')
-    os.system('rm default-heads.org')
+    os.system('rm default-headsWithNOP-X.org')
     os.system('rm environment.cfg')
     os.system('rm events.cfg')
     os.system('rm instset-heads___sensors_NONE.cfg')
