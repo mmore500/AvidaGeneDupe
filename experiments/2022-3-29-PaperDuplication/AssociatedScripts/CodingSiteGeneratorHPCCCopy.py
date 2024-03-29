@@ -3,6 +3,7 @@ import csv
 import numpy as np
 import pandas as pd
 import sys
+import uuid
 
 desiredUpdateToAnalyze = sys.argv[1]
 
@@ -27,7 +28,20 @@ class Treatment():
         self.treatmentDir = treatmentPath
         self.runDirectories = []
         self.treatmentName = self.treatmentDir.split('/')[-1]
-        self.treatmentDataframe = pd.DataFrame(columns = ["Run ID", "Task", "Update Analyzed" "Task Coding Sites", "Number of Task Coding Sites", "Number of Unique Coding Sites", "Viability Sites", "Number of Viability Sites", "Genome Length", "Fraction Task Coding Sites", "Fraction Viability Sites", "Ratio of Viability Sites to Coding Sites", "Genome"])
+        self.treatmentDataframe = pd.DataFrame(columns = ["Run ID", 
+                                                          "Task", 
+                                                          "Update Analyzed",
+                                                          "Treatment",
+                                                          "Task Coding Sites", 
+                                                          "Number of Task Coding Sites", 
+                                                          "Number of Unique Coding Sites", 
+                                                          "Viability Sites", 
+                                                          "Number of Viability Sites", 
+                                                          "Genome Length", 
+                                                          "Fraction Task Coding Sites", 
+                                                          "Fraction Viability Sites", 
+                                                          "Ratio of Viability Sites to Coding Sites", 
+                                                          "Genome"])
 
 for subdir in os.listdir(dataDir):
     if '.' in subdir:
@@ -263,7 +277,7 @@ def writeTaskCodingSitesInPandasDataFrame(treatment, runDir, taskCodingSites, vi
 
     for k in range(9):
         rowName = f"{runName}," + f"{taskNames[k]}"
-        treatment.treatmentDataframe.loc[rowName] = [runName, taskNames[k], desiredUpdateToAnalyze, taskCodingSites[k], len(taskCodingSites[k]), numUniqueCodingSites, viabilitySites, len(viabilitySites), genomeLength, fracCodingSites, fracViabilitySites, viabilityToCodingRatio, getGenome(runDir)]
+        treatment.treatmentDataframe.loc[rowName] = [runName, taskNames[k], desiredUpdateToAnalyze, treatment.treatmentName, taskCodingSites[k], len(taskCodingSites[k]), numUniqueCodingSites, viabilitySites, len(viabilitySites), genomeLength, fracCodingSites, fracViabilitySites, viabilityToCodingRatio, getGenome(runDir)]
 
 def writeTaskCodingSites(runDir,codingSites):
     writeDirectory = os.path.join(runDir,"data/codingSites.txt")
@@ -290,8 +304,10 @@ linDatFile = ".dat"
 writeExperimentTaskCodingSites(Treatments)
 
 counter = 0
+
 for treatment in Treatments:
     print(treatment.treatmentDataframe)
+    treatment.treatmentDataframe["Run UUID"] = uuid.uuid4()
     treatment.treatmentDataframe.to_csv(f"{experimentDir}/{experimentName}-{treatment.treatmentName}-TaskCodingSitesWithViabilitySitesAtUpdate{desiredUpdateToAnalyze}.csv")
     counter += 1
 
