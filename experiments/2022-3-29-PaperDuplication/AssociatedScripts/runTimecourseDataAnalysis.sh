@@ -9,7 +9,7 @@
 #SBATCH --mem=400m
 #SBATCH --time=00-01:00:00
 #SBATCH --account=zamanlh0
-#SBATCH --array=1-200
+#SBATCH --array=1-1
 
 USERNAME=clhaynes
 EXPERIMENT_ID=2022-3-29-PaperDuplication
@@ -19,7 +19,7 @@ EXPERIMENT_DIR=/scratch/zamanlh_root/zamanlh0/${USERNAME}/${EXPERIMENT_ID}
 cp CodingSiteGeneratorHPCCCopy.py ${EXPERIMENT_DIR}
 
 echo "Experiment: ${EXPERIMENT_ID}"
-ANALYSIS_TIME=$((1000 * ${SLURM_ARRAY_TASK_ID}))
+ANALYSIS_TIME=1000
 
 python3 RunGeneDuplicationAvidaAnalysisScript.py ${EXPERIMENT_ID} ${ANALYSIS_TIME}
 
