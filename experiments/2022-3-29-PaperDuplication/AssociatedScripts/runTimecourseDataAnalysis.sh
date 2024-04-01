@@ -7,9 +7,9 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --mem=400m
-#SBATCH --time=00-01:00:00
+#SBATCH --time=00-02:00:00
 #SBATCH --account=zamanlh0
-#SBATCH --array=1-1
+#SBATCH --array=1-2
 
 USERNAME=clhaynes
 EXPERIMENT_ID=2022-3-29-PaperDuplication
