@@ -111,7 +111,7 @@ def getUpdateBorn(organismString):
     return updateBorn
 
 def getLength(runDir):
-    replicateData = os.path.join(runDir, f'data/detail_MostNumerousAt{desiredUpdateToAnalyze}.dat')
+    replicateData = os.path.join(runDir, f'Timepoint_{desiredUpdateToAnalyze}/data/detail_MostNumerousAt{desiredUpdateToAnalyze}.dat')
     datFileContents = getOrganisms(replicateData)
     analyzedOrganism = datFileContents[-1]
     
@@ -120,7 +120,7 @@ def getLength(runDir):
     return length
 
 def getGenome(runDir):
-    replicateData = os.path.join(runDir, f'data/detail_MostNumerousAt{desiredUpdateToAnalyze}.dat')
+    replicateData = os.path.join(runDir, f'Timepoint_{desiredUpdateToAnalyze}/data/detail_MostNumerousAt{desiredUpdateToAnalyze}.dat')
     datFileContents = getOrganisms(replicateData)
     analyzedOrganism = datFileContents[-1]
     
@@ -161,7 +161,7 @@ def knockoutDatFile(datFile,dest):
             orgCount+=1
 
 def createDatAnalyzeCfg(runDir):
-        datDir = os.path.join(runDir,"data")
+        datDir = os.path.join(runDir,f"Timepoint_{desiredUpdateToAnalyze}/data")
 
         datFile = os.path.join(datDir,f"detail_MostNumerousAt{desiredUpdateToAnalyze}.dat")
             
@@ -192,7 +192,7 @@ def executeInfoAnalysis(runDir):
     os.system('cp {}/environment.cfg .'.format(configDir))
     os.system('cp {}/events.cfg .'.format(configDir))
     os.system('cp {}/instset-heads___sensors_NONE.cfg .'.format(configDir))
-    os.system("./avida -set ANALYZE_FILE data/informationAnalyzer.cfg -a > analyze.log")
+    os.system(f"./avida -set ANALYZE_FILE Timepoint_{desiredUpdateToAnalyze}/data/informationAnalyzer.cfg -a > analyze.log")
     os.system('rm avida')
     os.system('rm avida.cfg')
     os.system('rm default-heads.org')
@@ -211,7 +211,7 @@ def getTasks(organismString):
     return np.array(tasks)
 
 def getTaskCodingSitesOverRun(runDir):
-    replicateData = os.path.join(runDir,"data/detail_Org0FitnessDifferences.dat")
+    replicateData = os.path.join(runDir,f"Timepoint_{desiredUpdateToAnalyze}/data/detail_Org0FitnessDifferences.dat")
     datFileContents = getOrganisms(replicateData)
     (knockoutOrganisms,analyzedOrganism) = (datFileContents[:-1],datFileContents[-1])
 
@@ -280,7 +280,7 @@ def writeTaskCodingSitesInPandasDataFrame(treatment, runDir, taskCodingSites, vi
         treatment.treatmentDataframe.loc[rowName] = [runName, taskNames[k], desiredUpdateToAnalyze, treatment.treatmentName, taskCodingSites[k], len(taskCodingSites[k]), numUniqueCodingSites, viabilitySites, len(viabilitySites), genomeLength, fracCodingSites, fracViabilitySites, viabilityToCodingRatio, getGenome(runDir)]
 
 def writeTaskCodingSites(runDir,codingSites):
-    writeDirectory = os.path.join(runDir,"data/codingSites.txt")
+    writeDirectory = os.path.join(runDir,f"Timepoint_{desiredUpdateToAnalyze}/data/codingSites.txt")
     with open(writeDirectory,'w') as f:
         for site in codingSites:
             f.write('{},'.format(site))

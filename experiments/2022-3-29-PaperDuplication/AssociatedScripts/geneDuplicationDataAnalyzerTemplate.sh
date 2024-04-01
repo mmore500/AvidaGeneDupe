@@ -25,6 +25,12 @@ do
 
     cd $${RUN_DIR}
 
+    mkdir Timepoint_$${ANALYSIS_TIME}
+
+    cp -r data Timepoint_$${ANALYSIS_TIME}
+    
+    cd Timepoint_$${ANALYSIS_TIME}
+
     #Don't use the asterisk: actually write everything out so you know what you're working with!
 
     cp $${CONFIG_DIR}/avida .

@@ -9,7 +9,7 @@
 #SBATCH --mem=400m
 #SBATCH --time=00-01:00:00
 #SBATCH --account=zamanlh0
-#SBATCH --array=1-2
+#SBATCH --array=1-1
 
 USERNAME=clhaynes
 EXPERIMENT_ID=2022-3-29-PaperDuplication
