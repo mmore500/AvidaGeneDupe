@@ -11,6 +11,8 @@ OUTPUT_DIR=$${EXPERIMENT_DIR}/$${TREATMENT}
 CONFIG_DIR=/home/$${USERNAME}/Documents/AvidaGeneDupe/experiments/$${EXPERIMENT_ID}/hpcc/config
 ASSOCIATED_SCRIPTS_DIR=/home/$${USERNAME}/Documents/AvidaGeneDupe/experiments/$${EXPERIMENT_ID}/AssociatedScripts
 
+cd ${ASSOCIATED_SCRIPTS_DIR}
+
 python3 $${ASSOCIATED_SCRIPTS_DIR}/CreateAnalyzeConfig.py $${ANALYSIS_TIME}
 
 SEED_OFFSET=$seedOffset
