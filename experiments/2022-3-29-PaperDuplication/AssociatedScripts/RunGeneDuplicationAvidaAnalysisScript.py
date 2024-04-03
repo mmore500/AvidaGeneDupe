@@ -32,9 +32,9 @@ for treatmentInQuestion in possibleTreatments:
                                                                         slipFillMode=parameters["Slip Fill Mode"],
                                                                         experimentalID=experimentID)
 
-        os.system(f'mkdir -p Timepoint_{updateToAnalyze}')
-
-        with open(f'Timepoint_{updateToAnalyze}/geneDuplicationDataAnalyzer.sh', 'w') as f:
+        with open(f'geneDuplicationDataAnalyzer_{updateToAnalyze}.sh', 'w') as f:
             f.write(dataAnalysisScriptString)
         
-        os.system(f'bash Timepoint_{updateToAnalyze}/geneDuplicationDataAnalyzer.sh')
+        os.system(f'bash geneDuplicationDataAnalyzer_{updateToAnalyze}.sh')
+
+        os.system(f'rm geneDuplicationDataAnalyzer_{updateToAnalyze}.sh')
