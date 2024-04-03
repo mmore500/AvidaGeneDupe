@@ -175,7 +175,7 @@ def executeInfoAnalysis(runDir):
     timepointRunDir = os.path.join(runDir, f"Timepoint_{desiredUpdateToAnalyze}")
 
     configDir = os.path.join("~/Documents/AvidaGeneDupe/experiments/","{}/hpcc/config".format(experimentName))
-    os.system("cp ~/Documents/AvidaGeneDupe/avida/cbuild/work/avida {}".format(runDir))
+    os.system("cp ~/Documents/AvidaGeneDupe/avida/cbuild/work/avida {}".format(timepointRunDir))
     os.chdir(timepointRunDir)
     os.system('cp {}/avida.cfg .'.format(configDir)) 
     os.system('cp {}/default-heads.org .'.format(configDir))
