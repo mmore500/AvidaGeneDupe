@@ -107,6 +107,11 @@ def getLength(runDir):
     length = int(analyzedOrganism.split()[-2])
     return length
 
+def getViability(organism):
+    #-2 is used here because the viability is being pulled from the knockout analysis file in which the viability is second-to-last
+    viability = int(organism.split()[-2])
+    return viability
+
 def getGenome(runDir):
     replicateData = os.path.join(runDir, f'Timepoint_{desiredUpdateToAnalyze}/data/detail_MostNumerousAt{desiredUpdateToAnalyze}.dat')
     datFileContents = getOrganisms(replicateData)
@@ -220,10 +225,7 @@ def getTaskCodingSitesOverRun(runDir):
     for site, knockoutOrg in enumerate(knockoutOrganisms):
         knockoutOrganismTasks = getTasks(knockoutOrg)
         
-        viabilitySite = True
-        for taskIndicator in knockoutOrganismTasks:
-            if taskIndicator != 0:
-                viabilitySite = False
+        viabilitySite = bool(int(getViability(knockoutOrg)))
 
         if viabilitySite:
             viabilitySites.add(site)
