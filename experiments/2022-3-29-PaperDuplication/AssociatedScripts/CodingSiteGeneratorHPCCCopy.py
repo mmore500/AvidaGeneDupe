@@ -99,7 +99,7 @@ def getUpdateBorn(organismString):
     return updateBorn
 
 def getLength(runDir):
-    replicateData = os.path.join(runDir, f'Timepoint_{desiredUpdateToAnalyze}/data/detail_MostNumerousAt{desiredUpdateToAnalyze}.dat')
+    replicateData = os.path.join(runDir, f'Timepoint_{desiredUpdateToAnalyze}/detail_MostNumerousAt{desiredUpdateToAnalyze}.dat')
     datFileContents = getOrganisms(replicateData)
     analyzedOrganism = datFileContents[-1]
     
@@ -113,7 +113,7 @@ def getViability(organism):
     return viability
 
 def getGenome(runDir):
-    replicateData = os.path.join(runDir, f'Timepoint_{desiredUpdateToAnalyze}/data/detail_MostNumerousAt{desiredUpdateToAnalyze}.dat')
+    replicateData = os.path.join(runDir, f'Timepoint_{desiredUpdateToAnalyze}/detail_MostNumerousAt{desiredUpdateToAnalyze}.dat')
     datFileContents = getOrganisms(replicateData)
     analyzedOrganism = datFileContents[-1]
     
@@ -154,7 +154,7 @@ def knockoutDatFile(datFile,dest):
             orgCount+=1
 
 def createDatAnalyzeCfg(runDir):
-        datDir = os.path.join(runDir,f"Timepoint_{desiredUpdateToAnalyze}/data")
+        datDir = os.path.join(runDir,f"Timepoint_{desiredUpdateToAnalyze}")
 
         datFile = os.path.join(datDir,f"detail_MostNumerousAt{desiredUpdateToAnalyze}.dat")
             
@@ -206,7 +206,7 @@ def getTasks(organismString):
     return np.array(tasks)
 
 def getTaskCodingSitesOverRun(runDir):
-    replicateData = os.path.join(runDir,f"Timepoint_{desiredUpdateToAnalyze}/data/detail_Org0FitnessDifferences.dat")
+    replicateData = os.path.join(runDir,f"Timepoint_{desiredUpdateToAnalyze}/detail_Org0FitnessDifferences.dat")
     datFileContents = getOrganisms(replicateData)
     (knockoutOrganisms,analyzedOrganism) = (datFileContents[:-1],datFileContents[-1])
 
@@ -272,7 +272,7 @@ def writeTaskCodingSitesInPandasDataFrame(treatment, runDir, taskCodingSites, vi
         treatment.treatmentDataframe.loc[rowName] = [runName, taskNames[k], desiredUpdateToAnalyze, treatment.treatmentName, taskCodingSites[k], len(taskCodingSites[k]), numUniqueCodingSites, viabilitySites, len(viabilitySites), genomeLength, fracCodingSites, fracViabilitySites, viabilityToCodingRatio, getGenome(runDir)]
 
 def writeTaskCodingSites(runDir,codingSites):
-    writeDirectory = os.path.join(runDir,f"Timepoint_{desiredUpdateToAnalyze}/data/codingSites.txt")
+    writeDirectory = os.path.join(runDir,f"Timepoint_{desiredUpdateToAnalyze}/codingSites.txt")
     with open(writeDirectory,'w') as f:
         for site in codingSites:
             f.write('{},'.format(site))
