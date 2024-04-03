@@ -42,7 +42,7 @@ do
     cp $${CONFIG_DIR}/analyze_$${ANALYSIS_TIME}.cfg .
 
     EXECUTE="avida -s $${SEED} -set COPY_MUT_PROB 0.0025 -set COPY_INS_PROB 0.0 -set COPY_DEL_PROB 0.0 -set DIVIDE_INS_PROB 0.05 -set DIVIDE_DEL_PROB 0.05 -set DIVIDE_SLIP_PROB $divSlipProb -set SLIP_FILL_MODE $slipFillMode"
-    ./$${EXECUTE} -set ANALYZE_FILE analyze_$${ANALYSIS_TIME} -a > analyze.log
+    ./$${EXECUTE} -set ANALYZE_FILE analyze_$${ANALYSIS_TIME}.cfg -a > analyze.log
 
     rm avida
     rm avida.cfg
