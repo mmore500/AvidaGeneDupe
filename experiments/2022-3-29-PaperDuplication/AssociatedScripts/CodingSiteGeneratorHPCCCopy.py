@@ -44,19 +44,7 @@ class Treatment():
                                                           "Genome"])
 
 for subdir in os.listdir(dataDir):
-    if '.' in subdir:
-        continue
-    elif 'Test-Job' in subdir:
-        continue
-    elif 'Slip-scatter' in subdir:
-        continue
-    elif 'Slip-scramble' in subdir:
-        continue
-    elif 'Slip-NOP' in subdir:
-        continue
-    elif 'Slip-random' in subdir:
-        continue
-    elif 'High-Mutation' in subdir:
+    if subdir not in ['Baseline-Treatment', 'Slip-duplicate']:
         continue
     treatment = Treatment(os.path.join(dataDir,subdir))
     Treatments.append(treatment)
@@ -184,15 +172,17 @@ def executeInfoAnalysis(runDir):
     #To accommodate the appropriate gcc compiler not being automatically loaded
     os.system('module load gcc/11.2.0')
 
+    timepointRunDir = os.path.join(runDir, f"Timepoint_{desiredUpdateToAnalyze}")
+
     configDir = os.path.join("~/Documents/AvidaGeneDupe/experiments/","{}/hpcc/config".format(experimentName))
     os.system("cp ~/Documents/AvidaGeneDupe/avida/cbuild/work/avida {}".format(runDir))
-    os.chdir(runDir)
+    os.chdir(timepointRunDir)
     os.system('cp {}/avida.cfg .'.format(configDir)) 
     os.system('cp {}/default-heads.org .'.format(configDir))
     os.system('cp {}/environment.cfg .'.format(configDir))
     os.system('cp {}/events.cfg .'.format(configDir))
     os.system('cp {}/instset-heads___sensors_NONE.cfg .'.format(configDir))
-    os.system(f"./avida -set ANALYZE_FILE Timepoint_{desiredUpdateToAnalyze}/data/informationAnalyzer.cfg -a > analyze.log")
+    os.system(f"./avida -set ANALYZE_FILE data/informationAnalyzer.cfg -a > analyze.log")
     os.system('rm avida')
     os.system('rm avida.cfg')
     os.system('rm default-heads.org')
