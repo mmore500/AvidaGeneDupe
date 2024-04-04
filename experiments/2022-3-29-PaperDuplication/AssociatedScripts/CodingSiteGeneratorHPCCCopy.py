@@ -154,7 +154,7 @@ def knockoutDatFile(datFile,dest):
             orgCount+=1
 
 def createDatAnalyzeCfg(runDir):
-        datDir = os.path.join(runDir,f"Timepoint_{desiredUpdateToAnalyze}")
+        datDir = os.path.join(runDir,f"Timepoint_{desiredUpdateToAnalyze}/data")
 
         datFile = os.path.join(datDir,f"data/detail_MostNumerousAt{desiredUpdateToAnalyze}.dat")
             
