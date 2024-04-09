@@ -11,5 +11,5 @@ with open('../hpcc/config/analyzeTemplate.cfg', 'r') as templateFile:
 
 analyzeConfigString = analyzeConfigTemplate.substitute(updateAtWhichToAnalyze=updateToAnalyze)
 
-with open('../hpcc/config/analyze.cfg', 'w') as analyzeConfigFile:
+with open(f'../hpcc/config/analyze_{updateToAnalyze}.cfg', 'w') as analyzeConfigFile:
     analyzeConfigFile.write(analyzeConfigString)

@@ -6,7 +6,7 @@ numberOfReplicates = 30
 experimentID = sys.argv[1]
 updateToAnalyze = sys.argv[2]
 
-validTreatments = ["Baseline-Treatment", "Slip-duplicate", "Slip-scramble"]
+validTreatments = ["Baseline-Treatment", "Slip-scramble"]
 
 treatmentParameters = {"Baseline-Treatment" : {"Seed Offset" : 1530, "Slip Mutation Probability" : 0.0, "Slip Fill Mode" : 0},
                        "Slip-duplicate" : {"Seed Offset" : 1590, "Slip Mutation Probability" : 0.05, "Slip Fill Mode" : 0},
@@ -33,10 +33,9 @@ for treatmentInQuestion in possibleTreatments:
                                                                         slipFillMode=parameters["Slip Fill Mode"],
                                                                         experimentalID=experimentID)
 
-        with open('geneDuplicationDataAnalyzer.sh', 'w') as f:
+        with open(f'geneDuplicationDataAnalyzer_{updateToAnalyze}.sh', 'w') as f:
             f.write(dataAnalysisScriptString)
         
-        os.system('bash geneDuplicationDataAnalyzer.sh')
+        os.system(f'bash geneDuplicationDataAnalyzer_{updateToAnalyze}.sh')
 
-#So that an integer, not a string, will be passed to the bash script
-int(updateToAnalyze)
+        os.system(f'rm geneDuplicationDataAnalyzer_{updateToAnalyze}.sh')
