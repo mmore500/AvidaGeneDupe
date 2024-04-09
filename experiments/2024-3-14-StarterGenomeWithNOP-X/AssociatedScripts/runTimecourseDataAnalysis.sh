@@ -12,7 +12,7 @@
 
 USERNAME=clhaynes
 EXPERIMENT_ID=2024-3-14-StarterGenomeWithNOP-X
-
+SLURM_ARRAY_TASK_ID=1
 EXPERIMENT_DIR=/scratch/zamanlh_root/zamanlh0/${USERNAME}/${EXPERIMENT_ID}
 
 echo "Experiment: ${EXPERIMENT_ID}"
