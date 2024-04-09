@@ -1,3 +1,22 @@
+'''
+CodingSiteGeneratorHPCCCopy.py
+Author: Cameron Haynes
+Initial Date: May or June 2022
+
+For any given Avida run, Analyze mode can be used to find the most dominant organism at a given timepoint.
+This script takes in information about this dominant organism, including its genome, and outputs a row in
+a Pandas dataframe for each task with a list of coding sites, viability sites, and other statistics.
+===========================================================================================================
+
+This script begins by collecting the paths to all of the directories where data will be found, and then it
+proceeds to iterate through those directories and apply the same analysis to each in turn.
+
+
+
+
+'''
+
+
 import os
 import csv
 import numpy as np
@@ -42,6 +61,14 @@ class Treatment():
                                                           "Fraction Viability Sites", 
                                                           "Ratio of Viability Sites to Coding Sites", 
                                                           "Genome"])
+
+'''To collect all the paths, it begins at the directory associated with the Avida experiment run. Then, it
+gathers all of the subdirectories and considers if they are valid treatments, according to the list provided.
+For each valid treatment, it adds the replicate subdirectories contained in the treatment directory to a list.
+This list is what is iterated over for analysis.
+
+Once all the run directories have been collated, the 
+'''
 
 for subdir in os.listdir(dataDir):
     if subdir not in ['Baseline-Treatment', 'Slip-duplicate']:
