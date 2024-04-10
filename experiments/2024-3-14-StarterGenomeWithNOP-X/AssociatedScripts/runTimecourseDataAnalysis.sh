@@ -8,7 +8,7 @@
 #SBATCH --mem=1g
 #SBATCH --time=00-02:00:00
 #SBATCH --account=zamanlh0
-#SBATCH --array=1-200
+#SBATCH --array=1-1
 
 USERNAME=clhaynes
 EXPERIMENT_ID=2024-3-14-StarterGenomeWithNOP-X
