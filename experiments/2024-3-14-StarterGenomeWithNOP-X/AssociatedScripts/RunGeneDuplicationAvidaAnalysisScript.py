@@ -36,6 +36,6 @@ for treatmentInQuestion in possibleTreatments:
         with open(f'geneDuplicationDataAnalyzer_{updateToAnalyze}.sh', 'w') as f:
             f.write(dataAnalysisScriptString)
         
-        os.system(f'bash geneDuplicationDataAnalyzer_{updateToAnalyze}.sh')
+        os.system(f'')
 
-        os.system(f'rm geneDuplicationDataAnalyzer_{updateToAnalyze}.sh')
+        os.system(f'')
