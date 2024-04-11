@@ -8,13 +8,13 @@
 #SBATCH --mem=1g
 #SBATCH --time=00-02:00:00
 #SBATCH --account=zamanlh0
-#SBATCH --array=1-1
+#SBATCH --array=1-200
 
 USERNAME=clhaynes
 EXPERIMENT_ID=2024-3-14-StarterGenomeWithNOP-X
 
 EXPERIMENT_DIR=/scratch/zamanlh_root/zamanlh0/${USERNAME}/${EXPERIMENT_ID}
-SLURM_ARRAY_TASK_ID=1
+
 echo "Experiment: ${EXPERIMENT_ID}"
 ANALYSIS_TIME=$((1000 * SLURM_ARRAY_TASK_ID))
 echo $ANALYSIS_TIME
