@@ -27,7 +27,7 @@ do
 
     mkdir Timepoint_$${ANALYSIS_TIME}
 
-    cp -r data/detail-$${ANALYSIS_TIME}.spop Timepoint_$${ANALYSIS_TIME}
+    cp data/detail-$${ANALYSIS_TIME}.spop Timepoint_$${ANALYSIS_TIME}
     
     cd Timepoint_$${ANALYSIS_TIME}
 
@@ -51,5 +51,6 @@ do
     rm events.cfg
     rm instset-heads___sensors_NONE.cfg
     rm analyze.cfg
+    
 
 done

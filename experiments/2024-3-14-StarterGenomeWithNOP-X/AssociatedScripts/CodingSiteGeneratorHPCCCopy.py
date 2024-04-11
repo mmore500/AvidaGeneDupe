@@ -312,6 +312,8 @@ def writeExperimentTaskCodingSites(treatmentArray):
         for runDir in treatment.runDirectories:
             createDatAnalyzeCfg(runDir)
             executeInfoAnalysis(runDir)
+            os.chdir(runDir)
+            os.system(f"rm -r Timepoint_{desiredUpdateToAnalyze}")
             
         treatmentData = []
         for runDir in treatment.runDirectories:
