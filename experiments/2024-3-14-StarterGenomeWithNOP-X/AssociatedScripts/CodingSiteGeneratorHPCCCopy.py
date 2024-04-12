@@ -181,7 +181,7 @@ def knockoutDatFile(datFile,dest):
             orgCount+=1
 
 def createDatAnalyzeCfg(runDir):
-        datDir = os.path.join(runDir,f"Timepoint_{desiredUpdateToAnalyze}/data")
+        datDir = os.path.join(runDir,f"Timepoint_{desiredUpdateToAnalyze}")
 
         datFile = os.path.join(datDir,f"detail_MostNumerousAt{desiredUpdateToAnalyze}.dat")
             
@@ -214,7 +214,7 @@ def executeInfoAnalysis(runDir):
     os.system('cp {}/environment.cfg .'.format(configDir))
     os.system('cp {}/events.cfg .'.format(configDir))
     os.system('cp {}/instset-heads___sensors_NONE.cfg .'.format(configDir))
-    os.system(f"./avida -set ANALYZE_FILE data/informationAnalyzer.cfg -a > analyze.log")
+    os.system(f"./avida -set ANALYZE_FILE informationAnalyzer.cfg -a > analyze.log")
     os.system('rm avida')
     os.system('rm avida.cfg')
     os.system('rm default-headsWithNOP-X.org')
