@@ -312,13 +312,13 @@ def writeExperimentTaskCodingSites(treatmentArray):
         for runDir in treatment.runDirectories:
             createDatAnalyzeCfg(runDir)
             executeInfoAnalysis(runDir)
-            os.chdir(runDir)
-            os.system(f"rm -r Timepoint_{desiredUpdateToAnalyze}")
             
         treatmentData = []
         for runDir in treatment.runDirectories:
             taskCodingSites, viabilitySites, numUniqueCodingSites = getTaskCodingSitesOverRun(runDir)
             writeTaskCodingSitesInPandasDataFrame(treatment, runDir, taskCodingSites, viabilitySites, numUniqueCodingSites)
+            os.chdir(runDir)
+            os.system(f"rm -r Timepoint_{desiredUpdateToAnalyze}")
 
 linDatFile = ".dat"
 
