@@ -50,7 +50,7 @@ do
     rm environment.cfg
     rm events.cfg
     rm instset-heads___sensors_NONE.cfg
-    rm analyze.cfg
+    rm analyze_$${ANALYSIS_TIME}.cfg
     
 
 done
