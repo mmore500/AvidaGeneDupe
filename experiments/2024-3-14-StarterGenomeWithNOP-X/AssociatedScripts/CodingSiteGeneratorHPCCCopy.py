@@ -310,9 +310,9 @@ def writeExperimentTaskCodingSites(treatmentArray):
         print(treatmentName)
         
         for runDir in treatment.runDirectories:
-            runDirElements = runDir.split('/')
-            runName = runDirElements[-1]
-            print(f"{runName} elements = {os.listdir(runDir)}")
+            #runDirElements = runDir.split('/')
+            #runName = runDirElements[-1]
+            #print(f"{runName} elements = {os.listdir(runDir)}")
             createDatAnalyzeCfg(runDir)
             executeInfoAnalysis(runDir)
             
