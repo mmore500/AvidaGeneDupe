@@ -25,7 +25,6 @@ cp RunGeneDuplicationAvidaAnalysisScript.py RunGeneDuplicationAvidaAnalysisScrip
 python3 RunGeneDuplicationAvidaAnalysisScript_${ANALYSIS_TIME}.py ${EXPERIMENT_ID} ${ANALYSIS_TIME}
 rm RunGeneDuplicationAvidaAnalysisScript_${ANALYSIS_TIME}.py
 
-bash geneDuplicationDataAnalyzer_${ANALYSIS_TIME}.sh
 rm geneDuplicationDataAnalyzer_${ANALYSIS_TIME}.sh
 
 cd ${EXPERIMENT_DIR}
