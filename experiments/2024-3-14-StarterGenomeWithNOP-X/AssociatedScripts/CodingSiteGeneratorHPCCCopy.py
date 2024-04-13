@@ -183,7 +183,7 @@ def knockoutDatFile(datFile,dest):
 def createDatAnalyzeCfg(runDir):
         datDir = os.path.join(runDir,f"Timepoint_{desiredUpdateToAnalyze}")
 
-        datFile = os.path.join(datDir,f"detail_MostNumerousAt{desiredUpdateToAnalyze}.dat")
+        datFile = os.path.join(datDir,f"data/detail_MostNumerousAt{desiredUpdateToAnalyze}.dat")
             
         configFile = os.path.join(datDir,'informationAnalyzer.cfg')
         f = open(configFile,'w')
