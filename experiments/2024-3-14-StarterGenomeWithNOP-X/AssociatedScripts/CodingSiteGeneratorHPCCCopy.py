@@ -6,13 +6,18 @@ Initial Date: May or June 2022
 For any given Avida run, Analyze mode can be used to find the most dominant organism at a given timepoint.
 This script takes in information about this dominant organism, including its genome, and outputs a row in
 a Pandas dataframe for each task with a list of coding sites, viability sites, and other statistics.
+
+Usage Example: python3 CodingSiteGeneratorHPCCCopy.py ${UPDATE_TO_ANALYZE}
+
+Output: For each experimental treatment, a CSV file containing the rows of the aforementioned Pandas dataframe
 ===========================================================================================================
 
-This script begins by collecting the paths to all of the directories where data will be found, and then it
-proceeds to iterate through those directories and apply the same analysis to each in turn.
-
-
-
+Overall Algorithm
+1. Define variables and the different parameters for each treatment
+2. Collect the paths to all of the directories where data will be found
+3. The coding sites, and associated data for each of the dominant organisms
+are generated and written in a Pandas dataframe for each treatment
+4. The resultant Pandas dataframe, one for each treatment, is written to a CSV file
 
 '''
 
@@ -24,10 +29,31 @@ import pandas as pd
 import sys
 import uuid
 
+'''
+1. Define variables and the different parameters for each treatment
+    a. Use the sys packages argv object to retrieve the examined update from the command line use of this script
+    b. Initialize containers for storing the paths to where data is being held
+    c. Provide the parameter values for the Avida runs of each treatment
+    d. Get the name of the directory where this script is being executed to make correct absolute paths
+    e. Define a Treatment class to encapsulate the paths for different treatment's raw data and the treatment's output dataframe
+'''
+
+'''
+a. Use the sys package's argv object to retrieve the examined update from the command line use of this script
+'''
 desiredUpdateToAnalyze = sys.argv[1]
 
+'''
+b. Initialize containers for storing the paths to where data is being held
+'''
+#NOTE: I think this runDirectories can be deleted because the paths to run directories are already
+#being stored in the appropriate list in each treatment instance
 runDirectories = []
 Treatments = []
+
+'''
+c. Provide the parameter values for the Avida runs of each treatment
+'''
 treatmentParameters = {"Baseline-Treatment":[0.0025, 0.0, 0.0, 0.05, 0.05, 0.0, 0],
 "Slip-NOP":[0.0, 0.0, 0.0, 0.0, 0.0, 0.05, 1],
 "Slip-duplicate":[0.0, 0.0, 0.0, 0.0, 0.0, 0.05, 0],
@@ -35,13 +61,19 @@ treatmentParameters = {"Baseline-Treatment":[0.0025, 0.0, 0.0, 0.05, 0.05, 0.0, 
 "Slip-scramble":[0.0, 0.0, 0.0, 0.0, 0.0, 0.05, 3],
 "Slip-random":[0.0, 0.0, 0.0, 0.0, 0.0, 0.05, 2],
 "High-Mutation":[0.0025,0.0075,0.0075,0.05,0.05,0.0,0]}
+
+'''
+d. Get the name of the directory where this script is being executed to make correct absolute paths
+'''
 stream = os.popen('pwd')
 pwd = stream.read().rstrip()
 experimentDir = pwd
 dataDir = pwd
 experimentName = pwd.split('/')[-1]
 
-
+'''
+e. Define a Treatment class to encapsulate the paths for different treatment's raw data and the treatment's output dataframe
+'''
 class Treatment():
     def __init__(self,treatmentPath):
         self.treatmentDir = treatmentPath
@@ -62,20 +94,26 @@ class Treatment():
                                                           "Ratio of Viability Sites to Coding Sites", 
                                                           "Genome"])
 
-'''To collect all the paths, it begins at the directory associated with the Avida experiment run. Then, it
-gathers all of the subdirectories and considers if they are valid treatments, according to the list provided.
-For each valid treatment, it adds the replicate subdirectories contained in the treatment directory to a list.
-This list is what is iterated over for analysis.
-
-Once all the run directories have been collated, the 
+'''
+2. Collect the paths to all of the directories where data will be found
+    a. Gather all of the subdirectories and add them to the list for iteration if they are valid treatments,
+      according to the list provided.
+    b. For each valid treatment, add the replicate subdirectories contained in the treatment directory to the treatment's list.
 '''
 
 for subdir in os.listdir(dataDir):
+    '''
+    a. Gather all of the subdirectories and add them to the list for iteration if they are valid treatments,
+    according to the list provided.
+    '''
     if subdir not in ['Baseline-Treatment', 'Slip-scramble']:
         continue
     treatment = Treatment(os.path.join(dataDir,subdir))
     Treatments.append(treatment)
 
+    '''
+    b. For each valid treatment, add the replicate subdirectories contained in the treatment directory to the treatment's list.
+    '''
     for run_dir in os.listdir(treatment.treatmentDir):
         if not 'run_' in run_dir:
             continue
@@ -304,31 +342,84 @@ def writeTaskCodingSites(runDir,codingSites):
         for site in codingSites:
             f.write('{},'.format(site))
 
+'''
+writeExperimentTaskCodingSites():
+Input: The list of valid treatments to be iterated over
+
+Algorithm
+For each run directory (the overarching container for the raw data of a given replicate) in each treatment
+
+a. Create an Analyze mode analyze.cfg named "informationAnalyzer.cfg" through generating knockout genomes
+
+b. Use informationAnalyzer.cfg to run Analyze mode on the knockout genomes to generate data on the effect of
+each knockout
+
+c. Parse the Analyze mode output to get the dominant organism's coding and viability sites
+
+d. Write the coding and viability sites along with other relevant metrics to a Pandas dataframe,
+ one row for each task in the environment
+
+e. Remove the subdirectory for the update to analyze, so that space is freed in scratch
+'''
 def writeExperimentTaskCodingSites(treatmentArray):
     for treatment in treatmentArray:
         treatmentName = treatment.treatmentName
         print(treatmentName)
-        
+
+        '''
+        For each run directory (the overarching container for the raw data of a given replicate) in each treatment
+        '''
         for runDir in treatment.runDirectories:
             #runDirElements = runDir.split('/')
             #runName = runDirElements[-1]
             #print(f"{runName} elements = {os.listdir(runDir)}")
+
+            '''
+            a. Create an Analyze mode analyze.cfg named "informationAnalyzer.cfg" through generating knockout genomes
+            '''
             createDatAnalyzeCfg(runDir)
+
+            '''
+            b. Use informationAnalyzer.cfg to run Analyze mode on the knockout genomes to generate data on the effect of 
+            each knockout
+            '''
             executeInfoAnalysis(runDir)
-            
+
+        #NOTE: treatmentData is also something from a past iteration that can be erased    
         treatmentData = []
         for runDir in treatment.runDirectories:
+            '''
+            c. Parse the Analyze mode output to get the dominant organism's coding and viability sites
+            '''
             taskCodingSites, viabilitySites, numUniqueCodingSites = getTaskCodingSitesOverRun(runDir)
+
+            '''
+            d. Write the coding and viability sites along with other relevant metrics to a Pandas dataframe,
+             one row for each task in the environment
+            '''
             writeTaskCodingSitesInPandasDataFrame(treatment, runDir, taskCodingSites, viabilitySites, numUniqueCodingSites)
+
+            '''
+            e. Remove the subdirectory for the update to analyze, so that space is freed in scratch
+            '''
             os.chdir(runDir)
             os.system(f"rm -r Timepoint_{desiredUpdateToAnalyze}")
 
+#NOTE: linDatFile is also not used anywhere else
 linDatFile = ".dat"
 
+'''
+3. The coding sites, and associated data for each of the dominant organisms
+are generated and written in a Pandas dataframe for each treatment
+'''
 writeExperimentTaskCodingSites(Treatments)
 
+#NOTE: Delete this variable, because it is a debugging artifact
 counter = 0
 
+'''
+4. The resultant Pandas dataframe, one for each treatment, is written to a CSV file
+'''
 for treatment in Treatments:
     print(treatment.treatmentDataframe)
     treatment.treatmentDataframe["Run UUID"] = uuid.uuid4()
