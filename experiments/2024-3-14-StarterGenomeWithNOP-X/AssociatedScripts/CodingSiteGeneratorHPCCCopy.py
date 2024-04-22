@@ -252,7 +252,12 @@ def getTaskCodingSitesOverRun(runDir):
     for site, knockoutOrg in enumerate(knockoutOrganisms):
         knockoutOrganismTasks = getTasks(knockoutOrg)
         
-        viabilitySite = bool(int(getViability(knockoutOrg)))
+        viabilityKnockout = bool(int(getViability(knockoutOrg)))
+        viabilityOriginal = bool(int(getViability(analyzedOrganism)))
+
+        #If the viability of the knockout is different than the original, then it is true that the knockout
+        #is a viability site
+        viabilitySite = not viabilityKnockout == viabilityOriginal
 
         if viabilitySite:
             viabilitySites.add(site)
