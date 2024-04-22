@@ -114,37 +114,82 @@ orgCount:= the number of organisms that have been through the knockout process f
 knockoutDatGenome() to separate each organism in a lineage into its own batch for Analyze mode to process
 
 '''
+    '''
+    Algorithm
+    1. Knockout genomes are generated one-by-one by applying knockItOut() to each instruction in the genome
+        a. The resultant knockout genome is integrated into a string with the Analyze mode 'LOAD_SEQUENCE' command
+        and then stored in a list for writing to informationAnalyzer.cfg
+        b. The original genome is also included at the very end so that its data can be used for comparison with the
+        knockout genomes.
+    2. The 'SET_BATCH' Analyze mode command is written to informationAnalyzer.cfg before the 'LOAD_SEQUENCE' commands
+    containing the new knockout genomes are so that the knockout genomes will be analyzed and their data displayed as
+    a unit in one output file. This uses orgCount to determine the batch number.
+    3. The new 'LOAD_SEQUENCE' commands for knockout genomes and the original genome are written to informationAnalyzer.cfg
+    4. Final commands that are necessary for Analyze mode to generate data about the knockout genomes are written
+        a. RECALC, which runs the loaded sequences through a series of tests to generate data about them
+        b. DETAIL, which prints the specified data that are desired line-by-line in detail_...dat
+    '''
+    
     knuckOutGenomes = []
+
+    '''
+    1. Knockout genomes are generated one-by-one by applying knockItOut() to each instruction in the genome
+    '''
     for instructionIndex,inst in enumerate(genome):
         knuckOutGenome = knockItOut(genome,instructionIndex)
+
+        '''
+        a. The resultant knockout genome is integrated into a string with the Analyze mode 'LOAD_SEQUENCE' command
+        and then stored in a list for writing to informationAnalyzer.cfg
+        '''
         knuckOutGenomes.append('LOAD_SEQUENCE ' + knuckOutGenome + '\n')
+    #NOTE: This is another debugging artifact
     writeFile = dest
+
+    '''
+    b. The original genome is also included at the very end so that its data can be used for comparison with the
+        knockout genomes.
+    '''
     knuckOutGenomes.append('LOAD_SEQUENCE ' + genome + '\n')
+
+    '''
+    2. The 'SET_BATCH' Analyze mode command is written to informationAnalyzer.cfg before the 'LOAD_SEQUENCE' commands
+    containing the new knockout genomes are so that the knockout genomes will be analyzed and their data displayed as
+    a unit in one output file. This uses orgCount to determine the batch number.
+    '''
     dest.write('SET_BATCH {} \n\n'.format(orgCount))
+
+    '''
+    3. The new 'LOAD_SEQUENCE' commands for knockout genomes and the original genome are written to
+      informationAnalyzer.cfg
+    '''
     dest.writelines(knuckOutGenomes)
+
+    '''
+    4. Final commands that are necessary for Analyze mode to generate data about the knockout genomes are written
+    '''
+    '''
+    a. RECALC, which runs the loaded sequences through a series of tests to generate data about them
+    '''
     dest.write('RECALC\n\n')
+
+    '''
+    b. DETAIL, which prints the specified data that are desired line-by-line in detail_...dat
+    '''
     dest.write('DETAIL detail_Org{}FitnessDifferences.dat task_list gest_time comp_merit merit fitness efficiency viable length\n\n'.format(orgCount))
 
-'''
-knockoutDatFile():
-Iterates through the Avida Analyze mode output file for a dominant organism or that organism's lineage
-and, for each organism listed in the file, generates a series of knockout genomes that are written to
-informationAnalyzer.cfg
 
-Knockout genome is defined in the function description for knockoutDatGenome()
-
-Parameters:
-datFile:= the path to the Avida Analyze mode output file describing a dominant organism or its lineage
-dest:= the path to the destination write file (in this instance, this is the path to informationAnalyzer.cfg)
-
-Algorithm
-1. Read the lines of the dominant organism or dominant lineage output file into a list
-2. For each line, if it describes an organism:
-    a. Parse the line to extract the organism's genome
-    b. Generate a series of knockout genomes for that organism and writes them to the provided destination file
-    c. Update the count of organisms read to inform knockoutDatGenome()'s next execution
-'''
 def knockoutDatFile(datFile,dest):
+
+    '''
+    Algorithm
+    1. Read the lines of the dominant organism or dominant lineage output file into a list
+    2. For each line, if it describes an organism:
+        a. Parse the line to extract the organism's genome
+        b. Generate a series of knockout genomes for that organism and writes them to the provided destination file
+        c. Update the count of organisms read to inform knockoutDatGenome()'s next execution
+    '''
+
     #NOTE: This is another debugging artifact
     #os.system('pwd')
     '''
@@ -182,52 +227,49 @@ def knockoutDatFile(datFile,dest):
             '''
             orgCount+=1
 
-'''
-createDatAnalyzeCfg():
-Creates an Analyze mode configuration file called "informationAnalyzer.cfg" by generating knockout genomes
 
-Parameters
-runDir:= the path to the overarching replicate directory containing the raw data to be analyzed
-
-Algorithm
-1. Create variables to store the path to the data and the path for writing informationAnalyzer.cfg
-2. Open a file stream object to write informationAnalyzer.cfg
-3. Write the Analyze mode configuration file preamble to informationAnalyzer.cfg
-4. Use the data to write the original and knockout genomes to be analyzed
- by Avida Analyze mode into informationAnalyzer.cfg
-'''
 def createDatAnalyzeCfg(runDir):
-        '''
-        1. Create variables to store the path to the data and the path for writing informationAnalyzer.cfg
-        '''
-        datDir = os.path.join(runDir,f"Timepoint_{desiredUpdateToAnalyze}")
-        datFile = os.path.join(datDir,f"data/detail_MostNumerousAt{desiredUpdateToAnalyze}.dat")
-        configFile = os.path.join(datDir,'informationAnalyzer.cfg')
+    
+    '''
+    Algorithm
+    1. Create variables to store the path to the data and the path for writing informationAnalyzer.cfg
+    2. Open a file stream object to write informationAnalyzer.cfg
+    3. Write the Analyze mode configuration file preamble to informationAnalyzer.cfg
+    4. Use the data to write the original and knockout genomes to be analyzed
+    by Avida Analyze mode into informationAnalyzer.cfg
+    '''
 
-        '''
-        2. Open a file stream object to write informationAnalyzer.cfg
-        '''
-        f = open(configFile,'w')
+    '''
+    1. Create variables to store the path to the data and the path for writing informationAnalyzer.cfg
+    '''
+    datDir = os.path.join(runDir,f"Timepoint_{desiredUpdateToAnalyze}")
+    datFile = os.path.join(datDir,f"data/detail_MostNumerousAt{desiredUpdateToAnalyze}.dat")
+    configFile = os.path.join(datDir,'informationAnalyzer.cfg')
 
-        '''
-        3. Write the Analyze mode configuration file preamble to informationAnalyzer.cfg
-        '''
-        preamble = ['################################################################################################\n',
-                    '# This file is used to setup avida when it is in analysis-only mode, which can be triggered by\n'
-                    '# running "avida -a".\n',
-                    '#\n', 
-                    '# Please see the documentation in documentation/analyze.html for information on how to use\n',
-                    '# analyze mode.\n',
-                    '################################################################################################\n',
-                    '\n',
-                    '\n']
-        f.writelines(preamble)
-        
-        '''
-        4. Use the data to write the original and knockout genomes to be analyzed
-          by Avida Analyze mode into informationAnalyzer.cfg
-        '''
-        knockoutDatFile(datFile,f)
+    '''
+    2. Open a file stream object to write informationAnalyzer.cfg
+    '''
+    f = open(configFile,'w')
+
+    '''
+    3. Write the Analyze mode configuration file preamble to informationAnalyzer.cfg
+    '''
+    preamble = ['################################################################################################\n',
+                '# This file is used to setup avida when it is in analysis-only mode, which can be triggered by\n'
+                '# running "avida -a".\n',
+                '#\n', 
+                '# Please see the documentation in documentation/analyze.html for information on how to use\n',
+                '# analyze mode.\n',
+                '################################################################################################\n',
+                '\n',
+                '\n']
+    f.writelines(preamble)
+    
+    '''
+    4. Use the data to write the original and knockout genomes to be analyzed
+        by Avida Analyze mode into informationAnalyzer.cfg
+    '''
+    knockoutDatFile(datFile,f)
 
 def executeInfoAnalysis(runDir):
     #To accommodate the appropriate gcc compiler not being automatically loaded
@@ -327,32 +369,32 @@ def writeTaskCodingSitesInPandasDataFrame(treatment, runDir, taskCodingSites, vi
         rowName = f"{runName}," + f"{taskNames[k]}"
         treatment.treatmentDataframe.loc[rowName] = [runName, taskNames[k], desiredUpdateToAnalyze, treatment.treatmentName, taskCodingSites[k], len(taskCodingSites[k]), numUniqueCodingSites, viabilitySites, len(viabilitySites), genomeLength, fracCodingSites, fracViabilitySites, viabilityToCodingRatio, getGenome(runDir)]
 
+'''
 def writeTaskCodingSites(runDir,codingSites):
     writeDirectory = os.path.join(runDir,f"Timepoint_{desiredUpdateToAnalyze}/data/codingSites.txt")
     with open(writeDirectory,'w') as f:
         for site in codingSites:
             f.write('{},'.format(site))
-
 '''
-writeExperimentTaskCodingSites():
-Input: The list of valid treatments to be iterated over
 
-Algorithm
-For each run directory (the overarching container for the raw data of a given replicate) in each treatment
-
-a. Create an Analyze mode analyze.cfg named "informationAnalyzer.cfg" through generating knockout genomes
-
-b. Use informationAnalyzer.cfg to run Analyze mode on the knockout genomes to generate data on the effect of
-each knockout
-
-c. Parse the Analyze mode output to get the dominant organism's coding and viability sites
-
-d. Write the coding and viability sites along with other relevant metrics to a Pandas dataframe,
- one row for each task in the environment
-
-e. Remove the subdirectory for the update to analyze, so that space is freed in scratch
-'''
 def writeExperimentTaskCodingSites(treatmentArray):
+    
+    '''
+    Algorithm
+    For each run directory (the overarching container for the raw data of a given replicate) in each treatment
+
+    a. Create an Analyze mode analyze.cfg named "informationAnalyzer.cfg" through generating knockout genomes
+
+    b. Use informationAnalyzer.cfg to run Analyze mode on the knockout genomes to generate data on the effect of
+    each knockout
+
+    c. Parse the Analyze mode output to get the dominant organism's coding and viability sites
+
+    d. Write the coding and viability sites along with other relevant metrics to a Pandas dataframe,
+    one row for each task in the environment
+
+    e. Remove the subdirectory for the update to analyze, so that space is freed in scratch
+    '''
     for treatment in treatmentArray:
         treatmentName = treatment.treatmentName
         print(treatmentName)
