@@ -24,6 +24,16 @@ module's namespace.
 #Use r"Path" to avoid any problems from special characters
 def getOrganisms(filePath):
     '''
+    Extracts organism data lines from an Avida data file.
+
+    Parameters:
+    filePath (str): Path to the Avida data file.
+
+    Returns:
+    list: List of organism data lines.
+    '''
+
+    '''
     Algorithm
     1. The data file, output from Avida analyze mode, is opened
     and the lines read into a list.
@@ -93,6 +103,16 @@ def getDatFileHeaders(datFile):
 
 def getOrganismID(organismString):
     '''
+    Extracts the ID of an organism from its data line.
+
+    Parameters:
+    organismString (str): Organism data line.
+
+    Returns:
+    str: Organism ID.
+    '''
+
+    '''
     Algorithm
     1. The input organism data line is split into its components.
     2. The ID is extracted from the first element on the
@@ -103,6 +123,16 @@ def getOrganismID(organismString):
     return ID
 
 def getUpdateBorn(organismString):
+    '''
+    Extracts the update born of an organism from its data line.
+
+    Parameters:
+    organismString (str): Organism data line.
+
+    Returns:
+    str: Update born of the organism.
+    '''
+
     '''
     Algorithm
     1. The input organism data line is split into its components.
@@ -123,6 +153,16 @@ def getUpdateBorn(organismString):
     return updateBorn
 
 def getLength(runDir):
+    '''
+    Gets the length of the original organism's genome.
+
+    Parameters:
+    runDir (str): Path to the run directory.
+
+    Returns:
+    int: Length of the genome.
+    '''
+
     '''
     Algorithm
     1. Assembles path to the data using the timepoint
@@ -165,6 +205,16 @@ def getLength(runDir):
 
 def getViability(organism):
     '''
+    Extracts the viability of an organism from its data.
+
+    Parameters:
+    organism (str): Organism data line.
+
+    Returns:
+    int: Viability of the organism.
+    '''
+
+    '''
     Algorithm
     1. The organism data line is split into its components
       and the viability is extracted from the second-to-last item;
@@ -175,6 +225,16 @@ def getViability(organism):
     return viability
 
 def getGenome(runDir):
+    '''
+    Gets the genome of the original organism.
+
+    Parameters:
+    runDir (str): Path to the run directory.
+
+    Returns:
+    str: Genome of the original organism.
+    '''
+
     '''
     Algorithm
     1. Assembles path to the data using the timepoint
@@ -215,6 +275,17 @@ def getGenome(runDir):
     
 def knockItOut(genomeString,instructionIndex):
     '''
+    Creates a knockout genome by replacing a character in the genome.
+
+    Parameters:
+    genomeString (str): Original genome.
+    instructionIndex (int): Index of the instruction to be replaced.
+
+    Returns:
+    str: Knockout genome.
+    '''
+
+    '''
     Algorithm
     1. Split the genome string into a list of its characters
     2. Replace the character at instructionIndex with 'A'
@@ -233,6 +304,36 @@ def knockItOut(genomeString,instructionIndex):
 
 
 def knockoutDatGenome(dest,genome,orgCount):
+    '''
+    Generates a series of knockout genomes from an original genome
+    and writes them, line-by-line, to a destination file.
+
+    Definition: A knockout genome is a mutation of an original genome
+    where a NOP-X (an instruction that doesn't do anything)
+    has been substituted for one of the original instructions. This 
+    function creates one knockout genome for every instruction
+    in the original genome, going from left-to-right.
+
+    Here's an example
+    (note: the single-letter representation of NOP-X is 'A')
+    Original Genome: 'abcdef'
+    1st Knockout Genome: 'Abcdef'
+    2nd Knockout Genome: 'aAcdef'
+    3rd Knockout Genome: 'abAdef'
+    ...
+    6th Knockout Genome: 'abcdeA'
+
+    An n-instruction original genome will thus have n knockout genomes
+    created from it in the manner shown in the example above.
+
+    Parameters
+    dest:= the file that the knockout genomes will be written to,
+    line-by-line. This is always informationAnalyzer.cfg in this script
+    genome:= the original genome used as template for knockout genomes
+    orgCount:= the number of organisms that have been through the
+    knockout process from the input Analyze mode data file
+    '''
+
     '''
     Algorithm
     1. Knockout genomes are generated one-by-one by applying knockItOut()
@@ -317,6 +418,13 @@ def knockoutDatGenome(dest,genome,orgCount):
 
 
 def knockoutDatFile(datFile,dest):
+    '''
+    Generates knockout genomes and writes them to a destination file.
+
+    Parameters:
+    datFile (str): Path to the Avida data file.
+    dest (file object): Destination file for writing knockout genomes.
+    '''
 
     '''
     Algorithm
@@ -372,6 +480,12 @@ def knockoutDatFile(datFile,dest):
 
 
 def createDatAnalyzeCfg(runDir):
+    '''
+    Creates an Analyze mode configuration file for Avida.
+
+    Parameters:
+    runDir (str): Path to the run directory.
+    '''
     
     '''
     Algorithm
@@ -419,6 +533,13 @@ def createDatAnalyzeCfg(runDir):
     knockoutDatFile(datFile,f)
 
 def executeInfoAnalysis(runDir):
+    '''
+    Executes Avida in analyze mode to generate data about knockout organisms.
+
+    Parameters:
+    runDir (str): Path to the run directory.
+    '''
+
     '''
     Algorithm
     1. On the HPCC, load the gcc-11.2 C++ compiler to accommodate the
@@ -493,6 +614,16 @@ def executeInfoAnalysis(runDir):
 
 def getTasks(organismString):
     '''
+    Extracts tasks from an organism's data.
+
+    Parameters:
+    organismString (str): Organism data line.
+
+    Returns:
+    numpy.ndarray: Array of tasks.
+    '''
+
+    '''
     Algorithm
     1. Split the organism data line into its different elements.
     2. In the output of executeInfoAnalysis, the task list is the
@@ -528,6 +659,16 @@ def getTasks(organismString):
     return np.array(tasks)
 
 def getTaskCodingSitesOverRun(runDir):
+    '''
+    Analyzes knockout genomes to identify coding and viability sites.
+
+    Parameters:
+    runDir (str): Path to the run directory.
+
+    Returns:
+    tuple: Tuple containing coding sites, viability sites, and number of unique coding sites.
+    '''
+
     '''
     Algorithm
     1. Retrieve the output organism data lines from executeInfoAnalysis
@@ -658,6 +799,17 @@ def getTaskCodingSitesOverRun(runDir):
 
 def writeTaskCodingSitesInPandasDataFrame(treatment, runDir, taskCodingSites, viabilitySites, numUniqueCodingSites):
     '''
+    Writes coding and viability sites data to a Pandas dataframe.
+
+    Parameters:
+    treatment: Object representing treatment information.
+    runDir (str): Path to the run directory.
+    taskCodingSites (list): List of coding sites for each task.
+    viabilitySites (list): List of viability sites.
+    numUniqueCodingSites (int): Number of unique coding sites in the genome.
+    '''
+
+    '''
     Algorithm
     1. Extract the run name from the directory path
     2. Enumerate task names to be used for demarcating data rows
@@ -735,7 +887,13 @@ def writeTaskCodingSites(runDir,codingSites):
 '''
 
 def writeExperimentTaskCodingSites(treatmentArray):
-    
+    '''
+    Writes coding and viability sites data for each treatment in the experiment.
+
+    Parameters:
+    treatmentArray (list): List of treatment objects.
+    '''
+
     '''
     Algorithm
     For each run directory (the overarching container for the raw data of a given replicate) in each treatment
