@@ -234,32 +234,6 @@ def knockItOut(genomeString,instructionIndex):
 
 def knockoutDatGenome(dest,genome,orgCount):
     '''
-knockoutDatGenome():
-Generates a series of knockout genomes from an original genome and writes them, line-by-line, to a destination file.
-
-Definition: A knockout genome is a mutation of an original genome where a NOP-X (an instruction that doesn't do anything)
-has been substituted for one of the original instructions. This function creates one knockout genome for every instruction
-in the original genome, going from left-to-right.
-
-Here's an example (note: the single-letter representation of NOP-X is 'A')
-
-Original Genome: 'abcdef'
-1st Knockout Genome: 'Abcdef'
-2nd Knockout Genome: 'aAcdef'
-3rd Knockout Genome: 'abAdef'
-...
-6th Knockout Genome: 'abcdeA'
-
-An n-instruction original genome will thus have n knockout genomes created from it in the manner shown in the example above.
-
-Parameters
-dest:= the file that the knockout genomes will be written to, line-by-line. This is always informationAnalyzer.cfg in this script.
-genome:= the original genome that knockout genomes are being made from
-orgCount:= the number of organisms that have been through the knockout process from the input Analyze mode data file; this allows
-knockoutDatGenome() to separate each organism in a lineage into its own batch for Analyze mode to process
-
-'''
-    '''
     Algorithm
     1. Knockout genomes are generated one-by-one by applying knockItOut()
        to each instruction in the genome
@@ -678,7 +652,7 @@ def getTaskCodingSitesOverRun(runDir):
 
     '''
     h. Return the coding sites, viability sites, and the number
-        of unique coding sites in twrihe genome as a 3-tuple
+        of unique coding sites in the genome as a 3-tuple
     '''
     return codingSites, viabilitySites, numCodingSites
 
