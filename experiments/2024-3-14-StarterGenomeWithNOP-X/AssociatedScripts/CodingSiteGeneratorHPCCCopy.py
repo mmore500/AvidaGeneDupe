@@ -31,8 +31,6 @@ import uuid
 from CodingSiteGeneratorHPCCCopyFunctions import writeExperimentTaskCodingSites
 import CodingSiteGeneratorHPCCCopyFunctions
 
-#NOTE: linDatFile is also not used anywhere else
-linDatFile = ".dat"
 
 '''
 1. Define variables and the different parameters for each treatment
@@ -49,11 +47,8 @@ a. Use the sys package's argv object to retrieve the examined update from the co
 CodingSiteGeneratorHPCCCopyFunctions.desiredUpdateToAnalyze = sys.argv[1]
 
 '''
-b. Initialize containers for storing the paths to where data is being held
+b. Initialize containers for storing the experimental treatments
 '''
-#NOTE: I think this runDirectories can be deleted because the paths to run directories are already
-#being stored in the appropriate list in each treatment instance
-runDirectories = []
 Treatments = []
 
 '''
@@ -129,9 +124,6 @@ for subdir in os.listdir(dataDir):
 are generated and written in a Pandas dataframe for each treatment
 '''
 writeExperimentTaskCodingSites(Treatments)
-
-#NOTE: Delete this variable, because it is a debugging artifact
-counter = 0
 
 '''
 4. The resultant Pandas dataframe, one for each treatment, is written to a CSV file

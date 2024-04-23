@@ -376,8 +376,6 @@ def knockoutDatGenome(dest,genome,orgCount):
           stored in a list for writing to informationAnalyzer.cfg
         '''
         knuckOutGenomes.append('LOAD_SEQUENCE ' + knuckOutGenome + '\n')
-    #NOTE: This is another debugging artifact
-    writeFile = dest
 
     '''
     b. The original genome is also included at the very end so that
@@ -438,8 +436,6 @@ def knockoutDatFile(datFile,dest):
           knockoutDatGenome()'s next execution
     '''
 
-    #NOTE: This is another debugging artifact
-    #os.system('pwd')
     '''
     1. Read the lines of the dominant organism or dominant lineage
       output file into a list
@@ -711,9 +707,6 @@ def getTaskCodingSitesOverRun(runDir):
     '''
     (knockoutOrganisms,analyzedOrganism) = (datFileContents[:-1],datFileContents[-1])
 
-    #NOTE: This comment is a debugging artifact
-    #Next step: add Avida Parameters and Replicate ID
-
     '''
     2. Extract the tasks of the original organism
     '''
@@ -722,10 +715,6 @@ def getTaskCodingSitesOverRun(runDir):
     '''
     3. Create objects to hold the coding sites and viability sites data
     '''
-    #NOTE: This comment is patently wrong at this point
-    #codingSites is now a numpy array of boolean values;
-    #each row, col corresponds to task, genome site
-    #and gives 1 if coding site, 0 if not
     codingSites = [[] for k in range(len(organismsTasks))]
 
     numCodingSites = 0
@@ -933,8 +922,6 @@ def writeExperimentTaskCodingSites(treatmentArray):
             '''
             executeInfoAnalysis(runDir)
 
-        #NOTE: treatmentData is also something from a past iteration that can be erased    
-        treatmentData = []
         for runDir in treatment.runDirectories:
             '''
             c. Parse the Analyze mode output to get the dominant organism's coding and viability sites
