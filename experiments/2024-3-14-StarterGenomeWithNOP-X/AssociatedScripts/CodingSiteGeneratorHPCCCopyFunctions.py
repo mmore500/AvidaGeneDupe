@@ -16,16 +16,47 @@ import uuid
 
 #Use r"Path" to avoid any problems from special characters
 def getOrganisms(filePath):
+    '''
+    Algorithm
+    1. The data file, output from Avida analyze mode, is opened
+    and the lines read into a list.
+    2. The list of lines is iterated through until the first line
+    without a '#' or '\n' at the beginning is found
+    3. The index of that line is stored as initialOrgPos
+    4. Then, the rest of the lines in the file are read into a list
+    called organisms, each one representing the data for a given
+    organism in a lineage
+    5. This list of organism data lines is checked for non-emptiness
+    and then it is returned.
+    '''
+
+    '''
+    1. The data file, output from Avida analyze mode, is opened
+    and the lines read into a list.
+    '''
     with open(filePath,'r') as datFile:
         lines = datFile.readlines()
+
+        '''
+        2. The list of lines is iterated through until the first line
+        without a '#' or '\n' at the beginning is found
+        '''
         initalOrgPos = 0
         for k,line in enumerate(lines):
             if (line[0] != '') & (line[0] != '#') & (line[0] != '\n'):
+                '''
+                3. The index of that line is stored as initialOrgPos
+                '''
                 initialOrgPos = k
                 break
             else:
                 continue
-
+        
+        '''
+        4. Then, the rest of the lines in the file are read into a list
+        called organisms, each one representing the data for a given
+        organism in a lineage
+        '''
         organisms = []
         for i in range(initialOrgPos,len(lines)):
             if(lines[i] != ''):
@@ -33,11 +64,16 @@ def getOrganisms(filePath):
             else:
                 continue
 
+        '''
+        5. This list of organism data lines is checked for non-emptiness
+        and then it is returned.
+        '''
         if(len(organisms) > 0):
             return organisms
         else:
             print("Error: please check code")
 
+'''
 def getDatFileHeaders(datFile):
     with open(datFile,'r') as dataF:
         datFileLines = dataF.readlines()
@@ -46,44 +82,139 @@ def getDatFileHeaders(datFile):
             if term == 'task_list':
                 formatLineTerms[k] = 'Task Count'
         return formatLineTerms
-
+'''
 
 def getOrganismID(organismString):
+    '''
+    Algorithm
+    1. The input organism data line is split into its components.
+    2. The ID is extracted from the first element on the
+    line; this is then returned.
+    '''
     analyzeOutputs = organismString.split()
     ID = analyzeOutputs[0]
     return ID
 
 def getUpdateBorn(organismString):
+    '''
+    Algorithm
+    1. The input organism data line is split into its components.
+    2. The update born is extracted from the second element on the
+    line; this is then returned.
+    '''
+
+    '''
+    1. The input organism data line is split into its components.
+    '''
     analyzeOutputs = organismString.split()
+
+    '''
+    2. The update born is extracted from the second element on the
+    line; this is then returned.
+    '''
     updateBorn = analyzeOutputs[1]
     return updateBorn
 
 def getLength(runDir):
+    '''
+    Algorithm
+    1. Assembles path to the data using the timepoint "desiredUpdateToAnalyze"
+      passed into the command-line when script was run.
+    2. getOrganisms() is used to extract a list of organism data lines from
+    the data folder.
+    3. The original organism is found at the end of that list.
+    4. The original organism data line is split and the length is extracted
+    from the second-to-last item. That value is returned as an integer.
+    '''
+
+    '''
+    1. Assembles path to the data using the timepoint "desiredUpdateToAnalyze"
+      passed into the command-line when script was run.
+    '''
     replicateData = os.path.join(runDir, f'Timepoint_{desiredUpdateToAnalyze}/data/detail_MostNumerousAt{desiredUpdateToAnalyze}.dat')
+
+    '''
+    2. getOrganisms() is used to extract a list of organism data lines from
+    the data folder.
+    '''
     datFileContents = getOrganisms(replicateData)
+
+    '''
+    3. The original organism is found at the end of that list.
+    '''
     analyzedOrganism = datFileContents[-1]
-    
+
+    '''
+    4. The original organism data line is split and the length is extracted
+    from the second-to-last item. That value is returned as an integer.
+    '''
     #-2 is used here because the length is being pulled from the MostNumerous.dat file in which the length is second-to-last
     length = int(analyzedOrganism.split()[-2])
     return length
 
 def getViability(organism):
+    '''
+    Algorithm
+    1. The organism data line is split into its components and the viability
+    is extracted from the second-to-last item; it's type-casted and returned
+    as an integer.
+    '''
     #-2 is used here because the viability is being pulled from the knockout analysis file in which the viability is second-to-last
     viability = int(organism.split()[-2])
     return viability
 
 def getGenome(runDir):
+    '''
+    Algorithm
+    1. Assembles path to the data using the timepoint "desiredUpdateToAnalyze"
+      passed into the command-line when script was run.
+    2. getOrganisms() is used to extract a list of organism data lines from
+    the data folder.
+    3. The original organism is found at the end of that list.
+    4. Then, the original organism's genome is found at the end of the
+    data line; this is the value that's returned.
+    '''
+
+    '''
+    1. Assembles path to the data using the timepoint "desiredUpdateToAnalyze"
+      passed into the command-line when script was run.
+    '''
     replicateData = os.path.join(runDir, f'Timepoint_{desiredUpdateToAnalyze}/data/detail_MostNumerousAt{desiredUpdateToAnalyze}.dat')
+    
+    '''
+    2. getOrganisms() is used to extract a list of organism data lines from
+    the data folder.
+    '''
     datFileContents = getOrganisms(replicateData)
+
+    '''
+    3. The original organism is found at the end of that list.
+    '''
     analyzedOrganism = datFileContents[-1]
     
+    '''
+    4. Then, the original organism's genome is found at the end of the
+    data string; this is the value that's returned.
+    '''
     #-2 is used here because the length is being pulled from the MostNumerous.dat file in which the length is second-to-last
     genome = analyzedOrganism.split()[-1]
     return genome
     
 def knockItOut(genomeString,instructionIndex):
+    '''
+    Algorithm
+    1. Split the genome string into a list of its characters
+    2. Replace the character at instructionIndex with 'A'
+    3. Join the list of characters into a new string and return that string.
+    '''
+
+    #1. Split the genome string into a list of its characters
     knuckOutGenome = list(genomeString)
+
+    #2.Replace the character at instructionIndex with 'A'
     knuckOutGenome[instructionIndex] = 'A'
+
+    #3. Join the list of characters into a new string and return that string.
     return "".join(knuckOutGenome)
 
 
@@ -272,20 +403,70 @@ def createDatAnalyzeCfg(runDir):
     knockoutDatFile(datFile,f)
 
 def executeInfoAnalysis(runDir):
-    #To accommodate the appropriate gcc compiler not being automatically loaded
+    '''
+    Algorithm
+    1. On the HPCC, load the gcc-11.2 C++ compiler to accommodate the
+    version requirements of the project's version of Avida.
+    2. Assemble the path to the directory with data.
+    3. Assemble the path to the directory with configuration files
+    4. Copy the Avida executable from the avida directory
+    5. Change the shell working directory to the directory
+    with data.
+    6. Copy the configuration files to the directory with data.
+    7. Run Avida in analyze mode using informationAnalyzer.cfg,
+    the file output by createDatAnalyzeCfg(), as its config file;
+    this runs each knockout organism in Analyze mode to generate
+    information about its viability and tasks.
+    8. Remove all the configuration files and the Avida executable
+    '''
+
+    '''
+    1. On the HPCC, load the gcc-11.2 C++ compiler to accommodate the
+    version requirements of the project's version of Avida.
+    '''
     os.system('module load gcc/11.2.0')
 
+    '''
+    2. Assemble the path to the directory with data.
+    '''
     timepointRunDir = os.path.join(runDir, f"Timepoint_{desiredUpdateToAnalyze}")
 
+    '''
+    3. Assemble the path to the directory with configuration files
+    '''
     configDir = os.path.join("~/Documents/AvidaGeneDupe/experiments/","{}/hpcc/config".format(experimentName))
+
+    '''
+    4. Copy the Avida executable from the avida directory
+    '''
     os.system("cp ~/Documents/AvidaGeneDupe/avida/cbuild/work/avida {}".format(timepointRunDir))
+
+    '''
+    5. Change the shell working directory to the directory
+    with data.
+    '''
     os.chdir(timepointRunDir)
+
+    '''
+    6. Copy the configuration files to the directory with data.
+    '''
     os.system('cp {}/avida.cfg .'.format(configDir)) 
     os.system('cp {}/default-headsWithNOP-X.org .'.format(configDir))
     os.system('cp {}/environment.cfg .'.format(configDir))
     os.system('cp {}/events.cfg .'.format(configDir))
     os.system('cp {}/instset-heads___sensors_NONE.cfg .'.format(configDir))
+
+    '''
+    7. Run Avida in analyze mode using informationAnalyzer.cfg,
+    the file output by createDatAnalyzeCfg(), as its config file;
+    this runs each knockout organism in Analyze mode to generate
+    information about its viability and tasks.
+    '''
     os.system(f"./avida -set ANALYZE_FILE informationAnalyzer.cfg -a > analyze.log")
+
+    '''
+    8. Remove all the configuration files and the Avida executable
+    '''
     os.system('rm avida')
     os.system('rm avida.cfg')
     os.system('rm default-headsWithNOP-X.org')
@@ -295,6 +476,10 @@ def executeInfoAnalysis(runDir):
 
 
 def getTasks(organismString):
+    '''
+    Algorithm
+    1. 
+    '''
     analyzeOutputs = organismString.split()
     
     tasks = list(analyzeOutputs[0])
