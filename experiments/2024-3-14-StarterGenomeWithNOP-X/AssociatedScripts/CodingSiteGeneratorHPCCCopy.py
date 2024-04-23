@@ -28,7 +28,10 @@ import pandas as pd
 import sys
 import uuid
 
-from CodingSiteGeneratorHPCCCopyFunctions import *
+from CodingSiteGeneratorHPCCCopyFunctions import writeExperimentTaskCodingSites
+import CodingSiteGeneratorHPCCCopyFunctions
+
+CodingSiteGeneratorHPCCCopyFunctions.desiredUpdateToAnalyze
 
 #NOTE: linDatFile is also not used anywhere else
 linDatFile = ".dat"
@@ -45,7 +48,7 @@ linDatFile = ".dat"
 '''
 a. Use the sys package's argv object to retrieve the examined update from the command line use of this script
 '''
-desiredUpdateToAnalyze = sys.argv[1]
+CodingSiteGeneratorHPCCCopyFunctions.desiredUpdateToAnalyze = sys.argv[1]
 
 '''
 b. Initialize containers for storing the paths to where data is being held
