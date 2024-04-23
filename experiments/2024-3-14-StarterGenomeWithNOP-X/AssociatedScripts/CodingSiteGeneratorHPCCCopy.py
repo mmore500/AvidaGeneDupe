@@ -31,8 +31,6 @@ import uuid
 from CodingSiteGeneratorHPCCCopyFunctions import writeExperimentTaskCodingSites
 import CodingSiteGeneratorHPCCCopyFunctions
 
-CodingSiteGeneratorHPCCCopyFunctions.desiredUpdateToAnalyze
-
 #NOTE: linDatFile is also not used anywhere else
 linDatFile = ".dat"
 
