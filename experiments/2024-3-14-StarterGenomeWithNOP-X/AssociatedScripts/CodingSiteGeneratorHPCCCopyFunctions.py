@@ -58,7 +58,7 @@ def getOrganisms(filePath):
         2. The list of lines is iterated through until the first line
         without a '#' or '\n' at the beginning is found
         '''
-        initalOrgPos = 0
+        initialOrgPos = None
         for k,line in enumerate(lines):
             if (line[0] != '') & (line[0] != '#') & (line[0] != '\n'):
                 '''
@@ -75,20 +75,21 @@ def getOrganisms(filePath):
         organism in a lineage
         '''
         organisms = []
-        for i in range(initialOrgPos,len(lines)):
-            if(lines[i] != ''):
-                organisms.append(lines[i])
-            else:
-                continue
+
+        if initialOrgPos is not None:
+          for i in range(initialOrgPos,len(lines)):
+              if(lines[i] != ''):
+                  if(list(lines[i])[-1] == '\n'):
+                      lines[i] = lines[i][:-1]
+                  organisms.append(lines[i])
+              else:
+                  continue
 
         '''
         5. This list of organism data lines is checked for
           non-emptiness and then it is returned.
         '''
-        if(len(organisms) > 0):
-            return organisms
-        else:
-            print("Error: please check code")
+        return organisms
 
 '''
 def getDatFileHeaders(datFile):
