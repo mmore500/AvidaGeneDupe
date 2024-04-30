@@ -1,5 +1,7 @@
-from CodingSiteGeneratorHPCCCopyFunctions import getOrganismID
 import pytest
+from testPrep import prepSysPathForTests
+prepSysPathForTests()
+from CodingSiteGeneratorHPCCCopyFunctions import getOrganismID
 
 def test_basic_input():
     # A basic input where the ID is the first element in the string

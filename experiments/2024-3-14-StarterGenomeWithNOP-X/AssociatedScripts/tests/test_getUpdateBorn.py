@@ -1,6 +1,7 @@
-from CodingSiteGeneratorHPCCCopyFunctions import getUpdateBorn
 import pytest
-
+from testPrep import prepSysPathForTests
+prepSysPathForTests()
+from CodingSiteGeneratorHPCCCopyFunctions import getUpdateBorn
 
 def test_valid_input():
     # A typical input string with multiple elements

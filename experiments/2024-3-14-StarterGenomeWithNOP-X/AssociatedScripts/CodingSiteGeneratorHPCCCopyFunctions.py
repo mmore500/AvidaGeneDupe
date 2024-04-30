@@ -153,12 +153,12 @@ def getUpdateBorn(organismString):
     updateBorn = analyzeOutputs[1]
     return updateBorn
 
-def getLength(runDir):
+def getLength(organismString):
     '''
-    Gets the length of the original organism's genome.
+    Gets the length of the specified organism's genome.
 
     Parameters:
-    runDir (str): Path to the run directory.
+    organismString (str): Organism data line
 
     Returns:
     int: Length of the genome.
@@ -166,45 +166,29 @@ def getLength(runDir):
 
     '''
     Algorithm
-    1. Assembles path to the data using the timepoint
-    "desiredUpdateToAnalyze" passed into the command-line 
-    when script was run.
-    2. getOrganisms() is used to extract a list of organism
-      data lines from the data folder.
-    3. The original organism is found at the end of that list.
-    4. The original organism data line is split and the length
+    1. The organism data line is split and the length
        is extracted from the second-to-last item. That value is
        returned as an integer.
     '''
 
-    '''
-    1. Assembles path to the data using the timepoint
-    "desiredUpdateToAnalyze" passed into the command-line
-    when script was run.
-    '''
-    replicateData = os.path.join(runDir, f'Timepoint_{desiredUpdateToAnalyze}/data/detail_MostNumerousAt{desiredUpdateToAnalyze}.dat')
+    if len(organismString) == 0:
+        raise IndexError("Your organism data line is empty")
 
-    '''
-    2. getOrganisms() is used to extract a list of organism data
-      lines from the data folder.
-    '''
-    datFileContents = getOrganisms(replicateData)
+    if len(organismString) == 1:
+        raise IndexError("Your organism data line should have more than one element")
 
-    '''
-    3. The original organism is found at the end of that list.
-    '''
-    analyzedOrganism = datFileContents[-1]
-
-    '''
-    4. The original organism data line is split and the
-      length is extracted from the second-to-last item. 
-      That value is returned as an integer.
-    '''
     #-2 is used here because the length is being pulled from the MostNumerous.dat file in which the length is second-to-last
-    length = int(analyzedOrganism.split()[-2])
+    try:
+      length = int(organismString.split()[-2])
+    except(ValueError) as err:
+        raise ValueError("Your data file has a non-integer where the integer length should be.") from err
+    
+    if length >= 1500:
+        raise Exception("Length value too large: index used to retrieve length is likely wrong")
+    
     return length
 
-def getViability(organism):
+def getViability(organismString):
     '''
     Extracts the viability of an organism from its data.
 
@@ -222,56 +206,35 @@ def getViability(organism):
         it's type-casted and returned as an integer.
     '''
     #-2 is used here because the viability is being pulled from the knockout analysis file in which the viability is second-to-last
-    viability = int(organism.split()[-2])
+    viability = int(organismString.split()[-2])
     return viability
 
-def getGenome(runDir):
+def getGenome(organismString):
     '''
-    Gets the genome of the original organism.
+    Gets the genome of the specified organism.
 
     Parameters:
-    runDir (str): Path to the run directory.
+    organismString (str): Organism data line
 
     Returns:
-    str: Genome of the original organism.
+    str: Genome of the specified organism.
     '''
 
     '''
     Algorithm
-    1. Assembles path to the data using the timepoint
-      "desiredUpdateToAnalyze" passed into the command-line
-        when script was run.
-    2. getOrganisms() is used to extract a list of organism
-      data lines from the data folder.
-    3. The original organism is found at the end of that list.
-    4. Then, the original organism's genome is found at the end of the
+    1. Then, the original organism's genome is found at the end of the
     data line; this is the value that's returned.
     '''
-
-    '''
-    1. Assembles path to the data using the timepoint
-      "desiredUpdateToAnalyze" passed into the command-line
-        when script was run.
-    '''
-    replicateData = os.path.join(runDir, f'Timepoint_{desiredUpdateToAnalyze}/data/detail_MostNumerousAt{desiredUpdateToAnalyze}.dat')
+    if len(organismString) == 0:
+        raise IndexError("Your organism data line is empty")
+    elif len(organismString.split()) == 0:
+        raise IndexError("Your organism data line has no characters but spaces")
     
-    '''
-    2. getOrganisms() is used to extract a list of organism data
-      lines from the data folder.
-    '''
-    datFileContents = getOrganisms(replicateData)
+    genome = organismString.split()[-1]
 
-    '''
-    3. The original organism is found at the end of that list.
-    '''
-    analyzedOrganism = datFileContents[-1]
-    
-    '''
-    4. Then, the original organism's genome is found at the end of the
-    data string; this is the value that's returned.
-    '''
-    #-2 is used here because the length is being pulled from the MostNumerous.dat file in which the length is second-to-last
-    genome = analyzedOrganism.split()[-1]
+    if not genome.isalpha():
+        raise Exception("Genome should only be made of alphabet characters")
+
     return genome
     
 def knockItOut(genomeString,instructionIndex):
@@ -293,6 +256,9 @@ def knockItOut(genomeString,instructionIndex):
     3. Join the list of characters into a new string and
       return that string.
     '''
+
+    if instructionIndex < 0:
+        raise IndexError("You must generate knockouts going forward")
 
     #1. Split the genome string into a list of its characters
     knuckOutGenome = list(genomeString)
@@ -803,7 +769,7 @@ def writeTaskCodingSitesInPandasDataFrame(treatment, runDir, taskCodingSites, vi
     Algorithm
     1. Extract the run name from the directory path
     2. Enumerate task names to be used for demarcating data rows
-    3. Extract the original organism's genome length
+    3. Extract the original organism's genome length and its length
     4. Calculate the fractions of the genome occupied by
     coding sites and viability sites, respectively
     5. Compute the ratio of viability sites to coding sites
@@ -836,9 +802,15 @@ def writeTaskCodingSitesInPandasDataFrame(treatment, runDir, taskCodingSites, vi
                  "EQUALS"]
 
     '''
-    3. Extract the original organism's genome length
+    3. Extract the original organism's genome and its length
     '''
-    genomeLength = getLength(runDir)
+    replicateData = os.path.join(runDir, f'Timepoint_{desiredUpdateToAnalyze}/data/detail_MostNumerousAt{desiredUpdateToAnalyze}.dat')
+    organisms = getOrganisms(replicateData)
+
+    #The original organism data line is the last in the list
+    genomeLength = getLength(organisms[-1])
+    genome = getGenome(organisms[-1])
+    
 
     '''
     4. Calculate the fractions of the genome occupied by
@@ -866,7 +838,7 @@ def writeTaskCodingSitesInPandasDataFrame(treatment, runDir, taskCodingSites, vi
     '''
     for k in range(9):
         rowName = f"{runName}," + f"{taskNames[k]}"
-        treatment.treatmentDataframe.loc[rowName] = [runName, taskNames[k], desiredUpdateToAnalyze, treatment.treatmentName, taskCodingSites[k], len(taskCodingSites[k]), numUniqueCodingSites, viabilitySites, len(viabilitySites), genomeLength, fracCodingSites, fracViabilitySites, viabilityToCodingRatio, getGenome(runDir)]
+        treatment.treatmentDataframe.loc[rowName] = [runName, taskNames[k], desiredUpdateToAnalyze, treatment.treatmentName, taskCodingSites[k], len(taskCodingSites[k]), numUniqueCodingSites, viabilitySites, len(viabilitySites), genomeLength, fracCodingSites, fracViabilitySites, viabilityToCodingRatio, genome]
 
 '''
 def writeTaskCodingSites(runDir,codingSites):

@@ -1,4 +1,6 @@
 import pytest
+from testPrep import prepSysPathForTests
+prepSysPathForTests()
 from CodingSiteGeneratorHPCCCopyFunctions import getOrganisms
 
 def test_empty_file(tmp_path):
