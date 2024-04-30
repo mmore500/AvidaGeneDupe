@@ -6,8 +6,8 @@ from CodingSiteGeneratorHPCCCopyFunctions import getTasks
 import numpy as np
 
 def test_get_tasks_basic():
-    organismString = "1101010 1234567 additional data"
-    expected_output = np.array([1, 1, 0, 1, 0, 1, 0])
+    organismString = "110101001 1234567 additional data"
+    expected_output = np.array([1, 1, 0, 1, 0, 1, 0, 0, 1])
     assert np.array_equal(getTasks(organismString), expected_output), "The tasks array does not match the expected output"
 
 def test_get_tasks_empty_string():
