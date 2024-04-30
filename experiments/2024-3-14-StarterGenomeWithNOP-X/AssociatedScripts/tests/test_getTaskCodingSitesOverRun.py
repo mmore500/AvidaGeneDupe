@@ -16,14 +16,14 @@ def test_getting_task_coding_sites_from_valid_data():
 
     (codingSites, viabilitySites, numUniqueCodingSites) = getTaskCodingSitesOverRun(runDirPath)
 
-    '''assert codingSites == [[7],
-                           [4],
-                           [4],
-                           [4],
-                           [1, 4],
-                           [4],
-                           [4],
+    assert codingSites == [[6],
+                           [3],
+                           [3],
+                           [3],
+                           [0, 3],
+                           [3],
+                           [3],
                            [],
-                           []]'''
-    assert viabilitySites == [3, 5]
+                           []]
+    assert viabilitySites == [2, 4]
     assert numUniqueCodingSites == 3
