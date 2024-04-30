@@ -597,6 +597,9 @@ def getTasks(organismString):
     4. Return this list of integers as a NumPy array
     '''
 
+    if len(organismString) == 0:
+        raise Exception("Your organism data line is empty")
+
     '''
     1. Split the organism data line into its different elements.
     '''
@@ -614,7 +617,10 @@ def getTasks(organismString):
     3. Type-cast each task character into an integer for later use.
     '''
     for k,task in enumerate(tasks):
-        tasks[k] = int(task)
+        if (tasks[k] == '0' or tasks[k] == '1'):
+          tasks[k] = int(task)
+        else:
+            raise ValueError("Task count values should be 0 or 1")
 
     '''
     4. Return this list of integers as a NumPy array
