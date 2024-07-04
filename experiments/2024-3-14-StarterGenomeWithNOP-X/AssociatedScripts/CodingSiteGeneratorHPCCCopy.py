@@ -79,7 +79,8 @@ class Treatment():
         self.treatmentDir = treatmentPath
         self.runDirectories = []
         self.treatmentName = self.treatmentDir.split('/')[-1]
-        self.treatmentDataframe = pd.DataFrame(columns = ["Run ID", 
+        self.treatmentDataframe = pd.DataFrame(columns = ["Run ID",
+                                                          "Lineage Generation Index",
                                                           "Task", 
                                                           "Update Analyzed",
                                                           "Treatment",
