@@ -47,7 +47,8 @@ class Treatment():
         self.treatmentDir = treatmentPath
         self.runDirectories = []
         self.treatmentName = self.treatmentDir.split('/')[-1]
-        self.treatmentDataframe = pd.DataFrame(columns = ["Run ID", 
+        self.treatmentDataframe = pd.DataFrame(columns = ["Run ID",
+                                                          "Lineage Generation Index", 
                                                           "Task", 
                                                           "Update Analyzed",
                                                           "Treatment",
@@ -232,9 +233,9 @@ def getTasks(organismString):
 
     return np.array(tasks)
 
-def getTaskCodingSitesOverRun(runDir):
-    replicateData = os.path.join(runDir,f"Timepoint_{desiredUpdateToAnalyze}/data/detail_Org0FitnessDifferences.dat")
-    datFileContents = getOrganisms(replicateData)
+def getTaskCodingSitesOverRun(knockoutDataFile):
+    #replicateData = os.path.join(runDir,f"Timepoint_{desiredUpdateToAnalyze}/data/detail_Org0FitnessDifferences.dat")
+    datFileContents = getOrganisms(knockoutDataFile)
     (knockoutOrganisms,analyzedOrganism) = (datFileContents[:-1],datFileContents[-1])
 
     #Next step: add Avida Parameters and Replicate ID
@@ -275,7 +276,7 @@ def getTaskCodingSitesOverRun(runDir):
 
     return codingSites, viabilitySites, numCodingSites
 
-def writeTaskCodingSitesInPandasDataFrame(treatment, runDir, taskCodingSites, viabilitySites, numUniqueCodingSites):
+def writeTaskCodingSitesInPandasDataFrame(treatment, lineageGenerationIndex, runDir, taskCodingSites, viabilitySites, numUniqueCodingSites):
     runDirElements = runDir.split('/')
     runName = runDirElements[-1]
 
@@ -301,13 +302,14 @@ def writeTaskCodingSitesInPandasDataFrame(treatment, runDir, taskCodingSites, vi
 
     for k in range(9):
         rowName = f"{runName}," + f"{taskNames[k]}"
-        treatment.treatmentDataframe.loc[rowName] = [runName, taskNames[k], desiredUpdateToAnalyze, treatment.treatmentName, taskCodingSites[k], len(taskCodingSites[k]), numUniqueCodingSites, viabilitySites, len(viabilitySites), genomeLength, fracCodingSites, fracViabilitySites, viabilityToCodingRatio, getGenome(runDir)]
+        treatment.treatmentDataframe.loc[rowName] = [runName, lineageGenerationIndex, taskNames[k], desiredUpdateToAnalyze, treatment.treatmentName, taskCodingSites[k], len(taskCodingSites[k]), numUniqueCodingSites, viabilitySites, len(viabilitySites), genomeLength, fracCodingSites, fracViabilitySites, viabilityToCodingRatio, getGenome(runDir)]
 
-def writeTaskCodingSites(runDir,codingSites):
-    writeDirectory = os.path.join(runDir,f"Timepoint_{desiredUpdateToAnalyze}/data/codingSites.txt")
-    with open(writeDirectory,'w') as f:
-        for site in codingSites:
-            f.write('{},'.format(site))
+def getAndWriteTaskCodingSites(treatment, runDir):
+    lineageDetailFiles = [fileName for fileName in os.listdir(runDir) if "FitnessDifferences.dat" in fileName]
+    for k in range(len(lineageDetailFiles)):
+        orgKnockoutDataFile = lineageDetailFiles[k]
+        taskCodingSites, viabilitySites, numUniqueCodingSites = getTaskCodingSitesOverRun(orgKnockoutDataFile)
+        writeTaskCodingSitesInPandasDataFrame(treatment, k, runDir, taskCodingSites, viabilitySites, numUniqueCodingSites)
 
 def writeExperimentTaskCodingSites(treatmentArray):
     for treatment in treatmentArray:
@@ -323,8 +325,7 @@ def writeExperimentTaskCodingSites(treatmentArray):
             
         treatmentData = []
         for runDir in treatment.runDirectories:
-            taskCodingSites, viabilitySites, numUniqueCodingSites = getTaskCodingSitesOverRun(runDir)
-            writeTaskCodingSitesInPandasDataFrame(treatment, runDir, taskCodingSites, viabilitySites, numUniqueCodingSites)
+            getAndWriteTaskCodingSites(treatment, runDir)
             os.chdir(runDir)
             os.system(f"rm -r Timepoint_{desiredUpdateToAnalyze}")
 
