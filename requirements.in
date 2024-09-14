@@ -23,4 +23,5 @@ pandas
 polars
 pyarrow
 seaborn
+teeplot
 tqdm
