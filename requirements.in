@@ -6,6 +6,7 @@ black==22.10.0
 pytest
 ruff
 tqdm
+uv
 
 # binder
 ipykernel
@@ -19,5 +20,7 @@ watermark==2.4.3
 matplotlib
 numpy
 pandas
+polars
+pyarrow
 seaborn
 tqdm
