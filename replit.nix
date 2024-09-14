@@ -1,5 +1,7 @@
 { pkgs }: {
     deps = [
+      pkgs.nano
+      pkgs.unzip
       pkgs.vim
       pkgs.pandoc
       pkgs.texlive.combined.scheme-full
@@ -7,7 +9,7 @@
       pkgs.nodejs
       pkgs.editorconfig-checker
       pkgs.python39Packages.editorconfig
-      pkgs.nodejs-16_x
+      pkgs.bibtex-tidy
       pkgs.cowsay
     ];
 }
