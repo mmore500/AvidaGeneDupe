@@ -4,3 +4,7 @@
 [submodule "avida/documentation"]
 	path = avida/documentation
 	url = https://github.com/devosoft/avida.wiki.git
+[submodule "tex/binder"]
+	path = tex/binder
+	url = https://github.com/chaynes2019/AvidaGeneDupe.git
+	branch = binder
