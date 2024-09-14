@@ -1,0 +1,22 @@
+################################################################################################
+# This file is used to setup avida when it is in analysis-only mode, which can be triggered by
+# running "avida -a".
+#
+# Please see the documentation in documentation/analyze.html for information on how to use
+# analyze mode.
+################################################################################################
+
+
+SET_BATCH 0 
+
+LOAD_SEQUENCE Abcdef
+LOAD_SEQUENCE aAcdef
+LOAD_SEQUENCE abAdef
+LOAD_SEQUENCE abcAef
+LOAD_SEQUENCE abcdAf
+LOAD_SEQUENCE abcdeA
+LOAD_SEQUENCE abcdef
+RECALC
+
+DETAIL detail_Org0FitnessDifferences.dat task_list gest_time comp_merit merit fitness efficiency viable length
+

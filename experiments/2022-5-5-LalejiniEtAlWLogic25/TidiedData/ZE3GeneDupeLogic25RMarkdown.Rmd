@@ -6,7 +6,7 @@ date: '2022-05-06'
 
 ```{r}
 library(ggplot2)
-setwd("/Users/cameronhaynes/Documents/VSCodeGitProjects/AvidaGeneDupe/experiments/2022-5-5-LalejiniEtAlWLogic25/TidiedData")
+setwd(".")
 data <- read.csv("FinalDominantTaskCounts.csv")
 names(data)
 ggplot(data,aes(x=Treatment,y=Task.Count,color=Treatment,fill=Treatment)) + #Add color=Replicate with a replicate column to plot each curve seperately 
@@ -24,7 +24,7 @@ Anyone else feel like the fact that the mean of High Mutation has 0 tasks out of
 
 ```{r}
 library(ggplot2)
-setwd("/Users/cameronhaynes/Documents/VSCodeGitProjects/AvidaGeneDupe/experiments/2022-5-5-LalejiniEtAlWLogic25/TidiedData")
+setwd(".")
 data <- read.csv("TaskCountTimeCourse.csv")
 names(data)
 ggplot(data, aes(x=Time,y=Tasks.Present,color=Treatment,fill=Treatment)) +
@@ -35,7 +35,7 @@ ggsave("Logic25AvgTaskTimeCourse.pdf")
 
 ```{r}
 library(ggplot2)
-setwd("/Users/cameronhaynes/Documents/VSCodeGitProjects/AvidaGeneDupe/experiments/2022-5-5-LalejiniEtAlWLogic25/TidiedData")
+setwd(".")
 data <- read.csv("FinalDominantGenomeLengths.csv")
 names(data)
 ggplot(data,aes(x=Treatment,y=Task.Count,color=Treatment,fill=Treatment)) + #Add color=Replicate with a replicate column to plot each curve seperately 
@@ -49,7 +49,7 @@ ggsave("Logic25FinalDominantGenomeLengthsViolin.pdf")
 
 ```{r}
 library(ggplot2)
-setwd("/Users/cameronhaynes/Documents/VSCodeGitProjects/AvidaGeneDupe/experiments/2022-5-5-LalejiniEtAlWLogic25/TidiedData")
+setwd(".")
 data <- read.csv("FinalDominantInfo.csv")
 names(data)
 ggplot(data[data$Information.Type=="Task Count",],aes(x=Treatment,y=Information,color=Treatment,fill=Treatment)) + #Add color=Replicate with a replicate column to plot each curve seperately 
@@ -63,13 +63,16 @@ ggsave("LalejiniEtAlWLogic25FinalDominantInfo.pdf")
 
 ```{r}
 library(ggplot2)
-setwd("/Users/cameronhaynes/Documents/VSCodeGitProjects/AvidaGeneDupe/experiments/2022-5-5-LalejiniEtAlWLogic25/TidiedData")
+setwd(".")
 data <- read.csv("FinalDominantInfo.csv")
 names(data)
-ggplot(data[data$Information.Type == "Task Count",],aes(x=Treatment,y=Information.Concentration,color=Treatment,fill=Treatment)) + #Add color=Replicate with a replicate column to plot each curve seperately 
+dataSelectedForTasks = data[data$Information.Type == "Task Count",]
+dataParedDownToEssentialTreatments = dataSelectedForTasks[dataSelectedForTasks$Treatment %in% c("Baseline-Treatment", "Slip-duplicate"),]
+ggplot(dataParedDownToEssentialTreatments,aes(x=Treatment,y=Information.Concentration,color=Treatment,fill=Treatment)) + #Add color=Replicate with a replicate column to plot each curve seperately 
   geom_violin() +
   geom_jitter(alpha = 0.2) +
   theme_minimal() +
+  labs(y = "Fraction of Genome filled by Coding Sites") +
   theme(legend.position = 'none') + facet_grid(Information.Type~.)  #Uncomment to plot faceted by treatment
 
 ggsave("LalejiniEtAlWLogic25FinalDominantInfoConcentration.pdf")

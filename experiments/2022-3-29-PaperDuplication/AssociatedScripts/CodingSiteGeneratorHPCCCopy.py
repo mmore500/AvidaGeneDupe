@@ -1,7 +1,30 @@
+'''
+CodingSiteGeneratorHPCCCopy.py
+Author: Cameron Haynes
+Initial Date: May or June 2022
+
+For any given Avida run, Analyze mode can be used to find the most dominant organism at a given timepoint.
+This script takes in information about this dominant organism, including its genome, and outputs a row in
+a Pandas dataframe for each task with a list of coding sites, viability sites, and other statistics.
+===========================================================================================================
+
+This script begins by collecting the paths to all of the directories where data will be found, and then it
+proceeds to iterate through those directories and apply the same analysis to each in turn.
+
+
+
+
+'''
+
+
 import os
 import csv
 import numpy as np
+import pandas as pd
+import sys
+import uuid
 
+desiredUpdateToAnalyze = sys.argv[1]
 
 runDirectories = []
 Treatments = []
@@ -24,11 +47,32 @@ class Treatment():
         self.treatmentDir = treatmentPath
         self.runDirectories = []
         self.treatmentName = self.treatmentDir.split('/')[-1]
+        self.treatmentDataframe = pd.DataFrame(columns = ["Run ID",
+                                                          "Lineage Generation Index",
+                                                          "Task", 
+                                                          "Update Analyzed",
+                                                          "Treatment",
+                                                          "Task Coding Sites", 
+                                                          "Number of Task Coding Sites", 
+                                                          "Number of Unique Coding Sites", 
+                                                          "Viability Sites", 
+                                                          "Number of Viability Sites", 
+                                                          "Genome Length", 
+                                                          "Fraction Task Coding Sites", 
+                                                          "Fraction Viability Sites", 
+                                                          "Ratio of Viability Sites to Coding Sites", 
+                                                          "Genome"])
+
+'''To collect all the paths, it begins at the directory associated with the Avida experiment run. Then, it
+gathers all of the subdirectories and considers if they are valid treatments, according to the list provided.
+For each valid treatment, it adds the replicate subdirectories contained in the treatment directory to a list.
+This list is what is iterated over for analysis.
+
+Once all the run directories have been collated, the 
+'''
 
 for subdir in os.listdir(dataDir):
-    if '.' in subdir:
-        continue
-    elif 'Test-Job' in subdir:
+    if subdir not in ['Baseline-Treatment', 'Slip-duplicate']:
         continue
     treatment = Treatment(os.path.join(dataDir,subdir))
     Treatments.append(treatment)
@@ -81,6 +125,29 @@ def getUpdateBorn(organismString):
     analyzeOutputs = organismString.split()
     updateBorn = analyzeOutputs[1]
     return updateBorn
+
+def getLength(runDir):
+    replicateData = os.path.join(runDir, f'Timepoint_{desiredUpdateToAnalyze}/data/detail_MostNumerousAt{desiredUpdateToAnalyze}.dat')
+    datFileContents = getOrganisms(replicateData)
+    analyzedOrganism = datFileContents[-1]
+    
+    #-2 is used here because the length is being pulled from the MostNumerous.dat file in which the length is second-to-last
+    length = int(analyzedOrganism.split()[-2])
+    return length
+
+def getViability(organism):
+    #-2 is used here because the viability is being pulled from the knockout analysis file in which the viability is second-to-last
+    viability = int(organism.split()[-2])
+    return viability
+
+def getGenome(runDir):
+    replicateData = os.path.join(runDir, f'Timepoint_{desiredUpdateToAnalyze}/data/detail_MostNumerousAt{desiredUpdateToAnalyze}.dat')
+    datFileContents = getOrganisms(replicateData)
+    analyzedOrganism = datFileContents[-1]
+    
+    #-2 is used here because the length is being pulled from the MostNumerous.dat file in which the length is second-to-last
+    genome = analyzedOrganism.split()[-1]
+    return genome
     
 def knockItOut(genomeString,instructionIndex):
     knuckOutGenome = list(genomeString)
@@ -115,8 +182,10 @@ def knockoutDatFile(datFile,dest):
             orgCount+=1
 
 def createDatAnalyzeCfg(runDir):
-        datDir = os.path.join(runDir,"data")
-        datFile = os.path.join(datDir,"detail_MostNumerous.dat")
+        datDir = os.path.join(runDir,f"Timepoint_{desiredUpdateToAnalyze}")
+
+        datFile = os.path.join(datDir,f"data/detail_MostNumerousAt{desiredUpdateToAnalyze}.dat")
+            
         configFile = os.path.join(datDir,'informationAnalyzer.cfg')
         f = open(configFile,'w')
         preamble = ['################################################################################################\n',
@@ -133,15 +202,20 @@ def createDatAnalyzeCfg(runDir):
         knockoutDatFile(datFile,f)
 
 def executeInfoAnalysis(runDir):
-    configDir = os.path.join("~/AvidaGeneDupe/experiments/","{}/hpcc/config".format(experimentName))
-    os.system("cp ~/AvidaGeneDupe/avida/cbuild/work/avida {}".format(runDir))
-    os.chdir(runDir)
+    #To accommodate the appropriate gcc compiler not being automatically loaded
+    os.system('module load gcc/11.2.0')
+
+    timepointRunDir = os.path.join(runDir, f"Timepoint_{desiredUpdateToAnalyze}")
+
+    configDir = os.path.join("~/Documents/AvidaGeneDupe/experiments/","{}/hpcc/config".format(experimentName))
+    os.system("cp ~/Documents/AvidaGeneDupe/avida/cbuild/work/avida {}".format(timepointRunDir))
+    os.chdir(timepointRunDir)
     os.system('cp {}/avida.cfg .'.format(configDir)) 
     os.system('cp {}/default-heads.org .'.format(configDir))
     os.system('cp {}/environment.cfg .'.format(configDir))
     os.system('cp {}/events.cfg .'.format(configDir))
     os.system('cp {}/instset-heads___sensors_NONE.cfg .'.format(configDir))
-    os.system("./avida -set ANALYZE_FILE data/informationAnalyzer.cfg -a > analyze.log")
+    os.system(f"./avida -set ANALYZE_FILE informationAnalyzer.cfg -a > analyze.log")
     os.system('rm avida')
     os.system('rm avida.cfg')
     os.system('rm default-heads.org')
@@ -159,27 +233,82 @@ def getTasks(organismString):
 
     return np.array(tasks)
 
-def getTaskCodingSitesOverRun(replicateData):
-    datFileContents = getOrganisms(replicateData)
-    (organisms,analyzedOrganism) = (datFileContents[:-1],datFileContents[-1])
-
+def getTaskCodingSitesOverRun(knockoutDataFile):
+    #replicateData = os.path.join(runDir,f"Timepoint_{desiredUpdateToAnalyze}/data/detail_Org0FitnessDifferences.dat")
+    datFileContents = getOrganisms(knockoutDataFile)
+    (knockoutOrganisms,analyzedOrganism) = (datFileContents[:-1],datFileContents[-1]) 
     #Next step: add Avida Parameters and Replicate ID
 
     organismsTasks = getTasks(analyzedOrganism)
-    codingSites = []
-    for idx, org in enumerate(organisms):
-        #Note that the absolute value is only being taken of the difference, so it should be proper
-        
-        comparison = np.abs(organismsTasks - getTasks(org))
-        if(np.sum(comparison) != 0):
-            codingSites.append(idx)
-    return codingSites
+    
+    #codingSites is now a numpy array of boolean values; each row, col corresponds to task, genome site
+    #and gives 1 if coding site, 0 if not
+    codingSites = [[] for k in range(len(organismsTasks))]
 
-def writeTaskCodingSites(runDir,codingSites):
-    writeDirectory = os.path.join(runDir,"data/codingSites.txt")
-    with open(writeDirectory,'w') as f:
-        for site in codingSites:
-            f.write('{},'.format(site))
+    numCodingSites = 0
+
+    viabilitySites = set()
+
+    for site, knockoutOrg in enumerate(knockoutOrganisms):
+        knockoutOrganismTasks = getTasks(knockoutOrg)
+        
+        viabilityKnockout = bool(int(getViability(knockoutOrg)))
+        viabilityOriginal = bool(int(getViability(analyzedOrganism)))
+
+        #If the viability of the knockout is different than the original, then it is true that the knockout
+        #is a viability site
+        viabilitySite = not viabilityKnockout == viabilityOriginal
+
+        if viabilitySite:
+            viabilitySites.add(site)
+        else:
+            codingSite = False
+            for j in range(len(organismsTasks)):
+                if organismsTasks[j] != knockoutOrganismTasks[j]:
+                    codingSite = True
+                    codingSites[j].append(site)
+            
+            if codingSite:
+                numCodingSites = numCodingSites + 1
+
+    viabilitySites = sorted(list(viabilitySites))
+
+    return codingSites, viabilitySites, numCodingSites
+
+def writeTaskCodingSitesInPandasDataFrame(treatment, lineageGenerationIndex, runDir, taskCodingSites, viabilitySites, numUniqueCodingSites):
+    runDirElements = runDir.split('/')
+    runName = runDirElements[-1]
+
+    taskNames = ["NOT",
+                 "NAND",
+                 "AND",
+                 "ORNOT",
+                 "OR",
+                 "ANDNOT",
+                 "NOR",
+                 "XOR",
+                 "EQUALS"]
+
+    genomeLength = getLength(runDir)
+
+    fracCodingSites = numUniqueCodingSites / genomeLength
+    fracViabilitySites = len(viabilitySites) / genomeLength
+
+    try:
+        viabilityToCodingRatio = fracViabilitySites / fracCodingSites
+    except(ZeroDivisionError):
+        viabilityToCodingRatio = 0
+
+    for k in range(9):
+        rowName = f"{runName}," + f"{taskNames[k]}"
+        treatment.treatmentDataframe.loc[rowName] = [runName, lineageGenerationIndex, taskNames[k], desiredUpdateToAnalyze, treatment.treatmentName, taskCodingSites[k], len(taskCodingSites[k]), numUniqueCodingSites, viabilitySites, len(viabilitySites), genomeLength, fracCodingSites, fracViabilitySites, viabilityToCodingRatio, getGenome(runDir)]
+
+def getAndWriteTaskCodingSites(treatment, runDir):
+    lineageDetailFiles = [fileName for fileName in os.listdir(runDir) if "FitnessDifferences.dat" in fileName]
+    for k in range(len(lineageDetailFiles)):
+        orgKnockoutDataFile = lineageDetailFiles[k]
+        taskCodingSites, viabilitySites, numUniqueCodingSites = getTaskCodingSitesOverRun(orgKnockoutDataFile)
+        writeTaskCodingSitesInPandasDataFrame(treatment, k, runDir, taskCodingSites, viabilitySites, numUniqueCodingSites)
 
 def writeExperimentTaskCodingSites(treatmentArray):
     for treatment in treatmentArray:
@@ -192,14 +321,21 @@ def writeExperimentTaskCodingSites(treatmentArray):
             
         treatmentData = []
         for runDir in treatment.runDirectories:
-            replicateData = os.path.join(runDir,"data/detail_Org0FitnessDifferences.dat")
-            taskCodingSites = getTaskCodingSitesOverRun(replicateData)
-            writeTaskCodingSites(runDir,taskCodingSites)
+            getAndWriteTaskCodingSites(treatment, runDir)
+            os.chdir(runDir)
+            os.system(f"rm -r Timepoint_{desiredUpdateToAnalyze}")
 
 linDatFile = ".dat"
 
 writeExperimentTaskCodingSites(Treatments)
 
+counter = 0
+
+for treatment in Treatments:
+    print(treatment.treatmentDataframe)
+    treatment.treatmentDataframe["Run UUID"] = uuid.uuid4()
+    treatment.treatmentDataframe.to_csv(f"{experimentDir}/{experimentName}-{treatment.treatmentName}-TaskCodingSitesWithViabilitySitesAtUpdate{desiredUpdateToAnalyze}.csv")
+    counter += 1
 
 
 

@@ -12,11 +12,13 @@
 #SBATCH --array=1-30
 
 # -- I like to define helpful variables up top --
+module load gcc/11.2.0
+
 USERNAME=clhaynes
 EXPERIMENT_ID=2022-3-29-PaperDuplication
 
 OUTPUT_DIR=/scratch/zamanlh_root/zamanlh0/${USERNAME}/${EXPERIMENT_ID}/Slip-duplicate
-CONFIG_DIR=/home/${USERNAME}/AvidaGeneDupe/experiments/${EXPERIMENT_ID}/hpcc/config
+CONFIG_DIR=/home/${USERNAME}/Documents/AvidaGeneDupe/experiments/${EXPERIMENT_ID}/hpcc/config
 
 SEED_OFFSET=1590
 SEED=$((SEED_OFFSET + SLURM_ARRAY_TASK_ID - 1))
