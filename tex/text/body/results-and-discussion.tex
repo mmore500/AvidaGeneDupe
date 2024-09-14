@@ -3,6 +3,75 @@
 \input{fig/adaptive-evolution-rate.tex}
 \input{fig/gain-mechanism.tex}
 
+\section{Results and Discussion}
+% @RCK - writing group
+% Structure your R&D section to say, for each hypothesis 1. What you're showing. 2. Here's the evidence.
+% Combine these figures to support your conclusions.
+%
+% Think about making two-part figures, one with the time-series, and then a partner panel that has the final dominant comparisons (violin or box plots).
+%
+% Visually distinguish your figures so that the reader, at a glance, can tell what they're looking at. Consider color-coding the backgrounds, or having distinct plot types for different kinds of conclusions.
+%
+% If you MUST show a pile of time series, consider combining them into sets of panels. Say one big figure with all your timeseries, but quadrants showing each one as part A, B, C, etc.
+%
+% Typesetting point: italicize or bold or underline key points or terms, particularly treatment names
+
+\subsection{Does gene duplication promote evolvability?}
+We found that gene duplication promotes evolvability in all three environments. As shown in Figure \ref{fig:results_panels}, organisms evolved in the slip-duplicate treatment had significantly higher phenotypic match scores than organisms evolved in the baseline treatment across the static, simple changing and complex changing environments (two-tailed Mann-Whitney U tests, W = 562.5, 2702.5, 1540 respectively, Bonferroni-adjusted $p$ values all $<< 0.0001$). This result suggests that the slip-duplicate operator promotes the evolution of complexity
+%two qualitatively different types of environments: 1) in a
+both in static environments that require the evolution %and maintenance
+of unconditional task performance (Boolean logic operations), and in dynamic environmental conditions that require the evolution of regulatory mechanisms that alter expression based on current environmental conditions.
+These results, as expected, support the existing literature on the capacity of gene duplications to promote evolvability %for both unregulated and regulated traits
+\citep{Koza:1995fr,Zhang:2003fw,Teichmann:2004cz}. % MJW: This seems like an odd sentence without citations. -- AML: Indeed, it does...
+
+% AML: Still not really sure how we want to present the results panels. Thoughts?
+% MJW: The lower figure in each panel (which is an odd formatting choice: this is really a 6 panel figure you're treating as 3) does not need to be anywhere near the width it is.  The point of those time graphs, as far as I can tell, is to show that the end point is not inherently weird compared to the rest of the trajectory.  How about trying putting the two graphs of each panel side by side, possibly even by having the violin plot panels take up 2/3 of the horizontal real estate and/or maybe replacing the categorical x axis labels with 1, 2, 3 etc and explaining them in the caption?
+
+\input{fig/results_panels.tex}
+
+\subsection{What aspects of gene duplication promote evolvability?}
+Across all three environments
+%(static, simple changing, and complex changing),
+we found that the most important aspect of gene duplications is the capacity to duplicate meaningful information in the genome. As shown in Figure \ref{fig:results_panels}, %across all three environments,
+only organisms that evolved in the slip-duplicate and slip-scramble treatments had significantly higher phenotypic match scores than organisms evolved in the baseline treatment.
+Organisms evolved in all other experimental treatments were either not significantly different from the baseline treatment or significantly worse than the baseline treatment.
+
+Of the five types of slip mutation operators used (see Figure \ref{fig:slip_mut_variants}), only the slip-duplicate and slip-scramble operators were capable of duplicating meaningful information in a genome.
+Slip-scramble mutations maintain the content but not the ordering of duplicated instruction sequences; thus, they can duplicate information about what instructions make-up already successful genetic sequences but do not maintain the particular ordering of those instructions. Slip-duplicate mutations are the full form of gene duplication, %capable of duplicating even more information than slip-scramble mutations,
+able to exactly duplicate the ordered instruction make-up of existing genetic sequences. In contrast to the slip-scramble and slip-duplicate operators, all other slip mutation operators do not duplicate information about instruction sequences already present in the genome.
+
+Because the slip-scramble treatment was significantly better at promoting evolvability than the baseline treatment, we can conclude that the duplication of functional building blocks is valuable no matter how they are arranged when duplicated. However, is %duplicating more information better? Does it matter that gene duplications
+it important to
+preserve both the contents and ordering of duplicated sequences?
+
+\subsubsection{Is more information better?}
+From Figure \ref{fig:results_panels}, organisms evolved in the slip-duplicate treatment had higher phenotypic match scores than organisms evolved in the slip-scramble treatment, implying that the additional information in a gene duplication event %is able to replicate in a genome, the more it will
+does
+promote evolvability. To confirm this relationship and reduce multiple comparison issues with statistical tests, we re-ran 100 new trials of both the slip-duplicate and slip-scramble treatments %with new random number seeds
+and compared the phenotypic match scores of the evolved organisms. In all three environments, organisms that evolved in the slip-duplicate treatment had significantly higher phenotypic match scores than organisms evolved in the slip-scramble treatment (two-tailed Mann-Whitney U tests, W = 4305, 4028.5, 3621.5 respectively, Bonferroni-adjusted $p$ values 0.0109, 0.0222, 0.0017, respectively). This result supports that %the capacity to duplicate more information is better, and the fact that gene duplications are capable of
+duplicating both the content and structure of existing genetic code is an important factor in their ability to promote evolvability.
+
+\subsection{High mutation rate inhibits the evolution of regulation in changing environments}
+In addition to our results on why gene duplications promote evolvability, our experiments
+%demonstrate the potential for
+indicate that
+high mutation rates inhibit the evolution of regulation in changing environments. In both the simple and complex changing environments, organisms evolved in the high mutation rate treatment had significantly lower phenotypic match scores than organisms evolved in the baseline treatment, which can be seen in Figure \ref{fig:results_panels} (two-tailed Mann-Whitney U tests, W = 9958 and 9944, respectively, Bonferroni-adjusted $p$ values both $<< 0.0001$).
+A similar result was found in \citep{Lalejini:2016plasticity}. Although higher mutation rates increase genetic variation, most mutations have deleterious effects \citep{Schlichting:2002jl}. Thus, higher mutation rates may increase the difficulty of maintaining the genetic machinery necessary for complex regulation.
+
+If elevated mutation rates %can work to
+inhibit the evolution of regulation and all experimental treatments with slip mutation operators have an effectively higher mutation rate than the baseline treatment, why do we see this effect only in the high mutation rate treatment? The rates of insertions and deletions per instruction copied in the high mutation rate treatment were selected to, on average, result in approximately the same number of mutations per divide as in our treatments with slip mutations. Yet, only organisms evolved in the high mutation rate treatment had significantly lower phenotypic match scores than organisms evolved in the baseline treatment in the changing environments; all other experimental treatments were either significantly better or not significantly different than the baseline treatment.
+
+% @amlalejini old text on mutation load explanation:
+%Why is it that \textit{only} the high mutation rate treatment inhibited evolvability in the changing environments? One possibility is because slip mutations result in large mutational events that affect few offspring, whereas mutations in the high mutation rate treatment result in an increased number of smaller mutational events that are spread across many offspring. Thus, many offspring in the high mutation rate treatment are subject to the increased rate of deleterious mutations that results from an increase in the rates of copy insertions and copy deletions. This is in contrast to treatments with slip mutations where relatively fewer offspring are subjected to the increased rate of deleterious mutations because deleterious mutations are concentrated in a fewer offspring relative to the high mutation rate treatment.
+%Further analysis is needed to confirm that this is, indeed, the case.
+% @amlalejini new text on mutation load explanation:
+%  - should I cite something for 'mutation load' (i.e. this concept exists, read about it here)?
+Why is it that \textit{only} the high mutation rate treatment inhibited evolvability in the changing environments?
+One possibility stems from the higher mutation load imposed on populations by the high mutation rate treatment.
+Slip mutations result in large mutational events that affect few offspring, whereas the elevated rate of copy mutations in the high mutation rate treatment results in an increased number of smaller mutational events spread across many offspring.
+Thus, many offspring in the high mutation rate treatment are subject to the increased rate of deleterious mutations that results from the higher rates of copy insertions and copy deletions. This is in contrast to treatments with slip mutations where relatively fewer offspring are subjected to large mutational events, which results in the concentration of deleterious mutations in fewer offspring relative to the high mutation rate treatment.
+Further analysis is needed to confirm that this is, indeed, the case.
+
 % OLD figures
 % \input{fig/FullReplicationTaskCountTimeCourse.tex}
 % \input{fig/FullReplicationFinalDominantTaskCountViolin.tex}
