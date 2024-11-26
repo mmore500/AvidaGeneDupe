@@ -13,7 +13,7 @@ jobs:
     name: Latex Build and Deploy
     runs-on: ubuntu-22.04
     container:
-      image: ghcr.io/mmore500/teximage:sha-77b8179
+      image: kjarosh/latex:2024.4-medium
       options: --user root
     permissions:
       contents: write
