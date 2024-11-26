@@ -1,0 +1,139 @@
+\section{Methods} \label{sec:methods}
+
+\input{tab/tasks.tex}
+
+\subsection{The Avida Digital Evolution Platform}
+We conducted all experiments with Avida, which provides a computational instance of evolution where researchers can empirically test hypotheses that would be difficult or impossible to test in natural systems \citep{Ofria:2009avida}.
+
+\input{fig/vhardware.tex}
+
+\noindent
+\textbf{Digital Organisms in Avida} are self-replicating computer programs that compete for space in a finite world.  Each organism is defined by a linear sequence of program instructions (\textit{i.e.} its genotype) and a set of virtual hardware. The instruction set in Avida is Turing Complete and syntactically robust -- any ordering of instructions is syntactically valid, though not always useful. The instruction set includes operations for basic computations, execution flow control, input and output, and self-replication. Additionally, we incorporate sensory instructions into the instruction set, enabling organisms to sense the state of their current environment. An organism's virtual hardware (depicted in Figure \ref{fig:vhardware}) consists of components such as a central processing unit (CPU), registers for computation, buffers for input and output, and memory stacks.
+
+Organisms in Avida replicate asexually by allocating memory for their offspring, copying their genome instruction-by-instruction, and then dividing. However, copy and divide operations are not perfect and can result in mutated offspring. Organisms can influence their replication speed by improving their metabolic rate. An organism's metabolic rate determines the speed at which it executes instructions in its genome; a higher metabolic rate allows an organism to execute its genome faster, and thus, allows the organism to copy itself faster. Initially, an organism's metabolic rate is roughly proportional to its length. However, an organism's metabolic rate can be adjusted when an organism completes a particular task, such as a mathematical computation. In this way, we can differentially reward or punish the performance of different computational tasks.
+
+When an organism finishes replicating, its offspring is placed in a random location anywhere in the population, replacing that location's previous occupant.
+Thus, improving the efficiency of self-replication or performing rewarded computational tasks are both advantageous in the competition for space in Avida. The combination of competition and heritable variation due to imperfect copy and divide operations results in evolution by natural selection in Avida.
+
+\input{fig/slip_mut_variants.tex}
+
+\medskip
+\noindent
+\textbf{Mutation events in Avida} come in four types (substitution, insertion, deletion, or slip) and can be set to occur when an instruction is copied or when an offspring is being born.  All mutation rates are independently configurable for any combination of type and timing.
+
+\textit{Copy mutations} occur when a copy instruction errs.  If it is a \textit{substitution} error, a random instruction is written to the copy location instead of the intended instruction.  If it is an \textit{insertion}, a random extra instruction is copied along with the intended instruction.  If it is a \textit{deletion}, the copy instruction fails to write any instruction at all. %The probabilities of occurrence for each of these types of copy mutations are independently configurable.
+
+\textit{Divide mutations} act on an organism's offspring during division. When a divide \textit{insertion} mutation occurs, a random instruction is inserted into the offspring's genome at a random position, increasing the size of the offspring's genome by one. When a divide \textit{deletion} mutation occurs, a random instruction in the offspring's genome is removed, decreasing the size of the offspring's genome by one. %Insertion and deletion rates per divide are independently configurable.
+
+A new type of divide mutations are \textit{Slip mutations}, which enable gene duplications and deletions. When a slip mutation occurs, two sites in the offspring genome are randomly selected, defining the target segment for the operation. If the first site is upstream of the second, the slip mutation results in an insertion; this is as if the organism's replication machinery had slipped backward during replication and recopied a segment. If the second site is upstream of the first, the slip mutation results in a deletion; this is as if the organism's replication machinery slipped forward during replication, skipping over a genetic segment. Our slip mutation operators ensure that insertions and deletions due to slip mutations occur with equal probability; thus, absent selection, we do not create an inherent bias on genome length.
+
+%ELD: If you're going to list the names of all the mutations, you might want to explain what exactly they each do that makes them different from each other.
+We use five variants of slip mutations: slip-duplicate, slip-scramble, slip-random, slip-NOP, and slip-scatter. When a slip mutation results in a deletion, in all but the slip-scatter variant, the target segment is deleted. Rather than deleting the target segment, the slip-scatter mutation operator distributes a number of single-instruction deletions equal to the length of the target segment uniformly throughout the genome. When a slip mutation results in an insertion, a number of instructions equal to the length of the target segment is inserted into the genome; however, depending on the particular slip mutation operator, which instructions are inserted and where the insertions take place may be different. Figure \ref{fig:slip_mut_variants} provides description and examples of how each slip mutation operator handles insertions. % MJW: The rest of this paragraph is repetitive with the information about the slip mutations found withing the Treatments subsection.  I am therefore commenting it out.  Also, because this now is very short (it originally started with "When a slip mutation results in an insertion"), I am combining that into the previous paragraph.
+%The slip-duplicate operator is capable of maintaining both the content and structure (\textit{i.e.} the ordering) of duplicated instruction sequences. The slip-scramble operator maintains the content but not the structure of duplicated sequences. The slip-random operator maintains neither the content nor the structure of duplicated sequences. The slip-NOP operator only inserts blank `genetic tape', increasing genome size without inserting anything meaningful. Instead of inserting duplicated code, the slip-scatter operator makes a number of random insertions in random locations in the genome equal to the length of the would-be duplicated code.
+
+\subsubsection{Sensing in Avida}
+In Avida, organisms can use regulatory mechanisms that alter which operations are expressed as a function of environmental conditions.  Such (\textit{phenotypic plasticity}) has been shown to evolve in a temporally changing environment
+%when the available instruction set includes sensing instructions
+\citep{Clune:2007investigating, Lalejini:2016plasticity}. In our changing environment experiments, we include sensory instructions that, when executed, provide %an organism with
+information about the current environmental conditions.
+%These task-specific sensory instructions function as follows: if performing the task would result in a reward, a 1 is pushed onto the organism's stack; if performing the task would result in a punishment, a -1 is pushed onto the organism's stack.
+Using a combination of these task-specific sensors, an organism can fully resolve the current state of its environment. % MJW: Are the details of the numbers on the stack important enough to provide here? -- AML: If there's room, I think it's nice to have (given the figure of the virtual hardware it really lets the interested reader visualize how exactly these sensors might work). For now, I've commented it out.
+
+\subsection{Experimental Design}
+To investigate how gene duplication affects evolvability, we evolved populations in three different environments: a static environment, a simple changing environment, and a complex changing environment.
+
+%ELD: You switched from past to present tense. You could make a case for doing that, but I wanted to make sure it was intentional. -- I will make it more consistent. Everything we \textit{did} should be in past tense.
+%\subsubsection{Static Environment}
+In the \textbf{static environment}, we rewarded the performance of nine Boolean logic functions: NOT, NAND, OR-NOT, AND, OR, AND-NOT, NOR, XOR, and EQUALS (for more information on these functions in Avida see \citep{lenski2003evolutionary}). % @CAO: Cite the complex features paper, which explains these in detail?
+% MJW: Yes, yes we should.
+Rewards for these functions were identical and consistent for the duration of the experiment.
+
+To analyze an organism evolved in the static environment, we evaluated the number of unique computational tasks it could perform, resulting in a \textit{phenotypic match score} that indicates how well the organism is adapted to the static environment. Phenotypic match scores in the static environment range from a minimum of 0 (\textit{i.e.} the organism performs no tasks) to a maximum of 9 (\textit{i.e.} the organism performs all 9 tasks). %We describe phenotypic match scores for the static environment, $Score_s$, mathematically in
+Equation \ref{Equ:static_phen_match_score} describes the static match score ($Score_s$), where $P$ is a phenotype and $P_s$ represents the set of tasks phenotype $P$ performs in the static environment.
+
+\begin{equation}
+Score_s(P) = |P_{s}|
+\label{Equ:static_phen_match_score}
+\end{equation}
+% AML: I could combine the simple changing and complex changing environments section into: Changing Environments.
+%   Thoughts on combining vs. not combining simple and complex environments? Combining results in reduced text, but not combining leaves three subsubsection headings to correspond with the three different environments (potentially makes skimming through the paper somewhat easier).
+% @CAO: I think (and have edited the manuscript that we should remove the subsubsection headings and just bold the terms as we define them.
+%\subsubsection{Changing Environments}
+
+In the \textbf{simple changing environment}, we considered the performance of only four boolean logic tasks: NOT, NAND, OR-NOT, and AND-NOT. At any given time %in the simple changing environment,
+each of these tasks was either rewarded or punished. Thus, there were a total of 16 possible environmental conditions. Starting at the beginning of the experiment and every 50
+updates\footnote{An update in Avida is equal to the amount of time it takes for the average organism to execute 30 instructions; see \citep{Ofria:2009avida} for further detail.}
+thereafter, the environment changed to a random one of the 16 possible conditions. These environmental fluctuations created a selective pressure for organisms to use sensory instructions to regulate which tasks they perform (\textit{i.e.} phenotypic plasticity) to match the current condition. We chose an environmental change rate of once per 50 updates because previous work has shown that it facilitates the evolution of phenotypic plasticity \citep{Lalejini:2016plasticity}.
+
+The \textbf{complex changing environment} was identical to the simple changing environment, except instead of considering only four boolean logic tasks, we considered nine: NOT, NAND, OR-NOT, AND, OR, AND-NOT, NOR, XOR, and EQUALS. Thus, there were a total of 512 possible environmental conditions, making it %the complex changing environment
+significantly more challenging than the simple changing environment.
+
+% * <emilyldolson@gmail.com> 2017-04-12T20:48:26.183Z:
+%
+% > functions, or tasks
+% I would just pick one of these terms and use it consistently throughout the paper
+%
+% ^ <amlalejini@gmail.com> 2017-04-15T15:10:25.381Z.
+To analyze an organism that evolved in a changing environment, we computed a phenotypic match score that indicates how well the organism can cope with all possible environmental conditions.  Across each environmental condition (16 in the simple changing environment, 512 in the complex changing environment) and for each task we increased an organism's score by one if the task execution matched the condition (\textit{i.e.} performed a rewarded task, or avoided a punished task), and we decreased an organism's score by one if the task execution did not match the condition (\textit{i.e.} performed a punished task or did not perform a rewarded task). We describe phenotypic match scores for a changing environment, $Score_c$, in Equation \ref{Equ:changing_phen_match_score} where $P$ is a phenotype, $E$ is the set of all environmental conditions, $P_e$ is the set of tasks phenotype $P$ performs in environmental condition $e$, $\neg P_e$ is the set of tasks phenotype $P$ does not perform in environmental condition $e$, $R_e$ is the set of tasks rewarded in environmental condition $e$, and $\neg R_e$ is the set of tasks punished in environmental condition $e$. Given this method of scoring, any non-plastic organisms always receive a phenotypic match score of 0. In the simple changing environment, scores range from a minimum of -64 (\textit{i.e.} perfectly maladaptive plasticity) to a maximum of 64 (optimally adaptive plasticity), and in the complex changing environment, scores range from -4608 to +4608.
+
+% Old, too big equation:
+% \small
+% \begin{equation}
+% Score_c(P) = \sum_{e}^{E}|R_e \cap P_e|+|\neg R_e \cap \neg P_e|-|R_e \cap \neg P_e|-|\neg R_e \cap P_e|
+% \label{Equ:changing_phen_match_score}
+% \end{equation}
+% \normalsize
+
+% AML: Not a huge fan of how small this comes out to being...
+\begin{equation}
+\resizebox{\columnwidth}{!}{$
+Score_c(P) = \sum_{e}^{E}|R_e \cap P_e|+|\neg R_e \cap \neg P_e|-|R_e \cap \neg P_e|-|\neg R_e \cap P_e|$
+}
+\label{Equ:changing_phen_match_score}
+\end{equation}
+
+\input{tab/treatments.tex}
+
+Each of our three experiments consisted of seven treatments: one baseline treatment and six experimental treatments. Treatments differed only in the available mutation operators and the rates at which those operators were applied. Each treatment was designed to tease apart why gene duplications promote evolvability. Table \ref{table:treatments} provides details about each treatment, and these details were shared across all three experiments.
+
+% Baseline treatment
+The \textbf{baseline treatment} was used as a control; we used the results from this treatment as a baseline for evolvability with which we compared the results from all other experimental treatments. Mutation rates in the baseline treatment have been shown to facilitate both the evolution of complex boolean logic tasks, such as EQUALS, and the evolution of task regulation in Avida \citep{lenski2003evolutionary, Lalejini:2016plasticity}
+
+% Slip-duplicate treatment
+The \textbf{slip-duplicate treatment} allowed for mutation events that resulted in full code duplications via the slip-duplicate mutation operator. Duplications in this treatment preserved both the content and the structure of duplicated code. This allowed us to answer the following question: how important is it that gene duplications can exactly duplicate sequences in a genome in both content \textit{and} structure?
+
+% Slip-scramble treatment
+The \textbf{slip-scramble treatment} allowed for mutation events (via the slip-scramble operator) that resulted in code duplications where the content of the duplicated code was preserved, but the structure of the duplicated code was not preserved. This, when compared with the slip-duplicate treatment, allowed us to answer the following question: is it that the duplication of particular instructions is important, regardless of their arrangement?
+
+% Slip-random treatment
+The \textbf{slip-random treatment} allowed us to answer the following question: is it the case that gene duplications promote evolvability because they result in the insertion of large, clustered mutations, regardless of what those mutations may be? The slip-random treatment (via the slip-random mutation operator) allowed for mutation events that could insert large, contiguous clusters of random instructions; one could also think of these mutations as maximally noisy duplications where neither the content or structure of the duplicated code is preserved.
+
+% Slip-NOP treatment
+The \textbf{slip-NOP treatment} allowed for mutations capable of inserting contiguous segments of blank `genetic tape' (via the slip-NOP mutation operator) in the form of no operation instructions. This allowed us to answer the following question: how important is it that gene duplications provide evolution with an easy technique for increasing genome size?
+
+% Slip-scatter treatment
+The \textbf{slip-scatter treatment} helped us to tease apart whether or not gene duplications promote evolvability because they inflate the effective mutation rate, generating increased amounts of genetic variation. This treatment allowed for mutations that, when triggered, could insert many random instructions into random locations in a genome (via the slip-scatter mutation operator).
+
+% High mutation rate treatment
+The \textbf{high mutation rate treatment} served a similar purpose to the slip-scatter treatment. However, instead of single mutation events (slip-scatter mutations) causing the insertion of many random instructions, we elevated the rates at which the copy instruction makes a random insertion or random deletion to result in approximately the same number of mutations per divide as in any treatment that includes a slip mutation operator. This allowed us to evaluate the importance of having an increased mutation rate due to large-scale, single-event mutations versus having a higher copy mutation rate.
+
+% Long genome treatment
+To better discern the role in facilitating evolution of larger genome size caused by gene duplication, we performed an additional treatment: the \textbf{long-genome baseline treatment}.
+Genomes in this treatment operated identically to the baseline treatment above, except that they were 1,000 sites long instead of 100 sites long.
+We chose this size as it was near the upper bound of the largest genome sizes that we observed in the slip-duplication treatment experiments. 
+
+In all experiments, organisms were limited to a minimum genome size (\textit{i.e.} instruction sequence length) of 100\footnote{
+In exploratory experiments, we found that, without enforcing a minimum genome size, slip mutations caused many lineages to quickly shrink in genome size because of inherent selection pressure for smaller genome size. Organisms became fast replicators but were then trapped on a local fitness optima, unable to evolve to perform complex computational tasks.
+}.
+We limited the population size to 3600 and seeded each experiment with an ancestral genotype capable only of self-replication. In both the static environment and simple changing environments, populations evolved for 200000 updates. In the complex changing environment, populations evolved for 400000 updates. We ran 100 trials of each treatment in each of our three environments.
+
+% AML: For now, I'm going to take out the discussion of the no min genome size runs. They aren't the main focus of the paper, and currently, we just use them as a side point at the end of the results. But, we should discuss whether or not this is an appropriate/good thing to do.
+\subsection{Statistical Methods}
+In each of three environments (static environment, simple changing environment, complex changing environment),
+%we performed experiments both with an without a minimum genome size.  This gives us six sets of experiments, each with six experimental treatments to be compared against a control.
+we performed experiments with six experimental treatments to be compared against a control.
+To determine if any of the treatments was significant within a set, we performed a Kruskal-Wallis test, applying a Bonferroni correction for the three different environments % MJW: Since we no longer even mention the no minimum genome size runs, our readers are going to have no idea what we're talking about with 6 different experimental groupings; we only discuss 3.
+to keep the experiment-wise $\alpha$ = 0.05.  For an environment in which the Kruskal-Wallis test was significant, we performed Mann-Whitney U tests for each experimental treatment against the control, and applied a Bonferroni correction for the six such tests within each environment.  All statistical analysis was conducted in R 3.2.3 \citep{r_core_team_r:_2015}.
+
+\subsubsection{Digital Organism Evaluation}
+At the end of each trial, we extracted the final dominant (most abundant) genotype in the population, and we traced back that genotype's full ancestral lineage. We calculated the phenotypic match score for each final dominant organism and all of their ancestors. In both the simple and complex changing environments, however, the final dominant organism at the end of a trial was biased by the final environmental condition. The final dominant organism may have been well-adapted and abundant in the final environmental conditions, but it may not have been capable of surviving if the environmental conditions were allowed to change again. To avoid any edge effects associated with this bias, instead of comparing final dominant organisms in the simple and complex changing environments, we compared the ancestors of these final dominant organisms that existed 1000 updates prior to the end of the experiment.

@@ -1,0 +1,20 @@
+\section{Conclusion} \label{sec:conclusion}
+
+% Recap of what we found:
+In this work, we investigated both if and how gene duplications promote evolvability in two qualitatively different contexts: 1) in a static environment that requires the evolution of unconditionally expressed complex traits, and 2) in changing environmental conditions that require the evolution of regulatory mechanisms capable of altering which operations are expressed as a function of current environmental conditions. % MJW: One long sentence.
+Our results show that, indeed, gene duplications promote evolvability in both static and changing environments. We found evidence that the most important aspect of gene duplications for promoting evolvability is their capacity to duplicate existing genetic information within a genome.
+Additionally, we found that the capacity to duplicate multiple types of information is beneficial; mutation operators that duplicated both the content and structure of genetic sequences promoted evolvability more than operators that duplicated content but not structure.
+%As was seen in \cite{Lalejini:2016plasticity}, we also found that high mutation rates inhibited the evolution of regulation, suggesting that
+
+Broadly speaking, gene duplications can facilitate significant jumps in a fitness landscape in many different ways. For example, when genes are duplicated, processes like subfunctionalization or neofunctionalization may occur, allowing populations to more easily cross fitness valleys and escape local optima. In the domain of evolutionary computation, the more we understand about why gene duplication is so important in promoting evolvability in different scenarios, the more we can customize our mutation operators to emphasize those factors.
+%These results suggest that when designing mutation operators meant to duplicate existing genetic information in an individual, we should try to maximize the amount of information the operator is capable of duplicating.
+These results suggest that when designing gene duplication operators for evolutionary computation systems, we should try to maximize the amount of information the operators are capable of duplicating.
+
+% Something about future work:
+The results presented here motivate several future studies. Performing deeper analyses of lineages evolved with gene duplications would allow us to more specifically identify how much different types of high-level processes are contributing to evolvability post-duplication event. Can we identify examples of subfunctionalization or neofunctionalization, and if so, can we identify their contributions to promoting the evolution of complex features? Or, would we find that duplications that are most likely to successfully sweep a population are those that have the highest information content?  Answers to these questions will allow us to better understand the role that gene duplication plays in natural evolution and could play in computational systems.
+% AML: This is sort of abrupt..
+% MJW: Agreed.  Needs to be wrapped up.
+
+% Other ideas:
+% * What effects are deletions having in out slip mutation operators?
+% * Recognize that there are many more variants we could try to tease more aspects of gene duplication apart: more slip-scatter variants (to better test if it matters that inserted segments are contiguous), does it matter that inserted segments are adjacent to the target segment? What if we run a continuum of operators between slip-duplicate and slip-scramble? Slip-duplicate with chance of other types of mutations?
