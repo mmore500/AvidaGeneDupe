@@ -9,24 +9,44 @@ on:
       - main
 
 jobs:
-  latex:
-    name: Latex Build
-    runs-on: ubuntu-latest
+  tex:
+    name: Latex Build and Deploy
+    runs-on: ubuntu-22.04
     container:
       image: ghcr.io/mmore500/teximage:sha-77b8179
-      # github actions requires root to access mounted volumes
       options: --user root
+    permissions:
+      contents: write
+      id-token: write
+      pages: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           submodules: 'recursive'
-      - run: make -C tex/
-      - run: 'cat tex/*.log || :'
-      - name: Upload output as artifact
+      - name: Build LaTeX document
+        run: |
+          trap 'cat tex/*.log || true >> "$GITHUB_OUTPUT"' EXIT
+          make -C tex
+      - name: Prepare deploy directory
+        run: |
+          mkdir -p deploy
+          cp tex/*-draft.pdf deploy/
+          echo "<html><body><a href="$(ls deploy)">Download Manuscript Draft [PDF]</a></body></html>" > deploy/index.html
+      - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
           name: manuscript
-          path: tex/${{ github.event.repository.name }}-draft.pdf
+          path: tex/*-draft.pdf
+      - name: Upload pages artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: deploy
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
 
   binder:
     runs-on: ubuntu-latest
