@@ -24,8 +24,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - run: |
-          apk update -y
-          apk add git -y
+          apk update
+          apk add git
       - uses: actions/checkout@v4
         with:
           submodules: 'recursive'
