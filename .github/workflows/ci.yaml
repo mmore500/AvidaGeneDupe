@@ -25,7 +25,7 @@ jobs:
     steps:
       - run: |
           apk update
-          apk add git
+          apk add --no-cache git make
       - uses: actions/checkout@v4
         with:
           submodules: 'recursive'
