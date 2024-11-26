@@ -73,7 +73,7 @@ For this purpose, we compared against an additional control, the long genome bas
 Two alternate hypotheses can be understood about the role of gene duplication in adaptive evolution.
 In one hypothesis, by facilitating greater robustness and redundancy.
 This allows neofunctionalization and subfunctionalization.
-In the fitness landscape analogy, this can be thought of as discovering the 
+In the fitness landscape analogy, this can be thought of as discovering the
 
 \subsubsection{Role of slip duplication in facilitating robustness and raw neutral genetic material.}
 
@@ -92,11 +92,15 @@ We measured genome robstness through all-site knockouts using Avida's genome eva
 
 % https://github.com/chaynes2019/AvidaGeneDupe/blob/538ede79c7301f10718ca96c8dd38782b6882632/binder/num-coding-sites.ipynb
 Figure \ref{fig:num-coding-sites} compares the trajectory of coding sites in genomes in slip-duplicate and control treatments over evolutionary generations.
-We found that, at 600 generations, the long-baseline and slip-duplicate treatments did not differ significantly in their brittleness, measured as coding site count (Mann-Whitney U Test; Figure \ref{fig:num-coding-sites:coding}).
-However, we found that they did differ in the raw amount of material that was or had previously been coding (Figure \ref{fig:num-coding-sites:coded}; $p < 0.0001$; Mann-Whitney U Test).
+We found that, at 600 generations, the long-baseline and slip-duplicate treatments did not differ significantly in their brittleness, measured as coding site count (Mann-Whitney U Test; 71.7 SD 26.7 sites [$n=30$] vs. 79.4 SD 13.8 sites [$n=30$]; Figure \ref{fig:num-coding-sites:coding}).
+However, we found that they did differ in the raw amount of material that was or had previously been coding; the slip-duplicate treatment had significantly more sites that were or had previously been coding (Mann-Whitney U Test; 157.2 SD 72.3 sites [$n=30$] vs. 117.7 SD 23.5 sites [$n=30$]; $p < 0.0001$; Figure \ref{fig:num-coding-sites:coded}).
 Thus, the slip-duplication increased the amount of potential material to work with but did not change the robustness \textit{per se}.
 
-In additional experiments, we tested the effects of insertion mutations on brittleness (measured by coding site count) and found that neutral insertion mutations, indeed, do tend to reduce coding site count --- particularly for genomes with that encode high-complexity tasks (Supplementary Figure \ref{fig:nulldist}).
+% https://github.com/chaynes2019/AvidaGeneDupe/blob/538ede79c7301f10718ca96c8dd38782b6882632/binder/indel-effect-nulldist.ipynb
+In additional experiments, we tested the effects of insertion mutations on brittleness (measured by coding site count) and found that neutral insertion mutations, indeed, do tend to reduce coding site count.
+On average, insertion mutations that do not affect task count decrease coding site count by 6.8 sites.
+This effect is strongest in genomes with high complexity; for instance, neutral insertion mutations decrease coding site count by 9.2 and 8.3 sites, on average, in genomes that encode 4 and 5-component complexity tasks, respectively.
+Supplementary Figure \ref{fig:nulldist} compares distributions of phenotypic and coding site outcomes across lineages from across our experiments.
 So, perhaps an evolutionary force is driving the two treatments to reach the same ballpark of critical sites, but the slip duplication can duplicate and copy around genome content in a manner that increases the copy count of previously-coding sites relative to the number of critical sites.
 
 (It should be noted that this measure is limited, as it depends on functional sites being detectable at some point through single-site knockout which can fail to reveal aspects of sequence complexity \citep{alifeextendedabstract}.)
@@ -110,11 +114,11 @@ Figure \ref{fig:adaptive-evolution-rate} shows the results of these experiments.
 
 Genome length was sufficient to explain the boost to the rates at which simpler traits ($\leq 3$ components) were gained in the slip duplication treatment compared to the baseline treatment --- the long-genome baseline treatment indeed faster adaptive evolution of these traits compared to the slip-duplication treatment.
 % https://github.com/chaynes2019/AvidaGeneDupe/blob/538ede79c7301f10718ca96c8dd38782b6882632/binder/adaptive-evolution-rate.ipynb
-However, for 4 and 5 component traits, the slip-duplicate treatment had a significantly higher fraction of replicates that had evolved the these traits at 600 generations compared to the long genome control (exact Fisher tests; $p<0.05$ [4 components], $p < 0.03$ [5 components]; Figure \ref{fig:adaptive-evolution-rate:direct}).
+However, for 4 and 5 component traits, the slip-duplicate treatment had a significantly higher fraction of replicates that had evolved the these traits at 600 generations compared to the long genome control (exact Fisher tests; 24/60 vs. 36/60 $p<0.05$ [4 components], 2/30 vs. 10/30 $p < 0.03$ [5 components]; Figure \ref{fig:adaptive-evolution-rate:direct}).
 
 % https://github.com/chaynes2019/AvidaGeneDupe/blob/538ede79c7301f10718ca96c8dd38782b6882632/binder/adaptive-evolution-rate-nodirect.ipynb
 To assess whether such facilitation of robustness neutral variation described  was an important factor in explaining the adaptive boost of slip duplication, we tested whether a difference in adaptive rates was still detectable in the absence of directly-facilitated adaptive variation where slip duplications directly caused the gaining of new traits.
-We found that this was not the case; without instances where new traits were directly discovered as the result of slip duplication, no significant difference remained in the adaptive evolution rate of the slip-duplicate and long-genome controls for the 4 and 5 component tasks (exact Fisher tests; Figure \ref{fig:adaptive-evolution-rate:nodirect}).
+We found that this was not the case; without instances where new traits were directly discovered as the result of slip duplication, no significant difference remained in the adaptive evolution rate of the slip-duplicate and long-genome controls for the 4 and 5 component tasks (exact Fisher tests; 24/60 vs. 23/60; 2/30 vs. 5/30; Figure \ref{fig:adaptive-evolution-rate:nodirect}).
 
 Thus, we can conclude that slip duplications are specific in facilitating the evolution of complex traits, but that facilitation of neutral variation --- as is commonly the narratie around gene duplication --- is not necessarily necessary to explain this phenomenon.
 
