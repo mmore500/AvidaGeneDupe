@@ -117,6 +117,11 @@ The \textbf{slip-scatter treatment} helped us to tease apart whether or not gene
 % High mutation rate treatment
 The \textbf{high mutation rate treatment} served a similar purpose to the slip-scatter treatment. However, instead of single mutation events (slip-scatter mutations) causing the insertion of many random instructions, we elevated the rates at which the copy instruction makes a random insertion or random deletion to result in approximately the same number of mutations per divide as in any treatment that includes a slip mutation operator. This allowed us to evaluate the importance of having an increased mutation rate due to large-scale, single-event mutations versus having a higher copy mutation rate.
 
+% Long genome treatment
+To better discern the role in facilitating evolution of larger genome size caused by gene duplication, we performed an additional treatment: the \textbf{long-genome baseline treatment}.
+Genomes in this treatment operated identically to the baseline treatment above, except that they were 1,000 sites long instead of 100 sites long.
+We chose this size as it was near the upper bound of the largest genome sizes that we observed in the slip-duplication treatment experiments. 
+
 In all experiments, organisms were limited to a minimum genome size (\textit{i.e.} instruction sequence length) of 100\footnote{
 In exploratory experiments, we found that, without enforcing a minimum genome size, slip mutations caused many lineages to quickly shrink in genome size because of inherent selection pressure for smaller genome size. Organisms became fast replicators but were then trapped on a local fitness optima, unable to evolve to perform complex computational tasks.
 }.
