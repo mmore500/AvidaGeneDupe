@@ -1,0 +1,13 @@
+Treatment,COPY_MUT_PROB,COPY_INS_PROB,COPY_DEL_PROB,DIVIDE_INS_PROB,DIVIDE_DEL_PROB,DIVIDE_SLIP_PROB,SLIP_FILL_MODE,Replicate #,Information Type,Information
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1143,Task Count,0.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1143,gest_time,114.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1143,comp_merit,0.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1143,merit,113.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1143,fitness,114.0
+Slip-NOP,0.0,0.0,0.0,0.0,0.0,0.05,1,1143,efficiency,114.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1035,Task Count,94.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1035,gest_time,114.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1035,comp_merit,94.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1035,merit,112.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1035,fitness,114.0
+Baseline-Treatment,0.0025,0.0,0.0,0.05,0.05,0.0,0,1035,efficiency,114.0

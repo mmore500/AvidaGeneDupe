@@ -1,0 +1,46 @@
+\section{Introduction} \label{sec:introduction}
+
+section{Introduction}
+
+Gene duplication is a phenomenon by which
+additional copies of a region of genetic material
+% -- whether a single gene, or many, up to
+%or even an entire genome --
+are incorporated into a genome.
+%copied and retained within a single cell.
+There are numerous processes that can result in gene duplication, each with their own specific outcomes (as reviewed in \citep{Zhang:2003fw}), ranging from repeats of gene fragments to whole genome duplication.  All of these processes result in %share the common feature of
+an increase in genome size, but more importantly, genetic material that is likely more structured and meaningful than random insertions. %, especially when the duplicated sequence already encoded for one or more traits. %with encoded information.
+As such, gene duplication is an important mechanism for generating genetic novelty, providing a source of new genetic material for evolutionary processes to act on and enabling new evolutionary opportunities \citep{Zhang:2003fw,Crow:2006role,Magadum:2013wu}. Indeed, gene duplication has been shown to promote evolvability -- the capacity of a system to generate adaptive phenotypic variation % MJW: Are you defining evolvability as the capacity to generate adaptive phenotypic variation?  If so, I'd kill the ", or", replace that with a -- and insert another -- after variation.  If not, then I think you need to make clear what the difference is you're drawing between evolvability and this capacity.
+and to transmit that information via an evolutionary process \citep{Hu:2010ea} -- both in biology and in computational evolution.  % Does the Hu citation give examples from both biology and computational work? -- AML: Yes.
+
+% MJW: This next paragraph is a stab at showing importance of gene duplication for evolvability in biology.  I'll provide you bib entries for these shortly, but text is more important at the moment:
+	Gene duplications have been shown to enhance evolvability in a number of biological systems.  A striking example comes from the Long-Term Evolution Experiment in \textit{Escherichia coli}, where a duplication in one population allowed a protein to be expressed in an environment where it would normally be inhibited~\citep{blount_genomic_2012}.  By expressing this protein in a different context, the cell gained access to a resource that it previously could not metabolize resulting in a 7-fold increase in population size. %and a greater ability to explore nearby beneficial mutations.
+Beyond specific cases of how a gene duplication led to increased evolvability, large scale genomic studies have discovered cases where a strikingly high fraction of the genes in an organism show evidence of having arisen from gene duplications \citep{teichmann_structural_1998,Teichmann:2004cz}, emphasizing the role of duplication in evolutionary innovation.  Comparative studies further suggest that many ancient duplication events were associated with increases in both genetic robustness and evolutionary innovation (reviewed in \citep{wagner_gene_2008}).  Though comparative studies lack the definitive proof of laboratory manipulation, the accumulated weight of evidence clearly suggests that gene and genome duplication events can have long-term evolutionary consequences.
+
+The prominence of gene duplications in biological evolution has inspired their use in artificial evolutionary systems. In genetic programming, the optimal program architecture for solving a particular problem is challenging to predict \textit{a priori}. Inspired by Ohno's \textit{Evolution by Gene Duplication} \citep{ohno1970evolution}, Koza used gene duplication and deletion operators to co-evolve genetic programs and their structure, finding that gene duplication and deletion increased program evolvability and produced simpler solutions \citep{Koza:1995fr}. Calabretta \textit{et al.} evolved modular neural network motor controllers for robots with and without module duplication operators, finding evidence that access to duplication operations resulted in increased functional specialization in network modules \citep{Calabretta:1998vh,Calabretta:2000tl}.
+These and other computational studies \citep{Ryan:1998gm,Sawai:1999genetic,Sawai:2000comparative,Schmitt:2005bc} corroborate some of the benefits of gene duplication seen in natural systems.
+
+Given the evidence that gene duplication promotes evolvability in both computational and natural systems, we use a digital evolution approach to explore \textit{why}. That is, what aspects of gene duplications promote evolvability?
+%Is it their capacity to duplicate meaningful genetic information in the genome, create new genetic material for evolutionary processes to act on, or increase the effective mutation rate? Or, is it some combination of these aspects that enable gene duplications to promote evolvability in a system?
+
+Is the full structure of duplicated code critical, or would the duplication of the functional elements be valuable even if they are rearranged? Exact duplications can result in functionally redundant genes that can increase the mutational robustness of a genotype \citep{Crow:2006role} or %can be selectively advantageous because of the
+allow the organism to produce
+additional gene product %they create
+\citep{Zhang:2003fw}. If a highly constrained genetic sequence is duplicated, one of the versions can mutate more freely, which may lead to new functionality \citep{Zhang:2003fw,Wagner:2003fk} -- a process known as neofunctionalization. Alternatively, subfunctionalization may occur where the two `daughter' genes diverge from the ancestral gene state, specializing on different aspects of the ancestral gene's functionality
+\citep{Zhang:2003fw}.
+%\citep{force1999preservation,stoltzfus1999possibility, Zhang:2003fw}.
+Gene duplications are also thought to play an important role in the evolution of complex genetic regulation \citep{Teichmann:2004cz}. If a regulatory gene is duplicated, the copy could continue to regulate the same target genes, but mutations may cause it to respond to new signals; or, the duplicated regulatory gene may continue to respond to the same signals, but it may begin regulating a different gene \citep{Teichmann:2004cz}.
+
+Aside from creating redundant copies of existing genetic code in a genome, there are other features of gene duplication that may result in increased evolvability. Are gene duplications valuable because they inflate the effective mutation rate of genomes, increasing genetic variation?  Or is the important factor that those new mutations are clustered together?
+%are effectively clustered insertion mutations, %whatever the inserted genetic code may be? Gene duplications introduce new, clustered genetic sequences,
+%providing new genetic material for evolutionary processes to act on \citep{Zhang:2003fw}?
+Or is it that the mutations are insertions that provide evolution with an easy technique to select for longer genomes % Longer genomes have
+and increased information storage capacity? %increasing the total amount of information about the environment that could be encoded in an organism's genome.
+%Or, do gene duplications promote evolvability because they inflate the effective mutation rate, generating increased amounts of genetic variation?
+These aspects are nearly impossible to disentangle in biological systems, but can be addressed in computational ones.
+
+Using the Avida Digital Evolution Platform, we implemented a series of mutation operators to systematically isolate aspects of gene duplication and tease apart which factors promote evolvability. We tested these operators in two %qualitatively different
+contexts: in a static environment that rewards the performance of nine basic Boolean logic operations, and in two dynamic environmental conditions that require the evolution of regulatory mechanisms capable of altering which operations are expressed as a function of current environmental conditions. % MJW: Just flagging that the above is a single sentence.  It may actually be OK here -- the obvious point to break it is at the comma, and Charles is not a fan of needing to use antecedents in the previous sentence -- but it's also possible you hadn't realized just how long this sentence had gotten.
+There are several mechanisms that produce gene duplications in biological systems. Here, we use gene duplication mutation operators in Avida that resemble replication slippage \citep{bzymek_instability_2001} (\textit{slip mutations}) and allow for gene duplications or deletions at any scale.
+
+We introduce five slip mutation operators to tease apart the specific components of a gene duplication. By observing how each of our slip mutation operators affect the evolution of digital organisms in different contexts, we are able to isolate which aspects of gene duplications are most important for promoting evolvability.

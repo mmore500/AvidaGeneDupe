@@ -1,0 +1,164 @@
+# Tue Feb  8 14:32:13 2022
+# Filename........: archive/org-95349.gen
+# Update Output...: N/A
+# Is Viable.......: 1
+# Repro Cycle Size: 0
+# Depth to Viable.: 0
+# 
+# Generation: 0
+# Merit...........: 132.000000
+# Gestation Time..: 529
+# Fitness.........: 0.249527
+# Errors..........: 0
+# Genome Size.....: 135
+# Copied Size.....: 135
+# Executed Size...: 132
+# Offspring.......: SELF
+# 
+# Tasks Performed:
+# not 0 (0.000000)
+# nand 0 (0.000000)
+# and 0 (0.000000)
+# orn 0 (0.000000)
+# or 0 (0.000000)
+# andn 0 (0.000000)
+# nor 0 (0.000000)
+# xor 0 (0.000000)
+# equ 0 (0.000000)
+
+
+h-alloc
+h-search
+nop-C
+nop-A
+mov-head
+nop-C
+nop-C
+nop-C
+nop-C
+nop-C
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-X
+nop-C
+nop-C
+nop-C
+nop-C
+nop-C
+nop-C
+nop-C
+nop-C
+nop-C
+nop-C
+nop-C
+nop-C
+nop-C
+nop-C
+nop-C
+nop-C
+nop-C
+nop-C
+nop-C
+nop-C
+nop-C
+nop-C
+nop-C
+nop-C
+nop-C
+nop-C
+nop-C
+nop-C
+nop-C
+nop-C
+nop-C
+nop-C
+nop-X
+nop-C
+nop-C
+nop-C
+nop-C
+nop-C
+nop-C
+nop-C
+h-search
+h-copy
+if-label
+nop-C
+nop-A
+h-divide
+mov-head
+nop-A
+nop-B

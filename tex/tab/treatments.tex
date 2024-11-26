@@ -1,0 +1,36 @@
+% Color Definitions (for treatments table)
+\newcommand\baselineratecolor{\cellcolor[HTML]{c9daf8}}
+\newcommand\nonecolor{\cellcolor[HTML]{666666}}
+\newcommand\slipdupcolor{\cellcolor[HTML]{4a86e8}}
+\newcommand\slipscramcolor{\cellcolor[HTML]{8e7cc3}}
+\newcommand\sliprandcolor{\cellcolor[HTML]{93c47d}}
+\newcommand\slipnopcolor{\cellcolor[HTML]{ffd966}}
+\newcommand\slipscattercolor{\cellcolor[HTML]{e06666}}
+\newcommand\highmutcolor{\cellcolor[HTML]{ff9900}}
+
+\begin{table*}[!ht]
+  \centering
+  \begin{tblr}{| c | c | c | c | c | c | c | c |}
+    \hline
+    \SetCell[r=2]{c} Treatment & \SetCell[c=2]{c} Slip Mutation & & \SetCell[r=2]{c} Substitution rate \\ per copy & \SetCell[r=2]{c} Insertion \\ and deletion rate \\ per copy & \SetCell[r=2]{c} Insertion and \\ deletion rate \\ per divide \\
+    \cline{2-3}
+    & Operator & Rate \\ per divide & & & \\
+    \hline
+    Baseline            & \nonecolor & \nonecolor & 0.0025 \baselineratecolor & \nonecolor & 0.05 \baselineratecolor  \\
+    \hline
+    Slip-duplicate      & Slip-duplicate \slipdupcolor & 0.05 \slipdupcolor   & 0.0025 \baselineratecolor & \nonecolor   & 0.05 \baselineratecolor  \\
+    \hline
+    Slip-scramble       & Slip-scramble \slipscramcolor & 0.05 \slipscramcolor    & 0.0025 \baselineratecolor & \nonecolor & 0.05 \baselineratecolor  \\
+    \hline
+    Slip-random         & Slip-random \sliprandcolor & 0.05 \sliprandcolor   & 0.0025 \baselineratecolor & \nonecolor & 0.05 \baselineratecolor  \\
+    \hline
+    Slip-NOP            & Slip-NOP \slipnopcolor  & 0.05 \slipnopcolor   & 0.0025 \baselineratecolor & \nonecolor & 0.05 \baselineratecolor  \\
+    \hline
+    Slip-scatter        & Slip-scatter \slipscattercolor & 0.05 \slipscattercolor & 0.0025 \baselineratecolor & \nonecolor & 0.05 \baselineratecolor  \\
+    \hline
+    High mutation rate  & \nonecolor & \nonecolor & 0.0025 \baselineratecolor & 0.0075 \highmutcolor & 0.05 \baselineratecolor \\
+    \hline
+  \end{tblr}
+  \caption{\small Differences in mutation operators and rates among the seven treatments.}
+  \label{table:treatments}
+\end{table*}

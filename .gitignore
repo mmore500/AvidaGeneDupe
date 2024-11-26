@@ -1,0 +1,14 @@
+avida/build
+avida/cbuild
+avida/CMakeCache.txt
+avida/CMakeFiles
+avida/Makefile
+avida/cmake_install.cmake
+avida/install_manifest.txt
+avida/wbuild
+
+
+.DS_Store
+.vscode
+
+local/

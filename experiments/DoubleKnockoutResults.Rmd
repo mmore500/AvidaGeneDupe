@@ -1,0 +1,31 @@
+---
+title: "ZE3GeneDupeDoubleKnockout"
+output: html_document
+date: '2022-06-06'
+---
+
+```{r}
+library(ggplot2)
+setwd("/Users/cameronhaynes/Documents/VSCodeGitProjects/AvidaGeneDupe/experiments/2022-5-5-LalejiniEtAlWLogic25/TidiedData")
+data <- read.csv("DoubleKnockoutData.csv")
+names(data)
+
+ggplot(data,aes(x=Treatment,y=Fraction.of.Redundant.Non.Coding.Sites,color=Treatment,fill=Treatment)) + #Add color=Replicate with a replicate column to plot each curve seperately 
+  geom_violin() +
+  geom_jitter(alpha = 0.2) +
+  theme_minimal() +
+  theme(legend.position = 'none')
+```
+
+```{r}
+library(ggplot2)
+setwd("/Users/cameronhaynes/Documents/VSCodeGitProjects/AvidaGeneDupe/experiments/2022-3-29-PaperDuplication/TidiedData")
+data <- read.csv("DoubleKnockoutData.csv")
+names(data)
+
+ggplot(data,aes(x=Treatment,y=Fraction.of.Redundant.Non.Coding.Sites,color=Treatment,fill=Treatment)) + #Add color=Replicate with a replicate column to plot each curve seperately 
+  geom_violin() +
+  geom_jitter(alpha = 0.2) +
+  theme_minimal() +
+  theme(legend.position = 'none')
+```

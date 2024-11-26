@@ -1,0 +1,59 @@
+---
+title: "GeneDupeRExplorations"
+output: html_document
+date: '2022-03-17'
+---
+The first experiment performed had treatments that either had substitution mutations at baseline/high frequencies or slip mutations. The second experiment performed had both types of mutations present in all of the Slip-treatments; the baseline treatment and the high mutation treatments relied only on substitution mutations.
+
+Below, violin plots of phenotypic task score of the final dominant organisms are presented, first for the first experiment, then for the second. Further down, there are time courses of the average number of tasks present in the population (i.e 25% of the maximally sized population has the task as a component of their merit), again with the first experiment's results and then the second's.
+
+```{r}
+library(ggplot2)
+setwd("/Users/cameronhaynes/Documents/VSCodeGitProjects/AvidaGeneDupe/experiments/2022-2-4-PaperDuplicationWMod/TidiedData")
+data <- read.csv("FinalDominantTaskCounts.csv")
+names(data)
+ggplot(data,aes(x=Treatment,y=Task.Count,color=Treatment,fill=Treatment)) + #Add color=Replicate with a replicate column to plot each curve seperately 
+  geom_violin() +
+  geom_jitter(alpha = 0.2) +
+  theme_minimal() +
+  theme(legend.position = 'none')#+ facet_grid(Treatment~.) # Uncomment to plot faceted by treatment
+
+ggsave("ModifiedReplicationFinalDominantTaskCountViolin.pdf")
+```
+```{r}
+library(ggplot2)
+setwd("/Users/cameronhaynes/Documents/VSCodeGitProjects/AvidaGeneDupe/experiments/2022-3-29-PaperDuplication/TidiedData")
+data <- read.csv("FinalDominantTaskCounts.csv")
+names(data)
+ggplot(data,aes(x=Treatment,y=Task.Count,color=Treatment,fill=Treatment)) + #Add color=Replicate with a replicate column to plot each curve seperately 
+  geom_violin() +
+  #geom_jitter(alpha = 0.2) +
+  theme_minimal() +
+  ylim(0,9) +
+  theme(legend.position = 'none')#+ facet_grid(Treatment~.) # Uncomment to plot faceted by treatment
+
+ggsave("FullReplicationFinalDominantTaskCountViolin.png")
+```
+
+```{r}
+library(ggplot2)
+setwd("/Users/cameronhaynes/Documents/VSCodeGitProjects/AvidaGeneDupe/experiments/2022-2-4-PaperDuplicationWMod/TidiedData")
+data <- read.csv("TaskCountTimeCourse.csv")
+names(data)
+ggplot(data, aes(x=Time,y=Tasks.Present,color=Treatment,fill=Treatment)) +
+  stat_summary(geom="line",fun=mean)
+
+ggsave("ModifiedReplicationAvgTaskTimeCourse.pdf")
+```
+
+```{r}
+library(ggplot2)
+setwd("/Users/cameronhaynes/Documents/VSCodeGitProjects/AvidaGeneDupe/experiments/2022-3-29-PaperDuplication/TidiedData")
+data <- read.csv("TaskCountTimeCourse.csv")
+names(data)
+ggplot(data, aes(x=Time,y=Tasks.Present,color=Treatment,fill=Treatment)) +
+  stat_summary(geom="line",fun=mean)
+
+ggsave("FullReplicationTaskCountTimeCourse.pdf")
+```
+

@@ -1,0 +1,168 @@
+---
+title: "ZE3GeneDupeLogic25"
+output: html_document
+date: '2022-05-06'
+---
+
+```{r}
+library(ggplot2)
+setwd(".")
+data <- read.csv("FinalDominantTaskCounts.csv")
+names(data)
+ggplot(data,aes(x=Treatment,y=Task.Count,color=Treatment,fill=Treatment)) + #Add color=Replicate with a replicate column to plot each curve seperately 
+  geom_violin() +
+  geom_jitter(alpha = 0.2) +
+  theme_minimal() +
+  theme(legend.position = 'none')#+ facet_grid(Treatment~.) # Uncomment to plot faceted by treatment
+
+ggsave("Logic25FinalDominantTaskCountViolin.pdf")
+
+```
+
+Anyone else feel like the fact that the mean of High Mutation has 0 tasks out of the Logic 25 is weird where in the Logic 9, the mean is at 7 or so even though those tasks are more elaborate?
+
+
+```{r}
+library(ggplot2)
+setwd(".")
+data <- read.csv("TaskCountTimeCourse.csv")
+names(data)
+ggplot(data, aes(x=Time,y=Tasks.Present,color=Treatment,fill=Treatment)) +
+  stat_summary(geom="line",fun=mean)
+
+ggsave("Logic25AvgTaskTimeCourse.pdf")
+```
+
+```{r}
+library(ggplot2)
+setwd(".")
+data <- read.csv("FinalDominantGenomeLengths.csv")
+names(data)
+ggplot(data,aes(x=Treatment,y=Task.Count,color=Treatment,fill=Treatment)) + #Add color=Replicate with a replicate column to plot each curve seperately 
+  geom_violin() +
+  geom_jitter(alpha = 0.2) +
+  theme_minimal() +
+  theme(legend.position = 'none')#+ facet_grid(Treatment~.) # Uncomment to plot faceted by treatment
+
+ggsave("Logic25FinalDominantGenomeLengthsViolin.pdf")
+```
+
+```{r}
+library(ggplot2)
+setwd(".")
+data <- read.csv("FinalDominantInfo.csv")
+names(data)
+ggplot(data[data$Information.Type=="Task Count",],aes(x=Treatment,y=Information,color=Treatment,fill=Treatment)) + #Add color=Replicate with a replicate column to plot each curve seperately 
+  geom_violin() +
+  geom_jitter(alpha = 0.2) +
+  theme_minimal() +
+  theme(legend.position = 'none') + facet_grid(Information.Type~.) # Uncomment to plot faceted by treatment
+
+ggsave("LalejiniEtAlWLogic25FinalDominantInfo.pdf")
+```
+
+```{r}
+library(ggplot2)
+setwd(".")
+data <- read.csv("FinalDominantInfo.csv")
+names(data)
+dataSelectedForTasks = data[data$Information.Type == "Task Count",]
+dataParedDownToEssentialTreatments = dataSelectedForTasks[dataSelectedForTasks$Treatment %in% c("Baseline-Treatment", "Slip-duplicate"),]
+ggplot(dataParedDownToEssentialTreatments,aes(x=Treatment,y=Information.Concentration,color=Treatment,fill=Treatment)) + #Add color=Replicate with a replicate column to plot each curve seperately 
+  geom_violin() +
+  geom_jitter(alpha = 0.2) +
+  theme_minimal() +
+  labs(y = "Fraction of Genome filled by Coding Sites") +
+  theme(legend.position = 'none') + facet_grid(Information.Type~.)  #Uncomment to plot faceted by treatment
+
+ggsave("LalejiniEtAlWLogic25FinalDominantInfoConcentration.pdf")
+```
+
+```{r}
+library(ggplot2)
+setwd("/Users/cameronhaynes/Documents/VSCodeGitProjects/AvidaGeneDupe/experiments/2022-5-5-LalejiniEtAlWLogic25/TidiedData")
+data1 <- read.csv("FinalDominantInfo.csv")
+data2 <- read.csv("FinalDominantGenomeLengths.csv")
+data3 <- read.csv("FinalDominantTaskCounts.csv")
+data = merge(data1[data1$Information.Type=="Task Count",],data2, by = c("Replicate.."))
+data$Info.Per.Task <- data$Information.Concentration /
+names(data)
+ggplot(data,aes(x=Task.Count,y=Information.Concentration,color=Treatment.x,fill=Treatment.x)) + #Add color=Replicate with a replicate column to plot each curve seperately 
+  geom_point() +
+  theme_minimal() +
+  theme(legend.position = 'none')
+```
+
+```{r}
+library(ggplot2)
+setwd("/Users/cameronhaynes/Documents/VSCodeGitProjects/AvidaGeneDupe/experiments/2022-5-5-LalejiniEtAlWLogic25/TidiedData")
+data1 <- read.csv("FinalDominantInfo.csv")
+data2 <- read.csv("FinalDominantTaskCounts.csv")
+data = merge(data1[data1$Information.Type=="Task Count",],data2, by = c("Replicate.."))
+names(data)
+data$Genome.Per.Task <- data$Information.Concentration / data$Task.Count
+names(data)
+ggplot(data,aes(x=Treatment.x,y=Genome.Per.Task,color=Treatment.x,fill=Treatment.x)) + #Add color=Replicate with a replicate column to plot each curve seperately 
+  geom_violin() +
+  geom_jitter(alpha = 0.2) +
+  theme_minimal() +
+  theme(legend.position = 'none')
+
+ggsave("LalejiniEtAlWLogic25FinalDominantGenomePerTask.pdf")
+```
+
+```{r}
+library(ggplot2)
+setwd("/Users/cameronhaynes/Documents/VSCodeGitProjects/AvidaGeneDupe/experiments/2022-5-5-LalejiniEtAlWLogic25/TidiedData")
+data1 <- read.csv("FinalDominantInfo.csv")
+data2 <- read.csv("FinalDominantTaskCounts.csv")
+data = merge(data1[data1$Information.Type=="Task Count",],data2, by = c("Replicate.."))
+names(data)
+data$CodingSites.Per.Task <- data$Information / data$Task.Count
+names(data)
+ggplot(data,aes(x=Treatment.x,y=CodingSites.Per.Task,color=Treatment.x,fill=Treatment.x)) + #Add color=Replicate with a replicate column to plot each curve seperately 
+  geom_violin() +
+  geom_jitter(alpha = 0.2) +
+  theme_minimal() +
+  theme(legend.position = 'none')
+
+ggsave("LalejiniEtAlWLogic25FinalDominantCodingSitesPerTask.pdf")
+
+```
+
+```{r}
+library(ggplot2)
+setwd("/Users/cameronhaynes/Documents/VSCodeGitProjects/AvidaGeneDupe/experiments/2022-5-5-LalejiniEtAlWLogic25/TidiedData")
+data1 <- read.csv("FinalDominantInfo.csv")
+data2 <- read.csv("FinalDominantTaskCounts.csv")
+data = merge(data1[data1$Information.Type=="Task Count",],data2, by = c("Replicate.."))
+names(data)
+data$CodingSites.Per.Task <- data$Information / data$Task.Count
+names(data)
+ggplot(data,aes(x=Treatment.x,y=Task.Coding.Sites.Average,color=Treatment.x,fill=Treatment.x)) + #Add color=Replicate with a replicate column to plot each curve seperately 
+  geom_violin() +
+  geom_jitter(alpha = 0.2) +
+  theme_minimal() +
+  theme(legend.position = 'none')
+
+ggsave("LalejiniEtAlWLogic25FinalDominantRealCodingSitesPerTask.pdf")
+```
+
+```{r}
+library(ggplot2)
+setwd("/Users/cameronhaynes/Documents/VSCodeGitProjects/AvidaGeneDupe/experiments/2022-5-5-LalejiniEtAlWLogic25/TidiedData")
+data1 <- read.csv("FinalDominantInfo.csv")
+data2 <- read.csv("FinalDominantTaskCounts.csv")
+data = merge(data1[data1$Information.Type=="Task Count",],data2, by = c("Replicate.."))
+names(data)
+data$CodingSites.Per.Task <- data$Information / data$Task.Count
+data$Task.Genomic.Overlap <- (data$Task.Coding.Sites.Average - data$CodingSites.Per.Task)/data$Length
+names(data)
+ggplot(data,aes(x=Treatment.x,y=Task.Genomic.Overlap,color=Treatment.x,fill=Treatment.x)) + #Add color=Replicate with a replicate column to plot each curve seperately 
+  geom_violin() +
+  geom_jitter(alpha = 0.2) +
+  theme_minimal() +
+  theme(legend.position = 'none')
+
+ggsave("LalejiniEtAlWLogic25FinalDominantOverlap.pdf")
+```
