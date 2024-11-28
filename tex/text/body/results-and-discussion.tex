@@ -50,6 +50,9 @@ duplicating both the content and structure of existing genetic code is an import
 \subsection{Discerning the mechanism of slip duplication in facilitating adaptive evolution}
 
 Having established slip-duplicate as the best-performing slip insertion operator, we next sought to understand the mechanism driving the evolvability impact of gene duplication in the Avida system.
+In follow-on investigations, we next (1) identify the characteristics of phenotypic traits that are most facilitated by slip duplication, (2) identify signatures of in slip duplication in potentiating these traits in lineage histories, and (3) investigate how slip duplication affects the net accumulation of brittleness and vestigial genetic material in genomes.
+
+\subsubsection{Slip duplication facilitates adaptive variation for the evolution of complex traits.}
 
 One salient aspect of the task system in Avida is the hierarchical composition of task definitions.
 ``Simpler'' tasks like AND and NAND form the building blocks of the definition of ``more complex'' tasks like XOR and EQU.
@@ -70,30 +73,65 @@ One simple consequence of gene duplication is in increasing the number of sites 
 We sought to identify the aspects of gene duplication evolvability that could be attributed simply to longer genome length.
 For this purpose, we compared against an additional control, the long genome baseline control where genomes were 1,000 sites long.
 
-Two alternate hypotheses can be understood about the role of gene duplication in adaptive evolution.
-In one hypothesis, gene duplication boosts adaptive evolution by facilitating greater robustness and redundancy.
-This provides raw material for subsequent processes to sculpt into new types of variation --- ultimately, increasing complexity and adaptation through  neofunctionalization and subfunctionalization.
-An alternate hypothesis is that gene duplication diretly boosts adaptive evolution by facilitating mutational steps that are more likely to be beneficial.
-This is possible by exploiting information within the genome, that serves as the basis for new gtenome components augmented through gene duplication.
-In the fitness landscape analogy, this hypothesis can be thought of as allowing leaps through fitness space that are more likely to land on fitness peaks.
 
-\subsubsection{Role of slip duplication in facilitating robustness and raw neutral genetic material.}
+\input{fig/adaptive-evolution-rate.tex}
+
+In a first set of experiments, we tested whether the adaptive boost of slip duplication was greater than the adaptive boost of simply having more genome sites.
+Figure \ref{fig:adaptive-evolution-rate} shows the results of these experiments.
+
+Genome length was sufficient to explain the boost to the rates at which simpler traits ($\leq 3$ components) were gained in the slip duplication treatment compared to the baseline treatment --- the long-genome baseline treatment indeed faster adaptive evolution of these traits compared to the slip-duplication treatment.
+% https://github.com/chaynes2019/AvidaGeneDupe/blob/538ede79c7301f10718ca96c8dd38782b6882632/binder/adaptive-evolution-rate.ipynb
+However, for 4 and 5 component traits, the slip-duplicate treatment had a significantly higher fraction of replicates that had evolved the these traits at 600 generations compared to the long genome control (exact Fisher tests; 24/60 vs. 36/60 $p<0.05$ [4 components], 2/30 vs. 10/30 $p < 0.03$ [5 components]; Figure \ref{fig:adaptive-evolution-rate:direct}).
+
+\subsubsection{Slip-duplicated genome regions are potentiated for novel complex traits}
+
+% https://github.com/chaynes2019/AvidaGeneDupe/blob/4c7fa27229094adcb5bdb0b1aec541d0014b0fed/binder/hard-task-gain.ipynb
+%             H-statistic       p-value
+% Components
+% 1              1.011820  3.144672e-01
+% 2             22.787798  1.809107e-06
+% 3             33.846753  5.962854e-09
+% 4             15.359894  8.885441e-05
+% 5              9.097744  2.559249e-03
+%    Components  Prev Slip Insertion Cumulative Count      mean       std
+% 0           1                                 False  0.932088  0.455109
+% 1           1                                  True  1.002025  1.164197
+% 2           2                                 False  0.588566  0.618479
+% 3           2                                  True  1.579974  1.191681
+% 4           3                                 False  0.491481  0.700256
+% 5           3                                  True  1.516115  0.911430
+% 6           4                                 False  0.703793  0.980105
+% 7           4                                  True  1.229158  0.654042
+% 8           5                                 False  0.583674  0.927917
+% 9           5                                  True  1.249985  0.531423
+%    Components  Prev Slip Insertion Cumulative Count  size
+% 0           1                                 False    60
+% 1           1                                  True    48
+% 2           2                                 False    60
+% 3           2                                  True    56
+% 4           3                                 False    60
+% 5           3                                  True    59
+% 6           4                                 False    52
+% 7           4                                  True    52
+% 8           5                                 False    20
+% 9           5                                  True    20
+
+
 
 \input{fig/potentiation}
 
-We found that instead of decreasing the amount of brittleness, genomes with slip duplications had comparable amounts of brittleness to the long-genome baseline treatment.
-However, we found that the slip duplications provided a higher amount of previously coding material that was now neutral with respect to task performance.
-So, in a sense a greater amount of coding material was available for neutral re-shaping even though overall robustness was not increased.
+\subsubsection{Role of slip duplication in facilitating robustness and raw neutral genetic material.}
 
-Under an alternate framing for role of gene duplication in facilitating evolution, gene duplication acts as a ``smart'' mutation operator that exploits information about the existing structure of the genome in order to increase the probability of directly discovering new adaptations.
-This can be thought of as ``hopping'' to a new peak in fitness space.
+\input{fig/num-coding-sites}
 
 We first investigated whether gene duplication increased genome robustness.
 One definition of robustness is in terms of brittleness: the number of genome sites ``critical'' to fitness, where a single-site knockout caused the loss of one or more tasks.
 We measured genome robstness through all-site knockouts using Avida's genome evaluator.
 
-% https://github.com/chaynes2019/AvidaGeneDupe/blob/4c7fa27229094adcb5bdb0b1aec541d0014b0fed/binder/hard-task-gain.ipynb
 
+We found that instead of decreasing the amount of brittleness, genomes with slip duplications had comparable amounts of brittleness to the long-genome baseline treatment.
+However, we found that the slip duplications provided a higher amount of previously coding material that was now neutral with respect to task performance.
+So, in a sense a greater amount of coding material was available for neutral re-shaping even though overall robustness was not increased
 % https://github.com/chaynes2019/AvidaGeneDupe/blob/538ede79c7301f10718ca96c8dd38782b6882632/binder/indel-effect-nulldist.ipynb
 In additional experiments, we tested the effects of insertion mutations on brittleness (measured by coding site count) and found that neutral insertion mutations, indeed, do tend to reduce coding site count.
 On average, insertion mutations that do not affect task count decrease coding site count by 6.8 sites.
