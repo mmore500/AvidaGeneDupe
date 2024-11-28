@@ -79,6 +79,8 @@ In the fitness landscape analogy, this hypothesis can be thought of as allowing 
 
 \subsubsection{Role of slip duplication in facilitating robustness and raw neutral genetic material.}
 
+\input{fig/potentiation}
+
 We found that instead of decreasing the amount of brittleness, genomes with slip duplications had comparable amounts of brittleness to the long-genome baseline treatment.
 However, we found that the slip duplications provided a higher amount of previously coding material that was now neutral with respect to task performance.
 So, in a sense a greater amount of coding material was available for neutral re-shaping even though overall robustness was not increased.
@@ -90,13 +92,7 @@ We first investigated whether gene duplication increased genome robustness.
 One definition of robustness is in terms of brittleness: the number of genome sites ``critical'' to fitness, where a single-site knockout caused the loss of one or more tasks.
 We measured genome robstness through all-site knockouts using Avida's genome evaluator.
 
-\input{fig/num-coding-sites}
-
-% https://github.com/chaynes2019/AvidaGeneDupe/blob/538ede79c7301f10718ca96c8dd38782b6882632/binder/num-coding-sites.ipynb
-Figure \ref{fig:num-coding-sites} compares the trajectory of coding sites in genomes in slip-duplicate and control treatments over evolutionary generations.
-We found that, at 600 generations, the long-baseline and slip-duplicate treatments did not differ significantly in their brittleness, measured as coding site count (Mann-Whitney U Test; 71.7 SD 26.7 sites [$n=30$] vs. 79.4 SD 13.8 sites [$n=30$]; Figure \ref{fig:num-coding-sites:coding}).
-However, we found that they did differ in the raw amount of material that was or had previously been coding; the slip-duplicate treatment had significantly more sites that were or had previously been coding (Mann-Whitney U Test; 157.2 SD 72.3 sites [$n=30$] vs. 117.7 SD 23.5 sites [$n=30$]; $p < 0.0001$; Figure \ref{fig:num-coding-sites:coded}).
-Thus, the slip-duplication increased the amount of potential material to work with but did not change the robustness \textit{per se}.
+% https://github.com/chaynes2019/AvidaGeneDupe/blob/4c7fa27229094adcb5bdb0b1aec541d0014b0fed/binder/hard-task-gain.ipynb
 
 % https://github.com/chaynes2019/AvidaGeneDupe/blob/538ede79c7301f10718ca96c8dd38782b6882632/binder/indel-effect-nulldist.ipynb
 In additional experiments, we tested the effects of insertion mutations on brittleness (measured by coding site count) and found that neutral insertion mutations, indeed, do tend to reduce coding site count.
@@ -107,37 +103,38 @@ One possible explanation would be that selective pressures are driving the two t
 
 (It should be noted that the coding site history measure is limited, as it depends on functional sites being detectable at some point through single-site knockout; such an approach can fail to reveal aspects of sequence complexity \citep{moreno2024cryptic}.)
 
-\subsubsection{Slip duplication specifically facilitates adaptive variation for the evolution of complex traits.}
-
-\input{fig/adaptive-evolution-rate.tex}
-
-In a first set of experiments, we tested whether the adaptive boost of slip duplication was greater than the adaptive boost of simply having more genome sites.
-Figure \ref{fig:adaptive-evolution-rate} shows the results of these experiments.
-
-Genome length was sufficient to explain the boost to the rates at which simpler traits ($\leq 3$ components) were gained in the slip duplication treatment compared to the baseline treatment --- the long-genome baseline treatment indeed faster adaptive evolution of these traits compared to the slip-duplication treatment.
-% https://github.com/chaynes2019/AvidaGeneDupe/blob/538ede79c7301f10718ca96c8dd38782b6882632/binder/adaptive-evolution-rate.ipynb
-However, for 4 and 5 component traits, the slip-duplicate treatment had a significantly higher fraction of replicates that had evolved the these traits at 600 generations compared to the long genome control (exact Fisher tests; 24/60 vs. 36/60 $p<0.05$ [4 components], 2/30 vs. 10/30 $p < 0.03$ [5 components]; Figure \ref{fig:adaptive-evolution-rate:direct}).
-
-% https://github.com/chaynes2019/AvidaGeneDupe/blob/538ede79c7301f10718ca96c8dd38782b6882632/binder/adaptive-evolution-rate-nodirect.ipynb
-To assess whether such facilitation of robustness neutral variation described  was an important factor in explaining the adaptive boost of slip duplication, we tested whether a difference in adaptive rates was still detectable in the absence of directly-facilitated adaptive variation where slip duplications directly caused the gaining of new traits.
-We found that this was not the case; without instances where new traits were directly discovered as the result of slip duplication, no significant difference remained in the adaptive evolution rate of the slip-duplicate and long-genome controls for the 4 and 5 component tasks (exact Fisher tests; 24/60 vs. 23/60; 2/30 vs. 5/30; Figure \ref{fig:adaptive-evolution-rate:nodirect}).
-
-Thus, we can conclude that slip duplications are specific in facilitating the evolution of complex traits, but that facilitation of neutral variation --- as is commonly the narrative around gene duplication --- is not necessarily necessary to explain this phenomenon.
-
 \subsection{Major Results}
 
-In this work, we have found
-\begin{itemize}
-\item the most effective form of gene duplication in facilitating adaptive evolution within the Avida platform was the direct, local slip mutation;
-\item increases in genome length appear sufficient to explain the role of slip duplication in facilitating adaptive evolution of simple traits, but slip duplication is uniquely facultative of evolution of complex traits;
-\item we did not find evidence that slip duplication decreased genome brittleness; instead, slip duplication appears to increase the amount of ``play-dough'' neutral coding material in the genome;
-\item slip duplication's effects in directly facilitating adaptive variation, as opposed to facilitating neutral variation, appears sufficient to explain its contribution to the evolution of complex traits in our experiments.
-\end{itemize}
+In this work, we have found the most effective form of gene duplication in facilitating adaptive evolution within the Avida platform was the direct, local slip mutation.
 
+First, we sought to identify which aspects of adaptive evolution, in particular, are facilitated by slip duplication.
+We found that, relative to a control experiment for the impact of slip duplication on increasing genome size, gene duplication most greatly benefited the evolution of complex traits.
+
+Then, we turned to a mechanistic lens to assess whether the system aligns with expectations from neofunctionalization theory.
+We found that, indeed, that the raw material created by slip duplication played a potentiating role in the evolution of complex traits.
+Specifically, we identified that slip-duplicated regions are significantly more likely to host coding sites for new traits when they first arise.
+In line with neofunctionalization expectations, however, we do not observe any potentiation effects of slip duplication on the evolution of very simple traits.
+
+In a final exploration, we turn to the questions around genome architecture, to assess the consequences of slip duplication with respect to genome complexity.
+One idea in this realm is that gene duplication might increase the rate at which genetic complexity grows by providing raw material for contingent complexity to arise as drift effects whittle back the redundancies introduced by slip duplication.
+In contrast to this expectation, though, we find the rate of growth in genome complexity to be in line with that observed under control experiments with slip duplications disabled.
+
+However, we do observe a significant increase in the rate at which material that previously coded for phenotypic traits accumulates in the genome under slip duplication.
+In assessing the reason how this might occur, we tested the immediate-term effects of slip duplication on genome brittleness.
+We find that in the immediate aftermath neutral slip duplications on average decrease, rather than increase, the number of critical coding sites in a genome.
+These results concord and shed light on the increase in previously-coding material in genomes.
+Ostensibly these effects in reducing brittleness are balanced entropic effects in resulting in a similar trajectory of overall genome complexity between slip duplication treatments and controls.
+
+% outro
 Much theoretical interest is paid to the role of gene duplication in facilitating neutral evolution, and opening the door for adaptive evolution of new complexity through subfunctionalization and neofunctionalization.
 Indeed, ample evidence from experiments \textit{in silico} and \textit{in vivo} has been collected to support this view of the role of gene duplication in adpative evolution.
 
-In contrast, our study highlights the important role of more direct and prosaic consequences of gene duplication: (1) in increasing the amount of raw sequence length available for mutation and selection to act on and (2) in directly facilitating variation by basing mutation off of existing genome content.
+In contrast, our study highlights the with greater detail and specificity the consequences of gene duplication:
+\begin{enumerate}
+\item while increasing the amount of raw genetic material available to work with suffices in facilitating the evolution of simple traits, duplication of existing genome material in particular is more effective at facilitating the evolution of complex traits;
+\item mechanistically, we find duplicated genome materials are significantly potentiated to code for novel complex traits, but there is no effect for simple traits;
+\item from a genetic architecture perspective, we find that genome brittleness does not increase significantly under slip duplication compared to control treatments; however, slip duplication accentuates the rate at which raw material that coded for traits accumulates.
+\end{enumerate}
 
 % \subsection{High mutation rate inhibits the evolution of regulation in changing environments}
 % In addition to our results on why gene duplications promote evolvability, our experiments
