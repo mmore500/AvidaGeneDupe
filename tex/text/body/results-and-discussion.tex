@@ -116,9 +116,32 @@ However, for 4 and 5 component traits, the slip-duplicate treatment had a signif
 % 8           5                                 False    20
 % 9           5                                  True    20
 
-
-
 \input{fig/potentiation}
+
+Having established that slip-duplication can facilitate the \textit{de novo} evolution of complex traits, we next set out to try to determine the mechanism through which slip duplication acts.
+
+To this end, we tested whether slip duplications potentiate further evolution of adaptive traits at a site in genomes.
+For each time that a new trait arose for the first time in our experiments, we compared the fraction of new coding sites that arose in regions of the genome that had previously been slip duplicated and regions that hadn't.
+Figure \ref{fig:potentiation} compares thes ratios of involvement in coding for new tasks.
+For the simplest tasks, requiring only one NAND component, we did not find that duplicated sites were more likely to host coding sites of new tasks.
+However, we found significant associations for traits involving 2 or more complex components (Mann-Whitney tests; all $p < 0.01$; $n=48,56,59,52,20$ observations).
+Effect sizes of potentiation on coding site probability were $1.5\times$, $1.5\times$, $1.2\times$, and $1.2\times$ respectively for 2, 3, 4, and 5 task components.
+One possible explanation for the diminishment of the magnitude of this effect across complexities is that a larger portion of genomes are comprised of slip-duplicated sites and so the ceiling on the expectation ratio becomes more limited.
+
+One possible confounding factor are genome sites that are critical to organism survival.
+We found that these sites were indeed less likely to be touched by slip duplication.
+Because they were also less likely to be involved in coding for \textit{de novo} traits, avoidance of these sites by both processes might introduce a spurious correlation.
+However, results were largely similar after excluding sites that were critical for basic self-replication from analysis (Supplemental Figure \ref{fig:potentiation-supp}).
+
+One additional hypothesis of the adaptive effects of slip duplication beyond creating raw material for subsequent evolutionary processes to act on is that gene duplication diretly boosts adaptive evolution by facilitating mutational steps that are more likely to be beneficial.
+This is possible by exploiting information within the genome, that serves as the basis for new gtenome components augmented through gene duplication.
+In the fitness landscape analogy, this hypothesis can be thought of as allowing leaps through fitness space that are more likely to land on fitness peaks.
+
+To assess the mutation operator hypothesis, we found that a substantial fraction of gain of function steps on lineages directly coincided with slip duplications (TODO).
+However, this isn't necessarily inconsistent with the potentiation hypothesis.
+We additionally assessed whether the sites that became a functional new trait due to a slip mutation in particular were potentiated by earlier slip mutations.
+We found this to be the case, with results similar to the general case described above (Supplemental Figure \ref{fig:potentiation-supp}).
+So, the adaptive characeteristics of slip duplication appears to be a mix of potentiation and direct facilitation.
 
 \subsubsection{Role of slip duplication in facilitating robustness and raw neutral genetic material.}
 
