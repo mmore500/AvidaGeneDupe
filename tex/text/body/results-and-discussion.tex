@@ -79,6 +79,8 @@ In the fitness landscape analogy, this hypothesis can be thought of as allowing 
 
 \subsubsection{Role of slip duplication in facilitating robustness and raw neutral genetic material.}
 
+\input{fig/potentiation}
+
 We found that instead of decreasing the amount of brittleness, genomes with slip duplications had comparable amounts of brittleness to the long-genome baseline treatment.
 However, we found that the slip duplications provided a higher amount of previously coding material that was now neutral with respect to task performance.
 So, in a sense a greater amount of coding material was available for neutral re-shaping even though overall robustness was not increased.
@@ -90,13 +92,7 @@ We first investigated whether gene duplication increased genome robustness.
 One definition of robustness is in terms of brittleness: the number of genome sites ``critical'' to fitness, where a single-site knockout caused the loss of one or more tasks.
 We measured genome robstness through all-site knockouts using Avida's genome evaluator.
 
-\input{fig/num-coding-sites}
-
-% https://github.com/chaynes2019/AvidaGeneDupe/blob/538ede79c7301f10718ca96c8dd38782b6882632/binder/num-coding-sites.ipynb
-Figure \ref{fig:num-coding-sites} compares the trajectory of coding sites in genomes in slip-duplicate and control treatments over evolutionary generations.
-We found that, at 600 generations, the long-baseline and slip-duplicate treatments did not differ significantly in their brittleness, measured as coding site count (Mann-Whitney U Test; 71.7 SD 26.7 sites [$n=30$] vs. 79.4 SD 13.8 sites [$n=30$]; Figure \ref{fig:num-coding-sites:coding}).
-However, we found that they did differ in the raw amount of material that was or had previously been coding; the slip-duplicate treatment had significantly more sites that were or had previously been coding (Mann-Whitney U Test; 157.2 SD 72.3 sites [$n=30$] vs. 117.7 SD 23.5 sites [$n=30$]; $p < 0.0001$; Figure \ref{fig:num-coding-sites:coded}).
-Thus, the slip-duplication increased the amount of potential material to work with but did not change the robustness \textit{per se}.
+% https://github.com/chaynes2019/AvidaGeneDupe/blob/4c7fa27229094adcb5bdb0b1aec541d0014b0fed/binder/hard-task-gain.ipynb
 
 % https://github.com/chaynes2019/AvidaGeneDupe/blob/538ede79c7301f10718ca96c8dd38782b6882632/binder/indel-effect-nulldist.ipynb
 In additional experiments, we tested the effects of insertion mutations on brittleness (measured by coding site count) and found that neutral insertion mutations, indeed, do tend to reduce coding site count.
