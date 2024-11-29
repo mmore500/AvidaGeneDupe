@@ -49,16 +49,16 @@ duplicating both the content and structure of existing genetic code is an import
 
 \subsection{Discerning the Mechanism of Slip Duplication in Facilitating Adaptive Evolution}
 
-HThus far, we have established that the locality and content of slip duplicated genetic materialboth contribute substantially to its effectiveness in facilitating adaptive evolution.
+Thus far, we have established that the locality and content of slip-duplicated genetic material both contribute substantially to its effectiveness in facilitating adaptive evolution.
 We next sought to understand \textit{how} these mechanisms drive faster adaptive evolution.
-In tese investigations, we aimed to (1) identify how the effectiveness of gene duplication relates to trait complexity, (2) test for signatures of evolutionary potentiation by gene duplications along lineage histories, and (3) examine how slip duplication influences genetic architecture with respect to brittleness and vestigial genetic material.
+In these investigations, we aimed to (1) identify how the effectiveness of gene duplication relates to trait complexity, (2) test for signatures of evolutionary potentiation by gene duplications along lineage histories, and (3) examine how slip duplication influences genetic architecture with respect to brittleness and vestigial genetic material.
 
 \subsubsection{Slip duplication facilitates the evolution of complex traits.}
 
 Within the logic-9 task system in Avida, available tasks vary substantially in their computational difficulty.
 In fact, explicit hierarchical composition exists mong task definitions.
 ``Easier'' tasks like AND and NAND form building blocks for ``more difficult'' tasks like XOR and EQU.
-This property has been used in previous studies to explore the evolution of complex traits \citep{lenski2003evolution}.
+Previous studies have used this property to explore the evolution of complex traits \citep{lenski2003evolution}.
 We categorize the complexity of the Logic-9 tasks used in this work by the minimal number of NAND building blocks\footnote{
 In computer architecture theory, NAND is commonly established as the fundamental building block operation since all other logical operations can be derived from compositions of NAND gates \citep{TODO}.
 } required to perform them:
@@ -71,8 +71,8 @@ In computer architecture theory, NAND is commonly established as the fundamental
 \end{enumerate}
 We leveraged this natural hierarchy to test how gene duplication facilitates evolution across a spectrum of task complexities by studying the rate at which tasks with different NAND ``component counts'' evolved.
 
-As explored earlier, one intrinsic consequence of gene duplication is an increase in genome length.
-To account for this effect, We considered an additional control in our experiments: the long-genome baseline treatment, where organisms employed fixed-length 1,000 site genomes.
+As explored earlier, one intrinsic consequence of gene duplication is increased genome length.
+To account for this effect, we considered an additional control in our experiments: the long-genome baseline treatment, in which organisms employed fixed-length 1,000-site genomes.
 
 \input{fig/adaptive-evolution-rate.tex}
 
@@ -82,7 +82,7 @@ Figure \ref{fig:adaptive-evolution-rate} shows rates of task acquisition with an
 The long-genome control matched or exceeded the performance of slip-duplication in evolving simple traits with 3 or fewer components.
 % https://github.com/chaynes2019/AvidaGeneDupe/blob/538ede79c7301f10718ca96c8dd38782b6882632/binder/adaptive-evolution-rate.ipynb
 However, slip duplication evolved more complex 4- and 5-component traits in a significantly higher fraction of replicates compared to the long-genome control (Fisher's exact tests; 36/60 vs. 24/60, $p<0.05$ [4 components]; 10/30 vs. 2/30, $p<0.03$ [5 components]; Figure \ref{fig:adaptive-evolution-rate:direct}).
-As such, these findings lend support to the hypothesis of gene duplication as a catalyst for the evolution of complex traits.
+As such, these findings are consistent with the hypothesis of gene duplication as a catalyst for the evolution of complex traits.
 
 \subsubsection{Slip-duplicated genome regions potentiate evolution of novel complex traits.}
 
@@ -119,14 +119,14 @@ As such, these findings lend support to the hypothesis of gene duplication as a 
 
 \input{fig/potentiation}
 
-Thus far, we have established that slip duplication facilitates evolution of novel complex traits, we next sought to  identify the processes through which slip duplication promotes adaptive evolution.
+Thus far, we have established that slip duplication facilitates evolution of novel complex traits, we next sought to identify the processes through which slip duplication promotes adaptive evolution.
 To this end, we tested whether slip duplication potentiates the evolution of adaptive traits at duplicated genome sites.
-For each occurrence of a new trait arising in our experiments, we assessed the fraction of new task coding sites that originated in regions of the genome that had previously been slip duplicated.
+For each occurrence of a new trait arising in our experiments, we assessed the fraction of new task coding sites originating in regions of the genome that had previously been slip duplicated.
 Figure \ref{fig:potentiation} compares these ratios of involvement in coding for new tasks between previously slip-duplicated and non-slip-duplicated sites.
 For the simplest tasks, requiring only one NAND component, we found no significant difference in the likelihood of duplicated sites participating in coding regions for new tasks.
 However, we found significant associations for traits with two or more NAND components (Mann-Whitney tests; all $p < 0.01$; $n=48,56,59,52,20$ observations).
 Effect sizes of potentiation on likelihood to code for novel traits were $1.5\times$, $1.5\times$, $1.2\times$, and $1.2\times$ respectively for 2, 3, 4, and 5 task components.
-Smaller effect size at 4- and 5-component tasks may be due to a larger portion of the genome becomes comprised of slip-duplicated sites (Supplementary Figure \ref{fig:potentiation-supp}), thus limiting the ceiling on deviation from expected.
+Smaller effect sizes at 4- and 5-component tasks may be due to a larger portion of the genome becoming comprised of slip-duplicated sites (Supplementary Figure \ref{fig:potentiation-supp}), thus limiting the ceiling on deviation from expected.
 
 One possible confounding factor in this result is reduced evolutionary rates at genome sites involved in organsims' self-replication loop.
 These sites are critical to viability, with lethal outcomes when knocked out.
@@ -134,13 +134,13 @@ We found that these critical sites were less likely to be involved in slip dupli
 Hence, sensitivity at these sites could introduce a spurious correlation.
 However, we found similar potentiation signatures from slip duplication after excluding such fitness-critical slites from analysis (Supplemental Figure \ref{fig:potentiation-supp}).
 
-One alternate to the potentiation hypothesis is that gene duplication directly facilitates adaptation by supplying mutational steps biased to discover beneficial outcomes \citep{TODO}.
+One alternative to the potentiation hypothesis is that gene duplication directly facilitates adaptation by supplying mutational steps biased to discover beneficial outcomes \citep{TODO}.
 Where regularities exist in the genotype-phenotype-fitness map, duplicated variants of existing genetic information may be more likely to encode meaningful traits.
 In the fitness landscape analogy, this hypothesis would correspond to steps through fitness space that are larger but less risky.
 
 In line with this possibility, we observed that a substantial fraction of gain-of-function steps on lineages directly coincided with slip duplications (TODO quantify).
-However, we found that in these cases, sites that gained a new trait directly due to slip mutation were nonetheless more likely than chance to have been involved in earlier slip duplications (Supplemental Figure \ref{fig:potentiation-supp}).
-Thus, the adaptive characteristics of slip duplication seem likely to be resulting from a combination of potentiation and direct facilitation.
+However, in these cases, sites that gained a new trait directly due to slip mutation were nonetheless more likely than chance to have been involved in earlier slip duplications (Supplemental Figure \ref{fig:potentiation-supp}).
+Thus, the adaptive characteristics of slip duplication seem likely to result from a combination of potentiation and direct facilitation.
 
 \subsubsection{Gene duplication increases accumulation of vestigial coding material rather than decreasing genetic brittleness.}
 
@@ -159,8 +159,8 @@ However, slip duplications significantly increased the net amount of vestigial a
 Thus, gene duplication increased supply of coding material in the genome available to neutral processes, even though overall robustness did not increase.
 % https://github.com/chaynes2019/AvidaGeneDupe/blob/538ede79c7301f10718ca96c8dd38782b6882632/binder/indel-effect-nulldist.ipynb
 
-In follow-on experiments, we tested the baseline effects of slip insertion mutations on brittleness in the absence of selection.
-We found that slip insertions that were fitness neutral tended to reduce net brittleness.
+In follow-up experiments, we tested the baseline effects of slip insertion mutations on brittleness without selection.
+We found that slip insertions that were fitness-neutral tended to reduce net brittleness.
 On average, these insertion mutations decreased coding site count by 6.8 sites.
 This effect was strongest in genomes with high complexity; for instance, neutral insertion mutations decrease coding site count by 9.2 and 8.3 sites on average in genomes that encode 4- and 5-component complexity tasks, respectively.
 Supplementary Figure \ref{fig:nulldist} overviews these results.
@@ -170,8 +170,8 @@ Supplementary Figure \ref{fig:nulldist} overviews these results.
 
 \subsection{Major Results}
 
-We found that local slip mutations of intact regions to be the most effective configuration of gene duplication in facilitating evolution on the logic-9 task set within the Avida platform.
-In particular, we found that --- compared to control experiments with long genome size --- gene duplication muniquely promoted evolution of complex adaptive traits.
+We found local slip mutations of intact regions to be the most effective configuration of gene duplication in facilitating evolution on the logic-9 task set within the Avida platform.
+In particular, we found that --- compared to control experiments with long genome sizes --- gene duplication uniquely promoted the evolution of complex adaptive traits.
 We further found that the raw material created by slip duplication plays a potentiating role in the evolution of complex traits.
 Specifically, we identified that slip-duplicated regions are significantly more likely to provide coding sites for new traits when they first appear.
 Consistent expectations under neofunctionalization theory, however, we did not observe potentiation effects of slip duplication on the evolution of very simple traits that did not involve building block components.
@@ -182,12 +182,12 @@ Contrary to this expectation, we found that the rate of genome complexity growth
 However, we observed a significant increase in the accumulation rate of net active and vestigial coding material in genomes under slip duplication.
 To understand this phenomenon, we tested the immediate effects of slip duplication on genome brittleness.
 We found that, on average, neutral slip duplications decrease, rather than increase, the number of critical coding sites in a genome.
-These results align with and explain the increase in previously coding material in genomes.
+These results align with our observed increase in vestigial coding material in genomes.
 These brittleness-reducing effects appear to be counteracted by other factors, resulting in a similar overall trajectory of genome complexity between slip duplication treatments and controls.
 
 \subsubsection{Outro/pitch.}
-Great theoretical interest exists in characterizing the role of gene duplication in facilitating neutral evolution and enabling adaptive evolution of new complexity through subfunctionalization and neofunctionalization.
-Indeed, ample evidence from existing experiments \textit{in silico} and \textit{in vivo} has supported a role of gene duplication in facilitating evolution of novelty, complexity, and adaptation.
+Strong theoretical interest exists in characterizing the role of gene duplication in facilitating neutral evolution and enabling adaptive evolution of new complexity through subfunctionalization and neofunctionalization.
+Indeed, ample evidence from existing experiments \textit{in silico} and \textit{in vivo} has supported the role of gene duplication in facilitating the evolution of novelty, complexity, and adaptation.
 Our study contributes to this conversation by highlighting in greater detail and specificity the consequences of gene duplication in a full-fledged digital model:
 \begin{enumerate}
 \item While increasing the amount of raw genetic material suffices to facilitate the evolution of simple traits, duplicating existing genome material excels in facilitating the evolution of complex traits;
