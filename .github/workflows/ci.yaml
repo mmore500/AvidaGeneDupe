@@ -44,7 +44,7 @@ jobs:
           name: manuscript
           path: tex/*-draft.pdf
       - name: Upload pages artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v3
         with:
           path: deploy
       - name: Deploy to GitHub Pages
