@@ -39,7 +39,7 @@ jobs:
           cp tex/*-draft.pdf deploy/
           echo "<html><body><a href="$(ls deploy)">Download Manuscript Draft [PDF]</a></body></html>" > deploy/index.html
       - name: Upload build artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: manuscript
           path: tex/*-draft.pdf
@@ -49,7 +49,7 @@ jobs:
           path: deploy
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v3
+        uses: actions/deploy-pages@v4
 
   binder:
     runs-on: ubuntu-latest
