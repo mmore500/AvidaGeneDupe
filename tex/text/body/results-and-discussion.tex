@@ -12,40 +12,44 @@
 %
 % Typesetting point: italicize or bold or underline key points or terms, particularly treatment names
 
-\subsection{Does gene duplication promote evolvability?}
-We found that gene duplication promotes evolvability in all three environments. As shown in Figure \ref{fig:results_panels}, organisms evolved in the slip-duplicate treatment had significantly higher phenotypic match scores than organisms evolved in the baseline treatment across the static, simple changing and complex changing environments (two-tailed Mann-Whitney U tests, W = 562.5, 2702.5, 1540 respectively, Bonferroni-adjusted $p$ values all $<< 0.0001$). This result suggests that the slip-duplicate operator promotes the evolution of complexity
-%two qualitatively different types of environments: 1) in a
-both in static environments that require the evolution %and maintenance
-of unconditional task performance (Boolean logic operations), and in dynamic environmental conditions that require the evolution of regulatory mechanisms that alter expression based on current environmental conditions.
-These results, as expected, support the existing literature on the capacity of gene duplications to promote evolvability %for both unregulated and regulated traits
-\citep{Koza:1995fr,Zhang:2003fw,Teichmann:2004cz}. % MJW: This seems like an odd sentence without citations. -- AML: Indeed, it does...
+\subsection{Does gene duplication facilitate adaptive evolution?}
+
+In a first set of experiments, we set out to test the influence of gene duplication on adaptive evolution in our study system.
+In the context of our experiments, which tracked populations of Avida digital organisms competing for limited virtual resources, adaptive evolution corresponded to performance of tasks from the Logic-9 set.
+
+Figure \ref{fig:results_panels} compares task count trajectories over evolutionary time between treatments, as well as task count distributions among final dominant lineages.
+Under the slip-duplicate treatment, significantly higher task counts  evolved compared to the baseline treatment (two-tailed Mann-Whitney U tests, W = 562.5, Bonferroni-adjusted $p << 0.0001$).
+
+This result aligns with existing findings across a broad variety of biological taxa and digital models that slip-duplication of genetic material can facilitate evolution of adaptive traits \citep{Koza:1995fr,Zhang:2003fw,Teichmann:2004cz}.
+Indeed, in earlier-reported experiments, we additionally found that facilitation of adaptive evolution by gene duplications generalized to changing environments, where the set of rewarded tasks fluctuated across generations \citep{lalejini2017gene}.
 
 % AML: Still not really sure how we want to present the results panels. Thoughts?
 % MJW: The lower figure in each panel (which is an odd formatting choice: this is really a 6 panel figure you're treating as 3) does not need to be anywhere near the width it is.  The point of those time graphs, as far as I can tell, is to show that the end point is not inherently weird compared to the rest of the trajectory.  How about trying putting the two graphs of each panel side by side, possibly even by having the violin plot panels take up 2/3 of the horizontal real estate and/or maybe replacing the categorical x axis labels with 1, 2, 3 etc and explaining them in the caption?
 
 \input{fig/results_panels_new.tex}
 
-\subsection{What configuration of gene duplication is most evolvable?}
-Across all three environments
-%(static, simple changing, and complex changing),
-we found that the most important aspect of gene duplications is the capacity to duplicate meaningful information in the genome. As shown in Figure \ref{fig:results_panels}, %across all three environments,
-only organisms that evolved in the slip-duplicate and slip-scramble treatments had significantly higher phenotypic match scores than organisms evolved in the baseline treatment.
-Organisms evolved in all other experimental treatments were either not significantly different from the baseline treatment or significantly worse than the baseline treatment.
+\subsection{What aspects of gene duplication facilitate adaptation?}
 
-Of the five types of slip mutation operators used (see Figure \ref{fig:slip_mut_variants}), only the slip-duplicate and slip-scramble operators were capable of duplicating meaningful information in a genome.
-Slip-scramble mutations maintain the content but not the ordering of duplicated instruction sequences; thus, they can duplicate information about what instructions make-up already successful genetic sequences but do not maintain the particular ordering of those instructions. Slip-duplicate mutations are the full form of gene duplication, %capable of duplicating even more information than slip-scramble mutations,
-able to exactly duplicate the ordered instruction make-up of existing genetic sequences. In contrast to the slip-scramble and slip-duplicate operators, all other slip mutation operators do not duplicate information about instruction sequences already present in the genome.
+Having observed that slip-duplicate mutations accelerate evolutionary acquisition of Logic-9 tasks in our model, we next sought to identify in greater detail which aspects of the slip duplication process, in particular, contribute to facilitating adaptation.
+For this purpose, we extended our experiment to additionally include five variants of the slip-duplication operator, each disabling or replacing a particular functional aspect of slip duplication.
+(Figure \ref{fig:slip_mut_variants} overviews variants tested.)
 
-Because the slip-scramble treatment was significantly better at promoting evolvability than the baseline treatment, we can conclude that the duplication of functional building blocks is valuable no matter how they are arranged when duplicated. However, is %duplicating more information better? Does it matter that gene duplications
-it important to
-preserve both the contents and ordering of duplicated sequences?
+As shown in Figure \ref{fig:results_panels}, we detected significant increases in adaptive evolution against baseline only for the original slip-duplicate treatment and the follow-up slip-scramble treatment --- which ablated only sequence order within duplicated regions.
+Task counts under all other experimental treatments were statistically indistinguishable, or slower-adapting, compared with the baseline treatment.
 
-\subsubsection{Is more information better?}
-From Figure \ref{fig:results_panels}, organisms evolved in the slip-duplicate treatment had higher phenotypic match scores than organisms evolved in the slip-scramble treatment, implying that the additional information in a gene duplication event %is able to replicate in a genome, the more it will
-does
-promote evolvability. To confirm this relationship and reduce multiple comparison issues with statistical tests, we re-ran 100 new trials of both the slip-duplicate and slip-scramble treatments %with new random number seeds
-and compared the phenotypic match scores of the evolved organisms. In all three environments, organisms that evolved in the slip-duplicate treatment had significantly higher phenotypic match scores than organisms evolved in the slip-scramble treatment (two-tailed Mann-Whitney U tests, W = 4305, 4028.5, 3621.5 respectively, Bonferroni-adjusted $p$ values 0.0109, 0.0222, 0.0017, respectively). This result supports that %the capacity to duplicate more information is better, and the fact that gene duplications are capable of
-duplicating both the content and structure of existing genetic code is an important factor in their ability to promote evolvability.
+Given that the slip-scramble treatment maintains the content of duplicated instruction sequences (albeit, in an unordered fashion), these findings highlight an integral role for amplification of existing genetic information, in particular, with regard to how gene dulication promotes adaptive evolution in the study system.
+In contrast to the slip-scramble and full slip-duplicate operators, other tested slip mutation variants do not duplicate information about instruction sequences already present in the genome.
+
+Given the efficacy of the slip-scramble treatment in facilitating adaptation, we became curious as to the role of sequence order within duplicated regions.
+To investigate this point, we additionally tested differences in task counts between the slip-scramble and slip-duplicate treatments.
+To prevent issues with multiple comparison, we dispatced 100 new trials under both treatments for this test.
+
+Indeed, this additional experiment confirmed that the slip-duplicate treatment did in fact yield higher task counts compared to the slip-scramble treatment (two-tailed Mann-Whitney U tests, W = 4305, 4028.5, 3621.5 respectively, Bonferroni-adjusted $p =$ 0.0109).
+Thus, in our study system, it appears that the content and structure of duplicated genetic code contribute in promoting evolvability.
+This finding further underscores that, in specific, the injection of existing sequence information is key to the role of gene duplication in evolution.
+
+As above, earlier-reported experiments found that benefit to adaptive evolution from maintaining sequence order within duplicated regions generalized to changing environments where task rewards shifted with evolutionary time \citep{lalejini2017gene}.
+
 
 \subsection{Discerning the Mechanism of Slip Duplication in Facilitating Adaptive Evolution}
 
