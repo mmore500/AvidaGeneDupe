@@ -38,20 +38,23 @@ This finding further underscores that, in specific, the injection of existing se
 
 As above, earlier-reported experiments found that benefit to adaptive evolution from maintaining sequence order within duplicated regions generalized to changing environments where task rewards shifted with evolutionary time \citep{lalejini2017gene}.
 
+\subsection{Through what Mechanisms does Slip Duplication Facilitate Adaptive Evolution?}
 
-\subsection{Discerning the Mechanism of Slip Duplication in Facilitating Adaptive Evolution}
+Thus far, we have established locality and content of slip-duplicated genetic material as both contributing substantially to its effect in facilitating adaptive evolution.
+We next sought to explain \textit{how} mutations with these characteristics drive faster adaptive evolution.
 
-Thus far, we have established that the locality and content of slip-duplicated genetic material both contribute substantially to its effectiveness in facilitating adaptive evolution.
-We next sought to understand \textit{how} these mechanisms drive faster adaptive evolution.
-In these investigations, we aimed to (1) identify how the effectiveness of gene duplication relates to trait complexity, (2) test for signatures of evolutionary potentiation by gene duplications along lineage histories, and (3) examine how slip duplication influences genetic architecture with respect to brittleness and vestigial genetic material.
+In these investigations, we evaluated three hypotheses around evolutionary dynamics of slip duplications.
+First, we explored how facilitation of adaptive evolution by gene duplication differed between simple and complex traits are promoted by gene duplication.
+Second, we tested for signatures of evolutionary potentiation by gene duplications along lineage histories.
+Finally, third, we examined how slip duplication influences genetic architecture with respect to brittleness and vestigial genetic material.
 
 \subsubsection{Slip duplication facilitates the evolution of complex traits.}
 
-Within the logic-9 task system in Avida, available tasks vary substantially in their computational difficulty.
-In fact, explicit hierarchical composition exists mong task definitions.
+Within the Logic-9 task system in Avida, available tasks vary substantially in their computational difficulty.
+This characteristic arises from an explicit hierarchical composition among task definitions.
 ``Easier'' tasks like AND and NAND form building blocks for ``more difficult'' tasks like XOR and EQU.
-Previous studies have used this property to explore the evolution of complex traits \citep{lenski2003evolution}.
-We categorize the complexity of the Logic-9 tasks used in this work by the minimal number of NAND building blocks\footnote{
+This well-defined gradient in task requirements provides a suitable apparatus for experiments involving evolution of complexity \citep{lenski2003evolutionary}.
+In this work, we categorize the complexity of the Logic-9 tasks by the minimal number of NAND building blocks\footnote{
 In computer architecture theory, NAND is commonly established as the fundamental building block operation since all other logical operations can be derived from compositions of NAND gates \citep{mano1997logic}.
 } required to perform them:
 \begin{enumerate}
@@ -61,20 +64,25 @@ In computer architecture theory, NAND is commonly established as the fundamental
 \item NOR and XOR: four NAND components, and
 \item EQU: five NAND components.
 \end{enumerate}
-We leveraged this natural hierarchy to test how gene duplication facilitates evolution across a spectrum of task complexities by studying the rate at which tasks with different NAND ``component counts'' evolved.
+As such, we distinguished tasks according to their NAND ``component counts'' to distinguish their required adaptive complexity.
 
-As explored earlier, one intrinsic consequence of gene duplication is increased genome length.
-To account for this effect, we considered an additional control in our experiments: the long-genome baseline treatment, in which organisms employed fixed-length 1,000-site genomes.
+\subsubsection{Effects of Genome Length}
 
 \input{fig/adaptive-evolution-rate.tex}
 
-First, we compared the adaptive boost from slip duplication against that from simply having longer genomes.
-Figure \ref{fig:adaptive-evolution-rate} shows rates of task acquisition with and without slip duplication, including this long-genome control.
+One intrinsic consequence of gene duplication is increased genome length.
+To assess the impact of genome length alone, we introduced an additional control in the following experiments: the long-genome treatment, identical to the baseline treatment except employed fixed-length 1,000-site (rather than 100-site) genomes.%
+\footnote{%
+The 1,000-site size was chosen as representative of the upper limits of observed genome sizes in slip-duplicate treatments.
+}
 
+Comparing the long-genome and baseline treatments, we did observe a boost to task acquisition from increased genome length.
+Disaggregating by task complexity, though, reveals impact of genome length to be most prominent in acquisition of simple tasks.
+Figure \ref{fig:adaptive-evolution-rate} compares acquisition rates for tasks across NAND component count complexity classes --- with and without slip duplication, including the long-genome control.
 The long-genome control matched or exceeded the performance of slip-duplication in evolving simple traits with 3 or fewer components.
 % https://github.com/chaynes2019/AvidaGeneDupe/blob/538ede79c7301f10718ca96c8dd38782b6882632/binder/adaptive-evolution-rate.ipynb
-However, slip duplication evolved more complex 4- and 5-component traits in a significantly higher fraction of replicates compared to the long-genome control (Fisher's exact tests; 36/60 vs. 24/60, $p<0.05$ [4 components]; 10/30 vs. 2/30, $p<0.03$ [5 components]; Figure \ref{fig:adaptive-evolution-rate}).
-As such, these findings lend support to hypotheses around gene duplication as a catalyst for the evolution of complex traits \citep{ohno1970evolution}.
+However, slip duplication evolved the more complex 4- and 5-component traits within a significantly higher fraction of replicates compared to the long-genome control (Fisher's exact tests; 36/60 vs. 24/60, $p<0.05$ [4 components]; 10/30 vs. 2/30, $p<0.03$ [5 components]; Figure \ref{fig:adaptive-evolution-rate}).
+As such, theory positing gene duplication as a catalyst for the evolution of complex traits appears to correspond well wit the  behavior of our study system \citep{ohno1970evolution}.
 
 \subsubsection{Slip-duplicated genome regions potentiate evolution of novel complex traits.}
 
