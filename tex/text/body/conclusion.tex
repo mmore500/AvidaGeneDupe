@@ -1,38 +1,35 @@
 \section{Conclusion} \label{sec:conclusion}
 
-How information accumulates in genomes and in what form is one of the most fundamental questions in biology \citep{adami2024evolution}.
-Under this lens, the role and mechanism of gene duplication and whole genome duplication in growing this information is a major open question.
-Indeed, strong theoretical interest exists in characterizing the role of gene duplication in facilitating neutral evolution and enabling adaptive evolution of new complexity through subfunctionalization and neofunctionalization.
-Our study contributes to this conversation by harnessing the unique observational and interfering capabilities of an \textit{in silico} study system to highlight in greater detail and specificity the consequences of gene duplication in a full-fledged instance of darwinian evolution:
+Questions of how information is represented within genomes, and the evolutionary processes through which it accumulates, are a fundamental pillar of biological science \citep{adami2024evolution}.
+Within this framing, the role and mechanism of gene duplication, and whole genome duplication, in structuring and extending genetic information is of great interest.
+Indeed, existing theory postulates a critical role for gene duplication in facilitating neutral evolution and enabling adaptive evolution of new complexity through subfunctionalization and neofunctionalization \citep{ohno1970evolution}.
+TODO
+By harnessing capabilities of an \textit{in silico} study system, present work contributes to this conversation by dissecting in greater detail and specificity the consequences of gene duplication in a full-fledged instance of darwinian evolution:
+We were able to take advantage of the complete information available working in an \textit{in silico} system to trace the histories of individual sites to build a complete picture of the evolutionary process.
+
+% Recap of what we found:
+Major results
 \begin{enumerate}
 \item By testing a variety of partial analogs of gene duplication, we provide evidence that the most important aspect of gene duplications for promoting evolvability is in their capacity to duplicate existing genetic information within a genome.
 \item While increasing the amount of raw genetic material suffices to facilitate the evolution of simple traits, duplicating existing genome information excels in facilitating the evolution of complex traits;
 \item Mechanistically, duplications significantly potentiate genome regions that go on to code for novel complex traits but --- consistent with neofunctionalization theory --- do not potentiate simple traits;
 \item From a genetic architecture perspective, we do not find direct evidence of subfunctionalization in increasing genome brittleness under slip duplication; however, slip duplication accelerates the accumulation of net vestigial and active coding material in genomes.
 \end{enumerate}
+Although care must be exercised in discerning which aspects of behavior within our digital study system generalize to natural systems, such work lend credence via proof of existence and sufficiency to theory and extends knowledge that might generalize across evolving systems beyond life-as-we-know-it \citep{dorin2024what}.
 
-% Recap of what we found:
-In this work, we investigated the broad effects of gene duplication and the mechanisms mediating those effects of gene duplication.
-Our results show that, indeed, gene duplications promote adaptive evolution.
-We were able to take advantage of the complete information available working in an \textit{in silico} system to trace the histories of individual sites to build a complete picture of the evolutionary process.
-Although care must be exercised in discerning which aspects of behavior within our digital study system generalize to natural systems, such work lend credence via proof of existence and sufficiency to theory.
+% future work:
+The results presented here motivate several future studies.
+Performing deeper, play-by-play analyses of individual lineages evolved with gene duplications could allow us to identify examples of subfunctionalization or neofunctionalization, and deepen our understanding of  their contributions to promoting the evolution of complex features through a case study approach \citep{mcphee2018detailed}.
+It would also to extend our retrospective approach to detecting potentiation to full-fledged replay experiments, where replicate evolutionary trajectories are collected before and after an event of interest to directly identify its statistical impact in facilitating subsequent evolutionary outcomes of intetrest \citep{blount2018contingency,Ferguson2023}.
+Such efforts will allow us to better understand the role that gene duplication plays in natural evolution and could play in computational systems.
 
-Broadly speaking, gene duplications can facilitate significant jumps in a fitness landscape in many different ways.
-For example, when genes are duplicated, processes like subfunctionalization or neofunctionalization may occur, allowing populations to more easily cross fitness valleys and escape local optima
-In the domain of evolutionary computation, where evolution-inspired algorithms are applied to real-world engineering optimization challenges, deepening our understanding of what makes gene duplication tick can help guide development of more effective algorithms.
-In particular, the more we understand about why gene duplication is so important in promoting evolvability in different scenarios, the more we can customize our mutation operators to emphasize those factors.
+% application-oriented outcomes:
+While evolutionary studies represent a core thread in understanding the natural world around us, the power of evolution can also be harnessed for practical purposes.
+Within the domain of evolutionary computation, where evolution-inspired algorithms are widely used to tacklde real-world engineering optimization challenges \citep{holland1992genetic}.
+Deepening our understanding of what makes gene duplication tick can help guide development of more effective algorithms.
 In this study, we found that the capacity to duplicate multiple types of information is beneficial; mutation operators that duplicated both the content and structure of genetic sequences promoted evolvability more than operators that duplicated content but not structure.
 These results suggest that when designing gene duplication operators for evolutionary computation systems, we should try to maximize the amount of information the operators are capable of duplicating.
-
-
-% Something about future work:
-The results presented here motivate several future studies.
-Performing deeper, play-by-play analyses of individual lineages evolved with gene duplications would allow us to TODO \citep{mcphee2018detailed}.
-Can we identify examples of subfunctionalization or neofunctionalization, and if so, can we identify their contributions to promoting the evolution of complex features?
-Or, would we find that duplications that are most likely to successfully sweep a population are those that have the highest information content?
-Answers to these questions will allow us to better understand the role that gene duplication plays in natural evolution and could play in computational systems.
-RE Fig. 5 and the potentiation argument: Not something that we should necessarily do, but the way you have the argument laid out (which I quite like!), Austin's replay analyses would let someone empirically test for potentiation vs. just having the retrospective analysis of lineages.
-\citep{blount2018contingency,Ferguson2023}.
+Aspects of these findings may generalize to bioengineering via directed evolution, in which targeted mutagenesis is combined with artificial selection to \citep{sandberg2019emergence}.
 
 % Other ideas:
 % * What effects are deletions having in out slip mutation operators?
