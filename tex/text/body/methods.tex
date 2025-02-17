@@ -1,14 +1,12 @@
 \section{Methods} \label{sec:methods}
 
-\input{tab/tasks.tex}
-
 \subsection{The Avida Digital Evolution Platform}
-We conducted all experiments with Avida, which instantiates an evolutionary process among self-replicating computer programs acting as ``digital organisms.''
+
+We conducted experiments using Avida, which instantiates an evolutionary process among self-replicating computer programs acting as ``digital organisms.''
 This agent-based modeling approach allows research to empirically test hypotheses about evolution that would be difficult or impossible to test in natural systems \citep{Ofria:2009avida}.
 
 \input{fig/vhardware.tex}
 
-\noindent
 Digital Organisms in Avida compete to acquire resources and replicate within limited space in a finite population.
 Each organism is defined by a linear sequence of program instructions (\textit{i.e.} its genotype) and a set of virtual hardware. The instruction set in Avida is Turing Complete and syntactically robust -- any ordering of instructions is syntactically valid, though not always useful. The instruction set includes operations for basic computations, execution flow control, input and output, and self-replication. An organism's virtual hardware (depicted in Figure \ref{fig:vhardware}) consists of components such as a central processing unit (CPU), registers for computation, buffers for input and output, and memory stacks.
 
@@ -19,8 +17,6 @@ Thus, improving the efficiency of self-replication or performing rewarded comput
 
 \input{fig/slip_mut_variants.tex}
 
-\medskip
-\noindent
 \textbf{Mutation events in Avida} come in four types: substitution, insertion, deletion, or slip.
 Rates of occurance for each were independently configured, as described next.
 
@@ -33,12 +29,12 @@ When a divide \textit{insertion} mutation occurs, a randomly-chosen instruction 
 When a divide \textit{deletion} mutation occurs, a random instruction in the offspring's genome is removed, decreasing the size of the offspring's genome by one.
 In our experiments, each was allowed to occur with 5\% probability per offspring.
 
-For the purposes of this study, we implemented a new type of divide mutation: \textit{Slip mutations}.
+For the purposes of this study, we augmented Avida with a new type of divide mutation: \textit{Slip mutation}.
 This type of mutation acts analogously to gene duplications and deletions.
 When a slip mutation occurs, two sites in the offspring genome are randomly selected, defining the target segment for the operation.
 If the first site is upstream of the second, the slip mutation results in an insertion --- as if the organism's replication machinery had slipped backward during replication and recopied a segment.
 If the second site is upstream of the first, the slip mutation results in a deletion --- as if the organism's replication machinery slipped forward during replication, skipping over a genetic segment.
-As implemented, slip-insertions and slip-deletions occur with equal probability; thus, absent selection, this mutational process do not introduce an inherent bias on genome length.
+As implemented, slip-insertions and slip-deletions occur with equal probability; thus, absent selection, this mutational process does not introduce an inherent bias on genome length.
 
 Across trials, we assess five variants of slip mutations: slip-duplicate, slip-scramble, slip-random, slip-NOP, and slip-scatter.
 When a slip mutation results in a deletion, in all but the slip-scatter variant, the target segment is deleted. Rather than deleting the target segment, the slip-scatter mutation operator distributes a number of single-instruction deletions equal to the length of the target segment uniformly throughout the genome.
@@ -48,26 +44,34 @@ Where enabled, slip mutations occured with 5\% probability per divide event.
 
 \subsection{Experimental Design}
 
+\input{tab/tasks.tex}
+
 Across all experiments, we rewarded the performance of nine Boolean logic functions: NOT, NAND, OR-NOT, AND, OR, AND-NOT, NOR, XOR, and EQUALS.
-(Detailed description of this ``Logic-9'' task set can be found in \citet{lenski2003evolutionary}).
-Rewards for these functions were identical and consistent for the duration of the experiment.
+Detailed description of this ``Logic-9'' task set can be found in \citet{lenski2003evolutionary} ---
+however, one characteristic in particular worth noting is in how they vary by difficulty in a well-defined manner determined by their intrinsic computational complexity, given in Table \ref{tab:tasks}.
+Identical reward was assigned for each task, and kept consistent over the duration of trials.
+We measured adaptation to the Logic-9 task set as a ``phenotypic match score,'' ranging from a minimum of 0 (\textit{i.e.} the organism performs no tasks) to a maximum of 9 (\textit{i.e.} the organism performs all 9 tasks).
 
-In , we evaluated the number of unique computational tasks it could perform, resulting in a \textit{phenotypic match score} that indicates how well the organism is adapted to the static environment. Phenotypic match scores in the static environment range from a minimum of 0 (\textit{i.e.} the organism performs no tasks) to a maximum of 9 (\textit{i.e.} the organism performs all 9 tasks). %We describe phenotypic match scores for the static environment, $Score_s$, mathematically in
-Equation \ref{Equ:static_phen_match_score} describes the static match score ($Score_s$), where $P$ is a phenotype and $P_s$ represents the set of tasks phenotype $P$ performs in the static environment.
-
-\begin{equation}
-Score_s(P) = |P_{s}|
-\label{Equ:static_phen_match_score}
-\end{equation}
-
+We ran evolutionary experiments for 20,000 Avida updates.%
 \footnote{An update in Avida is equal to the amount of time it takes for the average organism to execute 30 instructions; see \citep{Ofria:2009avida} for further detail.}
+This duration was sufficient to observe at least 600 generations within all trials.
+To assess the evolutionary history within a trial, we extracted the trial's final dominant genotype at conclusion and recorded its lineage ancestry.
+Processing of lineage data employed Avida's ``analyze mode'' to identify the set of traits performed by each ancestor.
+For investigations involving the evolutionary history of individual genome sites, we used mutational metadata saved with lineage files to identify correspondences between parent and offspring.
 
 % \input{tab/treatments.tex}
 
-Our experiment consisted of seven treatments: one baseline treatment and six experimental treatments. Treatments differed only in the available mutation operators and the rates at which those operators were applied. Each treatment was designed to tease apart why gene duplications promote evolvability. Table \ref{table:treatments} provides details about each treatment.
+Our experiment consisted of seven treatments: two baseline treatments, with slip-duplication disabled, and five experimental treatments, for which slip-duplication was enabled.
+Treatments differed only in the available mutation operators and the rates at which those operators were applied.
+Each treatment was designed to tease apart an aspect of how gene duplications might promote evolvability.
 
 % Baseline treatment
 The \textbf{baseline treatment} was used as a control; we used the results from this treatment as a baseline for evolvability with which we compared the results from all other experimental treatments. Mutation rates in the baseline treatment have been shown to facilitate both the evolution of complex boolean logic tasks, such as EQUALS, and the evolution of task regulation in Avida \citep{lenski2003evolutionary, Lalejini:2016plasticity}
+
+% Long genome treatment
+To better discern the role in facilitating evolution of larger genome size caused by gene duplication, we performed an additional treatment: the \textbf{long-genome baseline treatment}.
+Genomes in this treatment operated identically to the baseline treatment above, except that they were 1,000 sites long instead of 100 sites long.
+We chose this size as it was near the upper bound of the largest genome sizes that we observed in the slip-duplication treatment experiments.
 
 % Slip-duplicate treatment
 The \textbf{slip-duplicate treatment} allowed for mutation events that resulted in full code duplications via the slip-duplicate mutation operator. Duplications in this treatment preserved both the content and the structure of duplicated code. This allowed us to answer the following question: how important is it that gene duplications can exactly duplicate sequences in a genome in both content \textit{and} structure?
@@ -84,31 +88,16 @@ The \textbf{slip-NOP treatment} allowed for mutations capable of inserting conti
 % Slip-scatter treatment
 The \textbf{slip-scatter treatment} helped us to tease apart whether or not gene duplications promote evolvability because they inflate the effective mutation rate, generating increased amounts of genetic variation. This treatment allowed for mutations that, when triggered, could insert many random instructions into random locations in a genome (via the slip-scatter mutation operator).
 
-% High mutation rate treatment
-The \textbf{high mutation rate treatment} served a similar purpose to the slip-scatter treatment. However, instead of single mutation events (slip-scatter mutations) causing the insertion of many random instructions, we elevated the rates at which the copy instruction makes a random insertion or random deletion to result in approximately the same number of mutations per divide as in any treatment that includes a slip mutation operator. This allowed us to evaluate the importance of having an increased mutation rate due to large-scale, single-event mutations versus having a higher copy mutation rate.
-
-% Long genome treatment
-To better discern the role in facilitating evolution of larger genome size caused by gene duplication, we performed an additional treatment: the \textbf{long-genome baseline treatment}.
-Genomes in this treatment operated identically to the baseline treatment above, except that they were 1,000 sites long instead of 100 sites long.
-We chose this size as it was near the upper bound of the largest genome sizes that we observed in the slip-duplication treatment experiments.
-
 In all experiments, organisms were limited to a minimum genome size (\textit{i.e.} instruction sequence length) of 100\footnote{
 In exploratory experiments, we found that, without enforcing a minimum genome size, slip mutations caused many lineages to quickly shrink in genome size because of inherent selection pressure for smaller genome size. Organisms became fast replicators but were then trapped on a local fitness optima, unable to evolve to perform complex computational tasks.
 }.
-We limited the population size to 3600 and seeded each experiment with an ancestral genotype capable of self-replication, but no logic-9 task.
-In both the static environment and simple changing environments, populations evolved for 200000 updates.
-We ran TODO trials of each treatment.
+We limited the population size to 3600 and seeded each experiment with an ancestral genotype capable of self-replication, but no logic-9 tasks.
+We ran between 30 and 100 trials of each treatment.
 
 \subsection{Statistical Methods}
 
 To determine if any of the treatments was significant within a set, we performed a Kruskal-Wallis test, applying a Bonferroni correction (for an earlier experimental design incorporating two additional surveyed environments) to keep the experiment-wise $\alpha$ = 0.05.
 For an environment in which the Kruskal-Wallis test was significant, we performed Mann-Whitney U tests for each experimental treatment against the control, and applied a Bonferroni correction for the six such tests within each environment.
-
-\subsubsection{Digital Organism Evaluation}
-At the end of each trial, we extracted the final dominant (most abundant) genotype in the population, and we traced back that genotype's full ancestral lineage.
-We calculated the phenotypic match score for each final dominant organism and all of their ancestors.
-
-TODO discuss tracking mutations back along lineages
 
 \subsection{Software and Data Availability} \label{sec:materials}
 
