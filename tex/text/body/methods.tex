@@ -21,22 +21,30 @@ Thus, improving the efficiency of self-replication or performing rewarded comput
 
 \medskip
 \noindent
-\textbf{Mutation events in Avida} come in four types: substitution, insertion, deletion, or slip. Rates of occurance for each may be independently configured.
+\textbf{Mutation events in Avida} come in four types: substitution, insertion, deletion, or slip.
+Rates of occurance for each were independently configured, as described next.
 
-\textit{Copy mutations} occur when a copy instruction errs.
-If it is a \textit{substitution} error, a random instruction is written to the copy location instead of the intended instruction.
-If it is an \textit{insertion}, a random extra instruction is copied along with the intended instruction.
-If it is a \textit{deletion}, the copy instruction fails to write any instruction at all.
+% https://github.com/chaynes2019/AvidaGeneDupe/blob/375f1a3018669f50d00e4ce67b977931cf42f6d9/experiments/2022-3-29-PaperDuplication/hpcc/config/avida.cfg
+\textit{Copy mutations} may introduce an erroneous \textit{substitution} where a random instruction is written to the offspring genome instead of the intended instruction.
+In our experiments, such substitutions occured with per-site probability of 0.0025.
 
 \textit{Divide mutations} act on an organism's offspring during division.
 When a divide \textit{insertion} mutation occurs, a randomly-chosen instruction is inserted at random into the offspring's genome, increasing the size of the offspring's genome by one.
 When a divide \textit{deletion} mutation occurs, a random instruction in the offspring's genome is removed, decreasing the size of the offspring's genome by one.
+In our experiments, each was allowed to occur with 5\% probability per offspring.
 
-For the purposes of this study, we implemented a new type of divide mutations: \textit{Slip mutations}.
+For the purposes of this study, we implemented a new type of divide mutation: \textit{Slip mutations}.
 This type of mutation acts analogously to gene duplications and deletions.
-When a slip mutation occurs, two sites in the offspring genome are randomly selected, defining the target segment for the operation. If the first site is upstream of the second, the slip mutation results in an insertion --- as if the organism's replication machinery had slipped backward during replication and recopied a segment. If the second site is upstream of the first, the slip mutation results in a deletion --- as if the organism's replication machinery slipped forward during replication, skipping over a genetic segment. As implemented, slip-insertions and slip-deletions occur with equal probability; thus, absent selection, this mutational process do not introduce an inherent bias on genome length.
+When a slip mutation occurs, two sites in the offspring genome are randomly selected, defining the target segment for the operation.
+If the first site is upstream of the second, the slip mutation results in an insertion --- as if the organism's replication machinery had slipped backward during replication and recopied a segment.
+If the second site is upstream of the first, the slip mutation results in a deletion --- as if the organism's replication machinery slipped forward during replication, skipping over a genetic segment.
+As implemented, slip-insertions and slip-deletions occur with equal probability; thus, absent selection, this mutational process do not introduce an inherent bias on genome length.
 
-Across trials, we assess five variants of slip mutations: slip-duplicate, slip-scramble, slip-random, slip-NOP, and slip-scatter. When a slip mutation results in a deletion, in all but the slip-scatter variant, the target segment is deleted. Rather than deleting the target segment, the slip-scatter mutation operator distributes a number of single-instruction deletions equal to the length of the target segment uniformly throughout the genome. When a slip mutation results in an insertion, a number of instructions equal to the length of the target segment is inserted into the genome; however, depending on the particular slip mutation operator, which instructions are inserted and where the insertions take place may be different. Figure \ref{fig:slip_mut_variants} provides description and examples of how each slip mutation operator handles insertions.
+Across trials, we assess five variants of slip mutations: slip-duplicate, slip-scramble, slip-random, slip-NOP, and slip-scatter.
+When a slip mutation results in a deletion, in all but the slip-scatter variant, the target segment is deleted. Rather than deleting the target segment, the slip-scatter mutation operator distributes a number of single-instruction deletions equal to the length of the target segment uniformly throughout the genome.
+When a slip mutation results in an insertion, a number of instructions equal to the length of the target segment is inserted into the genome; however, depending on the particular slip mutation operator, which instructions are inserted and where the insertions take place may be different.
+Figure \ref{fig:slip_mut_variants} provides description and examples of how each slip mutation operator handles insertions.
+Where enabled, slip mutations occured with 5\% probability per divide event.
 
 \subsection{Experimental Design}
 
@@ -54,7 +62,7 @@ Score_s(P) = |P_{s}|
 
 \footnote{An update in Avida is equal to the amount of time it takes for the average organism to execute 30 instructions; see \citep{Ofria:2009avida} for further detail.}
 
-\input{tab/treatments.tex}
+% \input{tab/treatments.tex}
 
 Our experiment consisted of seven treatments: one baseline treatment and six experimental treatments. Treatments differed only in the available mutation operators and the rates at which those operators were applied. Each treatment was designed to tease apart why gene duplications promote evolvability. Table \ref{table:treatments} provides details about each treatment.
 
