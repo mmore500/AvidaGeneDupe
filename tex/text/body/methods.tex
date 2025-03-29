@@ -7,40 +7,46 @@ This agent-based modeling approach allows research to empirically test hypothese
 
 \input{fig/vhardware.tex}
 
-Digital Organisms in Avida compete to acquire resources and replicate within limited space in a finite population.
-Each organism is defined by a linear sequence of program instructions (\textit{i.e.} its genotype) and a set of virtual hardware. The instruction set in Avida is Turing Complete and syntactically robust -- any ordering of instructions is syntactically valid, though not always useful. The instruction set includes operations for basic computations, execution flow control, input and output, and self-replication. An organism's virtual hardware (depicted in Figure \ref{fig:vhardware}) consists of components such as a central processing unit (CPU), registers for computation, buffers for input and output, and memory stacks.
+Digital organisms in Avida compete to acquire resources and replicate within a finite carrying capacity.
+Each organism comprises a linear sequence of program instructions (\textit{i.e.} its genotype), evaluated on an independent virtual processor.
+The instruction set in Avida is Turing complete and syntactically robust, meaning that any ordering of instructions is syntactically valid.
+The instruction set includes operations for basic computations, execution flow control, input and output, and self-replication.
+Figure \ref{fig:vhardware} overviews Avida virtual hardware used to evaluate program instructions.
 
-Organisms in Avida replicate asexually by allocating memory for their offspring, copying their genome instruction-by-instruction, and then dividing. However, copy and divide operations have imperfect fidelity and can result in mutated offspring. Organisms can influence their replication speed by improving their metabolic rate. An organism's metabolic rate determines the speed at which it executes instructions in its genome; a higher metabolic rate allows an organism to execute its genome faster, and thus, allows the organism to copy itself faster. Initially, an organism's metabolic rate is set proportional to its length so as to prevent intrinsic disadvantages from increased copy loop duration for long genomes. However, an organism's metabolic rate can be improved when it completes a particular task, such as a mathematical computation. In this way, we can differentially reward the performance of computational tasks.
+Organisms in Avida replicate asexually by copying their genome instruction-by-instruction.
+Organisms' replication speed is influenced by their metabolic rate, which determines the speed at which it executes program instructions.
+At baseline, an organism's metabolic rate is set proportional to its program length, so as to prevent intrinsic disadvantages from increased copy loop duration for long genomes.
+In our experiments, we additionally metabolic rate for organisms exhibiting particular phenotypic traits, defined as output ``tasks'' requiring logical operations on input values.
+In this way, we can define a set of discoverable adaptive phenotypic traits.
 
-When an organism finishes replicating, its offspring are placed in a random location elsewhere in the population, replacing the previous occupant of that location.
-Thus, improving the efficiency of self-replication or performing rewarded computational tasks are both advantageous in the competition for space in Avida. The combination of competition and heritable variation due to imperfect copy and divide operations results in evolution by natural selection in Avida \citep{pennock2007models}.
+When an organism replicates, its offspring is placed at random elsewhere in the population, replacing any previous occupant of that location.
+Thus, improving the efficiency of self-replication or performing rewarded computational tasks are both advantageous in the competition for space in Avida.
+In combination with heritable variation introduced by program copy defects (discussed next), competition for population slots results in evolution by natural selection in Avida \citep{pennock2007models}.
 
 \input{fig/slip_mut_variants.tex}
 
-\textbf{Mutation events in Avida} come in four types: substitution, insertion, deletion, or slip.
-Rates of occurrence for each were independently configured, as described next.
+Our simulations included four types of \textbf{mutation events in Avida}: substitution, insertion, deletion, or slip.
 
 % https://github.com/chaynes2019/AvidaGeneDupe/blob/375f1a3018669f50d00e4ce67b977931cf42f6d9/experiments/2022-3-29-PaperDuplication/hpcc/config/avida.cfg
-\textit{Copy mutations} may introduce an erroneous \textit{substitution} where a random instruction is written to the offspring genome instead of the intended instruction.
+\textit{Copy mutations} introduce an erroneous \textit{substitution} where a random instruction is written to the offspring genome instead of the intended instruction.
 In our experiments, such substitutions occurred with a per-site probability of 0.0025.
 
 \textit{Divide mutations} act on an organism's offspring during division.
-When a divide \textit{insertion} mutation occurs, an arbitrary instruction is inserted at random into the offspring's genome, increasing the size of the offspring's genome by one.
-When a divide \textit{deletion} mutation occurs, a random instruction in the offspring's genome is removed, decreasing the size of the offspring's genome by one.
+When a divide \textit{insertion} mutation occurs, an arbitrary instruction is inserted at random, increasing the size of the offspring's genome by one.
+When a divide \textit{deletion} mutation occurs, a random instruction in the offspring's genome is removed.
 In our experiments, each was allowed to occur with 5\% probability per offspring.
 
-For the purposes of this study, we augmented Avida with a new type of divide mutation: \textit{Slip mutation}.
+For the purposes of this study, we augmented Avida with a new type of divide mutation: \textit{slip mutation}.
 This type of mutation acts analogously to gene duplications and deletions.
 When a slip mutation occurs, two sites in the offspring genome are randomly selected, defining the target segment for the operation.
-Suppose the first site is upstream of the second.
-In that case, the slip mutation results in an insertion --- as if the organism's replication machinery had slipped backward during replication and recopied a segment.
-If the second site is upstream of the first, the slip mutation results in a deletion --- as if the organism's replication machinery slipped forward during replication, skipping over a genetic segment.
+It the first site is upstream of the second, the slip mutation results in an insertion --- as if the organism's replication machinery had slipped backward during replication and copied a segment twice.
+If the second site is upstream of the first, the slip mutation results in a deletion --- as if the organism's replication machinery skipped over a genetic segment.
 As implemented, slip-insertions and slip-deletions occur with equal probability; thus, absent selection, this mutational process does not introduce an inherent bias on genome length.
 
-Across trials, we assess five variants of slip mutations: slip-duplicate, slip-scramble, slip-random, slip-NOP, and slip-scatter.
-When a slip mutation results in a deletion, in all but the slip-scatter variant, the target segment is deleted. Rather than deleting the target segment, the slip-scatter mutation operator distributes a number of single-instruction deletions equal to the length of the target segment uniformly throughout the genome.
-When a slip mutation results in an insertion, a number of instructions equal to the length of the target segment is inserted into the genome; however, depending on the particular slip mutation operator, which instructions are inserted and where the insertions take place may be different.
-Figure \ref{fig:slip_mut_variants} provides description and examples of how each slip mutation operator handles insertions.
+Across trials, we assess five variants of slip mutations: (1) slip-duplicate, (2) slip-scramble, (3) slip-random, (4) slip-NOP, and (5) slip-scatter.
+When a slip mutation results in insertion, all slip mutation variants insert a number of instructions equal to the length of the target segment.
+However, the composition and location of inserted instructions varies according to the slip mutation operator schema given in Figure \ref{fig:slip_mut_variants},
+Deletions were handled identically across slip mutation variants except for the slip-scatter treatment, where they were randomized uniformly across the genome.
 Where enabled, slip mutations occurred with 5\% probability per divide event.
 
 \subsection{Experimental Design}
