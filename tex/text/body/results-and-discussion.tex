@@ -6,7 +6,7 @@ In a first set of experiments, we set out to test the influence of gene duplicat
 In the context of our experiments, which tracked populations of Avida digital organisms competing for limited virtual resources, adaptive evolution corresponded to performance of tasks from the Logic-9 set.
 
 Figure \ref{fig:results_panels} compares task count trajectories over evolutionary time between treatments, as well as task count distributions among final dominant lineages.
-Under the slip-duplicate treatment, significantly higher task counts  evolved compared to the baseline treatment (two-tailed Mann-Whitney U tests, W = 562.5, Bonferroni-adjusted $p << 0.0001$).
+Under the slip-duplicate treatment, significantly higher task counts  evolved compared to the baseline treatment (two-tailed Mann-Whitney U tests, W = 562.5, Bonferroni-adjusted $p << 0.0001$; first-phase experiments).
 
 This result aligns with existing findings across a broad variety of biological taxa and digital models that slip-duplication of genetic material can facilitate evolution of adaptive traits \citep{Koza:1995fr,Zhang:2003fw,Teichmann:2004cz}.
 Indeed, in earlier-reported experiments, we additionally found that facilitation of adaptive evolution by gene duplications generalized to changing environments, where the set of rewarded tasks fluctuated across generations \citep{lalejini2017gene}.
@@ -27,7 +27,7 @@ In contrast to the slip-scramble and full slip-duplicate operators, other tested
 Given the efficacy of the slip-scramble treatment in facilitating adaptation, we additionally tested differences in task counts between the slip-scramble and slip-duplicate treatments.
 To prevent issues with multiple comparisons, we dispatched 100 new trials under both treatments for this test.
 
-Indeed, this additional experiment confirmed that the slip-duplicate treatment did in fact yield higher task counts compared to the slip-scramble treatment (two-tailed Mann-Whitney U tests, W = 4305, 4028.5, 3621.5 respectively, Bonferroni-adjusted $p =$ 0.0109).
+Indeed, this additional experiment confirmed that the slip-duplicate treatment did in fact yield higher task counts compared to the slip-scramble treatment (two-tailed Mann-Whitney U tests, W = 4305, 4028.5, 3621.5 respectively, Bonferroni-adjusted $p = 0.011$; first-phase experiments).
 Thus, in our study system, it appears that the content and structure of duplicated genetic code contribute to promoting evolvability.
 This finding further underscores that, in specific, the injection of existing sequence information is key to the role of gene duplication in evolution.
 
@@ -52,7 +52,7 @@ Disaggregating by task complexity, though, reveals that the impact of genome len
 Figure \ref{fig:adaptive-evolution-rate} compares acquisition rates for tasks across NAND component count complexity classes --- with and without slip duplication, including the long-genome control.
 The long-genome control matched or exceeded the performance of slip-duplication in evolving simple traits with 3 or fewer components.
 % https://github.com/chaynes2019/AvidaGeneDupe/blob/538ede79c7301f10718ca96c8dd38782b6882632/binder/adaptive-evolution-rate.ipynb
-However, slip duplication evolved the more complex 4- and 5-component traits within a significantly higher fraction of replicates compared to the long-genome control (Fisher's exact tests; 36/60 vs. 24/60, $p<0.05$ [4 components]; 10/30 vs. 2/30, $p<0.03$ [5 components]; Figure \ref{fig:adaptive-evolution-rate}).
+However, slip duplication evolved the more complex 4- and 5-component traits within a significantly higher fraction of replicates compared to the long-genome control (Fisher's exact tests; 36/60 vs. 24/60, $p<0.05$ [4 components]; 10/30 vs. 2/30, $p<0.03$ [5 components]; second-phase experiments; Figure \ref{fig:adaptive-evolution-rate}).
 As such, theory positing gene duplication as a catalyst for the evolution of complex traits appears to correspond well with the  behavior of our study system \citep{ohno1970evolution}.
 
 \subsubsection{Slip-Duplicated Regions Potentiate Coding Sites for Novel Complex Traits}
@@ -96,7 +96,7 @@ In particular, we sought to understand whether the genetic material introduced t
 For each first trait occurrence arising in our experiments, we assessed the fraction of new task coding sites originating in regions of the genome that had previously been slip duplicated.
 Figure \ref{fig:potentiation} compares involvement in coding for new tasks between previously slip-duplicated and non-slip-duplicated sites.
 For the simplest tasks, requiring only one NAND component, we found no significant difference in the likelihood of duplicated sites participating in coding regions for new tasks.
-However, we found significant associations for traits with two or more NAND components (Mann-Whitney tests; all $p < 0.01$; $n=48,56,59,52,20$ observations).
+However, we found significant associations for traits with two or more NAND components (Mann-Whitney tests; all $p < 0.01$; $n=48,56,59,52,20$ observations; second-phase experiments).
 Effect sizes of potentiation on likelihood to code for novel traits were $1.5\times$, $1.5\times$, $1.2\times$, and $1.2\times$ respectively for 2, 3, 4, and 5 task components.
 Smaller effect sizes at 4- and 5-component tasks may be due to a larger portion of the genome becoming comprised of slip-duplicated sites (Supplementary Figure \ref{fig:potentiation-supp}), thus lowering the upper ceiling on deviation from expected.
 
@@ -138,8 +138,8 @@ Supplementary Figure \ref{fig:nulldist} presents these results.
 
 % https://github.com/chaynes2019/AvidaGeneDupe/blob/binder/binder/gain-mechanism.ipynb
 To assess the consequences of this bias towards redundancy, we next pivoted to assess coding site accumulation within genomes over the course of evolution.
-Counter to naive expectation, we found that the slip duplication treatment accrued fitness-critical sites at a generation-on-generation rate comparable to the long-genome baseline treatment, rather than decreasing net brittleness (Figure \ref{fig:num-coding-sites:coding}; Mann-Whittney test, $U=361$, $p=0.19$).
-Despite this similarity, however, when measurements were taken inclusive of vestigial coding sites (those which had \textit{previously} been fitness-critical earlier within a lineage), we found a significantly increased coding site count associated with the slip-duplicate treatment (Mann-Whittney test, $U=630$, $p<0.01$).
+Counter to naive expectation, we found that the slip duplication treatment accrued fitness-critical sites at a generation-on-generation rate comparable to the long-genome baseline treatment, rather than decreasing net brittleness (Figure \ref{fig:num-coding-sites:coding}; Mann-Whittney test, $U=361$, $p=0.19$; second-phase experiments).
+Despite this similarity, however, when measurements were taken inclusive of vestigial coding sites (those which had \textit{previously} been fitness-critical earlier within a lineage), we found a significantly increased coding site count associated with the slip-duplicate treatment (Mann-Whittney test, $U=630$, $p<0.01$; second-phase experiments).
 Figure \ref{fig:num-coding-sites:coded} compares trajectories of vestigial-inclusive coding site counts along final-dominant lineages.
 In sum, within our study system, gene duplication processes increased net supply of coding material in the genome available to neutral processes, but the accumulation of critical sites representing single points of failure remained substantially unaffected.
 
