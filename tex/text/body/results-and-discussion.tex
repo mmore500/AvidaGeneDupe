@@ -15,18 +15,16 @@ Indeed, in earlier-reported experiments, we additionally found that facilitation
 
 \subsection{What aspects of gene duplication facilitate adaptation?}
 
-Having observed that slip-duplicate mutations accelerate evolutionary acquisition of Logic-9 tasks in our model, we next sought to identify in greater detail which aspects of the slip duplication process, in particular, contribute to facilitating adaptation.
-For this purpose, we extended our experiment to additionally include five variants of the slip-duplication operator, each disabling or replacing a particular functional aspect of slip duplication.
+Having observed that slip-duplicate mutations accelerate evolutionary acquisition of Logic-9 tasks in our model, we next sought to identify in greater detail which aspects of the slip duplication process contribute to facilitating adaptation using variants of the slip-duplication operator disabling or replacing a particular aspect of slip duplication.
 (Figure \ref{fig:slip_mut_variants} overviews variants tested.)
 
 As shown in Figure \ref{fig:results_panels}, we detected significant increases in adaptive evolution against baseline only for the original slip-duplicate treatment and the follow-up slip-scramble treatment --- which ablated only sequence order within duplicated regions.
 Task counts under all other experimental treatments were statistically indistinguishable, or slower-adapting, compared with the baseline treatment.
 
-Given that the slip-scramble treatment maintains the content of duplicated instruction sequences (albeit in an unordered fashion), these findings highlight an integral role for amplification of existing genetic information, in particular, with regard to how gene dulication promotes adaptive evolution in the study system.
+Given that the slip-scramble treatment maintains the content of duplicated instruction sequences (albeit in an unordered fashion), these findings highlight how amplification of existing genetic information, in particular, promotes adaptive evolution in the study system.
 In contrast to the slip-scramble and full slip-duplicate operators, other tested slip mutation variants do not duplicate information about instruction sequences already present in the genome.
 
-Given the efficacy of the slip-scramble treatment in facilitating adaptation, we became curious as to the role of sequence order within duplicated regions.
-To investigate this point, we additionally tested differences in task counts between the slip-scramble and slip-duplicate treatments.
+Given the efficacy of the slip-scramble treatment in facilitating adaptation, we additionally tested differences in task counts between the slip-scramble and slip-duplicate treatments.
 To prevent issues with multiple comparisons, we dispatched 100 new trials under both treatments for this test.
 
 Indeed, this additional experiment confirmed that the slip-duplicate treatment did in fact yield higher task counts compared to the slip-scramble treatment (two-tailed Mann-Whitney U tests, W = 4305, 4028.5, 3621.5 respectively, Bonferroni-adjusted $p =$ 0.0109).
@@ -47,24 +45,7 @@ Finally, we examined how slip duplication influences genetic architecture with r
 
 \subsubsection{Slip duplication facilitates the evolution of complex traits.}
 
-Within the Logic-9 task system in Avida, available tasks vary substantially in their computational difficulty.
-This characteristic arises from an explicit hierarchical composition among task definitions.
-``Easier'' tasks like AND and NAND form building blocks for ``more difficult'' tasks like XOR and EQU.
-This well-defined gradient in task requirements provides a suitable apparatus for experiments involving the evolution of complexity \citep{lenski2003evolutionary}.
-In this work, we categorize the complexity of the Logic-9 tasks by the minimal number of NAND building blocks\footnote{
-In computer architecture theory, NAND is commonly established as the fundamental building block operation since all other logical operations can be derived from compositions of NAND gates \citep{mano1997logic}.
-} required to perform them, as given in Table \ref{tab:tasks}.
-As such, we distinguished tasks according to their NAND ``component counts'' to distinguish their required adaptive complexity.
-
-\subsubsection{Effects of Genome Length}
-
 \input{fig/adaptive-evolution-rate.tex}
-
-One intrinsic consequence of gene duplication is increased genome length.
-To assess the impact of genome length alone, we introduced an additional control in the following experiments: the long-genome treatment, identical to the baseline treatment except employed fixed-length 1,000-site (rather than 100-site) genomes.%
-\footnote{%
-The 1,000-site size was chosen as representative of the upper limits of observed genome sizes in slip-duplicate treatments.
-}
 
 Comparing the long-genome and baseline treatments, we observed a boost in task acquisition from increased genome length.
 Disaggregating by task complexity, though, reveals that the impact of genome length is most prominent in the acquisition of simple tasks.
@@ -74,7 +55,7 @@ The long-genome control matched or exceeded the performance of slip-duplication 
 However, slip duplication evolved the more complex 4- and 5-component traits within a significantly higher fraction of replicates compared to the long-genome control (Fisher's exact tests; 36/60 vs. 24/60, $p<0.05$ [4 components]; 10/30 vs. 2/30, $p<0.03$ [5 components]; Figure \ref{fig:adaptive-evolution-rate}).
 As such, theory positing gene duplication as a catalyst for the evolution of complex traits appears to correspond well with the  behavior of our study system \citep{ohno1970evolution}.
 
-\subsubsection{Slip-duplicated genome regions potentiate evolution of novel complex traits.}
+\subsubsection{Slip-duplicated regions potentiate coding sites for novel complex traits.}
 
 % https://github.com/chaynes2019/AvidaGeneDupe/blob/4c7fa27229094adcb5bdb0b1aec541d0014b0fed/binder/hard-task-gain.ipynb
 %             H-statistic       p-value

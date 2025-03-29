@@ -43,68 +43,92 @@ It the first site is upstream of the second, the slip mutation results in an ins
 If the second site is upstream of the first, the slip mutation results in a deletion --- as if the organism's replication machinery skipped over a genetic segment.
 As implemented, slip-insertions and slip-deletions occur with equal probability; thus, absent selection, this mutational process does not introduce an inherent bias on genome length.
 
-Across trials, we assess five variants of slip mutations: (1) slip-duplicate, (2) slip-scramble, (3) slip-random, (4) slip-NOP, and (5) slip-scatter.
-When a slip mutation results in insertion, all slip mutation variants insert a number of instructions equal to the length of the target segment.
-However, the composition and location of inserted instructions varies according to the slip mutation operator schema given in Figure \ref{fig:slip_mut_variants},
-Deletions were handled identically across slip mutation variants except for the slip-scatter treatment, where they were randomized uniformly across the genome.
+Across trials, we assessed full-fledged slip-duplicate mutation in comparison with four variant mutation operators with components disabled or replaced:
+\begin{enumerate}
+\item slip-scramble, where duplicated code was shuffled to test effects of sequence order,
+\item slip-random, where duplicated code was replaced with random instructions to test effects of sequence content,
+\item slip-NOP, where duplicated code was replaced with neutral (``no-operation'') instructions to test the effect of neutral increase in genome size, and
+\item slip-scatter, where duplicated code was dispersed across the genome to test the effect of insertion locality.
+\end{enumerate}
+Figure \ref{fig:slip_mut_variants} provides a cartoon summary of surveyed slip-mutation variants.
+
+When the slip frame is opening-first, all slip mutation variants insert a number of instructions equal to the length of the target segment.
+However, the composition and location of inserted instructions varies according to slip mutation operator schema.
+Deletions acted identically across slip mutation variants, with the exception of slip-scatter which randomized deletions uniformly across the genome.
 Where enabled, slip mutations occurred with 5\% probability per divide event.
 
 \subsection{Experimental Design}
 
 \input{tab/tasks.tex}
 
-Across all experiments, we rewarded the performance of nine Boolean logic functions: NOT, NAND, OR-NOT, AND, OR, AND-NOT, NOR, XOR, and EQUALS.
-Detailed description of this ``Logic-9'' task set can be found in \citet{lenski2003evolutionary} ---
-however, one significant characteristic is well-defined differences in difficulty between tasks, determined by an intrinsic computational complexity measure (``NAND count'') --- given for each in Table \ref{tab:tasks}.
+For our experiments, we configured available metabolic resources to the ``Logic-9'' task set, consisting of tasks NOT, NAND, OR-NOT, AND, OR, AND-NOT, NOR, XOR, and EQUALS.
+Notably, the structure of this task set provides a well-defined difficulty gradient among tasks.
+This characteristic arises from an explicit hierarchical composition among task definitions.
+``Easier'' tasks like AND and NAND form building blocks for ``more difficult'' tasks like XOR and EQU.
+This well-defined gradient in task requirements provides a suitable apparatus for experiments involving the evolution of complexity \citep{lenski2003evolutionary}.
+In this work, we categorize the complexity of the Logic-9 tasks by the minimal number of NAND building blocks\footnote{
+In computer architecture theory, NAND is commonly established as the fundamental building block operation since all other logical operations can be derived from compositions of NAND gates \citep{mano1997logic}.
+} required to perform them, as given in Table \ref{tab:tasks}.
+As such, we categorized tasks according to their NAND ``component counts'' as a proxy for phenotypic complexity
+
 Identical reward was provided for each task and kept consistent throughout trials.
 We measured adaptation to the Logic-9 task set as a ``phenotypic match score,'' ranging from a minimum of 0 (\textit{i.e.} the organism performs no tasks) to a maximum of 9 (\textit{i.e.} the organism performs all 9 tasks).
 
-We ran evolutionary experiments for 200,000 Avida updates.%
+Evolution experiments were conducted in two phases.
+The first phase tested aggregate differences in evolutionary outcomes between surveyed slip duplication operator variants across runs, while the second focused more heavily on teasing apart evolutionary history and genetic structure within runs.
+For this reason, first phase experiments prioritized higher replicate count, while second phase experiments prioritized more detailed lineage tracking of individual genome sites.
+Replicate count was 100 independent trials for first phase experiments, and 30 replicates for second phase experiments.
+Run length was 200,000 updates across all experiments.
 \footnote{An update in Avida is equal to the amount of time it takes for the average organism to execute 30 instructions; see \citep{Ofria:2009avida} for further detail.}
-This duration was sufficient to observe at least 600 generations within all trials.
-To assess evolutionary history within a trial, we extracted the trial's concluding final dominant genotype and recorded its lineage ancestry.
-In a postprocessing step, we applied Avida's ``analyze mode'' to identify the set of tasks performed by each ancestor.
-For investigations involving the evolutionary history of individual genome sites, we used mutational metadata saved with lineage files to identify correspondences between parent and offspring.
+% Based on the timing of evolutionary convergence to stable states in the first phase experiments, a run length of 50,000 updates was used for second phase experiments.
+This duration was sufficient to observe at least 600 generations elapsed in all trials.
+
+Population size was configured to Avida default of 3,600 organsism across all trials.
+Except where otherwise noted, experiments were seeded with a 100-instruction ancestral self-replicator.
+In all cases, mutations reducing genome size below 100 instructions were disallowed, to ensure availability of sufficient raw genetic material to encode Logic-9 operations.
 
 % \input{tab/treatments.tex}
 
-Our experiment consisted of seven treatments: two baseline treatments, with slip-duplication disabled, and five experimental treatments, for which slip-duplication was enabled.
-Treatments differed only in the available mutation operators and the rates at which those operators were applied.
-Each treatment was designed to tease apart an aspect of how gene duplications might promote evolvability.
+First-phase experiments consisted of six treatments: one baseline treatment with slip-duplication disabled and five experimental treatments corresponding to the five surveyed slip-duplication mutation operators shown in Figure \ref{fig:slip_mut_variants}.
+These treatments differed only in the available mutation operators and the rates at which those operators were applied.
 
-% Baseline treatment
-The \textbf{baseline treatment} was used as a control; we used the results from this treatment as a baseline for evolvability, with which we compared the results from all other experimental treatments. Mutation rates in the baseline treatment have been shown to facilitate both the evolution of complex boolean logic tasks, such as EQUALS, and the evolution of task regulation in Avida \citep{lenski2003evolutionary, Lalejini:2016plasticity}
+% % Baseline treatment
+% The \textbf{baseline treatment} was used as a control; we used the results from this treatment as a baseline for evolvability, with which we compared the results from all other experimental treatments. Mutation rates in the baseline treatment have been shown to facilitate both the evolution of complex boolean logic tasks, such as EQUALS, and the evolution of task regulation in Avida \citep{lenski2003evolutionary, Lalejini:2016plasticity}
 
 % Long genome treatment
-To better discern the role in facilitating evolution of larger genome size caused by gene duplication, we performed an additional treatment: the \textbf{long-genome baseline treatment}.
-Genomes in this treatment operated identically to the baseline treatment above, except that they were 1,000 sites long instead of 100 sites long.
-We chose this size as it was near the upper bound of the largest genome sizes that we observed in the slip-duplication treatment experiments.
+For second-phase experiments, we included an additional \textbf{long-genome baseline treatment} for the purpose of directly testing the adaptive role of large genome size associated with slip-duplicators.
+Genomes in this treatment operated identically to the baseline treatment above, except that they were initialized with a 1,000 site ancestor.
+We chose this size as it was near the upper bound of genome sizes observed in first-phase slip-duplication treatment experiments.
 
-% Slip-duplicate treatment
-The \textbf{slip-duplicate treatment} allowed for mutation events that resulted in full code duplications via the slip-duplicate mutation operator. Duplications in this treatment preserved both the content and the structure of duplicated code. This allowed us to answer the following question: how important is it that gene duplications can exactly duplicate sequences in a genome in both content \textit{and} structure?
+% % Slip-duplicate treatment
+% The \textbf{slip-duplicate treatment} allowed for mutation events that resulted in full code duplications via the slip-duplicate mutation operator. Duplications in this treatment preserved both the content and the structure of duplicated code. This allowed us to answer the following question: how important is it that gene duplications can exactly duplicate sequences in a genome in both content \textit{and} structure?
 
-% Slip-scramble treatment
-The \textbf{slip-scramble treatment} allowed for mutation events (via the slip-scramble operator) that resulted in code duplications where the content of the duplicated code was preserved, but the structure of the duplicated code was not preserved. This, compared with the slip-duplicate treatment, allowed us to answer the question: Is the duplication of particular instructions important, regardless of their arrangement?
+% % Slip-scramble treatment
+% The \textbf{slip-scramble treatment} allowed for mutation events (via the slip-scramble operator) that resulted in code duplications where the content of the duplicated code was preserved, but the structure of the duplicated code was not preserved. This, compared with the slip-duplicate treatment, allowed us to answer the question: Is the duplication of particular instructions important, regardless of their arrangement?
 
-% Slip-random treatment
-The \textbf{slip-random treatment} allowed us to answer the following question: is it the case that gene duplications promote evolvability because they result in the insertion of large, clustered mutations, regardless of what those mutations may be? The slip-random treatment (via the slip-random mutation operator) allowed for mutation events that could insert large, contiguous clusters of random instructions; one could also think of these mutations as maximally noisy duplications where neither the content nor structure of the duplicated code is preserved.
+% % Slip-random treatment
+% The \textbf{slip-random treatment} allowed us to answer the following question: is it the case that gene duplications promote evolvability because they result in the insertion of large, clustered mutations, regardless of what those mutations may be? The slip-random treatment (via the slip-random mutation operator) allowed for mutation events that could insert large, contiguous clusters of random instructions; one could also think of these mutations as maximally noisy duplications where neither the content nor structure of the duplicated code is preserved.
 
-% Slip-NOP treatment
-The \textbf{slip-NOP treatment} allowed for mutations capable of inserting contiguous segments of blank `genetic tape' (via the slip-NOP mutation operator) in the form of no operation instructions. This allowed us to answer the following question: how important is it that gene duplications provide evolution with a straightforward technique for increasing genome size?
+% % Slip-NOP treatment
+% The \textbf{slip-NOP treatment} allowed for mutations capable of inserting contiguous segments of blank `genetic tape' (via the slip-NOP mutation operator) in the form of no operation instructions. This allowed us to answer the following question: how important is it that gene duplications provide evolution with a straightforward technique for increasing genome size?
 
-% Slip-scatter treatment
-The \textbf{slip-scatter treatment} helped us tease apart whether gene duplications promote evolvability because they inflate the effective mutation rate, generating increased amounts of genetic variation. This treatment allowed for mutations that, when triggered, could insert many random instructions into random locations in a genome (via the slip-scatter mutation operator).
+% % Slip-scatter treatment
+% The \textbf{slip-scatter treatment} helped us tease apart whether gene duplications promote evolvability because they inflate the effective mutation rate, generating increased amounts of genetic variation. This treatment allowed for mutations that, when triggered, could insert many random instructions into random locations in a genome (via the slip-scatter mutation operator).
 
-In all experiments, organisms were limited to a minimum genome size (\textit{i.e.} instruction sequence length) of 100\footnote{
-In exploratory experiments, we found that, without enforcing a minimum genome size, slip mutations caused many lineages to quickly shrink in genome size because of inherent selection pressure for smaller genome size. Organisms became fast replicators but were then trapped on a local fitness optimum, unable to evolve to perform complex computational tasks.
-}.
-We limited the population size to 3600 and seeded each experiment with an ancestral genotype capable of self-replication, but no Logic-9 tasks.
-We ran between 30 and 100 trials of each treatment.
+% In all experiments, organisms were limited to a minimum genome size (\textit{i.e.} instruction sequence length) of 100\footnote{
+% In exploratory experiments, we found that, without enforcing a minimum genome size, slip mutations caused many lineages to quickly shrink in genome size because of inherent selection pressure for smaller genome size. Organisms became fast replicators but were then trapped on a local fitness optimum, unable to evolve to perform complex computational tasks.
+% }.
+% We limited the population size to 3600 and seeded each experiment with an ancestral genotype capable of self-replication, but no Logic-9 tasks.
+% We ran between 30 and 100 trials of each treatment.
 
 \subsection{Statistical Methods}
 
 To determine if any treatments were significant within a set, we performed a Kruskal-Wallis test, applying a Bonferroni correction (for an earlier experimental design incorporating two additional surveyed environments) to keep the experiment-wise $\alpha$ = 0.05.
 For an environment in which the Kruskal-Wallis test was significant, we performed Mann-Whitney U tests for each experimental treatment against the control and applied a Bonferroni correction for the six such tests within each environment.
+
+To assess evolutionary history within a trial, we extracted the trial's concluding final dominant genotype and recorded its lineage ancestry.
+In a postprocessing step, we applied Avida's ``analyze mode'' to identify the set of tasks performed by each ancestor.
+For investigations involving the evolutionary history of individual genome sites, we used mutational metadata saved with lineage files to identify correspondences between parent and offspring.
 
 \subsection{Software and Data Availability} \label{sec:materials}
 
