@@ -115,27 +115,31 @@ Thus, the adaptive characteristics of slip duplication seem likely to result fro
 
 \input{fig/num-coding-sites}
 
-In a final set of analyses, we broadened the scope of inquiry beyond trait acquisition to assess the consequences of gene duplication with respect to whole-genome architecture.
-Our focus within this purview was on genome robustness, which we defined in terms of sensitivity of fitness to individual mutations \citep{lenski1999genome}.
-That is, we measured robustness in terms of ``brittleness'' the number of genome sites ``critical'' to fitness, where a single-site knockout induces loss of replicator viability or one or more adaptive phenotypic traits (i.e., tasks).
-We used Avida's genome evaluator tool to identify and quantify such ``fitness-critical'' sites.\footnote{%
+In a final set of analyses, we broadened our scope to assess consequences of gene duplication with respect to whole-genome architecture.
+In particular, genome robustness, which we defined in terms of sensitivity of fitness to mutation \citep{lenski1999genome}.
+We quantified robustness by measuring the number of ``critical'' genome sites, where a single-site knockout underrated replicator viability or one or more adaptive phenotypic traits (i.e., Logic-9 tasks).
+\footnote{%
 Although sufficiently representative for our purposes, limitations exist in detecting Avida genome functionality through single-site knockouts; such an approach can underestimate aspects of genome sequence complexity involving small effects or redundancy \citep{lenski1999genome,moreno2024cryptic}.
 }
 
-One conventional perspective on gene duplication is \textit{vis-a-vis} facilitation of neutral dynamics, wherein copied genetic material reduces brittleness by introducing redundancies \citep{wagner1996genetic}.
-To assess the relevance of this perspective in our study system, we performed slip-duplicate mutational assays to quantify the baseline distribution of slip insertion mutations on genome brittleness, in the absence of selection.
-Specifically, we generated possible slip duplications applied to final-dominant genome lineages evolved under the slip-duplicate treatment, and filtered our sample to exclude slip duplications that affected self-replication viability or altered the task-performance phenotype.
-These analyses confirmed that fitness-neutral slip insertions did indeed tend to reduce the number of genome sites detectable as a single point of failure for performed tasks.
+One conventional perspective on gene duplication is \textit{vis-a-vis} neutral dynamics, wherein copied genetic material reduces brittleness by introducing redundancy \citep{wagner1996genetic}.
+To assess the relevance of this model within our study system, we performed slip-duplicate mutational assays to quantify the baseline effect of slip insertion mutations on robustness, in the absence of selection.
+
+We applied our assay to final-dominant genome lineages evolved with slip duplication.
+For this purpose, we generated one slip duplication per genome, and filtered away those that affected self-replication viability or altered the Logic-9 phenotype.
+We then measured change in critical site counts between corresponding wildtype and mutated variants.
+
+Fitness-neutral slip insertions did indeed tend to reduce the number of genome sites detectable as a single point of failure for performed tasks.
 % https://github.com/chaynes2019/AvidaGeneDupe/blob/9fee1f13a8d31f25d1dd799c6a26f9b7fa617738/binder/indel-effect-nulldist.ipynb
 On average, we found that neutral slip insertions decreased coding site count by 6.8 sites (bootstrapped 95\% CI 6.4 to 7.3).
 This effect was strongest in genomes with high complexity; for instance, neutral insertion mutations decrease coding site count by 9.2 and 8.3 sites on average in genomes that encode 4- and 5-component complexity tasks, respectively (bootstrapped 95\% CIs 8.5 to 9.9 and 7.2 to 9.3).
 Supplementary Figure \ref{fig:nulldist} presents these results.
 
 % https://github.com/chaynes2019/AvidaGeneDupe/blob/binder/binder/gain-mechanism.ipynb
-To assess the consequences of this bias towards redundancy, we next pivoted to assess coding site accumulation within genomes over the course of evolution.
-Counter to naive expectation, we found that the slip duplication treatment accrued fitness-critical sites at a generation-on-generation rate comparable to the long-genome baseline treatment, rather than decreasing net brittleness (Figure \ref{fig:num-coding-sites:coding}; Mann-Whittney test, $U=361$, $p=0.19$; second-phase experiments).
+To assess evolutionary consequences of redundancies introduced by slip-duplication, we next pivoted to assess coding site accumulation within genomes over the course of evolution.
+Counter to naive expectation, we found that the slip duplication treatment accrued fitness-critical sites at a generation-on-generation rate comparable to the long-genome baseline treatment (Figure \ref{fig:num-coding-sites:coding}; Mann-Whittney test, $U=361$, $p=0.19$; second-phase experiments).
 Despite this similarity, however, when measurements were taken inclusive of vestigial coding sites (those which had \textit{previously} been fitness-critical earlier within a lineage), we found a significantly increased coding site count associated with the slip-duplicate treatment (Mann-Whittney test, $U=630$, $p<0.01$; second-phase experiments).
 Figure \ref{fig:num-coding-sites:coded} compares vestigial-inclusive coding site counts trajectories along final-dominant lineages.
-In sum, within our study system, gene duplication processes increased the net supply of coding material in the genome available to neutral processes, but the accumulation of critical sites representing single points of failure remained substantially unaffected.
+It therefore appears that slip duplication processes within our study system act to increase the net supply of coding material in the genome available to neutral processes, but do not suppress accumulation of genome brittleness.
 
 % One possible explanation is that selective pressures are driving the two treatments to reach a similar number of critical sites, but slip duplication can duplicate and copy genome content in a manner that increases the copy count of previously coding sites relative to the number of critical sites.
