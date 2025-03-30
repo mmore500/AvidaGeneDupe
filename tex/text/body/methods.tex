@@ -123,12 +123,14 @@ We chose this size near the upper bound of genome sizes observed in first-phase 
 
 \subsection{Statistical Methods}
 
-To determine if any treatments were significant within a set, we performed a Kruskal-Wallis test, applying a Bonferroni correction (for an earlier experimental design incorporating two additional surveyed environments) to keep the experiment-wise $\alpha$ = 0.05.
-For an environment in which the Kruskal-Wallis test was significant, we performed Mann-Whitney U tests for each experimental treatment against the control and applied a Bonferroni correction for the six such tests within each environment.
+For first-phase experiments, we applied a Kruskal-Wallis test to screen for between-group variation in phenotypic adaptation score among surveyed treatments.
+On account of an earlier experimental design incorporating two additional surveyed conditions incorporating environmental flucatuations, Bonferroni correction was applied to keep experiment-wise $\alpha$ = 0.05.
+For subsequent Mann-Whitney U tests testing individual treatments against baseline, we applied Bonferroni correction for the five such comparisons.
+Experimental design in our second-phase experiments did not require adjustments for multiple comparison.
 
-To assess evolutionary history within a trial, we extracted the trial's concluding final dominant genotype and recorded its lineage ancestry.
+Time series assessments of evolutionary history were conducted using the ancestral lineage of the most abundant end-state genotype (``final dominant'').
 In a postprocessing step, we applied Avida's ``analyze mode'' to identify each ancestor's tasks.
-For investigations involving the evolutionary history of individual genome sites, we used mutational metadata saved with lineage files to identify correspondences between parent and offspring.
+For investigations involving the evolutionary history of individual genome sites, we used mutational metadata saved with lineage files to identify corresponding sites between parent and offspring.
 
 \subsection{Software and Data Availability} \label{sec:materials}
 
