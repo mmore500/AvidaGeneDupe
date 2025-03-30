@@ -4,23 +4,23 @@ Although experiments had not yet probed the intricacies of gene duplication in 1
 ``The duplication of chromosome parts, together with its consequences, has probably been one of the most important factors in evolution, if not the most important'' \citep{Metz:chromosomeDuplication1947}.
 Metz's prediction of gene duplication's preeminence in generating adaptations --- despite being based on an incomplete understanding of genomic structure and function --- has been confirmed by scores of examples, ranging from artificial selection to disease.
 In experimental yeast systems with harsh conditions, adaptations resulting from aneuploidy confer superior fitness \citep{Pavelka:2010}.
-Similarly, cancer cells are commonly observed in polyaneuploid states, and the drastic genetic changes from duplications and deletions could play a large role in the creation of resistance mechanisms \citep{polyaneuploidCancer}.
+Similarly, cancer cells are commonly observed in polyaneuploid states, and the drastic genetic changes from duplications and deletions could play a large role in creating resistance mechanisms \citep{polyaneuploidCancer}.
 While the canonical model of gene duplication generally requires subsequent mutation for novel traits to appear, more instances of an immediate phenotypic effect are emerging, such as the characteristic short legs of a dachshund arising from an additional copy of the FGF4 gene \citep{ohno1970evolution,dachshundGeneCopyNum}.
 
-There are numerous processes that can result in gene duplication, each with their own specific outcomes (as reviewed in \citep{Zhang:2003fw}), ranging from repeats of gene fragments to whole genome duplication.
+Numerous processes can result in gene duplication, each with their own specific outcomes (as reviewed in \citep{Zhang:2003fw}), ranging from repeats of gene fragments to whole genome duplication.
 All of these processes result in new copies of genes, which can be further modified.
 %All of these processes result in %share the common feature of
 %an increase in genome size, but more importantly, genetic material that is likely more structured and meaningful than random insertions. %, especially when the duplicated sequence already encoded for one or more traits. %with encoded information.
-As such, duplication is an important mechanism for generating genetic novelty, providing a source of new genetic material for evolutionary processes to act on and enabling new evolutionary opportunities \citep{Zhang:2003fw,Crow:2006role,Magadum:2013wu}.
+As such, duplication is an essential mechanism for generating genetic novelty, providing new genetic material for evolutionary processes to act on and enabling new evolutionary opportunities \citep{Zhang:2003fw,Crow:2006role,Magadum:2013wu}.
 Indeed, gene duplication has been shown to promote evolvability --- the capacity to generate adaptive phenotypic variation via mutation --- both in biology and in computational evolution \citep{Hu:2010ea}.
 % AML (2025): I shortened the above definition of evolvability for succintness (folks should make sure they still agree with it). Even better, if we could streamline the sentence to not have a definition interrupt the flow.
 
 A striking example of gene duplication leading to new adaptations
 comes from the Long-Term Evolution Experiment in \textit{Escherichia coli}, where a duplication in one population allowed a protein to be expressed in an environment where it would normally be inhibited \citep{blount_genomic_2012}.
-By expressing this protein in a different context, the cell gained access to a resource that it previously could not metabolize, resulting in a 7-fold increase in population size.
-In addition to such anecdotal case studies, large scale genomic studies have discovered cases where a strikingly high fraction of the genes in an organism show evidence of having arisen from gene duplications \citep{teichmann_structural_1998,Teichmann:2004cz}, emphasizing the role of duplication in evolutionary innovation.
+By expressing this protein in a different context, the cell gained access to a resource it previously could not metabolize, resulting in a 7-fold increase in population size.
+In addition to such anecdotal case studies, large-scale genomic studies have discovered cases where a strikingly high fraction of the genes in an organism show evidence of having arisen from gene duplications \citep{teichmann_structural_1998,Teichmann:2004cz}, emphasizing the role of duplication in evolutionary innovation.
 Comparative studies further suggest that many ancient duplication events were associated with increases in both genetic robustness and evolutionary innovation (reviewed in \citep{wagner_gene_2008}).
-Although comparative studies lack definitive proof of laboratory manipulation, the accumulated weight of evidence clearly suggests that gene and genome duplication events can have long-term evolutionary consequences.
+Although comparative studies lack definitive proof of laboratory manipulation, the accumulated weight of evidence suggests that gene and genome duplication events can have long-term evolutionary consequences.
 
 The prominence of gene duplications in biological evolution has inspired their use in artificial evolutionary systems.
 In genetic programming, the optimal program architecture for solving a particular problem is challenging to predict \textit{a priori}.
@@ -34,12 +34,12 @@ That is, what mechanistic aspects of gene duplications promote evolvability?
 One such mechanistic question is what level of fidelity, if any, in duplicated genetic material is necessary?
 Exact duplications can result in functionally redundant genes that can increase the mutational robustness of a genotype \citep{Crow:2006role} or allow the organism to produce additional gene product \citep{Zhang:2003fw}.
 If a highly constrained genetic sequence is duplicated, one of the versions can mutate more freely, which may lead to new functionality (i.e., neofunctionalization) \citep{Zhang:2003fw,Wagner:2003fk}.
-Alternatively, subfunctionalization may occur where the two `daughter' genes diverge from the ancestral gene state, specializing on different aspects of the ancestral gene's functionality \citep{Zhang:2003fw}.
+Alternatively, subfunctionalization may occur where the two `daughter' genes diverge from the ancestral gene state, specializing in different aspects of the ancestral gene's functionality \citep{Zhang:2003fw}.
 
-Aside from creating redundant copies of existing genetic code in a genome, gene duplication has other features that may result in increased evolvability.
+Aside from creating redundant copies of existing genetic code in a genome, gene duplication has other features that may increase evolvability.
 Are gene duplications valuable because they inflate the effective mutation rate of genomes, increasing genetic variation?
 Or is the important factor that those new mutations are clustered together?
-Or is it that the mutations are insertions that allow selection to act on longer genomes with increased information storage capacity?
+Or are the mutations insertions that allow selection to act on longer genomes with increased information storage capacity?
 These aspects are nearly impossible to disentangle in field or laboratory studies but can be addressed using computational systems.
 
 Using the Avida Digital Evolution Platform, we implemented a series of mutation operators to systematically isolate aspects of gene duplication and tease apart which factors promote evolvability. We tested these operators in two %qualitatively different

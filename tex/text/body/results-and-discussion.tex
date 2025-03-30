@@ -27,11 +27,11 @@ In contrast to the slip-scramble and full slip-duplicate operators, other tested
 Given the efficacy of the slip-scramble treatment in facilitating adaptation, we additionally tested differences in task counts between the slip-scramble and slip-duplicate treatments.
 To prevent issues with multiple comparisons, we dispatched 100 new trials under both treatments for this test.
 
-Indeed, this additional experiment confirmed that the slip-duplicate treatment did in fact yield higher task counts compared to the slip-scramble treatment (two-tailed Mann-Whitney U tests, W = 4305, 4028.5, 3621.5 respectively, Bonferroni-adjusted $p = 0.011$; first-phase experiments).
+Indeed, this additional experiment confirmed that the slip-duplicate treatment did, in fact, yield higher task counts compared to the slip-scramble treatment (two-tailed Mann-Whitney U tests, W = 4305, 4028.5, 3621.5 respectively, Bonferroni-adjusted $p = 0.011$; first-phase experiments).
 Thus, in our study system, it appears that the content and structure of duplicated genetic code contribute to promoting evolvability.
-This finding further underscores that, in specific, the injection of existing sequence information is key to the role of gene duplication in evolution.
+This finding further underscores that, specifically, the injection of existing sequence information is key to the role of gene duplication in evolution.
 
-As above, earlier-reported experiments found benefit to adaptive evolution from maintaining sequence order within duplicated regions generalized to changing environments where task rewards shifted with evolutionary time \citep{lalejini2017gene}.
+As above, earlier-reported experiments found the benefit to adaptive evolution from maintaining sequence order within duplicated regions generalized to changing environments where task rewards shifted with evolutionary time \citep{lalejini2017gene}.
 
 \subsection{How Does Slip Duplication Facilitate Adaptive Evolution?}
 
@@ -104,8 +104,7 @@ One possible confounding factor in this result is evolutionary constraint at gen
 These sites are critical to viability, with lethal outcomes when knocked out.
 We found that these critical sites were less likely to be involved in slip duplication and also less likely to be involved in coding for \textit{de novo} traits.
 Hence, these sites could introduce a spurious correlation between slip duplication and coding for novel tasks.
-After excluding such fitness-critical sites from analysis,
-however, we still found similar potentiation signatures from slip duplication (Supplemental Figure \ref{fig:potentiation-supp}).
+After excluding such fitness-critical sites from analysis, however, we still found similar potentiation signatures from slip duplication (Supplemental Figure \ref{fig:potentiation-supp}).
 
 One alternative to the potentiation hypothesis is that gene duplication directly facilitates adaptation by producing mutational changes biased to discover beneficial outcomes \citep{kondrashov2012gene}.
 Where regularities exist in the genotype-phenotype-fitness map, duplicated variants of existing genetic information may be more likely to encode meaningful traits.
@@ -122,12 +121,12 @@ Thus, the adaptive characteristics of slip duplication seem likely to result fro
 
 In a final set of analyses, we broadened the scope of inquiry beyond trait acquisition to assess the consequences of gene duplication with respect to whole-genome architecture.
 Our focus within this purview was on genome robustness, which we defined in terms of sensitivity of fitness to individual mutations \citep{lenski1999genome}.
-That is, we measured robustness in terms of ``brittleness:'' the number of genome sites ``critical'' to fitness, where a single-site knockout induces loss of replicator viability or one or more adaptive phenotypic traits (i.e., tasks).
-We used Avida's genome evaluator tool to identify, and quantify, such ``fitness-critical'' sites.\footnote{%
-Although sufficiently representative for our purposes, limitations do exist in detecting Avida genome functionality through single-site knockouts; such an approach can underestimate aspects of genome sequence complexity involving small effects or redundancy \citep{lenski1999genome,moreno2024cryptic}.
+That is, we measured robustness in terms of ``brittleness'' the number of genome sites ``critical'' to fitness, where a single-site knockout induces loss of replicator viability or one or more adaptive phenotypic traits (i.e., tasks).
+We used Avida's genome evaluator tool to identify and quantify such ``fitness-critical'' sites.\footnote{%
+Although sufficiently representative for our purposes, limitations exist in detecting Avida genome functionality through single-site knockouts; such an approach can underestimate aspects of genome sequence complexity involving small effects or redundancy \citep{lenski1999genome,moreno2024cryptic}.
 }
 
-One conventional perspective on gene duplication is \textit{vis-a-vis} facilitation of neutral dynamics, wherein copied genetic material reduces brittleness through the introduction of redundancies \citep{wagner1996genetic}.
+One conventional perspective on gene duplication is \textit{vis-a-vis} facilitation of neutral dynamics, wherein copied genetic material reduces brittleness by introducing redundancies \citep{wagner1996genetic}.
 To assess the relevance of this perspective in our study system, we performed slip-duplicate mutational assays to quantify the baseline distribution of slip insertion mutations on genome brittleness, in the absence of selection.
 Specifically, we generated possible slip duplications applied to final-dominant genome lineages evolved under the slip-duplicate treatment, and filtered our sample to exclude slip duplications that affected self-replication viability or altered the task-performance phenotype.
 These analyses confirmed that fitness-neutral slip insertions did indeed tend to reduce the number of genome sites detectable as a single point of failure for performed tasks.
@@ -140,7 +139,7 @@ Supplementary Figure \ref{fig:nulldist} presents these results.
 To assess the consequences of this bias towards redundancy, we next pivoted to assess coding site accumulation within genomes over the course of evolution.
 Counter to naive expectation, we found that the slip duplication treatment accrued fitness-critical sites at a generation-on-generation rate comparable to the long-genome baseline treatment, rather than decreasing net brittleness (Figure \ref{fig:num-coding-sites:coding}; Mann-Whittney test, $U=361$, $p=0.19$; second-phase experiments).
 Despite this similarity, however, when measurements were taken inclusive of vestigial coding sites (those which had \textit{previously} been fitness-critical earlier within a lineage), we found a significantly increased coding site count associated with the slip-duplicate treatment (Mann-Whittney test, $U=630$, $p<0.01$; second-phase experiments).
-Figure \ref{fig:num-coding-sites:coded} compares trajectories of vestigial-inclusive coding site counts along final-dominant lineages.
-In sum, within our study system, gene duplication processes increased net supply of coding material in the genome available to neutral processes, but the accumulation of critical sites representing single points of failure remained substantially unaffected.
+Figure \ref{fig:num-coding-sites:coded} compares vestigial-inclusive coding site counts trajectories along final-dominant lineages.
+In sum, within our study system, gene duplication processes increased the net supply of coding material in the genome available to neutral processes, but the accumulation of critical sites representing single points of failure remained substantially unaffected.
 
 % One possible explanation is that selective pressures are driving the two treatments to reach a similar number of critical sites, but slip duplication can duplicate and copy genome content in a manner that increases the copy count of previously coding sites relative to the number of critical sites.

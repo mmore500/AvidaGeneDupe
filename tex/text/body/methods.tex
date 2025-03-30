@@ -8,14 +8,14 @@ This agent-based modeling approach allows research to empirically test hypothese
 \input{fig/vhardware.tex}
 
 Digital organisms in Avida compete to acquire resources and replicate within a finite carrying capacity.
-Each organism comprises a linear sequence of program instructions (\textit{i.e.} its genotype), evaluated on an independent virtual processor.
+Each organism comprises a linear sequence of program instructions (\textit{i.e.,} its genotype), evaluated on an independent virtual processor.
 The instruction set in Avida is Turing complete and syntactically robust, meaning that any ordering of instructions is syntactically valid.
 The instruction set includes operations for basic computations, execution flow control, input and output, and self-replication.
 Figure \ref{fig:vhardware} overviews Avida virtual hardware used to evaluate program instructions.
 
 Organisms in Avida replicate asexually by copying their genome instruction-by-instruction.
-Organisms' replication speed is influenced by their metabolic rate, which determines the speed at which it executes program instructions.
-At baseline, an organism's metabolic rate is set proportional to its program length, so as to prevent intrinsic disadvantages from increased copy loop duration for long genomes.
+Organisms' replication speed is influenced by their metabolic rate, which determines the speed at which they execute program instructions.
+At baseline, an organism's metabolic rate is set proportional to its program length to prevent intrinsic disadvantages from increased copy loop duration for long genomes.
 In our experiments, we additionally metabolic rate for organisms exhibiting particular phenotypic traits, defined as output ``tasks'' requiring logical operations on input values.
 In this way, we can define a set of discoverable adaptive phenotypic traits.
 
@@ -39,7 +39,7 @@ In our experiments, each was allowed to occur with 5\% probability per offspring
 For the purposes of this study, we augmented Avida with a new type of divide mutation: \textit{slip mutation}.
 This type of mutation acts analogously to gene duplications and deletions.
 When a slip mutation occurs, two sites in the offspring genome are randomly selected, defining the target segment for the operation.
-It the first site is upstream of the second, the slip mutation results in an insertion --- as if the organism's replication machinery had slipped backward during replication and copied a segment twice.
+If the first site is upstream of the second, the slip mutation results in an insertion --- as if the organism's replication machinery had slipped backward during replication and copied a segment twice.
 If the second site is upstream of the first, the slip mutation results in a deletion --- as if the organism's replication machinery skipped over a genetic segment.
 As implemented, slip-insertions and slip-deletions occur with equal probability; thus, absent selection, this mutational process does not introduce an inherent bias on genome length.
 
@@ -52,9 +52,9 @@ Across trials, we assessed full-fledged slip-duplicate mutation in comparison wi
 \end{enumerate}
 Figure \ref{fig:slip_mut_variants} provides a cartoon summary of surveyed slip-mutation variants.
 
-When the slip frame is opening-first, all slip mutation variants insert a number of instructions equal to the length of the target segment.
-However, the composition and location of inserted instructions varies according to slip mutation operator schema.
-Deletions acted identically across slip mutation variants, with the exception of slip-scatter which randomized deletions uniformly across the genome.
+When the slip frame is opening first, all slip mutation variants insert a number of instructions equal to the length of the target segment.
+However, the composition and location of inserted instructions vary according to the slip mutation operator schema.
+Deletions acted identically across slip mutation variants, except slip-scatter, which randomized deletions uniformly across the genome.
 Where enabled, slip mutations occurred with 5\% probability per divide event.
 
 \subsection{Experimental Design}
@@ -69,23 +69,23 @@ This well-defined gradient in task requirements provides a suitable apparatus fo
 In this work, we categorize the complexity of the Logic-9 tasks by the minimal number of NAND building blocks\footnote{
 In computer architecture theory, NAND is commonly established as the fundamental building block operation since all other logical operations can be derived from compositions of NAND gates \citep{mano1997logic}.
 } required to perform them, as given in Table \ref{tab:tasks}.
-As such, we categorized tasks according to their NAND ``component counts'' as a proxy for phenotypic complexity
+As such, we categorized tasks according to their NAND ``component counts'' as a proxy for phenotypic complexity.
 
 Identical reward was provided for each task and kept consistent throughout trials.
 We measured adaptation to the Logic-9 task set as a ``phenotypic adaptation score,'' ranging from a minimum of 0 (\textit{i.e.} the organism performs no tasks) to a maximum of 9 (\textit{i.e.} the organism performs all 9 tasks).
 
 Evolution experiments were conducted in two phases.
 The first phase tested aggregate differences in evolutionary outcomes between surveyed slip duplication operator variants across runs, while the second focused more heavily on teasing apart evolutionary history and genetic structure within runs.
-For this reason, first phase experiments prioritized higher replicate count, while second phase experiments prioritized more detailed lineage tracking of individual genome sites.
-Replicate count was 100 independent trials for first phase experiments, and 30 replicates for second phase experiments.
+For this reason, first-phase experiments prioritized higher replicate counts, while second-phase experiments prioritized more detailed lineage tracking of individual genome sites.
+Replicate count was 100 independent trials for first-phase experiments, and 30 replicates for second-phase experiments.
 Run length was 200,000 updates across all experiments.
 \footnote{An update in Avida is equal to the amount of time it takes for the average organism to execute 30 instructions; see \citep{Ofria:2009avida} for further detail.}
 % Based on the timing of evolutionary convergence to stable states in the first phase experiments, a run length of 50,000 updates was used for second phase experiments.
 This duration was sufficient to observe at least 600 generations elapsed in all trials.
 
-Population size was configured to Avida default of 3,600 organsism across all trials.
+Population size was configured to Avida default of 3,600 organisms across all trials.
 Except where otherwise noted, experiments were seeded with a 100-instruction ancestral self-replicator.
-In all cases, mutations reducing genome size below 100 instructions were disallowed, to ensure availability of sufficient raw genetic material to encode Logic-9 operations.
+In all cases, mutations reducing genome size below 100 instructions were disallowed to ensure sufficient raw genetic material to encode Logic-9 operations.
 
 % \input{tab/treatments.tex}
 
@@ -96,9 +96,9 @@ These treatments differed only in the available mutation operators and the rates
 % The \textbf{baseline treatment} was used as a control; we used the results from this treatment as a baseline for evolvability, with which we compared the results from all other experimental treatments. Mutation rates in the baseline treatment have been shown to facilitate both the evolution of complex boolean logic tasks, such as EQUALS, and the evolution of task regulation in Avida \citep{lenski2003evolutionary, Lalejini:2016plasticity}
 
 % Long genome treatment
-For second-phase experiments, we included an additional \textbf{long-genome baseline treatment} for the purpose of directly testing the adaptive role of large genome size associated with slip-duplicators.
-Genomes in this treatment operated identically to the baseline treatment above, except that they were initialized with a 1,000 site ancestor.
-We chose this size as it was near the upper bound of genome sizes observed in first-phase slip-duplication treatment experiments.
+For second-phase experiments, we included an additional \textbf{long-genome baseline treatment} to directly test the adaptive role of large genome size associated with slip-duplicators.
+Genomes in this treatment operated identically to those in the baseline treatment above, except that they were initialized with a 1,000-site ancestor.
+We chose this size near the upper bound of genome sizes observed in first-phase slip-duplication treatment experiments.
 
 % % Slip-duplicate treatment
 % The \textbf{slip-duplicate treatment} allowed for mutation events that resulted in full code duplications via the slip-duplicate mutation operator. Duplications in this treatment preserved both the content and the structure of duplicated code. This allowed us to answer the following question: how important is it that gene duplications can exactly duplicate sequences in a genome in both content \textit{and} structure?
@@ -127,7 +127,7 @@ To determine if any treatments were significant within a set, we performed a Kru
 For an environment in which the Kruskal-Wallis test was significant, we performed Mann-Whitney U tests for each experimental treatment against the control and applied a Bonferroni correction for the six such tests within each environment.
 
 To assess evolutionary history within a trial, we extracted the trial's concluding final dominant genotype and recorded its lineage ancestry.
-In a postprocessing step, we applied Avida's ``analyze mode'' to identify the set of tasks performed by each ancestor.
+In a postprocessing step, we applied Avida's ``analyze mode'' to identify each ancestor's tasks.
 For investigations involving the evolutionary history of individual genome sites, we used mutational metadata saved with lineage files to identify correspondences between parent and offspring.
 
 \subsection{Software and Data Availability} \label{sec:materials}
