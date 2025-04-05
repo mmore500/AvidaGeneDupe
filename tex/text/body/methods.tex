@@ -13,10 +13,10 @@ The instruction set in Avida is Turing complete and syntactically robust, meanin
 The instruction set includes operations for basic computations, execution flow control, input and output, and self-replication.
 Figure \ref{fig:vhardware} overviews Avida virtual hardware used to evaluate program instructions.
 
-Organisms in Avida replicate asexually by copying their genome instruction-by-instruction.
-Organisms' replication speed is influenced by their metabolic rate, which determines the speed at which they execute program instructions.
-At baseline, an organism's metabolic rate is set proportional to its program length to prevent intrinsic disadvantages from increased copy loop duration for long genomes.
-In our experiments, we additionally metabolic rate for organisms exhibiting particular phenotypic traits, defined as output ``tasks'' requiring logical operations on input values.
+Organisms in Avida replicate asexually by duplicating their genome one locus at a time.
+Organisms' replication speed is influenced by their metabolic rate, which determines the speed at which they execute genome instructions.
+At baseline, an organism's metabolic rate is set proportional to its genome length to prevent intrinsic disadvantages from increased copy loop duration for long genomes.
+In our experiments, we increased metabolic rate for organisms exhibiting particular phenotypic traits, defined as output ``tasks'' requiring logical operations on input values.
 In this way, we can define a set of discoverable adaptive phenotypic traits.
 
 When an organism replicates, its offspring is placed at random elsewhere in the population, replacing any previous occupant of that location.
@@ -25,23 +25,25 @@ In combination with heritable variation introduced by program copy defects (disc
 
 \input{fig/slip_mut_variants.tex}
 
-Our simulations included four types of \textbf{mutation events in Avida}: substitution, insertion, deletion, or slip.
+Our simulations included four types of \textbf{mutational events in Avida}: substitution, insertion, deletion, or slip (duplication) mutations.
 
 % https://github.com/chaynes2019/AvidaGeneDupe/blob/375f1a3018669f50d00e4ce67b977931cf42f6d9/experiments/2022-3-29-PaperDuplication/hpcc/config/avida.cfg
-\textit{Copy mutations} introduce an erroneous \textit{substitution} where a random instruction is written to the offspring genome instead of the intended instruction.
-In our experiments, such substitutions occurred with a per-site probability of 0.0025.
+\textit{Copy mutations} introduce an erroneous \textit{substitution} where a random instruction is written into the offspring genome instead of the intended instruction.
+In our experiments, such substitutions occurred with a per-copy probability of 0.0025.
 
 \textit{Divide mutations} act on an organism's offspring during division.
-When a divide \textit{insertion} mutation occurs, an arbitrary instruction is inserted at random, increasing the size of the offspring's genome by one.
+When a divide \textit{insertion} mutation occurs, an arbitrary instruction is inserted at random, increasing the length of the offspring's genome by one.
 When a divide \textit{deletion} mutation occurs, a random instruction in the offspring's genome is removed.
-In our experiments, each was allowed to occur with 5\% probability per offspring.
+In our experiments, each was allowed to occur with a probability of 0.05 per offspring.
 
 For the purposes of this study, we augmented Avida with a new type of divide mutation: \textit{slip mutation}.
 This type of mutation acts analogously to gene duplications and deletions.
 When a slip mutation occurs, two sites in the offspring genome are randomly selected, defining the target segment for the operation.
 If the first site is upstream of the second, the slip mutation results in an insertion --- as if the organism's replication machinery had slipped backward during replication and copied a segment twice.
 If the second site is upstream of the first, the slip mutation results in a deletion --- as if the organism's replication machinery skipped over a genetic segment.
-As implemented, slip-insertions and slip-deletions occur with equal probability; thus, absent selection, this mutational process does not introduce an inherent bias on genome length.
+As implemented, slip-insertions and slip-deletions occur with equal probability; thus, absent selection, this mutational process increases genome length variation but does not introduce an inherent bias on mean genome length.
+% [x] @CAO: I limited this to a "directional" bias and made clear that it IS a dynamic to increase length variation.  Are we sure there won't be a directional bias on genome length?  It might be worth doing a simulated run (if it's quick) without any selection to control for any bias that might occur.  Think about it this way: as you get bigger, the average slip is bigger, but as you get smaller the average slip is smaller, so bigger genomes will change faster.  That said, if you are length 100 and have a slip of size 50, in on direction it changes your size to 0.5 what it was, but in the other it changes it by 1.5.  Frankly, I'm just not sure what would happen.
+% @MAM good idea, did a quick random walk simulation and it looks like the mean value is stable https://gist.github.com/mmore500/92d2aee823b009319c47abab51e565cc
 
 Across trials, we assessed full-fledged slip-duplicate mutation in comparison with four variant mutation operators with components disabled or replaced:
 \begin{enumerate}
@@ -50,9 +52,10 @@ Across trials, we assessed full-fledged slip-duplicate mutation in comparison wi
 \item slip-NOP, where duplicated code was replaced with neutral (``no-operation'') instructions to test the effect of neutral increase in genome size, and
 \item slip-scatter, where duplicated code was dispersed across the genome to test the effect of insertion locality.
 \end{enumerate}
-Figure \ref{fig:slip_mut_variants} provides a cartoon summary of surveyed slip-mutation variants.
+Figure \ref{fig:slip_mut_variants} provides an illustration of surveyed slip-mutation variants.
+% [x] @CAO: I don't think it's worth starting whole new runs now, but the one other treatment I know we've at least talked about in the past is something like "slip-background" which is like slip-random, but where we look at the background distribution of instructions in the population to bias the random probabilities.  This can help distinguish why slip-scramble does better than slip random -- is it the instructions in the genome itself, or is it just that these are more likely to be instructions that are generally useful which is why they were selected by evolution in the first place.
 
-When the slip frame is opening first, all slip mutation variants insert a number of instructions equal to the length of the target segment.
+When insertion occurs, all slip mutation operators add a number of instructions equal to the length of the target segment.
 However, the composition and location of inserted instructions vary according to the slip mutation operator schema.
 Deletions acted identically across slip mutation variants, except slip-scatter, which randomized deletions uniformly across the genome.
 Where enabled, slip mutations occurred with 5\% probability per divide event.
@@ -63,16 +66,17 @@ Where enabled, slip mutations occurred with 5\% probability per divide event.
 
 For our experiments, we configured available metabolic resources to the ``Logic-9'' task set, consisting of tasks NOT, NAND, OR-NOT, AND, OR, AND-NOT, NOR, XOR, and EQUALS.
 Notably, the structure of this task set provides a well-defined difficulty gradient among tasks.
-This characteristic arises from an explicit hierarchical composition among task definitions.
-``Easier'' tasks like AND and NAND form building blocks for ``more difficult'' tasks like XOR and EQU.
+This characteristic arises from an explicit hierarchical composition among task definitions due to the fact that organisms only have direct access to the "Nand" instructions and must build all of the other tasks from different combinations of nands.
+``Easier'' tasks like NOT and NAND form building blocks for ``more difficult'' tasks like XOR and EQU.
 This well-defined gradient in task requirements provides a suitable apparatus for experiments involving the evolution of complexity \citep{lenski2003evolutionary}.
 In this work, we categorize the complexity of the Logic-9 tasks by the minimal number of NAND building blocks\footnote{
 In computer architecture theory, NAND is commonly established as the fundamental building block operation since all other logical operations can be derived from compositions of NAND gates \citep{mano1997logic}.
 } required to perform them, as given in Table \ref{tab:tasks}.
 As such, we categorized tasks according to their NAND ``component counts'' as a proxy for phenotypic complexity.
 
-Identical reward was provided for each task and kept consistent throughout trials.
-We measured adaptation to the Logic-9 task set as a ``phenotypic adaptation score,'' ranging from a minimum of 0 (\textit{i.e.} the organism performs no tasks) to a maximum of 9 (\textit{i.e.} the organism performs all 9 tasks).
+Identical reward was provided for performing each task and kept consistent throughout trials.
+Rewards were accrued independently for each task, allowing rewards to be compounded by performing multiple tasks.
+We measured adaptation to the Logic-9 task set as a ``phenotypic adaptation score,'' ranging from a minimum of 0 (\textit{i.e.} the organism performs no tasks and received no reward) to a maximum of 9 (\textit{i.e.} the organism performs all 9 tasks and received the maximum reward).
 
 Evolution experiments were conducted in two phases.
 The first phase tested aggregate differences in evolutionary outcomes between surveyed slip duplication operator variants across runs, while the second focused more heavily on teasing apart evolutionary history and genetic structure within runs.
@@ -81,7 +85,7 @@ Replicate count was 100 independent trials for first-phase experiments, and 30 r
 Run length was 200,000 updates across all experiments.
 \footnote{An update in Avida is equal to the amount of time it takes for the average organism to execute 30 instructions; see \citep{Ofria:2009avida} for further detail.}
 % Based on the timing of evolutionary convergence to stable states in the first phase experiments, a run length of 50,000 updates was used for second phase experiments.
-This duration was sufficient to observe at least 600 generations elapsed in all trials.
+This duration was sufficient to observe at least 600 generations of evolution in all trials.
 
 Population size was configured to Avida default of 3,600 organisms across all trials.
 Except where otherwise noted, experiments were seeded with a 100-instruction ancestral self-replicator.
