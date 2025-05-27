@@ -7,14 +7,13 @@
 excluding sites critical to survival.
 }
 \end{subfigure}%
-\begin{subfigure}{0.5\textwidth}
-\includegraphics[width=\textwidth]{binder/binder/teeplots/hue=is-task-coding-site+kind=swarm+viz=catplot+x=components+y=prev-slip-insertion-cumulative-count+ext=.pdf}
-\caption{%
-\footnotesize
-Ratios of slip-duplicated to non-slip-duplicated sites for observed gain-of-function events.
-}
-\end{subfigure}
-
+% \begin{subfigure}{0.5\textwidth}
+% \includegraphics[width=\textwidth]{binder/binder/teeplots/hue=is-task-coding-site+kind=swarm+viz=catplot+x=components+y=prev-slip-insertion-cumulative-count+ext=.pdf}
+% \caption{%
+% \footnotesize
+% Ratios of slip-duplicated to non-slip-duplicated sites for observed gain-of-function events.
+% }
+% \end{subfigure}
 \begin{subfigure}{0.5\textwidth}
 \includegraphics[height=\textwidth,angle=90]{binder/binder/teeplots/density-norm=width+hue=components+slipgain=only+viz=violinplot+x=components+y=is-task-coding-site+ext=.pdf}
 \caption{%
@@ -23,11 +22,29 @@ for gain-of-function events immediately coincident with slip duplication events.
 }
 \end{subfigure}
 
+\begin{subfigure}{0.5\textwidth}
+\includegraphics[height=\textwidth,angle=90]{binder/binder/teeplots/density-norm=width+hue=components+viz=violinplot+what=base-negated+x=components+y=is-task-coding-site+ext=.pdf}
+\caption{%
+\footnotesize
+coding site enrichment in \textit{non-slip-duplicated} regions
+}
+\end{subfigure}%
+\begin{subfigure}{0.5\textwidth}
+\includegraphics[width=\textwidth]{binder/binder/teeplots/density-norm=width+hue=components+viz=violinplot+what=frac-slip-duplicated+x=components+y=prev-slip-insertion-cumulative-count+ext=.pdf}
+\caption{%
+\footnotesize
+fraction of genome that has been slip-duplicated
+}
+\label{fig:potentiation-supp:frac-slip-dup}
+\end{subfigure}
+
+
 \caption{%
 \textbf{Supplemental figures for slip-duplication potentiation analysis.}
 Distributions compare median enrichment of coding sites for novel tasks in slip-duplicated regions, normalized to neutral expectation.
   Values greater than 1 indicate that coding sites of novel traits occur more often in slip-duplicated regions compared to their background frequency.
   Significance of deviation from null expectation median value of 1.0 is indicated with * ($p < 0.05$), ** ($p < 0.01$), or *** ($p < 0.001$) (one-tailed Wilcoxon signed-rank test).
+  Note that panel \ref{fig:potentiation-supp:frac-slip-dup} differs from other panels in showing fraction of genome sites that have been slip duplicated rather than coding site enrichment.
   Data shown from second-phase experiments.
 }
 \label{fig:potentiation-supp}
