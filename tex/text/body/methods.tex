@@ -2,16 +2,18 @@
 
 \subsection{Avida Digital Evolution Platform}
 
+\input{fig/slip_mut_variants.tex}
+
 We conducted experiments using Avida, which instantiates an evolutionary process among self-replicating computer programs acting as ``digital organisms.''
 This agent-based modeling approach allows research to empirically test hypotheses about evolution that would be difficult or impossible to test in natural systems \citep{Ofria:2009avida}.
 
-\input{fig/vhardware.tex}
+% \input{fig/vhardware.tex}
 
 Digital organisms in Avida compete to acquire resources and replicate within a finite carrying capacity.
 Each organism comprises a linear sequence of program instructions (\textit{i.e.,} its genotype), evaluated on an independent virtual processor.
 The instruction set in Avida is Turing complete and syntactically robust, meaning that any ordering of instructions is syntactically valid.
 The instruction set includes operations for basic computations, execution flow control, input and output, and self-replication.
-Figure \ref{fig:vhardware} overviews Avida virtual hardware used to evaluate program instructions.
+% Figure \ref{fig:vhardware} overviews Avida virtual hardware used to evaluate program instructions.
 
 Organisms in Avida replicate asexually by duplicating their genome one locus at a time.
 Organisms' replication speed is influenced by their metabolic rate, which determines the speed at which they execute genome instructions.
@@ -22,8 +24,6 @@ In this way, we can define a set of discoverable adaptive phenotypic traits.
 When an organism replicates, its offspring is placed at random elsewhere in the population, replacing any previous occupant of that location.
 Thus, improving the efficiency of self-replication or performing rewarded computational tasks are both advantageous in the competition for space in Avida.
 In combination with heritable variation introduced by program copy defects (discussed next), competition for population slots results in evolution by natural selection in Avida \citep{pennock2007models}.
-
-\input{fig/slip_mut_variants.tex}
 
 Our simulations included four types of \textbf{mutational events in Avida}: substitution, insertion, deletion, or slip (duplication) mutations.
 
@@ -62,7 +62,7 @@ Where enabled, slip mutations occurred with 5\% probability per divide event.
 
 \subsection{Experimental Design}
 
-\input{tab/tasks.tex}
+% \input{tab/tasks.tex}
 
 For our experiments, we configured available metabolic resources to the ``Logic-9'' task set, consisting of tasks NOT, NAND, OR-NOT, AND, OR, AND-NOT, NOR, XOR, and EQUALS.
 Notably, the structure of this task set provides a well-defined difficulty gradient among tasks.

@@ -1,14 +1,22 @@
 \begin{figure}[!ht]
   \centering
   % https://docs.google.com/presentation/d/109vfeK_lHSsE0q7Iz7tzl9sDxnP8jyOF2gJ-v85pgL8/edit?usp=sharing
-  \includegraphics[width=0.8\linewidth]{imgs/GeneDupeOps.pdf}
-    \caption{
-    \textbf{Surveyed slip mutation operators.}
-    A) \textit{Slip-duplicate}: an exact duplication is inserted adjacent to the target segment.
-    B) \textit{Slip-scramble}: shuffled duplication is inserted directly after the target segment.
-    C) \textit{Slip-random}: random instructions are inserted directly after the target segment.
-    D) \textit{Slip-NOP}: neutral nop-X instructions are inserted directly after the target segment.
-    E) \textit{Slip-scatter}: randomly-drawn instructions are inserted at random throughout the genome.
-    }
+  \includegraphics[width=\linewidth]{imgs/GeneDupeOps.pdf}
+    \caption{%
+ \textbf{Genome replication and phenotypic traits in Avida.}
+ \footnotesize
+ Self-replicating computer programs serve as digital model organisms.
+ Organisms, comprising virtual stacks and registers used to store binary values and pointers within a circular genome of program instructions, compete to survive and reproduce within a limited-capacity population.
+ Replication activity can be quickened by carrying out availble ``Logic-9'' input/output tasks.
+ These tasks vary in complexity with respect to the number of NAND gates required to perform them.
+ Organisms' logic-9 ``phenotype'' arises from the composition of its genetic code.
+ Genetic code copied from parent to offspring may be subject to point mutations, which change the individual instruction values, and slip mutations, which introduce or remove many instructions all at once.
+ Reported experiments compare five alternate variants of slip mutation:
+ A) \textit{Slip-duplicate}, an exact duplication is inserted adjacent to the target segment;
+ B) \textit{Slip-scramble}, shuffled duplication is inserted directly after the target segment;
+ C) \textit{Slip-random}, random instructions are inserted directly after the target segment;
+ D) \textit{Slip-NOP}, neutral nop-X instructions are inserted directly after the target segment; and
+ E) \textit{Slip-scatter}, randomly-drawn instructions are inserted at random throughout the genome.
+ }
     \label{fig:slip_mut_variants}
 \end{figure}
