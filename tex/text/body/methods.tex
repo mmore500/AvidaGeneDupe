@@ -1,6 +1,6 @@
 \section{Materials and Methods} \label{sec:methods}
 
-\subsection{Evolution Trials}
+\subsection{Evolution trials}
 
 We conducted experiments using a customized version of Avida v2.14.0 \citep{Ofria:2009avida}.
 Supporting software and executable notebooks for this work are freely available under the GNU GPL license, via GitHub at \url{https://github.com/chaynes2019/AvidaGeneDupe/} and archived via Zenodo \citep{haynes_2025,https://doi.org/10.25495/7gxk-rd71}.
@@ -19,7 +19,7 @@ In all cases, mutations reducing genome size below 100 instructions were disallo
 Run length was 200,000 ``updates'' across all experiments, a unit of simulation time roughly equivalent the amount of time required for an organisms to execute 30 instructions.
 This duration was sufficient to observe at least 600 generations of evolution in all trials.
 
-\subsection{Mutation Operators}
+\subsection{Mutation operators}
 
 % Avida organisms comprise a linear sequence of program instructions (\textit{i.e.,} its genotype), evaluated on an independent virtual processor.
 Genomes in our experiments comprised linear sequences of instructions, providing 27 operations for basic computations, execution flow control, input and output, and self-replication.
@@ -56,7 +56,7 @@ However, the composition and location of inserted instructions vary according to
 Deletions acted identically across slip mutation variants, except slip-scatter, which randomized deletions uniformly across the genome.
 Where enabled, slip mutations occurred with 5\% probability per divide event.
 
-\subsection{Experimental Design}
+\subsection{Experimental design}
 
 Experiments were conducted in two phases.
 The first phase tested aggregate differences in evolutionary outcomes between surveyed slip duplication operator variants across runs, while the second focused more heavily on teasing apart evolutionary history and genetic structure within runs.
@@ -96,7 +96,7 @@ The 1,000-site length was chosen to approximate the upper bound of genome sizes 
 % We limited the population size to 3600 and seeded each experiment with an ancestral genotype capable of self-replication, but no Logic-9 tasks.
 % We ran between 30 and 100 trials of each treatment.
 
-\subsection{Lineage Analyses}
+\subsection{Lineage analyses}
 
 % For first-phase experiments, we applied a Kruskal-Wallis test to screen for between-group variation in phenotypic adaptation score among surveyed treatments.
 % On account of an earlier experimental design incorporating two additional surveyed conditions incorporating environmental fluctuations, Bonferroni correction was applied to keep experiment-wise $\alpha$ = 0.05.
