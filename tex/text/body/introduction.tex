@@ -34,7 +34,10 @@ All experiments comprised well-mixed populations with a carrying capacity of 3,6
 To supply adaptive potential, we adopted the Logic-9 configuration used by Lenski \citet{lenski2003evolutionary} to define a set of nine advantageous phenotypic traits.
 Each trait corresponds to a possible logical transform on available binary inputs.
 Under this scheme, organisms producing correct output values for a task benefit by accelerating their self-copy loop, analogously to a metabolic process.
-Formally, ``substeps'' necessary to carry out each task may be quantified in terms of the minimum number of NAND operations necessary to carry it out \citep{lenski2003evolutionary}.
+Formally, ``substeps'' necessary to carry out each task may be quantified in terms of the minimum number of NAND operations necessary to carry it out \citep{lenski2003evolutionary}.%
+\footnote{
+Computer architecture theory considers NAND as a fundamental basis operation, since all other logic can be derived from compositions of NAND gates \citep{mano1997logic}.
+}
 As seen in Figure \ref{fig:slip_mut_variants}, the most complex function (EQU) requires five NAND operations while the simplest (NAND and NOT) require only one.
 % In other work, EQU has been shown to require at least around 20 constituent genome sites, with many possible longer ways to accomplish EQU \citep{lenski2003evolutionary}.
 

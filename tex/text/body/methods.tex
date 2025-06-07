@@ -1,43 +1,39 @@
 \section{Materials and Methods} \label{sec:methods}
 
-\subsection{Avida Digital Evolution Platform}
+\subsection{Evolution Trials}
 
-\input{fig/slip_mut_variants.tex}
+We conducted experiments using a customized version of Avida v2.14.0 \citep{Ofria:2009avida}.
+Supporting software and executable notebooks for this work are freely available under the GNU GPL license, via GitHub at \url{https://github.com/chaynes2019/AvidaGeneDupe/} and archived via Zenodo \citep{haynes_2025,https://doi.org/10.25495/7gxk-rd71}.
+Simulation data is archived via the Open Science Framework at \url{https://osf.io/j5s4h/} \citep{Moreno_Haynes_2025,foster2017open}, provided with a CC-By Attribution 4.0 International license.
+Code used in this project incorporated numerous pieces of open-source scientific software \citep{2020SciPy-NMeth,harris2020array,reback2020pandas,mckinney-proc-scipy-2010,waskom2021seaborn,hunter2007matplotlib,moreno2023teeplot,r_core_team_r:_2015}.
 
-We conducted experiments using Avida, which instantiates an evolutionary process among self-replicating computer programs acting as ``digital organisms.''
-This agent-based modeling approach allows research to empirically test hypotheses about evolution that would be difficult or impossible to test in natural systems \citep{Ofria:2009avida}.
+Population size was configured to Avida default of 3,600 organisms across all trials, with well-mixed arrangement analogous to chemostat conditions.
+We configured available metabolic resources to the ``Logic-9'' task set, consisting of tasks NOT, NAND, OR-NOT, AND, OR, AND-NOT, NOR, XOR, and EQUALS.
+Identical reward was provided for performing each task and kept consistent throughout trials.
+Rewards accrued independently for each task, enabling fitness benefit to be compounded by performing multiple tasks.
+In some analyses, we report a ``phenotypic adaptation score,'' ranging from a minimum of 0 (\textit{i.e.} the organism performs no tasks and received no reward) to a maximum of 9 (\textit{i.e.} the organism performs all 9 tasks and received the maximum reward).
+Phenotypic tratis were also described in terms of minimum required NAND gates as a metric of complexity, as given in Figure \ref{fig:slip_mut_variants} \citep{lenski2003evolutionary}.
 
-% \input{fig/vhardware.tex}
+Except where otherwise noted, experiments were seeded with a 100-instruction ancestral self-replicator.
+In all cases, mutations reducing genome size below 100 instructions were disallowed to ensure sufficient raw genetic material to encode Logic-9 operations.
+Run length was 200,000 ``updates'' across all experiments, a unit of simulation time roughly equivalent the amount of time required for an organisms to execute 30 instructions.
+This duration was sufficient to observe at least 600 generations of evolution in all trials.
 
-Digital organisms in Avida compete to acquire resources and replicate within a finite carrying capacity.
-Each organism comprises a linear sequence of program instructions (\textit{i.e.,} its genotype), evaluated on an independent virtual processor.
-The instruction set in Avida is Turing complete and syntactically robust, meaning that any ordering of instructions is syntactically valid.
-The instruction set includes operations for basic computations, execution flow control, input and output, and self-replication.
-% Figure \ref{fig:vhardware} overviews Avida virtual hardware used to evaluate program instructions.
+\subsection{Mutation Operators}
 
-Organisms in Avida replicate asexually by duplicating their genome one locus at a time.
-Organisms' replication speed is influenced by their metabolic rate, which determines the speed at which they execute genome instructions.
-At baseline, an organism's metabolic rate is set proportional to its genome length to prevent intrinsic disadvantages from increased copy loop duration for long genomes.
-In our experiments, we increased metabolic rate for organisms exhibiting particular phenotypic traits, defined as output ``tasks'' requiring logical operations on input values.
-In this way, we can define a set of discoverable adaptive phenotypic traits.
-
-When an organism replicates, its offspring is placed at random elsewhere in the population, replacing any previous occupant of that location.
-Thus, improving the efficiency of self-replication or performing rewarded computational tasks are both advantageous in the competition for space in Avida.
-In combination with heritable variation introduced by program copy defects (discussed next), competition for population slots results in evolution by natural selection in Avida \citep{pennock2007models}.
-
-Our simulations included four types of \textbf{mutational events in Avida}: substitution, insertion, deletion, or slip (duplication) mutations.
-
+% Avida organisms comprise a linear sequence of program instructions (\textit{i.e.,} its genotype), evaluated on an independent virtual processor.
+Genomes in our experiments comprised linear sequences of instructions, providing 27 operations for basic computations, execution flow control, input and output, and self-replication.
+This instruction set is Turing complete and syntactically robust, meaning that any ordering of instructions is syntactically valid.
+At the conclusion of each successful self-copy event, we imposed extrinsic mutational operations on the offspring genome: substitution, insertion, deletion, and slip mutations.
 % https://github.com/chaynes2019/AvidaGeneDupe/blob/375f1a3018669f50d00e4ce67b977931cf42f6d9/experiments/2022-3-29-PaperDuplication/hpcc/config/avida.cfg
-\textit{Copy mutations} introduce an erroneous \textit{substitution} where a random instruction is written into the offspring genome instead of the intended instruction.
-In our experiments, such substitutions occurred with a per-copy probability of 0.0025.
+\textit{Copy mutations} introduce an erroneous \textit{substitution} where an instruction is an written into the offspring genome instead of the intended instruction.
+In our experiments, substitutions occurred with a per-site probability of 0.0025 \citep{lenski2003evolutionary}.
 
-\textit{Divide mutations} act on an organism's offspring during division.
-When a divide \textit{insertion} mutation occurs, an arbitrary instruction is inserted at random, increasing the length of the offspring's genome by one.
-When a divide \textit{deletion} mutation occurs, a random instruction in the offspring's genome is removed.
-In our experiments, each was allowed to occur with a probability of 0.05 per offspring.
+\textit{Insertion} mutations, by contrast, insert an arbitrary instruction is inserted at random, increasing the length of the offspring's genome by one.
+In a similar vein, \textit{deletion} mutations act by removing a random instruction from the offspring's genome.
+In our experiments, each was allowed to occur with a probability of 0.05 per offspring \citep{lenski2003evolutionary}.
 
-For the purposes of this study, we augmented Avida with a new type of divide mutation: \textit{slip mutation}.
-This type of mutation acts analogously to gene duplications and deletions.
+For the purposes of this study, we augmented Avida with an additional mutation operator: \textit{slip mutation}, designed to act analogously to gene duplications and deletions.
 When a slip mutation occurs, two sites in the offspring genome are randomly selected, defining the target segment for the operation.
 If the first site is upstream of the second, the slip mutation results in an insertion --- as if the organism's replication machinery had slipped backward during replication and copied a segment twice.
 If the second site is upstream of the first, the slip mutation results in a deletion --- as if the organism's replication machinery skipped over a genetic segment.
@@ -45,14 +41,14 @@ As implemented, slip-insertions and slip-deletions occur with equal probability;
 % [x] @CAO: I limited this to a "directional" bias and made clear that it IS a dynamic to increase length variation.  Are we sure there won't be a directional bias on genome length?  It might be worth doing a simulated run (if it's quick) without any selection to control for any bias that might occur.  Think about it this way: as you get bigger, the average slip is bigger, but as you get smaller the average slip is smaller, so bigger genomes will change faster.  That said, if you are length 100 and have a slip of size 50, in on direction it changes your size to 0.5 what it was, but in the other it changes it by 1.5.  Frankly, I'm just not sure what would happen.
 % @MAM good idea, did a quick random walk simulation and it looks like the mean value is stable https://gist.github.com/mmore500/92d2aee823b009319c47abab51e565cc
 
-Across trials, we assessed full-fledged slip-duplicate mutation in comparison with four variant mutation operators with components disabled or replaced:
+Across trials, we assessed full-fledged slip-duplicate mutation in comparison with four variant mutation operators:
 \begin{enumerate}
 \item slip-scramble, where duplicated code was shuffled to test effects of sequence order,
 \item slip-random, where duplicated code was replaced with random instructions to test effects of sequence content,
 \item slip-NOP, where duplicated code was replaced with neutral (``no-operation'') instructions to test the effect of neutral increase in genome size, and
 \item slip-scatter, where duplicated code was dispersed across the genome to test the effect of insertion locality.
 \end{enumerate}
-Figure \ref{fig:slip_mut_variants} provides an illustration of surveyed slip-mutation variants.
+Figure \ref{fig:slip_mut_variants} illustrates example outcomes across surveyed slip-mutation variants.
 % [x] @CAO: I don't think it's worth starting whole new runs now, but the one other treatment I know we've at least talked about in the past is something like "slip-background" which is like slip-random, but where we look at the background distribution of instructions in the population to bias the random probabilities.  This can help distinguish why slip-scramble does better than slip random -- is it the instructions in the genome itself, or is it just that these are more likely to be instructions that are generally useful which is why they were selected by evolution in the first place.
 
 When insertion occurs, all slip mutation operators add a number of instructions equal to the length of the target segment.
@@ -62,39 +58,14 @@ Where enabled, slip mutations occurred with 5\% probability per divide event.
 
 \subsection{Experimental Design}
 
-% \input{tab/tasks.tex}
-
-For our experiments, we configured available metabolic resources to the ``Logic-9'' task set, consisting of tasks NOT, NAND, OR-NOT, AND, OR, AND-NOT, NOR, XOR, and EQUALS.
-Notably, the structure of this task set provides a well-defined difficulty gradient among tasks.
-This characteristic arises from an explicit hierarchical composition among task definitions due to the fact that organisms only have direct access to the "Nand" instructions and must build all of the other tasks from different combinations of nands.
-``Easier'' tasks like NOT and NAND form building blocks for ``more difficult'' tasks like XOR and EQU.
-This well-defined gradient in task requirements provides a suitable apparatus for experiments involving the evolution of complexity \citep{lenski2003evolutionary}.
-In this work, we categorize the complexity of the Logic-9 tasks by the minimal number of NAND building blocks\footnote{
-In computer architecture theory, NAND is commonly established as the fundamental building block operation since all other logical operations can be derived from compositions of NAND gates \citep{mano1997logic}.
-} required to perform them, as shown in Figure \ref{fig:slip_mut_variants}.
-As such, we categorized tasks according to their NAND ``component counts'' as a proxy for phenotypic complexity.
-
-Identical reward was provided for performing each task and kept consistent throughout trials.
-Rewards were accrued independently for each task, allowing rewards to be compounded by performing multiple tasks.
-We measured adaptation to the Logic-9 task set as a ``phenotypic adaptation score,'' ranging from a minimum of 0 (\textit{i.e.} the organism performs no tasks and received no reward) to a maximum of 9 (\textit{i.e.} the organism performs all 9 tasks and received the maximum reward).
-
-Evolution experiments were conducted in two phases.
+Experiments were conducted in two phases.
 The first phase tested aggregate differences in evolutionary outcomes between surveyed slip duplication operator variants across runs, while the second focused more heavily on teasing apart evolutionary history and genetic structure within runs.
 For this reason, first-phase experiments prioritized higher replicate counts, while second-phase experiments prioritized more detailed lineage tracking of individual genome sites.
 Replicate count was 100 independent trials for first-phase experiments, and 30 replicates for second-phase experiments.
-Run length was 200,000 updates across all experiments.
-\footnote{An update in Avida is equal to the amount of time it takes for the average organism to execute 30 instructions; see \citep{Ofria:2009avida} for further detail.}
-% Based on the timing of evolutionary convergence to stable states in the first phase experiments, a run length of 50,000 updates was used for second phase experiments.
-This duration was sufficient to observe at least 600 generations of evolution in all trials.
-
-Population size was configured to Avida default of 3,600 organisms across all trials.
-Except where otherwise noted, experiments were seeded with a 100-instruction ancestral self-replicator.
-In all cases, mutations reducing genome size below 100 instructions were disallowed to ensure sufficient raw genetic material to encode Logic-9 operations.
-
-% \input{tab/treatments.tex}
 
 First-phase experiments consisted of six treatments: one baseline treatment with slip-duplication disabled and five experimental treatments corresponding to the five surveyed slip-duplication mutation operators shown in Figure \ref{fig:slip_mut_variants}.
 These treatments differed only in the available mutation operators and the rates at which those operators were applied.
+How many replicates
 
 % % Baseline treatment
 % The \textbf{baseline treatment} was used as a control; we used the results from this treatment as a baseline for evolvability, with which we compared the results from all other experimental treatments. Mutation rates in the baseline treatment have been shown to facilitate both the evolution of complex boolean logic tasks, such as EQUALS, and the evolution of task regulation in Avida \citep{lenski2003evolutionary, Lalejini:2016plasticity}
@@ -125,22 +96,19 @@ We chose this size near the upper bound of genome sizes observed in first-phase 
 % We limited the population size to 3600 and seeded each experiment with an ancestral genotype capable of self-replication, but no Logic-9 tasks.
 % We ran between 30 and 100 trials of each treatment.
 
-\subsection{Statistical Methods}
+\subsection{Lineage Analyses}
 
-For first-phase experiments, we applied a Kruskal-Wallis test to screen for between-group variation in phenotypic adaptation score among surveyed treatments.
-On account of an earlier experimental design incorporating two additional surveyed conditions incorporating environmental fluctuations, Bonferroni correction was applied to keep experiment-wise $\alpha$ = 0.05.
-For subsequent Mann-Whitney U tests testing individual treatments against baseline, we applied Bonferroni correction for the five such comparisons.
-Experimental design in our second-phase experiments did not require adjustments for multiple comparisons.
+% For first-phase experiments, we applied a Kruskal-Wallis test to screen for between-group variation in phenotypic adaptation score among surveyed treatments.
+% On account of an earlier experimental design incorporating two additional surveyed conditions incorporating environmental fluctuations, Bonferroni correction was applied to keep experiment-wise $\alpha$ = 0.05.
+% For subsequent Mann-Whitney U tests testing individual treatments against baseline, we applied Bonferroni correction for the five such comparisons.
+% Experimental design in our second-phase experiments did not require adjustments for multiple comparisons.
 
 Time series assessments of evolutionary history were conducted using the ancestral lineage of the most abundant end-state genotype (``final dominant'').
 In a postprocessing step, we applied Avida's ``analyze mode'' to identify each ancestor's tasks.
+
 For investigations involving the evolutionary history of individual genome sites, we used mutational metadata saved with lineage files to identify corresponding sites between parent and offspring.
 Due to memory constraints, these analyses were conducted from population save files recorded at update 50,000 rather than the end-state population at update 200,000.
-This timepoint was chosen to encompass the phase in which the bulk of adaptive evolution had already transpired (see Figure \ref{fig:results_panels}).
+This timepoint was chosen to encompass the phase in which the bulk of adaptive evolution had already transpired.
+% (see Figure \ref{fig:results_panels})
 
-\subsection{Software and Data Availability} \label{sec:materials}
-
-Supporting software and executable notebooks for this work are available via GitHub at \url{https://github.com/chaynes2019/AvidaGeneDupe/} \citep{david_m_bryson_2025_14911296}.
-Simulation data is archived via the Open Science Framework at \url{https://osf.io/j5s4h/} \citep{foster2017open}.
-
-This project benefited significantly from a large number of open-source scientific software projects \citep{2020SciPy-NMeth,harris2020array,reback2020pandas,mckinney-proc-scipy-2010,waskom2021seaborn,hunter2007matplotlib,moreno2023teeplot,r_core_team_r:_2015}.
+% \subsection{Software and Data Availability} \label{sec:materials}
