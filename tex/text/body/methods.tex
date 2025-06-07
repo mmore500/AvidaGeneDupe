@@ -5,18 +5,19 @@
 We conducted experiments using a customized version of Avida v2.14.0 \citep{Ofria:2009avida}.
 Supporting software and executable notebooks for this work are freely available under the GNU GPL license, via GitHub at \url{https://github.com/chaynes2019/AvidaGeneDupe/} and archived via Zenodo \citep{haynes_2025,https://doi.org/10.25495/7gxk-rd71}.
 Simulation data is archived via the Open Science Framework at \url{https://osf.io/j5s4h/} \citep{Moreno_Haynes_2025,foster2017open}, provided with a CC-By Attribution 4.0 International license.
+Some components of our experiments were adapted from an earlier version of this work \citep{lalejini2017gene}.
 Code used in this project incorporated numerous pieces of open-source scientific software \citep{2020SciPy-NMeth,harris2020array,reback2020pandas,mckinney-proc-scipy-2010,waskom2021seaborn,hunter2007matplotlib,moreno2023teeplot,r_core_team_r:_2015}.
 
-Population size was configured to Avida default of 3,600 organisms across all trials, with well-mixed arrangement analogous to chemostat conditions.
+Population size was configured to the Avida default of 3,600 organisms across all trials, with well-mixed arrangement analogous to chemostat conditions.
 We configured available metabolic resources to the ``Logic-9'' task set, consisting of tasks NOT, NAND, OR-NOT, AND, OR, AND-NOT, NOR, XOR, and EQUALS.
 Identical reward was provided for performing each task and kept consistent throughout trials.
-Rewards accrued independently for each task, enabling fitness benefit to be compounded by performing multiple tasks.
-In some analyses, we report a ``phenotypic adaptation score,'' ranging from a minimum of 0 (\textit{i.e.} the organism performs no tasks and received no reward) to a maximum of 9 (\textit{i.e.} the organism performs all 9 tasks and received the maximum reward).
-Phenotypic tratis were also described in terms of minimum required NAND gates as a metric of complexity, as given in Figure \ref{fig:slip_mut_variants} \citep{lenski2003evolutionary}.
+Rewards accrued independently for each task, enabling fitness benefits to be compounded by performing multiple tasks.
+In some analyses, we report a ``phenotypic adaptation score,'' ranging from a minimum of 0 (\textit{i.e.} the organism performs no tasks and receives no reward) to a maximum of 9 (\textit{i.e.} the organism performs all 9 tasks and receives the maximum reward).
+Phenotypic traits were also described in terms of minimum required NAND gates as a metric of complexity, as given in Figure \ref{fig:slip_mut_variants} \citep{lenski2003evolutionary}.
 
 Except where otherwise noted, experiments were seeded with a 100-instruction ancestral self-replicator.
 In all cases, mutations reducing genome size below 100 instructions were disallowed to ensure sufficient raw genetic material to encode Logic-9 operations.
-Run length was 200,000 ``updates'' across all experiments, a unit of simulation time roughly equivalent the amount of time required for an organisms to execute 30 instructions.
+Run length was 200,000 ``updates'' across all experiments, a unit of simulation time roughly equivalent to the amount of time required for an organism to execute 30 instructions.
 This duration was sufficient to observe at least 600 generations of evolution in all trials.
 
 \subsection{Mutation operators}
