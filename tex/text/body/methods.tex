@@ -26,10 +26,10 @@ Genomes in our experiments comprised linear sequences of instructions, providing
 This instruction set is Turing complete and syntactically robust, meaning that any ordering of instructions is syntactically valid.
 At the conclusion of each successful self-copy event, we imposed extrinsic mutational operations on the offspring genome: substitution, insertion, deletion, and slip mutations.
 % https://github.com/chaynes2019/AvidaGeneDupe/blob/375f1a3018669f50d00e4ce67b977931cf42f6d9/experiments/2022-3-29-PaperDuplication/hpcc/config/avida.cfg
-\textit{Copy mutations} introduce an erroneous \textit{substitution} where an instruction is an written into the offspring genome instead of the intended instruction.
+\textit{Copy mutations} introduce an erroneous \textit{substitution} where an instruction is written into the offspring genome instead of the intended instruction.
 In our experiments, substitutions occurred with a per-site probability of 0.0025 \citep{lenski2003evolutionary}.
 
-\textit{Insertion} mutations, by contrast, insert an arbitrary instruction is inserted at random, increasing the length of the offspring's genome by one.
+\textit{Insertion} mutations, by contrast, insert an arbitrary instruction at random, increasing the length of the offspring's genome by one.
 In a similar vein, \textit{deletion} mutations act by removing a random instruction from the offspring's genome.
 In our experiments, each was allowed to occur with a probability of 0.05 per offspring \citep{lenski2003evolutionary}.
 
@@ -73,7 +73,7 @@ How many replicates
 % Long genome treatment
 For second-phase experiments, we included an additional \textbf{long-genome baseline treatment} to directly test the adaptive role of large genome size associated with slip-duplicators.
 Genomes in this treatment operated identically to those in the baseline treatment above, except that they were initialized with a 1,000-site ancestor.
-We chose this size near the upper bound of genome sizes observed in first-phase slip-duplication treatment experiments.
+The 1,000-site length was chosen to approximate the upper bound of genome sizes observed in first-phase slip-duplication treatment experiments.
 
 % % Slip-duplicate treatment
 % The \textbf{slip-duplicate treatment} allowed for mutation events that resulted in full code duplications via the slip-duplicate mutation operator. Duplications in this treatment preserved both the content and the structure of duplicated code. This allowed us to answer the following question: how important is it that gene duplications can exactly duplicate sequences in a genome in both content \textit{and} structure?
