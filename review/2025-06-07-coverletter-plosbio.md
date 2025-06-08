@@ -25,7 +25,11 @@ We also take advantage of detailed lineage records to examine exact mutational h
 
 **What are the three most recently published articles that are relevant to this question?**
 
-TODO
+> **Tong, K. et al.** "Genome duplication in a long-term multicellularity evolution experiment." *Nature* (Mar 2025) --- Experimental evolution in *in vivo* model system, demonstrating adaptive role of dose effects.
+
+> **Castellanos, M. D. P. et al.** (2024). The roles of gene duplications in the dynamics of evolutionary conflicts. Proceedings B, 291(2024), 20240555. --- Reviews evidence for of gene duplication facilitating rapid change in response to conflict-driven selection pressure.
+
+> **DuBose and de Roode**, The link between gene duplication and divergent patterns of gene expression across a complex life cycle, Evolution Letters (October 2024) --- establishes evidence for adaptive neo-functionalization of duplicated genes in monarch butterflies vis-a-vis shifts in expression patterns between lifecycle stages
 
 **What significance do your results have for the field?**
 
@@ -52,6 +56,7 @@ To these ends, we contribute to the body of evidence highlighting duplicative pr
 **Is there additional information that we should take into account?**
 
 Our project builds on an impactful body of experimental work using Avida to study aspects of the evolution of complexity, notably including two works appearing in PLOS Biology --- Zaman et al. 2014 (doi:[10.1371/journal.pbio.1002023](https://doi.org/10.1371/journal.pbio.1002023)) and Goldsby et al. 2014 (doi:[10.1371/journal.pbio.1001858](https://doi.org/10.1371/journal.pbio.1001858)).
+Note also that an earlier version of this work appeared at the 2017 Artificial Life conference (doi:[10.1162/isal_a_045](https://doi.org/10.1162/isal_a_045)).
 We look forward to further contributing to conversation around the evolution of complexity.
 
 Thank you for your consideration,
