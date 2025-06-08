@@ -44,10 +44,10 @@ As implemented, slip-insertions and slip-deletions occur with equal probability;
 
 Across trials, we assessed full-fledged slip-duplicate mutation in comparison with four variant mutation operators:
 \begin{enumerate}
-\item slip-scramble, where duplicated code was shuffled to test effects of sequence order,
-\item slip-random, where duplicated code was replaced with random instructions to test effects of sequence content,
-\item slip-NOP, where duplicated code was replaced with neutral (``no-operation'') instructions to test the effect of neutral increase in genome size, and
-\item slip-scatter, where duplicated code was dispersed across the genome to test the effect of insertion locality.
+\item \textbf{slip-scramble}, where duplicated code was shuffled to test effects of sequence order,
+\item \textbf{slip-random}, where duplicated code was replaced with random instructions to test effects of sequence content,
+\item \textbf{slip-NOP}, where duplicated code was replaced with neutral (``no-operation'') instructions to test the effect of neutral increase in genome size, and
+\item \textbf{slip-scatter}, where duplicated code was dispersed across the genome to test the effect of insertion locality.
 \end{enumerate}
 Figure \ref{fig:slip_mut_variants} illustrates example outcomes across surveyed slip-mutation variants.
 % [x] @CAO: I don't think it's worth starting whole new runs now, but the one other treatment I know we've at least talked about in the past is something like "slip-background" which is like slip-random, but where we look at the background distribution of instructions in the population to bias the random probabilities.  This can help distinguish why slip-scramble does better than slip random -- is it the instructions in the genome itself, or is it just that these are more likely to be instructions that are generally useful which is why they were selected by evolution in the first place.
