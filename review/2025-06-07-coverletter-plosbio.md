@@ -16,7 +16,7 @@ Through step-by-step analysis of lineage histories, we trace an outsized fractio
 **What is the nature of the evidence you provide in support of your conclusion?**
 
 We report evolution experiments conducted using the Avida digital evolution platform, which enables self-replicating computer programs to be used as a model organism for evolution experiments.
-We apply the Logic-9 frameork developed by Lenski et al. (2003), which defines a set of virtual phenotype traits spread across a range of complexity, with complexity defined based on the number of logical operations necessary to carry them out.
+We apply the Logic-9 framework developed by Lenski et al. (2003), which defines a set of virtual phenotype traits spread across a range of complexity, with complexity defined based on the number of logical operations necessary to carry them out.
 While careful consideration must be taken in generalizing results from Avida to biological organisms, this model offers unique capabilities for detailed, rigorously controlled treatments.
 
 Using this system, we compared adaptive evolution of Logic-9 traits in the presence and absence of duplicative mutation.
@@ -29,20 +29,20 @@ We also take advantage of detailed lineage records to examine exact mutational h
 
 > **Castellanos, M. D. P. et al.** (2024). The roles of gene duplications in the dynamics of evolutionary conflicts. Proceedings B, 291(2024), 20240555. --- Reviews evidence for of gene duplication facilitating rapid change in response to conflict-driven selection pressure.
 
-> **DuBose and de Roode**, The link between gene duplication and divergent patterns of gene expression across a complex life cycle, Evolution Letters (October 2024) --- establishes evidence for adaptive neo-functionalization of duplicated genes in monarch butterflies vis-a-vis shifts in expression patterns between lifecycle stages
+> **DuBose and de Roode**, The link between gene duplication and divergent patterns of gene expression across a complex life cycle, Evolution Letters (October 2024) --- Establishes evidence for adaptive neo-functionalization of duplicated genes in monarch butterflies vis-a-vis shifts in expression patterns between lifecycle stages.
 
 **What significance do your results have for the field?**
 
 Our study delivers rare, direct‐experimental evidence that gene duplication can contribute substantially to biological complexity via adaptive innovation in complex traits.
 By isolating duplicative mutational mechanisms in Avida and tracing detailed mutational steps along complete lineages, we advance the discussion to a causal demonstration that (1) gene duplications facilitate *de novo* origin of adaptive traits, (2) this effect is pronounced for complex traits, and (3) genetic information content propagated in duplications contributes to this advantage.
 These findings contrast notably with framings hypothesizing sufficiency of non-adaptive explanations for biological complexity.
-<!-- As such, this work provides an cornerstone complementary to comparative approaches in natural history. -->
+<!-- As such, this work provides a cornerstone complementary to comparative approaches in natural history. -->
 
 
 **What significance do your results have for the broader community (of biologists and/or the public)?**
 
 From a science communication perspective, lines of research working with ``evolution in action'' provide exciting opportunity to broaden public perceptions of evolutionary processes as an ongoing story rather than a historical record.
-In concert with the broader experimental evolution community, the low barrier to entry for experimenting with digital evolution models through web-based applications such as Avida-ED.
+In concert with the broader experimental evolution community,  experimenting with digital evolution models is notable for its low barrier to entry through web-based applications such as Avida-ED.
 
 Our research also pertains to application-oriented work engineering evolution as an optimization process, both *in vivo* and *in silico*.
 To these ends, we contribute to the body of evidence highlighting duplicative processes as key for adaptive evolution and, in particular, our research defines problem contexts where gene duplication processes may be most impactful (e.g., complex problems with potential to assemble functional building blocks).
