@@ -66,7 +66,7 @@ Replicate count was 100 independent trials for first-phase experiments, and 30 r
 
 First-phase experiments consisted of six treatments: one baseline treatment with slip-duplication disabled and five experimental treatments corresponding to the five surveyed slip-duplication mutation operators shown in Figure \ref{fig:slip_mut_variants}.
 These treatments differed only in the available mutation operators and the rates at which those operators were applied.
-How many replicates
+First-phase data was used for analyses comparing evolved phenotypic adaptation score between slip mutation operators.
 
 % % Baseline treatment
 % The \textbf{baseline treatment} was used as a control; we used the results from this treatment as a baseline for evolvability, with which we compared the results from all other experimental treatments. Mutation rates in the baseline treatment have been shown to facilitate both the evolution of complex boolean logic tasks, such as EQUALS, and the evolution of task regulation in Avida \citep{lenski2003evolutionary, Lalejini:2016plasticity}
@@ -75,7 +75,7 @@ How many replicates
 For second-phase experiments, we included an additional \textbf{long-genome baseline treatment} to directly test the adaptive role of large genome size associated with slip-duplicators.
 Genomes in this treatment operated identically to those in the baseline treatment above, except that they were initialized with a 1,000-site ancestor.
 The 1,000-site length was chosen to approximate the upper bound of genome sizes observed in first-phase slip-duplication treatment experiments.
-
+Second-phase data was used for analyses of task gain by complexity class (Figure \ref{fig:adaptive-evolution-rate}), analyses of coding site count trajectories (Figure \ref{fig:num-coding-sites}), potentiation analyses (Figures \cref{fig:potentiation,fig:potentiation-supp} and analyses of slip-duplication outcome distributions (Figure \ref{fig:nulldist}).
 % % Slip-duplicate treatment
 % The \textbf{slip-duplicate treatment} allowed for mutation events that resulted in full code duplications via the slip-duplicate mutation operator. Duplications in this treatment preserved both the content and the structure of duplicated code. This allowed us to answer the following question: how important is it that gene duplications can exactly duplicate sequences in a genome in both content \textit{and} structure?
 
