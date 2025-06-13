@@ -9,7 +9,7 @@ We apply an experimental approach to establish the plausibility of gene duplicat
 **What is the key finding that answers this question?**
 
 We find gene duplication to be closely linked to the *de novo* evolution of complex adaptive traits.
-Moreover, this effect is specific, with adaptive evolution of simpler traits exhibiting no benefit beyond the effect of increased genome length alone.
+Moreover, this effect is specific to complex traits, with adaptive evolution of simpler traits exhibiting no benefit beyond the effect of increased genome length alone.
 <!-- We find the adaptive benefit of gene duplication to be strongest in enabling adaptive evolution of complex, rather than simple, traits. -->
 Through step-by-step analysis of lineage histories, we trace an outsized fraction of coding sites for novel complex traits back to duplicated regions; similarly, this effect is specific to complex traits, not being observed for very simple traits.
 
@@ -20,14 +20,14 @@ We apply the Logic-9 framework developed by Lenski et al. (2003), which defines 
 While careful consideration must be taken in generalizing results from Avida to biological organisms, this model offers unique capabilities for detailed, rigorously controlled treatments.
 
 Using this system, we compared adaptive evolution of Logic-9 traits in the presence and absence of duplicative mutation.
-Our computational medium enabled further work testing partial ablations of gene duplication mechanisms, to separate the impact of propagating genetic information from side effects in increased genome length and effective mutation rate.
-We also take advantage of detailed lineage records to examine exact mutational histories of coding sites for phenenotypic traits, to discern the role of gene duplication.
+Our computational medium enabled further work testing partial ablations of gene duplication mechanisms to separate the impact of propagating genetic information from side effects in increased genome length and effective mutation rate.
+We also take advantage of detailed lineage records to examine exact mutational histories of coding sites for phenotypic traits to discern the role of gene duplication.
 
 **What are the three most recently published articles that are relevant to this question?**
 
 > **Tong, K. et al.** "Genome duplication in a long-term multicellularity evolution experiment." *Nature* (Mar 2025) --- Experimental evolution in *in vivo* model system, demonstrating adaptive role of dose effects.
 
-> **Castellanos, M. D. P. et al.** (2024). The roles of gene duplications in the dynamics of evolutionary conflicts. Proceedings B, 291(2024), 20240555. --- Reviews evidence for of gene duplication facilitating rapid change in response to conflict-driven selection pressure.
+> **Castellanos, M. D. P. et al.** (2024). The roles of gene duplications in the dynamics of evolutionary conflicts. Proceedings B, 291(2024), 20240555. --- Reviews evidence of gene duplication facilitating rapid change in response to conflict-driven selection pressure.
 
 > **DuBose and de Roode**, The link between gene duplication and divergent patterns of gene expression across a complex life cycle, Evolution Letters (October 2024) --- Establishes evidence for adaptive neo-functionalization of duplicated genes in monarch butterflies vis-a-vis shifts in expression patterns between lifecycle stages.
 
@@ -42,7 +42,7 @@ These findings contrast notably with framings hypothesizing sufficiency of non-a
 **What significance do your results have for the broader community (of biologists and/or the public)?**
 
 From a science communication perspective, lines of research working with ``evolution in action'' provide exciting opportunity to broaden public perceptions of evolutionary processes as an ongoing story rather than a historical record.
-In concert with the broader experimental evolution community,  experimenting with digital evolution models is notable for its low barrier to entry through web-based applications such as Avida-ED.
+In concert with the broader experimental evolution community, experimenting with digital evolution models is notable for its low barrier to entry through web-based applications such as Avida-ED.
 
 Our research also pertains to application-oriented work engineering evolution as an optimization process, both *in vivo* and *in silico*.
 To these ends, we contribute to the body of evidence highlighting duplicative processes as key for adaptive evolution and, in particular, our research defines problem contexts where gene duplication processes may be most impactful (e.g., complex problems with potential to assemble functional building blocks).
