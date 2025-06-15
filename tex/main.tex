@@ -1,20 +1,29 @@
-\documentclass{article}
+\documentclass[10pt,letterpaper]{article}
+\usepackage[top=0.85in,left=2.75in,footskip=0.75in]{geometry}
 
 \input{lib/dependencies.tex}
 \input{lib/pragmaonce.tex}
+
+\defaultbibliography{bibl}
+\defaultbibliographystyle{plos2015}
 
 \ifdefined\mydraft
 \mydraft
 \fi
 
-\defaultbibliography{bibl}
-\defaultbibliographystyle{apalike-ejor}
-
 \begin{document}
+
+\begin{bibunit}
 
 \input{text/frontmatter.tex}
 
-\begin{bibunit}
+\newpage
+
+\input{text/body/abstract.tex}
+
+% \input{text/body/summary.tex}
+
+\linenumbers
 
 \input{text/body.tex}
 
@@ -31,7 +40,7 @@
 
 \input{text/supplement.tex}
 
-\input{text/references.tex}
+% \input{text/references.tex}
 
 \end{bibunit}
 

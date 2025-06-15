@@ -1,19 +1,31 @@
 \section{Conclusion} \label{sec:conclusion}
 
+How information is represented within genomes and the evolutionary processes through which it accumulates is a fundamental pillar of biological science \citep{adami2024evolution}.
+Among other topics, important questions remain about the evolutionary role in structuring and extending genetic information.
+One challenge to developing a rigorous and detailed understanding of gene duplications is the difficulty of realizing biological experiments to explore a counterfactual case absent gene duplication.
+By leveraging an \textit{in silico} study system that may be arbitrarily manipulated and exactly observed, our experimental approach seeks to deepen and systematize our understanding of the evolutionary consequences of gene duplications.
+
 % Recap of what we found:
-In this work, we investigated both if and how gene duplications promote evolvability in two qualitatively different contexts: 1) in a static environment that requires the evolution of unconditionally expressed complex traits, and 2) in changing environmental conditions that require the evolution of regulatory mechanisms capable of altering which operations are expressed as a function of current environmental conditions. % MJW: One long sentence.
-Our results show that, indeed, gene duplications promote evolvability in both static and changing environments. We found evidence that the most important aspect of gene duplications for promoting evolvability is their capacity to duplicate existing genetic information within a genome.
-Additionally, we found that the capacity to duplicate multiple types of information is beneficial; mutation operators that duplicated both the content and structure of genetic sequences promoted evolvability more than operators that duplicated content but not structure.
-%As was seen in \cite{Lalejini:2016plasticity}, we also found that high mutation rates inhibited the evolution of regulation, suggesting that
+Across surveyed partial analogs of gene duplication, we find that both sequence content and order contribute to facilitating adaptive evolution.
+While simply increasing supply of raw genetic material facilitates the evolution of simple traits, we found duplicating existing genome information to uniquely facilitate evolution of complex traits.
+In our experiments, duplications significantly potentiate genome regions that go on to code for novel complex traits but --- consistent with neofunctionalization theory --- do not potentiate simple traits.
+From a genetic architecture perspective, we do not find direct evidence of increasing genome brittleness via subfunctionalization processes under slip duplication; however, we found slip duplication to accelerate the accumulation of coding material in genomes when vestigial sites are considered.
 
-Broadly speaking, gene duplications can facilitate significant jumps in a fitness landscape in many different ways. For example, when genes are duplicated, processes like subfunctionalization or neofunctionalization may occur, allowing populations to more easily cross fitness valleys and escape local optima. In the domain of evolutionary computation, the more we understand about why gene duplication is so important in promoting evolvability in different scenarios, the more we can customize our mutation operators to emphasize those factors.
-%These results suggest that when designing mutation operators meant to duplicate existing genetic information in an individual, we should try to maximize the amount of information the operator is capable of duplicating.
-These results suggest that when designing gene duplication operators for evolutionary computation systems, we should try to maximize the amount of information the operators are capable of duplicating.
+One intrinsic limitation of working with a digital study system is in discerning which aspects of behavior within our experiments generalize to natural systems.
+Nonetheless, such work can help establish the sufficiency of theory to explain empirical phenomena.
+Such work can also inform questions around universal properties of life \citep{dorin2024what}, pertinent to questions of artificial life or astrobiology.
 
-% Something about future work:
-The results presented here motivate several future studies. Performing deeper analyses of lineages evolved with gene duplications would allow us to more specifically identify how much different types of high-level processes are contributing to evolvability post-duplication event. Can we identify examples of subfunctionalization or neofunctionalization, and if so, can we identify their contributions to promoting the evolution of complex features? Or, would we find that duplications that are most likely to successfully sweep a population are those that have the highest information content?  Answers to these questions will allow us to better understand the role that gene duplication plays in natural evolution and could play in computational systems.
-% AML: This is sort of abrupt..
-% MJW: Agreed.  Needs to be wrapped up.
+% future work:
+Results presented here motivate several future studies.
+Performing deeper, play-by-play analyses of individual lineages evolved with gene duplications could allow us to identify examples of subfunctionalization or neofunctionalization, and deepen our understanding of  their contributions to promoting the evolution of complex features through a case study approach \citep{mcphee2018detailed}.
+Future work might also extend our retrospective approach for detecting potentiation into full-fledged replay experiments, where replicate evolutionary trajectories are collected to directly identify the statistical impact of evolutionary events in influencing later evolutionary outcomes \citep{blount2018contingency,Ferguson2023}.
+Such efforts will further help establish the role that gene duplication plays in natural evolution and could play in computational systems.
+
+% application-oriented outcomes:
+While evolutionary studies are essential for understanding the natural world around us, evolution can also be harnessed for applied purposes.
+Within the domain of evolutionary computation.
+Findings from our work can help guide the development of more effective algorithms for evolutionary computation, where evolution-inspired approaches are applied to real-world engineering challenges \citep{holland1992genetic}.
+Aspects of these findings may also generalize to bioengineering via directed evolution, in informing approaches to targeted mutagenesis \citep{sandberg2019emergence}.
 
 % Other ideas:
 % * What effects are deletions having in out slip mutation operators?

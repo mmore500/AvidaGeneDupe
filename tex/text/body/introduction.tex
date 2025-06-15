@@ -1,46 +1,91 @@
 \section{Introduction} \label{sec:introduction}
 
-section{Introduction}
+A fundamental objective of evolutionary biology is to understand how complex phenotypic traits and new genetic information originate.
+Among other factors, theory identifies gene duplication as a major contributor to biological complexity \citep{Zhang2003,Otto2000,Wagner2008,Crow:2006role,Magadum:2013wu,Metz:chromosomeDuplication1947,Hu:2010ea,Castellanos2024}.
+While comparative genomic studies have provided an increasingly detailed account of duplication events shaping genetic and phenotypic traits in nature \citep{Zhang2014,teichmann_structural_1998,Teichmann:2004cz,DuBose2024}, ambiguities remain in bridging these findings with explicit, process-based models of evolutionary dynamics \citep{Welch2016}.
+In particular, it remains difficult to gauge the importance of adaptive processes like neo‑functionalization and dose effects versus contingent processes like sub‑functionalization \citep{Innan2010,Zhang:2003fw,Kuzmin2022}, although notable experimental evidence for adaptive significance of dose effects has been more recently established \citep{Tong2025}.
+% Mirroring larger questions around the adaptive framings of evolutionary origins of biological complexity, gene duplication is thought to lead to increased complexity both by increasing opportunities for the accumulation of contingent complexity (``sub-functionalization'') and by facilitating adaptive discovery of beneficial novel traits (``neo-functionalization'').
 
-Gene duplication is a phenomenon by which
-additional copies of a region of genetic material
-% -- whether a single gene, or many, up to
-%or even an entire genome --
-are incorporated into a genome.
-%copied and retained within a single cell.
-There are numerous processes that can result in gene duplication, each with their own specific outcomes (as reviewed in \citep{Zhang:2003fw}), ranging from repeats of gene fragments to whole genome duplication.  All of these processes result in %share the common feature of
-an increase in genome size, but more importantly, genetic material that is likely more structured and meaningful than random insertions. %, especially when the duplicated sequence already encoded for one or more traits. %with encoded information.
-As such, gene duplication is an important mechanism for generating genetic novelty, providing a source of new genetic material for evolutionary processes to act on and enabling new evolutionary opportunities \citep{Zhang:2003fw,Crow:2006role,Magadum:2013wu}. Indeed, gene duplication has been shown to promote evolvability -- the capacity of a system to generate adaptive phenotypic variation % MJW: Are you defining evolvability as the capacity to generate adaptive phenotypic variation?  If so, I'd kill the ", or", replace that with a -- and insert another -- after variation.  If not, then I think you need to make clear what the difference is you're drawing between evolvability and this capacity.
-and to transmit that information via an evolutionary process \citep{Hu:2010ea} -- both in biology and in computational evolution.  % Does the Hu citation give examples from both biology and computational work? -- AML: Yes.
+In modern evolutionary biology, experimental approaches have become an important complement to retrospective studies, helping to establish causality in evolutionary dynamics \citep{Kawecki2012}.
+The theme of evolution of complexity has drawn notable contributions, in particular, from experiments incorporating digital model systems \citep{Fortuna2022}.
+While lacking in realism and richness compared to work with biological organisms, \textit{in silico} approaches offer complementary capabilities in supporting principled definitions of complexity \citep{Adami2002}, fast throughput spanning thousands of generations, and flexible exploration of arbitrary counterfactuals \citep{langton1989artificial}.
+With regard to present work, digital systems offer unique opportunity to systematically enable or disable duplications, allowing direct comparisons of evolutionary outcomes.
+Insight may also be gained from tracing the fate of duplicated sites, given the availability of exhaustive mutational histories.
 
-% MJW: This next paragraph is a stab at showing importance of gene duplication for evolvability in biology.  I'll provide you bib entries for these shortly, but text is more important at the moment:
-	Gene duplications have been shown to enhance evolvability in a number of biological systems.  A striking example comes from the Long-Term Evolution Experiment in \textit{Escherichia coli}, where a duplication in one population allowed a protein to be expressed in an environment where it would normally be inhibited~\citep{blount_genomic_2012}.  By expressing this protein in a different context, the cell gained access to a resource that it previously could not metabolize resulting in a 7-fold increase in population size. %and a greater ability to explore nearby beneficial mutations.
-Beyond specific cases of how a gene duplication led to increased evolvability, large scale genomic studies have discovered cases where a strikingly high fraction of the genes in an organism show evidence of having arisen from gene duplications \citep{teichmann_structural_1998,Teichmann:2004cz}, emphasizing the role of duplication in evolutionary innovation.  Comparative studies further suggest that many ancient duplication events were associated with increases in both genetic robustness and evolutionary innovation (reviewed in \citep{wagner_gene_2008}).  Though comparative studies lack the definitive proof of laboratory manipulation, the accumulated weight of evidence clearly suggests that gene and genome duplication events can have long-term evolutionary consequences.
+\input{fig/slip_mut_variants.tex}
 
-The prominence of gene duplications in biological evolution has inspired their use in artificial evolutionary systems. In genetic programming, the optimal program architecture for solving a particular problem is challenging to predict \textit{a priori}. Inspired by Ohno's \textit{Evolution by Gene Duplication} \citep{ohno1970evolution}, Koza used gene duplication and deletion operators to co-evolve genetic programs and their structure, finding that gene duplication and deletion increased program evolvability and produced simpler solutions \citep{Koza:1995fr}. Calabretta \textit{et al.} evolved modular neural network motor controllers for robots with and without module duplication operators, finding evidence that access to duplication operations resulted in increased functional specialization in network modules \citep{Calabretta:1998vh,Calabretta:2000tl}.
-These and other computational studies \citep{Ryan:1998gm,Sawai:1999genetic,Sawai:2000comparative,Schmitt:2005bc} corroborate some of the benefits of gene duplication seen in natural systems.
+Here, we investigate the role of adaptive innovation in the relationship between gene duplication and the evolution of complexity using the Avida digital evolution platform.
+This system allows evolution experiments to be conducted using populations of self-replicating computer programs \citep{Ofria:2009avida};
+owing to heritable variation in replication rate introduced by copy errors, evolution by natural selection unfolds within these populations \citep{pennock2007models}.
+Among other early work with Avida, Lenski established a useful framework for quantifying the complexity of phenotypic traits evolved by Avida organisms, by counting the minimum number of necessary substeps to accomplish a task of interest \citet{lenski2003evolutionary}.
+Applying this lens to a phenotype  (``EQU'') comprising a large number of substeps, controlled experiments and step-by-step lineage analyses demonstrated that simple traits could provide building blocks for EQU --- and, in fact, amounted to necessary prerequisites for evolution of complex traits.
+Other work with Avida has yielded wide-ranging contributions shedding light on selection's influence on information-theoretic measures of genome complexity \citep{Adami2000Evolution}, co-evolutionary pressures toward complex phenotypic traits \citep{Zaman2014Coevolution}, and the abundance of genetic encodings for complex phenotypes \citep{Fortuna2017GenotypePhenotype}.
 
-Given the evidence that gene duplication promotes evolvability in both computational and natural systems, we use a digital evolution approach to explore \textit{why}. That is, what aspects of gene duplications promote evolvability?
-%Is it their capacity to duplicate meaningful genetic information in the genome, create new genetic material for evolutionary processes to act on, or increase the effective mutation rate? Or, is it some combination of these aspects that enable gene duplications to promote evolvability in a system?
+To determine the role of novel adaptations in complexity arising from gene duplication, we independently assessed the influence of gene duplication on both genetic and phenotypic complexity.
+We measured genetic complexity by counting the program instructions contributing to an organism's fitness.
+For phenotypic complexity, we used the minimal quantity of computational substeps necessary to recreate exhibited behaviors \citet{lenski2003evolutionary}.
+We find that gene duplication facilitates adaptive evolution of phenotypic traits, with this adaptive benefit appearing exclusively for complex traits.
+Moreover, we show genome sites encoding complex phenotypic traits to be disproportionately localized within slip-duplicated regions.
+Genetic complexity, by comparison, did not appreciably respond to gene duplications.
+Our results therefore contrast with perspectives on biological complexity according lesser significance to the role of adaptive innovation \citep{Lynch2000,Beslon2021,Lynch2007}.
+%, which expect changes more strongly associated with subfunctionalization of existing traits \citep{TODO}.
 
-Is the full structure of duplicated code critical, or would the duplication of the functional elements be valuable even if they are rearranged? Exact duplications can result in functionally redundant genes that can increase the mutational robustness of a genotype \citep{Crow:2006role} or %can be selectively advantageous because of the
-allow the organism to produce
-additional gene product %they create
-\citep{Zhang:2003fw}. If a highly constrained genetic sequence is duplicated, one of the versions can mutate more freely, which may lead to new functionality \citep{Zhang:2003fw,Wagner:2003fk} -- a process known as neofunctionalization. Alternatively, subfunctionalization may occur where the two `daughter' genes diverge from the ancestral gene state, specializing on different aspects of the ancestral gene's functionality
-\citep{Zhang:2003fw}.
-%\citep{force1999preservation,stoltzfus1999possibility, Zhang:2003fw}.
-Gene duplications are also thought to play an important role in the evolution of complex genetic regulation \citep{Teichmann:2004cz}. If a regulatory gene is duplicated, the copy could continue to regulate the same target genes, but mutations may cause it to respond to new signals; or, the duplicated regulatory gene may continue to respond to the same signals, but it may begin regulating a different gene \citep{Teichmann:2004cz}.
+Figure \ref{fig:slip_mut_variants} provides a schematic overview of the experiments conducted in our work.
+All experiments comprised well-mixed populations with a carrying capacity of 3,600 Avida organisms.
+To supply adaptive potential, we adopted the Logic-9 configuration used by Lenski \citet{lenski2003evolutionary} to define a set of nine advantageous phenotypic traits.
+Each trait corresponds to a possible logical transform on available binary inputs.
+Under this scheme, organisms producing correct output values for a task benefit by accelerating their self-copy loop, analogously to a metabolic process.
+Formally, ``substeps'' necessary to carry out each task may be quantified in terms of the minimum number of NAND operations necessary to carry it out \citep{lenski2003evolutionary}.%
+\footnote{
+Computer architecture theory considers NAND as a fundamental basis operation, since all other logic can be derived from compositions of NAND gates \citep{mano1997logic}.
+}
+As seen in Figure \ref{fig:slip_mut_variants}, the most complex function (EQU) requires five NAND operations while the simplest (NAND and NOT) require only one.
+% In other work, EQU has been shown to require at least around 20 constituent genome sites, with many possible longer ways to accomplish EQU \citep{lenski2003evolutionary}.
 
-Aside from creating redundant copies of existing genetic code in a genome, there are other features of gene duplication that may result in increased evolvability. Are gene duplications valuable because they inflate the effective mutation rate of genomes, increasing genetic variation?  Or is the important factor that those new mutations are clustered together?
-%are effectively clustered insertion mutations, %whatever the inserted genetic code may be? Gene duplications introduce new, clustered genetic sequences,
-%providing new genetic material for evolutionary processes to act on \citep{Zhang:2003fw}?
-Or is it that the mutations are insertions that provide evolution with an easy technique to select for longer genomes % Longer genomes have
-and increased information storage capacity? %increasing the total amount of information about the environment that could be encoded in an organism's genome.
-%Or, do gene duplications promote evolvability because they inflate the effective mutation rate, generating increased amounts of genetic variation?
-These aspects are nearly impossible to disentangle in biological systems, but can be addressed in computational ones.
+Avida organisms replicate asexually by duplicating their genome one locus at a time.
+In addition to a baseline point mutation rate, our experiments
+% implemented a series of mutation operators to systematically isolate aspects of gene duplication and tease apart which factors promote evolvability.
+modeled gene duplication events using ``slip mutation'' processes analogous to replication slippage \citep{bzymek_instability_2001}.
+Under baseline conditions, these slip mutations allow arbitrary segments of program content to be duplicated or excised.
+% It is also possible that ``side effects'' of gene duplication may contribute to adaptive evolution, such as effects in increasing effective mutation rate, localized clustering of sequence changes, and increases in genome length.
+%Due to their inherent co-occurrence, it is not obvious how to disentangle these aspects of gene duplication in field or laboratory studies.
+However, as overviewed in Figure \ref{fig:slip_mut_variants}, we also tested a series of mutation operators isolating particular functional effects of gene duplication, in order to tease apart causality in greater detail.
+Experiments began with 100-site genomes.
+To control for the effects of genome length, we also included trials with longer 1,000-site genomes, which was near the upper extremum of genome lengths observed over the course of slip-duplication experiments.
 
-Using the Avida Digital Evolution Platform, we implemented a series of mutation operators to systematically isolate aspects of gene duplication and tease apart which factors promote evolvability. We tested these operators in two %qualitatively different
-contexts: in a static environment that rewards the performance of nine basic Boolean logic operations, and in two dynamic environmental conditions that require the evolution of regulatory mechanisms capable of altering which operations are expressed as a function of current environmental conditions. % MJW: Just flagging that the above is a single sentence.  It may actually be OK here -- the obvious point to break it is at the comma, and Charles is not a fan of needing to use antecedents in the previous sentence -- but it's also possible you hadn't realized just how long this sentence had gotten.
-There are several mechanisms that produce gene duplications in biological systems. Here, we use gene duplication mutation operators in Avida that resemble replication slippage \citep{bzymek_instability_2001} (\textit{slip mutations}) and allow for gene duplications or deletions at any scale.
+% \subsection{Major Results}
 
-We introduce five slip mutation operators to tease apart the specific components of a gene duplication. By observing how each of our slip mutation operators affect the evolution of digital organisms in different contexts, we are able to isolate which aspects of gene duplications are most important for promoting evolvability.
+% We found local slip mutations that duplicate intact regions to be the most effective configuration of gene duplication in facilitating evolution on the Logic-9 task set within the Avida platform.
+% In particular, we found that --- compared to control experiments with long genome sizes --- gene duplication uniquely promoted the evolution of complex adaptive traits.
+% We further found that the raw material created by slip duplication plays a potentiating role in the evolution of complex traits.
+% Specifically, we identified that slip-duplicated regions are significantly more likely to serve as coding sites for new traits when they first appear.
+% Consistent with expectations under neofunctionalization theory, however, we did not observe potentiation effects of slip duplication on the evolution of simple traits, only traits that were facilitated by multiple building block components.
+
+% Finally, we assessed the consequences of slip duplication on genome architecture.
+% One hypothesis is that gene duplication would promote genetic brittleness by increasing genome length and accelerating growth in contingent complexity, as newly redundant genetic material specializes over time.
+% Contrary to this possibility, we found that active coding sites grew as a rate similar to control experiments.
+% However, we observed that slip duplications produced a significant increase in the accumulation of coding material, when active and vestigial sites are considered together.
+% To understand this phenomenon, we tested the immediate effects of slip duplication on genome brittleness.
+% We found that, on average, fitness-neutral slip duplications decreased, rather than increased, the number of information-baring sites in a genome.
+% These results align with our observed increase in vestigial coding material in genomes.
+% These brittleness-reducing effects appear to be counteracted by other factors, resulting in a similar overall trajectory of genome information content between the slip-duplication and control treatments.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% In our experiment, we used the capabilities of the digital evolution platform to compare evolutionary outcomes in terms of the complexity of traits evolved when mutational processes that duplicated genome regions were included, excluded, as well as a .
+
+% Gene duplication events are widely recognized as a key factor in the evolution of organismal complexity.
+% Mirroring broader contrasts between adaptation- versus contingency-driven hypotheses for the evolutionary origins of biological complexity, gene duplication outcomes are typically framed in terms of neo- and sub-functionalization scenarios.
+% In the former, duplicated genetic material catalyzes novel functionality; in the latter, it is co-opted to elaborate existing functionality.
+% Examples of both scenarios are widespread in natural history, but practical constraints have limited direct experimental investigation of the relationship between gene duplication and organismal complexity.
+% Using the Avida platform for digital evolution, we show that while increased genome size can promote the emergence of simple adaptive traits, gene duplication uniquely facilitates the \textit{de novo} evolution of complex adaptive phenotypes.
+% Tracing the ancestry of individual genetic sites, we find that slip duplication of a site increases its subsequent likelihood to code for novel phenotypic traits.
+% We then harness the unique \textit{in silico} capabilities of our model system to compare evolutionary outcomes across degraded variants of full-fledged gene duplication.
+% This ablative analysis confirms that the observed adaptive potentiation indeed arises from the duplication of existing genetic information.
+% In contrast to purely neutral framings of biological complexity, our results support gene duplication events as a contributing factor in adaptive origins of complex traits.
+
+% Concrete phenotypic effects have been directly attributed to changes in copy count, such as the short leg length characteristic of dachshunds arising from an additional copy of the FGF4 gene \citep{dachshundGeneCopyNum}.
+
+% The prominent role of gene duplications in biological evolution has inspired incorporation of analogous mechanisms in evolution-inspired optimization algorithms \citep{Ryan:1998gm,Sawai:1999genetic,Sawai:2000comparative,Schmitt:2005bc}.
+% Notably, in genetic programming, gene duplication and deletion operators have been shown to increase program evolvability and yield simpler evolved solutions \citep{Koza:1995fr}.
+% In work evolving neural controllers for robots, enabling module duplication was found to increase functional specialization in network modules \citep{Calabretta:1998vh,Calabretta:2000tl}.
