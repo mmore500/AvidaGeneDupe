@@ -5,7 +5,7 @@
 \input{fig/results_panels_new.tex}
 
 In a first set of experiments, we investigated the impact of slip duplications on \textit{de novo} evolution of adaptive phenotypic traits.
-Comparing the acquisition of Logic-9 traits between slip-duplicate-enabled and baseline treatments, we found slip duplications to yield significantly higher evolved phenotypic adaptation scores (two-tailed Mann-Whitney U test, $W = 562.5$, Bonferroni-adjusted $p << 0.0001$; Figure \ref{fig:results_panels}).
+Comparing the acquisition of phenotypic traits between slip-duplicate-enabled and baseline treatments, we found slip duplications to yield significantly higher evolved phenotypic adaptation scores (two-tailed Mann-Whitney U test, $W = 562.5$, Bonferroni-adjusted $p << 0.0001$; Figure \ref{fig:results_panels}).
 Investigating further, we noticed that most replicates saw substantial growth in genome length --- in some cases, a ten-fold increase up to sizes slightly more than 1,000 sites.
 To test whether adaptive benefit was attributable to genome length, we performed additional experiments incorporating a ``long-genome'' control treatment initialized using genomes extended to 1,000 sites with neutral inserts.
 
@@ -25,7 +25,7 @@ Although a longstanding hypothesis dating as far back as Ohno \citep{ohno1970evo
 % are specific to adaptive evolution
 \subsection{Information content of duplications provides adaptive benefit}
 
-Having observed that slip-duplicate mutations accelerate evolution of Logic-9 phenotypes, we next sought to isolate the aspects of slip duplication contributing to adaptation.
+Having observed that slip-duplicate mutations accelerate evolution of adaptive phenotypic traits, we next sought to isolate the aspects of slip duplication contributing to adaptation.
 For this purpose, we tested four variants of the slip-duplication operator, disabling or replacing a particular aspect of slip duplication (overviewed in Figure \ref{fig:slip_mut_variants}).
 
 As shown in Figure \ref{fig:results_panels}, we detected benefits to adaptive evolution only for the follow-up slip-scramble treatment --- which randomized sequence order within duplicated regions (two-tailed Mann-Whitney U test; Figure \ref{fig:results_panels}).
@@ -118,7 +118,7 @@ Thus, the adaptive characteristics of slip duplication observed in our system se
 \input{fig/num-coding-sites}
 
 In a final set of analyses, we broadened our scope to assess consequences of gene duplication on whole-genome architecture with respect to genome robustness, which we defined in terms of sensitivity of fitness to mutation \citep{lenski1999genome}.
-We quantified robustness by counting the number of ``critical'' genome sites, where a single-site knockout disrupted replicator viability or one or more adaptive phenotypic traits (i.e., Logic-9 tasks).%
+We quantified robustness by counting the number of ``critical'' genome sites, where a single-site knockout disrupted replicator viability or one or more adaptive phenotypic traits.%
 \footnote{%
 Although sufficiently representative for our purposes, limitations exist in detecting Avida genome functionality through single-site knockouts; such an approach can underestimate aspects of genome sequence complexity involving small effects or redundancy \citep{lenski1999genome,moreno2024cryptic}.
 }
@@ -127,7 +127,7 @@ One conventional perspective on gene duplication is \textit{vis-a-vis} neutral d
 To assess the relevance of this model within our study system, we performed slip-duplicate mutational assays to quantify the baseline effect of slip insertion mutations on robustness, in the absence of selection.
 
 We applied our assay to final-dominant genome lineages evolved with slip duplication.
-For this purpose, we generated one slip duplication per genome, and filtered away those that affected self-replication viability or altered the Logic-9 phenotype.
+For this purpose, we generated one slip duplication per genome, and filtered away those that affected self-replication viability or degraded advantageous phenotypic traits.
 We then measured change in critical site counts between corresponding wildtype and mutated variants.
 
 In line with evidence that duplication-associated redundancy can boost robustness \citep{Lynch2000}, Fitness-neutral slip insertions did indeed tend to reduce the number of genome sites detectable as a single point of failure for performed tasks.
