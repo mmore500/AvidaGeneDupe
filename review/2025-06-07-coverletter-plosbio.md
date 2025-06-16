@@ -4,24 +4,28 @@ Please find attached our manuscript, *Gene duplications potentiate adaptive evol
 
 **What is the scientific question you are addressing?**
 
-We apply an experimental approach to establish the plausibility of gene duplication's impact on the evolution of biological complexity being substantially shaped by adaptive processes (e.g., neo-functionalization, dose effects).
+How does gene duplication influence the evolution of biological complexity?
+Specifically, we examine the role of adative processes (e.g., neo-functionalization, dose effects) in shaping gene duplication's impact on the measures of biological complexity.
 
 **What is the key finding that answers this question?**
 
-We find gene duplication to be closely linked to the *de novo* evolution of complex adaptive traits.
-Moreover, this effect is specific to complex traits, with adaptive evolution of simpler traits exhibiting no benefit beyond the effect of increased genome length alone.
+We find that gene duplication promotes *de novo* evolution of complex phentoypic traits via neo-functionalization.
+This effect is limited to complex traits, with adaptive evolution of simpler traits exhibiting no benefit beyond the effect of increased genome length alone.
 <!-- We find the adaptive benefit of gene duplication to be strongest in enabling adaptive evolution of complex, rather than simple, traits. -->
-Through step-by-step analysis of lineage histories, we trace an outsized fraction of coding sites for novel complex traits back to duplicated regions; similarly, this effect is specific to complex traits, not being observed for very simple traits.
+Through step-by-step analysis of lineage histories, we trace an outsized fraction of coding sites for novel complex traits back to duplicated regions; similarly, this effect is specific to complex traits, not being observed for simple traits.
 
 **What is the nature of the evidence you provide in support of your conclusion?**
 
-We report evolution experiments conducted using the Avida digital evolution platform, which enables self-replicating computer programs to be used as a model organism for evolution experiments.
-We apply a framework for modeling phenotype complexity developed by Lenski et al. (2003), which defines a set of virtual phenotype traits spread across a range of complexity, with complexity defined based on the number of logical operations necessary to carry them out.
-While careful consideration must be taken in generalizing results from Avida to biological organisms, this model offers unique capabilities for detailed, rigorously controlled treatments.
+We report *in silico* evolution experiments comparing the adaptive evolution of complex traits both with and without of duplicative mutation processes, in conjunction with lineage-based analyses examining the genomic origins of evolved traits.
+For this purpose, we used the Avida digital evolution platform, which enables self-replicating computer programs to be used as a model organism for evolution experiments.
+To study phenotypic complexity, a framework for adaptive traits within Avida exeriments drawn from Lenski et al. (2003).
+This framework defines a set of available metabolic functions with varying complexity based on the number of logical operations necessary to carry them out.
 
-Using this system, we compared adaptive evolution of phenotypic traits in the presence and absence of duplicative mutation.
-Our computational medium enabled further work testing partial ablations of gene duplication mechanisms to separate the impact of propagating genetic information from side effects in increased genome length and effective mutation rate.
+While careful consideration must be taken in generalizing results from Avida to biological organisms, in the context of our work, this model offers unique capabilities for detailed, rigorously controlled treatments with populations undergoing full Darwinian evolution.
+Our computational medium enabled further work testing partial ablations of gene duplication mechanisms to separate the impact of propagating genetic information from side effects in increased genome length and increased effective mutation rate.
 We also take advantage of detailed lineage records to examine exact mutational histories of coding sites for phenotypic traits to discern the role of gene duplication.
+
+> Lenski, R. E., Ofria, C., Pennock, R. T., & Adami, C. (2003). The evolutionary origin of complex features. Nature, 423(6936), 139–144. https://doi.org/10.1038/nature01568
 
 **What are the three most recently published articles that are relevant to this question?**
 
