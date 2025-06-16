@@ -5,8 +5,8 @@
 \input{fig/results_panels_new.tex}
 
 In a first set of experiments, we investigated the impact of slip duplications on \textit{de novo} evolution of adaptive phenotypic traits.
-Comparing the acquisition of phenotypic traits between slip-duplicate-enabled and baseline treatments, we found slip duplication to yield evolution of significantly more adaptive phenotypic traits (two-tailed Mann-Whitney U test, $W = 562.5$, Bonferroni-adjusted $p << 0.0001$; Figure \ref{fig:results_panels}).
-Investigating further, we noticed that most replicates saw substantial growth in genome length --- in some cases, a ten-fold increase up to sizes slightly more than 1,000 sites.
+Comparing the acquisition of phenotypic traits between slip-duplicate-enabled and baseline treatments, we found slip duplications to yield significantly higher evolved phenotypic adaptation scores (two-tailed Mann-Whitney U test, $W = 562.5$, Bonferroni-adjusted $p << 0.0001$; Figure \ref{fig:results_panels}).
+Investigating further, most replicates saw substantial growth in genome length from the starting length of 100 sites --- in some cases, a ten-fold increase up to sizes slightly more than 1,000 sites.
 To test whether adaptive benefit was attributable to genome length, we performed additional experiments incorporating a ``long-genome'' control treatment initialized using genomes extended to 1,000 sites with neutral inserts.
 
 \input{fig/adaptive-evolution-rate.tex}
@@ -32,7 +32,7 @@ As shown in Figure \ref{fig:results_panels}, we detected benefits to adaptive ev
 All other slip-duplicate variants were indistinguishable or slower-adapting compared with the baseline treatment.
 
 Given the efficacy of the slip-scramble treatment in facilitating adaptation, we additionally tested whether phenotypic adaptation differed between the slip-scramble and full-fledged slip-duplicate operators.
-To prevent issues with multiple comparisons, we dispatched 100 new trials under both treatments for this test.
+To prevent issues with multiple comparisons, we ran 100 new trials under both treatments for this test.
 % p = 0.011
 We found that the slip-duplicate treatment did, in fact, yield higher task counts compared to the slip-scramble treatment (two-tailed Mann-Whitney U test, $W = 4305$ respectively, Bonferroni-adjusted $p < 0.02$).
 These results indicate that both the content and structure of duplicated genetic material contribute to facilitating adaptive evolution.
@@ -128,14 +128,14 @@ One conventional perspective on gene duplication is \textit{vis-a-vis} neutral d
 To assess the relevance of this model within our study system, we performed slip-duplicate mutational assays to quantify the baseline effect of slip insertion mutations on robustness.
 We applied our assay to final-dominant genome lineages evolved with slip duplication, sampling one slip duplication per genome and measuring change in critical site counts between corresponding wildtype and mutated variants.
 
-In line with evidence that duplication-associated redundancy can boost robustness \citep{Lynch2000}, Fitness-neutral slip insertions did indeed tend to reduce the number of genome sites detectable as a single point of failure for performed tasks.
+In line with evidence that duplication-associated redundancy can boost robustness \citep{Lynch2000}, fitness-neutral slip insertions did indeed tend to reduce the number of genome sites detectable as a single point of failure for performed tasks.
 % https://github.com/chaynes2019/AvidaGeneDupe/blob/9fee1f13a8d31f25d1dd799c6a26f9b7fa617738/binder/indel-effect-nulldist.ipynb
 On average, we found that neutral slip insertions decreased coding site count by 6.8 sites (bootstrapped 95\% CI 6.4 to 7.3; median 3\% of coding sites).
 This effect was strongest in genomes with high complexity; for instance, neutral insertion mutations decrease coding site count by 9.2 and 8.3 sites on average in genomes that encode 4- and 5-component complexity tasks, respectively (bootstrapped 95\% CIs 8.5 to 9.9 and 7.2 to 9.3; median 3\% and 5\% of coding sites).
 Supplementary Figure \ref{fig:nulldist} presents these results.
 
 % https://github.com/chaynes2019/AvidaGeneDupe/blob/binder/binder/gain-mechanism.ipynb
-To assess evolutionary consequences of redundancies introduced by slip-duplication, we next pivoted to assess coding site accumulation within genomes over the course of evolution.
+To assess evolutionary consequences of redundancies introduced by slip-duplication, we next analyzed coding site accumulation within genomes over the course of evolution.
 Counter to naive expectation, we found that the slip duplication treatment accrued fitness-critical sites at a generation-on-generation rate comparable to the long-genome baseline treatment; Mann-Whitney test, $U=361$, $p=0.19$).
 Despite this similarity, however, when measurements were taken inclusive of vestigial coding sites (those which had \textit{previously} been fitness-critical earlier within a lineage), we found a significantly increased coding site count associated with the slip-duplicate treatment (Mann-Whitney test, $U=630$, $p<0.01$).
 Figure \ref{fig:num-coding-sites} compares growth in active versus vestigial coding site counts for baseline, long-genome, and slip-duplication treatment.
