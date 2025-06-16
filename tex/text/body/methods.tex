@@ -77,6 +77,11 @@ Genomes in this treatment operated identically to those in the baseline treatmen
 The 1,000-site length was chosen to approximate the upper bound of genome sizes observed in first-phase slip-duplication treatment experiments.
 Second-phase data was used for analyses of task gain by complexity class (Figure \ref{fig:adaptive-evolution-rate}), analyses of coding site count trajectories (Figure \ref{fig:num-coding-sites}), potentiation analyses (Figures \cref{fig:potentiation,fig:potentiation-supp} and analyses of slip-duplication outcome distributions (Figure \ref{fig:nulldist}).
 Phenotypic adaption scores shown in Figure \ref{fig:results_panels} were also derived from second-phase experiments.
+
+For experiments incorporating the long-genome baseline control, timecourses of adaptive evolution were compared in terms of generations, rather than in terms of updates (simulation timesteps).
+This strategy was necessary to account for substantially fewer generations elapsing per thousand updates under the long-genome controls, because of extended copy loop durations.
+In other experiments, control treatments generally elapsed at least as many generations as the slip-duplication experimental treatment, on account of comparable or shorter genome length.
+Thus, even when comparing by update in these other experiments, elevated adaptive rates under slip duplication could not be have been caused by more generations elapsing under the slip-duplication treatment.
 % % Slip-duplicate treatment
 % The \textbf{slip-duplicate treatment} allowed for mutation events that resulted in full code duplications via the slip-duplicate mutation operator. Duplications in this treatment preserved both the content and the structure of duplicated code. This allowed us to answer the following question: how important is it that gene duplications can exactly duplicate sequences in a genome in both content \textit{and} structure?
 
