@@ -19,7 +19,7 @@ We report evolution experiments conducted using the Avida digital evolution plat
 We apply a framework for modeling phenotype complexity developed by Lenski et al. (2003), which defines a set of virtual phenotype traits spread across a range of complexity, with complexity defined based on the number of logical operations necessary to carry them out.
 While careful consideration must be taken in generalizing results from Avida to biological organisms, this model offers unique capabilities for detailed, rigorously controlled treatments.
 
-hUsing this system, we compared adaptive evolution of phenotypic traits in the presence and absence of duplicative mutation.
+Using this system, we compared adaptive evolution of phenotypic traits in the presence and absence of duplicative mutation.
 Our computational medium enabled further work testing partial ablations of gene duplication mechanisms to separate the impact of propagating genetic information from side effects in increased genome length and effective mutation rate.
 We also take advantage of detailed lineage records to examine exact mutational histories of coding sites for phenotypic traits to discern the role of gene duplication.
 

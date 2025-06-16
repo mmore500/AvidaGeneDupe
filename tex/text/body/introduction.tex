@@ -15,7 +15,7 @@ Insight may also be gained from tracing the fate of duplicated sites, given the 
 \input{fig/slip_mut_variants.tex}
 
 Here, we investigate the role of adaptive innovation in the relationship between gene duplication and the evolution of complexity using the Avida digital evolution platform.
-This system allows evolution experiments to be conducted using populations of self-replicating computer programs (digital organisms) \citep{Ofria:2009avida};
+This system allows evolution experiments to be conducted using populations of self-replicating computer programs, operating as digital ``model organisms'' \citep{Ofria:2009avida};
 owing to heritable variation in replication rate introduced by copy errors, evolution by natural selection unfolds within these populations \citep{pennock2007models}.
 Among other early work with Avida, Lenski \textit{et al.} established a useful framework for quantifying the complexity of phenotypic traits evolved by Avida organisms, by counting the minimum number of necessary substeps to accomplish a task of interest \citet{lenski2003evolutionary}.
 Applying this lens to a phenotype  (``EQU'') comprising a large number of substeps, controlled experiments and step-by-step lineage analyses demonstrated that simple traits could provide building blocks for EQU --- and, in fact, amounted to necessary prerequisites for the evolution of complex traits.
@@ -34,7 +34,7 @@ Figure \ref{fig:slip_mut_variants} provides a schematic overview of the experime
 All experiments comprised well-mixed populations with a carrying capacity of 3,600 Avida organisms.
 To supply adaptive potential, we adopted an framework developed by Lenski \citet{lenski2003evolutionary} to define a set of nine advantageous phenotypic traits.
 Each trait corresponds to a possible logical transform on available binary inputs.
-Under this scheme, organisms producing correct output values for a task benefit by accelerating their rate of genome expression (and thus their rate of self-replication), analogously to a metabolic process.
+Under this scheme, organisms producing correct output values for a task benefit by accelerating their genome evaluation (and, thus, also their self-replication), analogously to a metabolic process.
 Formally, ``substeps'' necessary to carry out each task may be quantified in terms of the minimum number of NAND operations necessary to carry it out \citep{lenski2003evolutionary}.%
 \footnote{
 Computer architecture theory considers NAND as a fundamental basis operation, since all other logic can be derived from compositions of NAND operations \citep{mano1997logic}.
