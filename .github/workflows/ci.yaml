@@ -19,6 +19,9 @@ jobs:
       - run: |
           apk update
           apk add --no-cache coreutils bash git make tar
+      - uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
       - name: Build LaTeX document
         run: |
           trap 'cat tex/*.log || true >> "$GITHUB_OUTPUT"' EXIT
