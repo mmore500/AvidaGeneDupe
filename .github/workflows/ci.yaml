@@ -16,6 +16,9 @@ jobs:
       image: kjarosh/latex:2024.4
       options: --user root
     steps:
+      - run: |
+          apk update
+          apk add --no-cache coreutils bash git make tar
       - name: Build LaTeX document
         run: |
           trap 'cat tex/*.log || true >> "$GITHUB_OUTPUT"' EXIT
