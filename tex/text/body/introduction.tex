@@ -18,13 +18,13 @@ Insight may also be gained from tracing the fate of duplicated sites, given the 
 Here, we investigate the role of adaptive innovation in the relationship between gene duplication and the evolution of complexity using the Avida digital evolution platform.
 This system allows evolution experiments to be conducted using populations of self-replicating computer programs, operating as digital ``model organisms'' \citep{Ofria:2009avida};
 owing to heritable variation in replication rate introduced by copy errors, evolution by natural selection unfolds within these populations \citep{pennock2007models}.
-Among other early work with Avida, Lenski \textit{et al.} established a useful framework for quantifying the complexity of phenotypic traits evolved by Avida organisms, by counting the minimum number of necessary substeps to accomplish a task of interest \citet{lenski2003evolutionary}.
+Among other early work with Avida, Lenski \textit{et al.} established a useful framework for quantifying the complexity of phenotypic traits evolved by Avida organisms, by counting the minimum number of necessary substeps to accomplish a task of interest \citet{Lenski2003Evolutionary}.
 Applying this lens to a phenotype  (``EQU'') comprising a large number of substeps, controlled experiments and step-by-step lineage analyses demonstrated that simple traits could provide building blocks for EQU --- and, in fact, amounted to necessary prerequisites for the evolution of complex traits.
 Other work with Avida has yielded wide-ranging contributions shedding light on selection's influence on information-theoretic measures of genome complexity \citep{Adami2000Evolution}, co-evolutionary pressures toward complex phenotypic traits \citep{Zaman2014Coevolution}, and the abundance of genetic encodings for complex phenotypes \citep{Fortuna2017GenotypePhenotype}.
 
 To determine the role of novel adaptations in complexity arising from gene duplication, we independently assessed the influence of slip-duplication mutations on both genetic and phenotypic complexity.
 We measured genetic complexity by counting the program instructions contributing to an organism's fitness.
-For phenotypic complexity, we used the minimal quantity of computational substeps necessary to recreate exhibited behaviors \citet{lenski2003evolutionary}.
+For phenotypic complexity, we used the minimal quantity of computational substeps necessary to recreate exhibited behaviors \citet{Lenski2003Evolutionary}.
 We find that gene duplication facilitates adaptive evolution of phenotypic traits, with this adaptive benefit appearing exclusively for complex traits.
 Moreover, we show genome sites encoding complex phenotypic traits to be disproportionately localized within slip-duplicated regions.
 Genetic complexity, by comparison, did not appreciably respond to gene duplications.
@@ -33,15 +33,15 @@ Our results therefore contrast with perspectives on biological complexity accord
 
 Figure \ref{fig:slip_mut_variants} provides a schematic overview of the experiments conducted in our work.
 All experiments comprised well-mixed populations with a carrying capacity of 3,600 Avida organisms.
-To supply adaptive potential, we adopted an framework developed by Lenski \citet{lenski2003evolutionary} to define a set of nine advantageous phenotypic traits.
+To supply adaptive potential, we adopted an framework developed by Lenski \citet{Lenski2003Evolutionary} to define a set of nine advantageous phenotypic traits.
 Each trait corresponds to a possible logical transform on available binary inputs.
 Under this scheme, organisms producing correct output values for a task benefit by accelerating their genome evaluation (and, thus, also their self-replication), analogously to a metabolic process.
-Formally, ``substeps'' necessary to carry out each task may be quantified in terms of the minimum number of NAND operations necessary to carry it out \citep{lenski2003evolutionary}.%
+Formally, ``substeps'' necessary to carry out each task may be quantified in terms of the minimum number of NAND operations necessary to carry it out \citep{Lenski2003Evolutionary}.%
 \footnote{
 Computer architecture theory considers NAND as a fundamental basis operation, since all other logic can be derived from compositions of NAND operations \citep{mano1997logic}.
 }
 As seen in Figure \ref{fig:slip_mut_variants}, the most complex function (EQU) requires five NAND operations while the simplest (NAND and NOT) require only one.
-% In other work, EQU has been shown to require at least around 20 constituent genome sites, with many possible longer ways to accomplish EQU \citep{lenski2003evolutionary}.
+% In other work, EQU has been shown to require at least around 20 constituent genome sites, with many possible longer ways to accomplish EQU \citep{Lenski2003Evolutionary}.
 
 Avida organisms replicate asexually by copying their genome one locus at a time.
 In addition to a baseline point mutation rate, our experiments
