@@ -6,7 +6,7 @@
 
 In a first set of experiments, we investigated the impact of slip duplications on \textit{de novo} evolution of adaptive phenotypic traits.
 Comparing the acquisition of phenotypic traits between slip-duplicate-enabled and baseline treatments, we found slip duplications to yield significantly higher evolved phenotypic adaptation scores (two-tailed Mann-Whitney U test, $W = 562.5$, Bonferroni-adjusted $p << 0.0001$; Figure \ref{fig:results_panels}).
-Investigating further, most replicates saw substantial growth in genome length from the starting length of 100 sites --- in some cases, a ten-fold increase up to sizes slightly more than 1,000 sites.
+Investigating further, most replicates saw substantial growth in genome length from the initial length of 100 sites --- in some cases, a tenfold increase, reaching sizes slightly more than 1,000 sites.
 To test whether adaptive benefit was attributable to genome length, we performed additional experiments incorporating a ``long-genome'' control treatment initialized using genomes extended to 1,000 sites with neutral inserts.
 
 \input{fig/adaptive-evolution-rate.tex}
@@ -174,21 +174,21 @@ Leveraging the unique tractability of our study system, we were able to explore 
 
 \subsection{Gene duplication facilitates adaptive evolution of complex traits}
 
-While we find that gene duplication can facilitate adaptive evolution, we detect this effect only for phenotypic traits with greater functional complexity; adaptive evolution of simpler traits exhibit no benefit beyond the effect of increased genome size alone (Figure \ref{fig:adaptive-evolution-rate}).
-Given compositional nature of trait functionality within our study system \citep{Lenski2003Evolutionary}, this outcome would be consistent suggestive with a ``building block'' model of adaptation, where duplication facilitates discovery of novel medleys of existing components.
+While we find that gene duplication can facilitate adaptive evolution, we detect this effect only for phenotypic traits with greater functional complexity; adaptive evolution of simpler traits exhibits no benefit beyond the effect of increased genome size alone (Figure \ref{fig:adaptive-evolution-rate}).
+Given the compositional nature of trait functionality within our study system \citep{Lenski2003Evolutionary}, this outcome would be consistent with a ``building block'' model of adaptation, where duplication facilitates discovery of novel medleys of existing components.
 
 In broad strokes, adaptive significance of gene duplication within our study system aligns with existing findings across a wide variety of biological taxa and digital models that slip-duplication of genetic material can facilitate evolution of adaptive traits \citep{Koza:1995fr,Zhang:2003fw,Teichmann:2004cz}.
 Indeed, a striking example of gene duplication potentiating novel adaptation comes from the Long-Term Evolution Experiment in \textit{E. coli} \citep{lenski1991longterm,Lenski2003phenotypic}, where a duplication in one population broadened expression of a key citrate transporter to aerobic conditions --- resulting in a seven-fold increase in carrying capacity within experimental conditions \citep{blount_genomic_2012}.
 Among many other examples \citep{zhang2002adaptive,gaines2009gene,perry2007diet,hittinger2007gene,benderoth2006positive,dulai1999evolution}, such observations provide a basis for longstanding connections drawn between gene duplications and adaptive traits, dating as far back as \citet{ohno1970evolution}.
 Present work contributes systematic and controlled experimental evidence supporting this relationship, and additionally suggests in further detail that gene duplications may be especially important to the evolution of complex traits.
-However, further work is warranted investigating whether similar constraints or patterns hold in natural systems where additional mechanisms --- such as structured regulatory interactions --- play prominent roles in trait evolution.
+However, further work is warranted to investigate whether similar constraints or patterns hold in natural systems where additional mechanisms --- such as structured regulatory interactions --- play prominent roles in trait evolution.
 
 \subsection{Sequence information of duplications contributes to adaptive outcomes}
 
-Our digital evolution study system allowed us to further disentangle which characteristics of gene duplications increase evolutionary potential by imposing variants of the slip mutation operator isolating individual aspects of duplicative processes (Figure~\ref{fig:slip_mut_variants}).
+Our digital evolution study system allowed us to further disentangle which characteristics of gene duplications increase evolutionary potential by imposing variants of the slip mutation operator, isolating individual aspects of duplicative processes (Figure~\ref{fig:slip_mut_variants}).
 We find that only duplications of existing genetic information --- either as-is or in a ``scrambled'' order --- provide adaptive benefit, with those preserving both content and order ultimately performing best.
 In contrast, slip mutation variants that insert neutral or random genetic material provide no observable adaptive benefit over a baseline control (Figure~\ref{fig:results_panels}).
-These results indicate that both the content and structure of duplicated genetic material contribute to facilitating adaptive evolution, beyond the impact of side effects such as increase in genome size or mutational supply.
+These results indicate that both the content and structure of duplicated genetic material contribute to facilitating adaptive evolution, beyond the impact of side effects such as an increase in genome size or mutational supply.
 This finding is consistent with theoretical expectations that gene duplications generate both raw material and combinatorial novelty, enabling subfunctionalization and neofunctionalization \citep{Ohno1970evolution,Lynch2000}.
 
 Interestingly, unlike our long-genome control, we did not observe an adaptive benefit from the nop-insert slip-duplication treatment (Figure~\ref{fig:results_panels}).
@@ -210,4 +210,4 @@ Consistent with evidence that duplication-associated redundancy can boost robust
 Within evolutionary trials in our study system, slip duplication appears to increase the net supply of coding material in the genome available to neutral processes, but does not significantly affect accumulation of genetic brittleness (Figure \ref{fig:num-coding-sites}).
 One possible explanation is that, despite slip duplication boosting redundancy in the short term, mutational erosion and selective pressures against mutational fragility drive both the slip-duplication and long-genome treatments to converge on a similar number of critical sites.
 On the other hand, observed proliferation of vestigial coding material by gene duplications aligns with adaptive potentiation effects discussed earlier.
-Given that comparative studies have linked ancient duplication events with subsequent gains in genetic robustness and evolutionary innovation \citep{Wagner2008}, these findings suggest directions for future work experimental investigating how such dynamics unfold over extended timescales to shed light on possible connections to larger-scale evolutionary patterns.
+Given that comparative studies have linked ancient duplication events with subsequent gains in genetic robustness and evolutionary innovation \citep{Wagner2008}, these findings suggest directions for future experimental work investigating how such dynamics unfold over extended timescales to shed light on possible connections to larger-scale evolutionary patterns.
