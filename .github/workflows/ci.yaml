@@ -40,7 +40,7 @@ jobs:
   latex:
     name: Latex Build and Deploy
     runs-on: ubuntu-22.04
-    if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/main'
     container:
       image: kjarosh/latex:2024.4
       options: --user root
