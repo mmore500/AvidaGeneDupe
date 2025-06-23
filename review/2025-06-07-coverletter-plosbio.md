@@ -29,9 +29,11 @@ We also take advantage of detailed lineage records to examine exact mutational h
 
 **What are the three most recently published articles that are relevant to this question?**
 
-> **Tong, K. et al.** "Genome duplication in a long-term multicellularity evolution experiment." *Nature* (Mar 2025) --- Experimental evolution in *in vivo* model system, demonstrating adaptive role of dose effects.
+> **Ljiljana Mihajlovic et al.** (2025) A direct experimental test of Ohno’s hypothesis
+eLife 13:RP97216.
+--- Our finding that gene duplication can boost adaptation contrasts notably with this work, comparing rate of improvement for coGFP floursescence strength between single- vs. dual-copy populations under directed evolution conditions in an *E. coli* model
 
-> **Castellanos, M. D. P. et al.** (2024). The roles of gene duplications in the dynamics of evolutionary conflicts. Proceedings B, 291(2024), 20240555. --- Reviews evidence of gene duplication facilitating rapid change in response to conflict-driven selection pressure.
+> **Tong, K. et al.** "Genome duplication in a long-term multicellularity evolution experiment." *Nature* (Mar 2025) --- Experimental evolution in *in vivo* model system, demonstrating adaptive role of dose effects.
 
 > **DuBose and de Roode**, The link between gene duplication and divergent patterns of gene expression across a complex life cycle, Evolution Letters (October 2024) --- Establishes evidence for adaptive neo-functionalization of duplicated genes in monarch butterflies vis-a-vis shifts in expression patterns between lifecycle stages.
 
