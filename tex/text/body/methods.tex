@@ -52,6 +52,8 @@ Across trials, we assessed full-fledged slip-duplicate mutation in comparison wi
 Figure \ref{fig:slip_mut_variants} illustrates example outcomes across surveyed slip-mutation variants.
 % [x] @CAO: I don't think it's worth starting whole new runs now, but the one other treatment I know we've at least talked about in the past is something like "slip-background" which is like slip-random, but where we look at the background distribution of instructions in the population to bias the random probabilities.  This can help distinguish why slip-scramble does better than slip random -- is it the instructions in the genome itself, or is it just that these are more likely to be instructions that are generally useful which is why they were selected by evolution in the first place.
 
+We also applied a \textbf{high mutation rate} control treatment, for which we increased the single instruction insertion/deletion rate to 0.0075, to result in approximately the same number of mutations per divide as under slip mutation.
+
 When insertion occurs, all slip mutation operators add a number of instructions equal to the length of the target segment.
 However, the composition and location of inserted instructions vary according to the slip mutation operator schema.
 Deletions acted identically across slip mutation variants, except slip-scatter, which randomized deletions uniformly across the genome.
