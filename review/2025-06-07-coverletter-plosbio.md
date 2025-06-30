@@ -29,29 +29,41 @@ We also take advantage of detailed lineage records to examine exact mutational h
 
 **What are the three most recently published articles that are relevant to this question?**
 
-> **Ljiljana Mihajlovic et al.** (2025) A direct experimental test of Ohno’s hypothesis
-eLife 13:RP97216.
---- Our finding that gene duplication can boost adaptation contrasts notably with this work, comparing rate of improvement for coGFP floursescence strength between single- vs. dual-copy populations under directed evolution conditions in an *E. coli* model
+> Mihajlovic, L., Iyengar, B. R., Baier, F., Barbier, I., Iwaszkiewicz, J., Zoete, V., Wagner, A., & Schaerli, Y. (2025). A direct experimental test of Ohno’s hypothesis. eLife, 13, RP97216. doi:10.7554/eLife.97216
+elifesciences.org
 
-> **Tong, K. et al.** "Genome duplication in a long-term multicellularity evolution experiment." *Nature* (Mar 2025) --- Experimental evolution in *in vivo* model system, demonstrating adaptive role of dose effects.
+Compares rate of improvement for coGFP floursescence strength between single- vs. dual-copy populations under directed evolution conditions in an *E. coli* model.
+The two-copy strain does not exhibit adaptive advantage, contrasting notably with present work.
 
-> **DuBose and de Roode**, The link between gene duplication and divergent patterns of gene expression across a complex life cycle, Evolution Letters (October 2024) --- Establishes evidence for adaptive neo-functionalization of duplicated genes in monarch butterflies vis-a-vis shifts in expression patterns between lifecycle stages.
+> Tong, K., Datta, S., Cheng, V., Haas, D. J., Gourisetti, S., Yopp, H. L., Day, T. C., Lac, D. T., Conlin, P. L., Bozdag, G. O., & Ratcliff, W. C. (2025). Genome duplication in a long-term multicellularity evolution experiment. Nature, 639, 691–699. doi:10.1038/s41586-025-08689-6
+
+Demonstrates adaptive role of dose effects from whole genome duplication, using experimental evolution in *S. cerevisiae* model.
+By contrast, our focus pertains to neofunctionalization and evolutionary potentiation.
+
+> DuBose, J. G., & de Roode, J. C. (2024). The link between gene duplication and divergent patterns of gene expression across a complex life cycle. Evolution Letters, 8(5), 726–734. doi:10.1093/evlett/qrae028
+
+Applying a comparative approach, establishes evidence for adaptive neo-functionalization of duplicated genes in monarch butterflies vis-a-vis shifts in expression patterns between lifecycle stages.
+Our experiments generally echo these findings, with newly evolved complex tasks tending to arise within duplicated segments.
 
 **What significance do your results have for the field?**
 
-Our study delivers rare, direct‐experimental evidence that gene duplication can contribute substantially to biological complexity via adaptive innovation in complex traits.
-By isolating duplicative mutational mechanisms in Avida and tracing detailed mutational steps along complete lineages, we advance the discussion to a causal demonstration that (1) gene duplications facilitate *de novo* origin of adaptive traits, (2) this effect is pronounced for complex traits, and (3) genetic information content propagated in duplications contributes to this advantage.
-These findings contrast notably with framings hypothesizing sufficiency of non-adaptive explanations for biological complexity.
-<!-- As such, this work provides a cornerstone complementary to comparative approaches in natural history. -->
+Our study delivers direct experimental evidence of gene duplication increasing evolved complexity via adaptive innovation in complex traits.
+By dissecting duplicative mutational mechanisms in Avida and tracing detailed mutational steps along complete lineages, we demonstrate that:
+1. gene duplications can facilitate *de novo* origin of adaptive traits,
+2. this effect is pronounced for complex traits, and
+3. genetic information content propagated in duplications contributes to this advantage.
 
+These findings contrast notably with hypotheses that discount adaptive explanations for biological complexity.
+<!-- As such, this work provides a cornerstone complementary to comparative approaches in natural history. -->
 
 **What significance do your results have for the broader community (of biologists and/or the public)?**
 
-From a science communication perspective, lines of research working with ``evolution in action'' provide exciting opportunity to broaden public perceptions of evolutionary processes as an ongoing story rather than a historical record.
-In concert with the broader experimental evolution community, experimenting with digital evolution models is notable for its low barrier to entry through web-based applications such as Avida-ED.
+We contribute to the body of evidence highlighting the role of duplicative processes in adaptive evolution.
+Our findings pertain to application-oriented work harnessing evolution as an optimization process, both *in vivo* and *in silico* (e.g., directed evolution or evolutionary computation).
+In particular, our research identifies problem contexts where gene duplication processes may be most impactful (e.g., complex problems with potential to assemble functional building blocks).
 
-Our research also pertains to application-oriented work engineering evolution as an optimization process, both *in vivo* and *in silico*.
-To these ends, we contribute to the body of evidence highlighting duplicative processes as key for adaptive evolution and, in particular, our research defines problem contexts where gene duplication processes may be most impactful (e.g., complex problems with potential to assemble functional building blocks).
+From a science communication perspective, lines of research working with ``evolution in action'' provide exciting opportunity to broaden public perceptions of evolutionary processes as an ongoing story rather than a historical record.
+In concert with the broader experimental evolution community, digital evolution work is particularly well-suited to ``hands-on'' exploration --- especially through web-based applications, such as Avida-ED (<https://avida-ed.msu.edu>).
 
 **What other novel findings do you present?**
 
