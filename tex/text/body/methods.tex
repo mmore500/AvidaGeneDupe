@@ -12,7 +12,7 @@ Population size was configured to the Avida default of 3,600 organisms across al
 We configured available metabolic resources consisting of tasks NOT, NAND, OR-NOT, AND, OR, AND-NOT, NOR, XOR, and EQUALS.
 Identical reward was provided for performing each task and kept consistent throughout trials.
 Rewards accrued independently for each task, enabling fitness benefits to be compounded by performing multiple tasks.
-In some analyses, we report a ``phenotypic adaptation score,'' ranging from a minimum of 0 (\textit{i.e.} the organism performs no tasks and receives no reward) to a maximum of 9 (\textit{i.e.} the organism performs all 9 tasks and receives the maximum reward).
+In some analyses, we report a count of adaptive phenotypic traits, ranging from a minimum of 0 (\textit{i.e.} the organism performs no metabolic tasks and receives no reward) to a maximum of 9 (\textit{i.e.} the organism performs all 9 available metabolic tasks and receives the maximum reward).
 Phenotypic traits were also described in terms of minimum required NAND operations as a metric of complexity, as given in Figure \ref{fig:slip_mut_variants} \citep{Lenski2003Evolutionary}.
 
 Except where otherwise noted, experiments were seeded with a 100-instruction ancestral self-replicator.
@@ -68,7 +68,7 @@ Replicate count was 100 independent trials for first-phase experiments, and 30 r
 
 First-phase experiments consisted of six treatments: one baseline treatment with slip-duplication disabled and five experimental treatments corresponding to the five surveyed slip-duplication mutation operators shown in Figure \ref{fig:slip_mut_variants}.
 These treatments differed only in the available mutation operators and the rates at which those operators were applied.
-First-phase data was used for analyses comparing evolved phenotypic adaptation score between slip mutation operators.
+First-phase data was used for analyses comparing evolved adaptive phenotypic traits between slip mutation operators.
 
 % % Baseline treatment
 % The \textbf{baseline treatment} was used as a control; we used the results from this treatment as a baseline for evolvability, with which we compared the results from all other experimental treatments. Mutation rates in the baseline treatment have been shown to facilitate both the evolution of complex boolean logic tasks, such as EQUALS, and the evolution of task regulation in Avida \citep{Lenski2003Evolutionary, Lalejini:2016plasticity}
@@ -107,7 +107,7 @@ Thus, even when comparing by update in these other experiments, elevated adaptiv
 
 \subsection{Lineage analyses}
 
-% For first-phase experiments, we applied a Kruskal-Wallis test to screen for between-group variation in phenotypic adaptation score among surveyed treatments.
+% For first-phase experiments, we applied a Kruskal-Wallis test to screen for between-group variation in evolved adaptive phenotypic traits among surveyed treatments.
 % On account of an earlier experimental design incorporating two additional surveyed conditions incorporating environmental fluctuations, Bonferroni correction was applied to keep experiment-wise $\alpha$ = 0.05.
 % For subsequent Mann-Whitney U tests testing individual treatments against baseline, we applied Bonferroni correction for the five such comparisons.
 % Experimental design in our second-phase experiments did not require adjustments for multiple comparisons.
