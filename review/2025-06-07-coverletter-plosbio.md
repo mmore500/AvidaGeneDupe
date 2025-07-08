@@ -12,7 +12,7 @@ Specifically, we examine the role of adative processes (e.g., neo-functionalizat
 We find that gene duplication promotes *de novo* evolution of complex phentoypic traits via neo-functionalization.
 This effect is limited to complex traits, with adaptive evolution of simpler traits exhibiting no benefit beyond the effect of increased genome length alone.
 <!-- We find the adaptive benefit of gene duplication to be strongest in enabling adaptive evolution of complex, rather than simple, traits. -->
-Through step-by-step analysis of lineage histories, we trace an outsized fraction of coding sites for novel complex traits back to duplicated regions; similarly, this effect is specific to complex traits, not being observed for simple traits.
+Through step-by-step analysis of lineage histories, we trace an outsized fraction of coding sites for novel complex traits back to duplicated regions; similarly, this effect is also specific to complex traits, not being observed for simple traits.
 
 **What is the nature of the evidence you provide in support of your conclusion?**
 
@@ -42,7 +42,7 @@ By contrast, our focus pertains to neofunctionalization and evolutionary potenti
 
 > DuBose, J. G., & de Roode, J. C. (2024). The link between gene duplication and divergent patterns of gene expression across a complex life cycle. Evolution Letters, 8(5), 726–734. doi:10.1093/evlett/qrae028
 
-Applying a comparative approach, establishes evidence for adaptive neo-functionalization of duplicated genes in monarch butterflies vis-a-vis shifts in expression patterns between lifecycle stages.
+Applying a comparative approach establishes evidence for adaptive neo-functionalization of duplicated genes in monarch butterflies vis-a-vis shifts in expression patterns between lifecycle stages.
 Our experiments generally echo these findings, with newly evolved complex tasks tending to arise within duplicated segments.
 
 **What significance do your results have for the field?**
@@ -67,15 +67,15 @@ In concert with the broader experimental evolution community, digital evolution 
 
 **What other novel findings do you present?**
 
-- Ablation experiments demonstrate that genetic information propagated by slip duplications, specifically, contributes to subsequent adaptive innovation.
-- We show that slip duplication accelerates the accumulation of vestigial coding sites in the genome, beyond the impact of increased genome size alone.
-- We see evidence that contingent processes is necessary to adaptive effects of gene duplications --- by preventing loss of duplicated material from selection against mutational load associated with genome size.
+- Propagation of intact genetic sequence content by slip duplication yielded markedly larger final genome size, compared to ablation treatments where duplications did not preserve sequence content --- including treatments where inserts comprised fully neutral content.
+- Ablation experiments also demonstrated that propagation of intact genetic sequence content contributes in facilitating adaptive innovation.
+- Slip duplication accelerated the accumulation of vestigial coding sites in the genome, beyond the impact of increased genome size alone.
 
 **Is there additional information that we should take into account?**
 
-Our project builds on an impactful body of experimental work using Avida to study aspects of the evolution of complexity, notably including two works appearing in PLOS Biology --- Zaman et al. 2014 (doi:[10.1371/journal.pbio.1002023](https://doi.org/10.1371/journal.pbio.1002023)) and Goldsby et al. 2014 (doi:[10.1371/journal.pbio.1001858](https://doi.org/10.1371/journal.pbio.1001858)).
+Our project builds on an impactful body of experimental work using Avida to study the evolution of complexity, notably including two works appearing in PLOS Biology --- Zaman et al. 2014 (doi:[10.1371/journal.pbio.1002023](https://doi.org/10.1371/journal.pbio.1002023)) and Goldsby et al. 2014 (doi:[10.1371/journal.pbio.1001858](https://doi.org/10.1371/journal.pbio.1001858)).
 Note also that an earlier version of this work appeared at the 2017 Artificial Life conference (doi:[10.1162/isal_a_045](https://doi.org/10.1162/isal_a_045)).
-We look forward to further contributing to conversation around the evolution of complexity.
+By presenting our findings in PLOS Biology, we look forward to furthering conversation around the evolution of complexity.
 
 Thank you for your consideration,
 The Authors
