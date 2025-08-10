@@ -3,14 +3,14 @@
 %
 % Numeric variant of the `apalike-ejor` bibliography style for use with
 % natbib's numeric citestyle (e.g. \citestyle{numeric}, \bibliographystyle{apalike-ejor-num}).
-% This file is a drop‑in replacement for `apalike-ejor.bst`; the only
+% This file is a drop-in replacement for `apalike-ejor.bst`; the only
 % functional change is that citations are now numeric rather than
-% author‑year.  All formatting rules specific to the European Journal of
+% author-year.  All formatting rules specific to the European Journal of
 % Operational Research (EJOR) that were introduced in the original style are
 % preserved verbatim.
 %
 %                                   ───────────────────────────
-% WHAT CHANGED (relative to apalike‑ejor v1.2.0)
+% WHAT CHANGED (relative to apalike-ejor v1.2.0)
 % ───────────────────────────────────────────────────────────────
 %  •  The optional label inside \bibitem is no longer the author–year key.
 %     Instead we rely on LaTeX’s automatic enumeration so that references are
@@ -29,10 +29,10 @@
 %         }
 %
 %  •  All code that computes and manipulates the `label` field (author/year
-%     strings, extra‑letter disambiguation, longest.label, etc.) is retained
+%     strings, extra-letter disambiguation, longest.label, etc.) is retained
 %     for backward compatibility but is now effectively ignored because the
 %     label is not written to the .bbl file.  This means *no* upstream code
-%     was removed, ensuring 100 % drop‑in compatibility.
+%     was removed, ensuring 100 % drop-in compatibility.
 %  •  The width argument of \begin{thebibliography} was left empty ({}), the
 %     same as in the parent style.  LaTeX automatically adapts the alignment
 %     of numeric labels.
@@ -44,7 +44,7 @@
 %   \bibliographystyle{apalike-ejor-num}
 %
 % That’s it – no further changes to your document are required.  If you were
-% previously using apalike‑ejor, simply change the style name.
+% previously using apalike-ejor, simply change the style name.
 %                                   ───────────────────────────
 
 ENTRY
@@ -141,7 +141,7 @@ FUNCTION {output.bibitem}
 }
 
 %─────────────────────────
-% (The remainder of the file is identical to apalike‑ejor v1.2.0 and is
+% (The remainder of the file is identical to apalike-ejor v1.2.0 and is
 %  reproduced without modification.)
 %─────────────────────────
 
@@ -266,7 +266,7 @@ FUNCTION {emphasize}
 
 READ
 
-% Sorting passes, begin.bib, etc., unchanged from apalike‑ejor
+% Sorting passes, begin.bib, etc., unchanged from apalike-ejor
 
 FUNCTION {begin.bib}
 { preamble$ empty$

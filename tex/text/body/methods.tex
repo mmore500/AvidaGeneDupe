@@ -2,21 +2,21 @@
 
 \subsection{Evolution trials}
 
-We conducted experiments using a customized version of Avida v2.14.0 \citep{Ofria:2009avida}.
+We conducted experiments using a custom version of Avida v2.14.0, extended to support our slip mutation ablation treatments \citep{Ofria:2009avida}.
 Supporting software and executable notebooks for this work are freely available under the GNU GPL license, via GitHub at \url{https://github.com/chaynes2019/AvidaGeneDupe/} and archived via Zenodo \citep{haynes_2025,https://doi.org/10.25495/7gxk-rd71}.
 Simulation data is archived via the Open Science Framework at \url{https://osf.io/j5s4h/} \citep{Moreno_Haynes_2025,foster2017open}, provided with a CC-By Attribution 4.0 International license.
 Some components of our experiments were adapted from an earlier version of this work \citep{lalejini2017gene}.
 Code used in this project incorporated numerous pieces of open-source scientific software \citep{2020SciPy-NMeth,harris2020array,reback2020pandas,mckinney-proc-scipy-2010,waskom2021seaborn,hunter2007matplotlib,moreno2023teeplot,r_core_team_r:_2015}.
 
 Population size was configured to the Avida default of 3,600 organisms across all trials, with well-mixed arrangement analogous to chemostat conditions.
-We configured available metabolic resources to the ``Logic-9'' task set, consisting of tasks NOT, NAND, OR-NOT, AND, OR, AND-NOT, NOR, XOR, and EQUALS.
+We configured available metabolic resources consisting of tasks NOT, NAND, OR-NOT, AND, OR, AND-NOT, NOR, XOR, and EQUALS.
 Identical reward was provided for performing each task and kept consistent throughout trials.
 Rewards accrued independently for each task, enabling fitness benefits to be compounded by performing multiple tasks.
-In some analyses, we report a ``phenotypic adaptation score,'' ranging from a minimum of 0 (\textit{i.e.} the organism performs no tasks and receives no reward) to a maximum of 9 (\textit{i.e.} the organism performs all 9 tasks and receives the maximum reward).
-Phenotypic traits were also described in terms of minimum required NAND gates as a metric of complexity, as given in Figure \ref{fig:slip_mut_variants} \citep{lenski2003evolutionary}.
+In some analyses, we report a count of adaptive phenotypic traits, ranging from a minimum of 0 (\textit{i.e.} the organism performs no metabolic tasks and receives no reward) to a maximum of 9 (\textit{i.e.} the organism performs all 9 available metabolic tasks and receives the maximum reward).
+Phenotypic traits were also described in terms of minimum required NAND operations as a metric of complexity, as given in Figure \ref{fig:slip_mut_variants} \citep{Lenski2003Evolutionary}.
 
 Except where otherwise noted, experiments were seeded with a 100-instruction ancestral self-replicator.
-In all cases, mutations reducing genome size below 100 instructions were disallowed to ensure sufficient raw genetic material to encode Logic-9 operations.
+In all cases, mutations reducing genome size below 100 instructions were disallowed to ensure sufficient raw genetic material to encode phenotypic traits.
 Run length was 200,000 ``updates'' across all experiments, a unit of simulation time roughly equivalent to the amount of time required for an organism to execute 30 instructions.
 This duration was sufficient to observe at least 600 generations of evolution in all trials.
 
@@ -25,16 +25,16 @@ This duration was sufficient to observe at least 600 generations of evolution in
 % Avida organisms comprise a linear sequence of program instructions (\textit{i.e.,} its genotype), evaluated on an independent virtual processor.
 Genomes in our experiments comprised linear sequences of instructions, providing 27 operations for basic computations, execution flow control, input and output, and self-replication.
 This instruction set is Turing complete and syntactically robust, meaning that any ordering of instructions is syntactically valid.
-At the conclusion of each successful self-copy event, we imposed extrinsic mutational operations on the offspring genome: substitution, insertion, deletion, and slip mutations.
+When an organism produced an offspring, we imposed extrinsic mutational operations on the offspring genome: substitution, insertion, deletion, and slip mutations.
 % https://github.com/chaynes2019/AvidaGeneDupe/blob/375f1a3018669f50d00e4ce67b977931cf42f6d9/experiments/2022-3-29-PaperDuplication/hpcc/config/avida.cfg
 \textit{Copy mutations} introduce an erroneous \textit{substitution} where an instruction is written into the offspring genome instead of the intended instruction.
-In our experiments, substitutions occurred with a per-site probability of 0.0025 \citep{lenski2003evolutionary}.
+In our experiments, substitutions occurred with a per-site probability of 0.0025 \citep{Lenski2003Evolutionary}.
 
 \textit{Insertion} mutations, by contrast, insert an arbitrary instruction at random, increasing the length of the offspring's genome by one.
 In a similar vein, \textit{deletion} mutations act by removing a random instruction from the offspring's genome.
-In our experiments, each was allowed to occur with a probability of 0.05 per offspring \citep{lenski2003evolutionary}.
+In our experiments, each was allowed to occur with a probability of 0.05 per offspring \citep{Lenski2003Evolutionary}.
 
-For the purposes of this study, we augmented Avida with an additional mutation operator: \textit{slip mutation}, designed to act analogously to gene duplications and deletions.
+For the purposes of this study, we augmented Avida with an additional mutation operator: \textit{slip mutation}, designed to act analogously to gene duplications and deletions caused by replication slippage events \citep{bzymek_instability_2001}.
 When a slip mutation occurs, two sites in the offspring genome are randomly selected, defining the target segment for the operation.
 If the first site is upstream of the second, the slip mutation results in an insertion --- as if the organism's replication machinery had slipped backward during replication and copied a segment twice.
 If the second site is upstream of the first, the slip mutation results in a deletion --- as if the organism's replication machinery skipped over a genetic segment.
@@ -52,6 +52,8 @@ Across trials, we assessed full-fledged slip-duplicate mutation in comparison wi
 Figure \ref{fig:slip_mut_variants} illustrates example outcomes across surveyed slip-mutation variants.
 % [x] @CAO: I don't think it's worth starting whole new runs now, but the one other treatment I know we've at least talked about in the past is something like "slip-background" which is like slip-random, but where we look at the background distribution of instructions in the population to bias the random probabilities.  This can help distinguish why slip-scramble does better than slip random -- is it the instructions in the genome itself, or is it just that these are more likely to be instructions that are generally useful which is why they were selected by evolution in the first place.
 
+We also applied a \textbf{high mutation rate} control treatment, for which we increased the single instruction insertion/deletion rate to 0.0075, to result in approximately the same number of mutations per divide as under slip mutation.
+
 When insertion occurs, all slip mutation operators add a number of instructions equal to the length of the target segment.
 However, the composition and location of inserted instructions vary according to the slip mutation operator schema.
 Deletions acted identically across slip mutation variants, except slip-scatter, which randomized deletions uniformly across the genome.
@@ -66,16 +68,22 @@ Replicate count was 100 independent trials for first-phase experiments, and 30 r
 
 First-phase experiments consisted of six treatments: one baseline treatment with slip-duplication disabled and five experimental treatments corresponding to the five surveyed slip-duplication mutation operators shown in Figure \ref{fig:slip_mut_variants}.
 These treatments differed only in the available mutation operators and the rates at which those operators were applied.
-First-phase data was used for analyses comparing evolved phenotypic adaptation score between slip mutation operators.
+First-phase data was used for analyses comparing evolved adaptive phenotypic traits between slip mutation operators.
 
 % % Baseline treatment
-% The \textbf{baseline treatment} was used as a control; we used the results from this treatment as a baseline for evolvability, with which we compared the results from all other experimental treatments. Mutation rates in the baseline treatment have been shown to facilitate both the evolution of complex boolean logic tasks, such as EQUALS, and the evolution of task regulation in Avida \citep{lenski2003evolutionary, Lalejini:2016plasticity}
+% The \textbf{baseline treatment} was used as a control; we used the results from this treatment as a baseline for evolvability, with which we compared the results from all other experimental treatments. Mutation rates in the baseline treatment have been shown to facilitate both the evolution of complex boolean logic tasks, such as EQUALS, and the evolution of task regulation in Avida \citep{Lenski2003Evolutionary, Lalejini:2016plasticity}
 
 % Long genome treatment
 For second-phase experiments, we included an additional \textbf{long-genome baseline treatment} to directly test the adaptive role of large genome size associated with slip-duplicators.
 Genomes in this treatment operated identically to those in the baseline treatment above, except that they were initialized with a 1,000-site ancestor.
 The 1,000-site length was chosen to approximate the upper bound of genome sizes observed in first-phase slip-duplication treatment experiments.
 Second-phase data was used for analyses of task gain by complexity class (Figure \ref{fig:adaptive-evolution-rate}), analyses of coding site count trajectories (Figure \ref{fig:num-coding-sites}), potentiation analyses (Figures \cref{fig:potentiation,fig:potentiation-supp} and analyses of slip-duplication outcome distributions (Figure \ref{fig:nulldist}).
+Phenotypic adaption scores shown in Figure \ref{fig:results_panels} were also derived from second-phase experiments.
+
+For experiments incorporating the long-genome baseline control, timecourses of adaptive evolution were compared in terms of generations, rather than in terms of updates (simulation timesteps).
+This strategy was necessary to account for substantially fewer generations elapsing per thousand updates under the long-genome controls, because of extended copy loop durations.
+In other experiments, control treatments generally elapsed at least as many generations as the slip-duplication experimental treatment, on account of comparable or shorter genome length.
+Thus, even when comparing by update in these other experiments, elevated adaptive rates under slip duplication could not be have been caused by more generations elapsing under the slip-duplication treatment.
 % % Slip-duplicate treatment
 % The \textbf{slip-duplicate treatment} allowed for mutation events that resulted in full code duplications via the slip-duplicate mutation operator. Duplications in this treatment preserved both the content and the structure of duplicated code. This allowed us to answer the following question: how important is it that gene duplications can exactly duplicate sequences in a genome in both content \textit{and} structure?
 
@@ -99,7 +107,7 @@ Second-phase data was used for analyses of task gain by complexity class (Figure
 
 \subsection{Lineage analyses}
 
-% For first-phase experiments, we applied a Kruskal-Wallis test to screen for between-group variation in phenotypic adaptation score among surveyed treatments.
+% For first-phase experiments, we applied a Kruskal-Wallis test to screen for between-group variation in evolved adaptive phenotypic traits among surveyed treatments.
 % On account of an earlier experimental design incorporating two additional surveyed conditions incorporating environmental fluctuations, Bonferroni correction was applied to keep experiment-wise $\alpha$ = 0.05.
 % For subsequent Mann-Whitney U tests testing individual treatments against baseline, we applied Bonferroni correction for the five such comparisons.
 % Experimental design in our second-phase experiments did not require adjustments for multiple comparisons.
