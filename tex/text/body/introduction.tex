@@ -1,13 +1,13 @@
 \section{Introduction} \label{sec:introduction}
 
-A fundamental objective of evolutionary biology is to understand how complex phenotypic traits and new genetic information originate.
+A major mystery in evolutionary biology is understanding how complex phenotypic traits and new genetic information arise.
 Among other factors, theory identifies gene duplication as a major contributor to biological diversity and complexity \citep{Zhang2003,Otto2000,Wagner2008,Crow:2006role,Magadum:2013wu,Metz:chromosomeDuplication1947,Hu:2010ea,Castellanos2024,Lynch2000b,Lynch2003}.
 While comparative genomic studies have provided an increasingly detailed account of duplication events shaping genetic and phenotypic traits in nature \citep{Zhang2014,teichmann_structural_1998,Teichmann:2004cz,DuBose2024,Voordeckers2012,Pougach2014,Moore2003}, ambiguities remain in bridging these findings with explicit, process-based models of evolutionary dynamics \citep{Welch2016}.
-In particular, it remains difficult to gauge the importance of adaptive processes like neo-functionalization and dose effects versus contingent processes like sub-functionalization \citep{Innan2010,Zhang:2003fw,Kuzmin2022}.
+In particular, it remains difficult to gauge the importance of adaptive processes like neo-functionalization and dose effects versus sub-functionalization \citep{Innan2010,Zhang:2003fw,Kuzmin2022}.
 
 % Mirroring larger questions around the adaptive framings of evolutionary origins of biological complexity, gene duplication is thought to lead to increased complexity both by increasing opportunities for the accumulation of contingent complexity (``sub-functionalization'') and by facilitating adaptive discovery of beneficial novel traits (``neo-functionalization'').
 In modern evolutionary biology, experimental approaches have become an important complement to retrospective studies, helping to establish causality in evolutionary dynamics \citep{Kawecki2012,Elena2003}.
-Notable experimental evidence, employing \textit{in vivo} models, has been established for the adaptive significance of duplicative dose effects within evolving populations \citep{Tong2025,Dhar2014,Nsvall2012}.
+Notable experimental evidence using microbial populations has established the adaptive significance of duplicative dose effects \citep{Tong2025,Dhar2014,Nsvall2012}.
 Also notable is recent \textit{in vivo} experimental work by \citet{mihajlovic2025direct}, who apply a directed evolution approach using fluorescence-activated cell sorting to compare the rate of adaptive evolution for between \textit{E. coli} strains differing in copy count for genes encoding fluorescing protein coGFP.
 Over five rounds of mutagenesis, amplification, and selection, Mihajlovic et al. demonstrate that fluorescence phenotypes in double-copy populations exhibit greater robustness under mutation, but they do not find evidence of faster adaptation in double-copy populations vis-a-vis fluorescence intensity.
 As the authors highlight, though, achieving the work within their model system required trade-offs in using mutation rates and selection pressures differing significantly from those typical in natural evolution.
@@ -16,27 +16,28 @@ The theme of evolution of complexity has drawn notable contributions, in particu
 While lacking in realism and richness compared to work with biological organisms, \textit{in silico} approaches offer complementary capabilities in supporting principled definitions of complexity \citep{Adami2002}, fast throughput spanning thousands of generations, and flexible exploration of arbitrary counterfactuals \citep{langton1989artificial}.
 In this work, digital systems allow us to systematically enable or disable duplications, supporting direct comparisons of evolutionary outcomes.
 Insight may also be gained from tracing the fate of duplicated sites, given the availability of exhaustive mutational histories.
+Most observed duplications involve functional components, with little evidence for duplication of sequences lacking function prior to evolution.
 
 \input{fig/slip_mut_variants.tex}
 
-Here, we investigate the role of adaptive innovation in the relationship between gene duplication and the evolution of complexity using the Avida digital evolution platform.
+Here, we investigate the role of adaptation in gene duplication and the evolution of complexity using the Avida digital evolution platform.
 This system allows evolution experiments to be conducted using populations of self-replicating computer programs, operating as digital ``model organisms'' \citep{Ofria:2009avida};
 owing to heritable variation in replication rate introduced by copy errors, evolution by natural selection unfolds within these populations \citep{pennock2007models}.
 Among other early work with Avida, Lenski \textit{et al.} established a useful framework for quantifying the complexity of phenotypic traits evolved by Avida organisms, by counting the minimum number of necessary substeps to accomplish a task of interest \citet{Lenski2003Evolutionary}.
 Applying this lens to a phenotype  (``EQU'') comprising a large number of substeps, controlled experiments and step-by-step lineage analyses demonstrated that simple traits could provide building blocks for EQU --- and, in fact, amounted to necessary prerequisites for the evolution of complex traits.
 Other work with Avida has yielded wide-ranging contributions shedding light on selection's influence on information-theoretic measures of genome complexity \citep{Adami2000Evolution}, co-evolutionary pressures toward complex phenotypic traits \citep{Zaman2014Coevolution}, and the abundance of genetic encodings for complex phenotypes \citep{Fortuna2017GenotypePhenotype}.
 
-To determine the role of novel adaptations in complexity arising from gene duplication, we independently assessed the influence of slip-duplication mutations on both genetic and phenotypic complexity.
+To determine the role of adaptation in complexity arising from gene duplication, we independently assessed the influence of slip-duplication mutations on both genetic and phenotypic complexity.
 We measured genetic complexity by counting the program instructions contributing to an organism's fitness.
 For phenotypic complexity, we used the minimal quantity of computational substeps necessary to recreate exhibited behaviors \citet{Lenski2003Evolutionary}.
-We find that gene duplication facilitates adaptive evolution of phenotypic traits, with this adaptive benefit appearing exclusively for complex traits.
+We find that gene duplication facilitates the evolution of phenotypic traits, with this benefit appearing exclusively for complex traits.
 Moreover, we show genome sites encoding complex phenotypic traits to be disproportionately localized within slip-duplicated regions.
-Genetic complexity, by comparison, did not appreciably respond to gene duplications.
-Our results therefore contrast with perspectives on biological complexity according lesser significance to the role of adaptive innovation \citep{Lynch2000,Beslon2021,Lynch2007}.
+Genetic complexity, by comparison, did not appreciably respond to duplication treatments.
+Our results therefore contrast with perspectives that downplay adaptive innovation in biological complexity \citep{Lynch2000,Beslon2021,Lynch2007}.
 %, which expect changes more strongly associated with subfunctionalization of existing traits \citep{TODO}.
 
 Figure \ref{fig:slip_mut_variants} provides a schematic overview of the experiments conducted in our work.
-All experiments comprised well-mixed populations with a carrying capacity of 3,600 Avida organisms.
+We performed experiments using well-mixed populations with a carrying capacity of 3,600 Avida organisms.
 To supply adaptive potential, we adopted an framework developed by Lenski \citet{Lenski2003Evolutionary} to define a set of nine advantageous phenotypic traits.
 Each trait corresponds to a possible logical transform on available binary inputs.
 Under this scheme, organisms producing correct output values for a task benefit by accelerating their genome evaluation (and, thus, also their self-replication), analogously to a metabolic process.
@@ -47,14 +48,14 @@ Computer architecture theory considers NAND as a fundamental basis operation, si
 As seen in Figure \ref{fig:slip_mut_variants}, the most complex function (EQU) requires five NAND operations while the simplest (NAND and NOT) require only one.
 % In other work, EQU has been shown to require at least around 20 constituent genome sites, with many possible longer ways to accomplish EQU \citep{Lenski2003Evolutionary}.
 
-Avida organisms replicate asexually by copying their genome one locus at a time.
+Avida organisms replicate asexually by copying their genome one site at a time.
 In addition to a baseline point mutation rate, our experiments
 % implemented a series of mutation operators to systematically isolate aspects of gene duplication and tease apart which factors promote evolvability.
 modeled gene duplication events using ``slip mutation'' processes analogous to replication slippage \citep{bzymek_instability_2001}.
 Under baseline conditions, these slip mutations allow arbitrary segments of program content to be duplicated or excised.
 % It is also possible that ``side effects'' of gene duplication may contribute to adaptive evolution, such as effects in increasing effective mutation rate, localized clustering of sequence changes, and increases in genome length.
 %Due to their inherent co-occurrence, it is not obvious how to disentangle these aspects of gene duplication in field or laboratory studies.
-As overviewed in Figure \ref{fig:slip_mut_variants}, we also tested a series of mutation operators isolating particular functional effects of gene duplication, in order to tease apart causality in greater detail.
+As overviewed in Figure \ref{fig:slip_mut_variants}, we also tested a series of mutation operators designed to isolate different effects of gene duplication events, in order to tease apart causality in greater detail.
 Experiments began with 100-site genomes.
 To control for the effects of genome length, we also included trials with longer 1,000-site genomes, which was near the upper extreme of genome lengths observed over the course of slip-duplication experiments.
 
