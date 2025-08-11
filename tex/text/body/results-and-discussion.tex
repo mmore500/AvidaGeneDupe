@@ -128,28 +128,28 @@ However, in these cases, we still found evidence that sites coding for a new tra
 
 \input{fig/num-coding-sites}
 
-In a final set of analyses, we broadened our scope to assess consequences of gene duplication on whole-genome architecture with respect to genome robustness, which we defined in terms of sensitivity of fitness to mutation \citep{lenski1999genome}.
-We quantified robustness by counting the number of ``critical'' genome sites, where a single-site knockout disrupted replicator viability or one or more adaptive phenotypic traits.%
+In a final set of analyses, we broadened our scope to assess consequences of gene duplication on genome architecture with respect to robustness \citep{lenski1999genome}.
+We quantified robustness by counting the number of ``critical'' genome sites, where a single-site knockout disrupted replicator viability or an adaptive phenotypic trait.%
 \footnote{%
 Although sufficiently representative for our purposes, limitations exist in detecting Avida genome functionality through single-site knockouts; such an approach can underestimate aspects of genome sequence complexity involving small effects or redundancy \citep{lenski1999genome,moreno2024cryptic}.
 }
 
-One conventional perspective on gene duplication is \textit{vis-a-vis} neutral dynamics, wherein copied genetic material reduces brittleness by introducing redundancy \citep{wagner1996genetic}.
-To assess the relevance of this model within our study system, we performed slip-duplicate mutational assays to quantify the baseline effect of slip insertion mutations on robustness.
-We applied our assay to final-dominant genome lineages evolved with slip duplication, sampling one slip duplication per genome and measuring change in critical site counts between corresponding wildtype and mutated variants.
+One conventional perspective on gene duplication is that copied genetic material reduces brittleness by introducing redundancy \citep{wagner1996genetic}.
+To assess the relevance of this model within our study system, we performed slip-duplicate mutational assays using slip insertions that were neutral with respect to fitness to quantify their effect on robustness.
+We applied our assay to final dominant genome lineages evolved with slip duplication, sampling one such neutral slip duplication per genome and measuring change in critical site counts between corresponding wildtype and mutated variants.
 
 % @AML: Moved next line to discussion
 % In line with evidence that duplication-associated redundancy can boost robustness \citep{Lynch2000}, fitness-neutral slip insertions did indeed tend to reduce the number of genome sites detectable as a single point of failure for performed tasks.
 % https://github.com/chaynes2019/AvidaGeneDupe/blob/9fee1f13a8d31f25d1dd799c6a26f9b7fa617738/binder/indel-effect-nulldist.ipynb
 On average, we found that fitness-neutral slip insertions decreased coding site count by 6.8 sites (bootstrapped 95\% CI 6.4 to 7.3; median 3\% of coding sites).
 This effect was strongest in genomes with high complexity; for instance, neutral insertion mutations decrease coding site count by 9.2 and 8.3 sites on average in genomes that encode 4- and 5-component complexity tasks, respectively (bootstrapped 95\% CIs 8.5 to 9.9 and 7.2 to 9.3; median 3\% and 5\% of coding sites).
-Supplementary Figure \ref{fig:nulldist} presents these results.
+Supplementary Figure~\ref{fig:nulldist} illustrates the distribution of changes in critical site counts due to these fitness-neutral slip insertions.
 
 % https://github.com/chaynes2019/AvidaGeneDupe/blob/binder/binder/gain-mechanism.ipynb
 To assess evolutionary consequences of redundancies introduced by slip-duplication, we next analyzed coding site accumulation within genomes over the course of evolution.
-Counter to naive expectation, we found that the slip duplication treatment accrued fitness-critical sites at a generation-on-generation rate comparable to the long-genome baseline treatment; Mann-Whitney test, $U=361$, $p=0.19$).
-Despite this similarity, however, when measurements were taken inclusive of vestigial coding sites (those which had \textit{previously} been fitness-critical earlier within a lineage), we found a significantly increased coding site count associated with the slip-duplicate treatment (Mann-Whitney test, $U=630$, $p<0.01$).
-Figure \ref{fig:num-coding-sites} compares growth in active versus vestigial coding site counts for baseline, long-genome, and slip-duplication treatment.
+Counter to naive expectation, we found that the slip duplication treatment accrued critical sites at a generation-on-generation rate comparable to the long-genome baseline treatment (Mann-Whitney test, $U=361$, $p=0.19$).
+Despite this similarity, however, when measurements were taken inclusive of coding sites that had \textit{previously} been fitness-critical earlier within a lineage --- hereafter referred to as vestigial coding sites --- we found a significantly increased coding site count associated with the slip-duplicate treatment (Mann-Whitney test, $U=630$, $p<0.01$).
+As shown in Figure~\ref{fig:num-coding-sites}, slip duplication led to elevated vestigial coding site counts while active coding site counts remained comparable across treatments.
 % @AML: moved next line into discussion
 % Within our study system, slip duplication appears to increase the net supply of coding material in the genome available to neutral processes, but not significantly affect accumulation of genetic brittleness.
 
