@@ -2,29 +2,30 @@
 
 \subsection{Evolution trials}
 
-We conducted experiments using a custom version of Avida v2.14.0, extended to support our slip mutation ablation treatments \citep{Ofria:2009avida}.
+We conducted experiments using a custom version of Avida v2.14.0, extended to implement gene duplication \citep{Ofria:2009avida}.
 Supporting software and executable notebooks for this work are freely available under the GNU GPL license, via GitHub at \url{https://github.com/chaynes2019/AvidaGeneDupe/} and archived via Zenodo \citep{haynes_2025,https://doi.org/10.25495/7gxk-rd71}.
 Simulation data is archived via the Open Science Framework at \url{https://osf.io/j5s4h/} \citep{Moreno_Haynes_2025,foster2017open}, provided with a CC-By Attribution 4.0 International license.
-Some components of our experiments were adapted from an earlier version of this work \citep{lalejini2017gene}.
 Code used in this project incorporated numerous pieces of open-source scientific software \citep{2020SciPy-NMeth,harris2020array,reback2020pandas,mckinney-proc-scipy-2010,waskom2021seaborn,hunter2007matplotlib,moreno2023teeplot,r_core_team_r:_2015}.
+Experiments reported here extend an earlier conference publication \citep{lalejini2017gene}.
 
 Populations were well mixed and configured to the Avida default size of 3,600 organisms across all trials.
 We configured available metabolic resources consisting of tasks NOT, NAND, OR-NOT, AND, OR, AND-NOT, NOR, XOR, and EQUALS.
 (This task set comprises all unique 1 and 2-input boolean logic functions.)
 Identical reward was provided for performing each task and kept consistent throughout trials.
-Rewards accrued independently for each task, enabling fitness benefits to be compounded by performing multiple tasks.
+Rewards accrued independently for each task, allowing fitness benefits to be compounded by performing multiple tasks.
 In some analyses, we report a count of adaptive phenotypic traits, ranging from a minimum of 0 (\textit{i.e.,} the organism performs no tasks and receives no reward) to a maximum of 9 (\textit{i.e.,} the organism performs all 9 available tasks and receives the maximum reward).
-Logic tasks were also described in terms of minimum required NAND operations as a metric of complexity, as given in Figure \ref{fig:slip_mut_variants} \citep{Lenski2003Evolutionary}.
+As a metric of complexity, logic tasks were categorized by minimum required NAND operations (Figure \ref{fig:slip_mut_variants}; \citealp{Lenski2003Evolutionary}).
 
-Except where otherwise noted, experiments were seeded with a 100-instruction ancestral self-replicator.
-In all cases, mutations reducing genome size below 100 instructions were disallowed to ensure sufficient genetic material to encode phenotypic traits.
-Run length was 200,000 ``updates'' across all experiments, a unit of simulation time equivalent to the time required for an organism to execute 30 instructions.
+Except where otherwise noted, experiments began with a 100-instruction ancestral self-replicator.
+In all cases, mutations reducing genome size below 100 instructions were disallowed to ensure sufficient genetic material for phenotypic traits.
+Run length was 200,000 updates across all experiments, where a single update processes on average 30 genome instructions per organism.
 This duration was sufficient to observe at least 600 generations of evolution in all trials.
+We configured Avida's scheduler to ensure long genomes incurred no inherent disadvantage \citep{Ofria:2009avida}.
 
 \subsection{Mutation operators}
 
 % Avida organisms comprise a linear sequence of program instructions (\textit{i.e.,} its genotype), evaluated on an independent virtual processor.
-Genomes are linear sequences of instructions, each encoding one of 27 available operations for basic computations, execution flow control, input and output, and self-replication.
+Avida genomes are linear sequences of instructions, each encoding one of 27 available operations for basic computations, execution flow control, input and output, and self-replication.
 The instruction set is Turing complete and valid in any possible ordering.
 When an organism produced an offspring, we imposed extrinsic mutational operations on the offspring genome: substitution, insertion, deletion, and slip mutations.
 % https://github.com/chaynes2019/AvidaGeneDupe/blob/375f1a3018669f50d00e4ce67b977931cf42f6d9/experiments/2022-3-29-PaperDuplication/hpcc/config/avida.cfg
@@ -44,13 +45,10 @@ As implemented, slip-insertions and slip-deletions occur with equal probability;
 % @MAM good idea, did a quick random walk simulation and it looks like the mean value is stable https://gist.github.com/mmore500/92d2aee823b009319c47abab51e565cc
 
 Across trials, we assessed full-fledged slip-duplicate mutation in comparison with four variant mutation operators:
-\begin{enumerate}
-\item \textbf{slip-scramble}, where duplicated code was shuffled to test effects of sequence order,
-\item \textbf{slip-random}, where duplicated code was replaced with random instructions to test effects of sequence content,
-\item \textbf{slip-NOP}, where duplicated code was replaced with neutral (``no-operation'') instructions to test the effect of neutral increase in genome size, and
-\item \textbf{slip-scatter}, where duplicated code was dispersed across the genome to test the effect of insertion locality.
-\end{enumerate}
-Figure \ref{fig:slip_mut_variants} illustrates example outcomes across surveyed slip-mutation variants.
+1) \textit{slip-scramble}, where duplicated code was shuffled to test effects of sequence order,
+2) \textit{slip-random}, where duplicated code was replaced with random instructions to test effects of sequence content,
+3) \textit{slip-NOP}, where duplicated code was replaced with neutral (``no-operation'') instructions to test the effect of neutral increase in genome size, and
+4) \textit{slip-scatter}, where duplicated code was dispersed across the genome to test the effect of insertion locality (Figure \ref{fig:slip_mut_variants}).
 % [x] @CAO: I don't think it's worth starting whole new runs now, but the one other treatment I know we've at least talked about in the past is something like "slip-background" which is like slip-random, but where we look at the background distribution of instructions in the population to bias the random probabilities.  This can help distinguish why slip-scramble does better than slip random -- is it the instructions in the genome itself, or is it just that these are more likely to be instructions that are generally useful which is why they were selected by evolution in the first place.
 
 When insertion occurs, all slip mutation operators add a number of instructions equal to the length of the target segment.
@@ -79,12 +77,12 @@ For second-phase experiments, we included an additional \textbf{long-genome base
 Genomes in this treatment operated identically to those in the baseline treatment above, except that they were initialized with a 1,000-site ancestor.
 The 1,000-site length was chosen to approximate the upper bound of genome sizes observed in first-phase slip-duplication treatment experiments.
 Second-phase data was used for analyses of task gain by complexity class (Figure \ref{fig:adaptive-evolution-rate}), analyses of coding site count trajectories (Figure \ref{fig:num-coding-sites}), potentiation analyses (Figures \cref{fig:potentiation,fig:potentiation-supp}) and analyses of slip-duplication outcome distributions (Figure \ref{fig:nulldist}).
-Phenotypic adaption scores shown in Figure \ref{fig:results_panels} were also derived from second-phase experiments.
+Adaption outcomes shown in Figure \ref{fig:results_panels} were also derived from second-phase experiments.
 
 For experiments incorporating the long-genome baseline control, timecourses of adaptive evolution were compared in terms of generations, rather than in terms of updates (simulation timesteps).
-This strategy was necessary to account for the long-genome controls elapsing on the order of 10$\times$ fewer generations than baseline conditions, on account of self-replication proceeding slower with more genome content.
+This strategy was necessary to account for the long-genome controls elapsing on the order of 10$\times$ fewer generations than baseline conditions, since self-replication is slower for longer genomes.
 In other experiments, control treatments generally elapsed at least as many generations as the slip-duplication experimental treatment, on account of comparable or shorter genome lengths.
-Thus, even when comparing by update in these other experiments, acceleration of adaptation under slip duplication could not be have been caused by more generations elapsing under the slip-duplication treatment.
+Thus, comparing by update remains conservative as faster adaptation under \textit{slip-duplication} occurred without more generations elapsing.
 % % Slip-duplicate treatment
 % The \textbf{slip-duplicate treatment} allowed for mutation events that resulted in full code duplications via the slip-duplicate mutation operator. Duplications in this treatment preserved both the content and the structure of duplicated code. This allowed us to answer the following question: how important is it that gene duplications can exactly duplicate sequences in a genome in both content \textit{and} structure?
 

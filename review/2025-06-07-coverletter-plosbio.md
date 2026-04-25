@@ -4,6 +4,12 @@ Please find attached our manuscript, *Gene duplications potentiate adaptive evol
 
 **What is the scientific question you are addressing?**
 
+<!--
+TODO
+(1) Does gene duplication influence evolution of (a) structural and (b) functional complexity?
+(2) If so, does evolved complexity rely on duplicated genetic information (i.e., versus simple genome expansion alone)?
+-->
+
 How does gene duplication influence the evolution of biological complexity?
 Specifically, we examine the role of adative processes (e.g., neo-functionalization, dose effects) in shaping gene duplication's impact on the measures of biological complexity.
 

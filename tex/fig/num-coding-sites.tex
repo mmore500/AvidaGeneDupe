@@ -1,25 +1,43 @@
 \begin{figure}
+
     \centering
-    \begin{subfigure}{\linewidth}
-    \includegraphics[width=\linewidth]{binder/binder/teeplots/hue=treatment+post=plt-xlim-0-600+viz=lineplot+x=generation-born+y=num-coding-sites+ext=.pdf}
+    \includegraphics[width=\linewidth]{binder/binder/teeplots/post=plt-xlim-0-600+viz=subplots+ext=.png}
+
+    \vspace{-2ex}
+
+    \centering
+    ~~\hspace{-0.5ex}
+    \begin{minipage}{0.085\linewidth}
+    \hfill
+    \end{minipage}%
+    \begin{subfigure}{0.31\linewidth}
+    \centering
     \caption{\footnotesize active coding sites}
     \label{fig:num-coding-sites:active}
-    \end{subfigure}
-
-    \begin{subfigure}{\linewidth}
-\includegraphics[width=\linewidth,clip, trim=0 0 0 0.8cm]{binder/binder/teeplots/hue=treatment+post=plt-xlim-0-600+viz=lineplot+x=generation-born+y=num-free-sites+ext=.pdf}
+    \end{subfigure}%
+    \begin{subfigure}{0.33\linewidth}
+    \centering
     \caption{\footnotesize vestigial coding sites}
     \label{fig:num-coding-sites:vestigial}
+    \end{subfigure}%
+    \begin{subfigure}{0.3125\linewidth}
+    \centering
+    \caption{\footnotesize total genome size}
+    \label{fig:num-coding-sites:total}
     \end{subfigure}
+
+    \vspace{1.5ex}
+
     \caption{
         \textbf{Gene duplication boosts accumulation of vestigial coding sites.}
         \footnotesize
-        Generation-by-generation counts of coding sites over evolutionary history.
-        Here, ``active'' coding sites refer to genome instructions determined through knockout to contribute to fitness with respect to self-copy viability or a rewarded phenotypic trait.
-        As shown in panel \ref{fig:num-coding-sites:active}, gene duplication yields active coding site counts comparable to long-genome control.
-        Vestigial coding site count, by contrast, reports the number of sites determined to have contributed to fitness in an ancestor, but are no longer active coding sites.
-        As shown in panel \ref{fig:num-coding-sites:active}, vestigial coding site count under slip-duplication treatment outpace control treatments.
-        Error bands give 95\% CI, bootstrapped over 30 replicates per treatment.
+        Generation-by-generation counts of coding sites over evolutionary history, measured by single-site knockouts.
+        Gene duplication yields active coding site counts comparable to long-genome control (panel \ref{fig:num-coding-sites:active}).
+        Vestigial coding sites were labeled as active in an ancestor, but are no longer active coding sites.
+        Vestigial coding site counts under slip-duplication treatment outpace control treatments (panel \ref{fig:num-coding-sites:vestigial}).
+        Panel \ref{fig:num-coding-sites:total} gives total genome size.
+        Solid bands give 95\% CI, bootstrapped over 30 replicates per treatment.
+        Hatched band gives full range of genome sizes observed.
     }
     \label{fig:num-coding-sites}
 \end{figure}
