@@ -5,8 +5,8 @@
 \input{fig/results_panels_new.tex}
 
 In a first set of experiments, we investigated whether gene duplication can promote \textit{de novo} evolution of adaptive phenotypic traits.
-Indeed, replicates with duplication evolved more adaptive traits than under baseline conditions (two-tailed Mann-Whitney U test, $W = 562.5$, Bonferroni-adjusted $p << 0.0001$; Figure \ref{fig:results_panels:slip_duplication}).
-In many cases, gene duplication drove substantial genome expansion --- inflations up to 10-fold in size (Figure \ref{fig:num-coding-sites:total}).
+Indeed, replicates with duplication evolved more adaptive traits than under baseline conditions (median 7 vs. 9 traits; two-tailed Mann-Whitney U test, $W = 562.5$, Bonferroni-adjusted $p << 0.0001$; Figure \ref{fig:results_panels:slip_duplication}).
+In many cases, gene duplication drove substantial genome expansion --- inflations up to 10-fold in size, mean 546 sites (Figure \ref{fig:num-coding-sites:total}).
 To test whether genome size alone could account for gene duplication's adaptive benefit, we performed additional experiments incorporating a ``long-genome'' control treatment with 1,000-site genomes.
 
 \input{fig/adaptive-evolution-rate.tex}
@@ -32,7 +32,7 @@ Having observed that gene duplication can accelerate adaptive evolution beyond e
 For this purpose, we tested four variants of the \textit{slip-duplication} operator, disrupting duplicated material in different ways (Figure \ref{fig:slip_mut_variants}), as well as an additional ``high mutation rate'' treatment where single-site insertion/deletion mutations were applied in lieu of duplication.
 
 We found adaptation to strongly depend on the content of duplicated inserts.
-In all cases, partial analogs of gene duplication provided no adaptive benefit --- except for \textit{slip-scramble}, which randomized sequence order within duplicated regions (two-tailed Mann-Whitney U test; \Cref{fig:results_panels:slip_duplication,fig:results_panels:ablation}).
+In all cases, partial analogs of gene duplication provided no adaptive benefit --- except for \textit{slip-scramble}, which randomized sequence order within duplicated regions (two-tailed Mann-Whitney U test, $p < 0.0001$; \Cref{fig:results_panels:slip_duplication,fig:results_panels:ablation}).
 However, \textit{slip-scramble} still underperformed full-fledged \textit{slip-duplicate}, tested via 100 additional trials to reduce multiple comparison (two-tailed Mann-Whitney U test, $W = 4305$; Bonferroni-adjusted $p < 0.02$).
 % p = 0.011
 Notably, sequence order of inserts especially affected genome expansion, with \textit{slip-duplication} yielding genomes nearly twice as large as \textit{slip-scramble} (252 $\pm$ SD 105 vs. 491 $\pm$ SD 223 sites; two-tailed Mann-Whitney U test, $U = 734$, $p < 0.001$; Supplementary Figure~\ref{fig:ablation-site-counts}).
@@ -124,12 +124,12 @@ One conventional perspective on gene duplication is that copied genetic material
 To assess this hypothesis, we assayed the impact of synthetic gene duplication mutations on evolved genomes from \textit{slip-duplication} treatments.
 For each genome, we applied one randomly-sampled duplication and measured change in critical site count.
 
-A slight majority of sampled slip insertions (56\%) were fitness-neutral, producing no phenotypic changes affecting fitness.
+A slight majority of sampled duplications (56\%) were fitness-neutral, producing no phenotypic changes affecting fitness.
 % @AML: Moved next line to discussion
 % In line with evidence that duplication-associated redundancy can boost robustness \citep{Lynch2000}, fitness-neutral slip insertions did indeed tend to reduce the number of genome sites detectable as a single point of failure for performed tasks.
 % https://github.com/chaynes2019/AvidaGeneDupe/blob/9fee1f13a8d31f25d1dd799c6a26f9b7fa617738/binder/indel-effect-nulldist.ipynb
-On average, we found that these fitness-neutral slip insertions decreased coding site count by 3\% (bootstrapped 95\% CI [6.4, 7.3] sites; Supplementary Figure \ref{fig:nulldist}). % 6.8 sites
-This effect remained robust in genomes with high phenotypic complexity; for instance, neutral insertion mutations decreased coding site count by 3\% and 5\% on average in genomes with 4- and 5-NAND traits, respectively (bootstrapped 95\% CIs [8.5, 9.9] and [7.2, 9.3] sites; Supplementary Figure \ref{fig:nulldist}).
+On average, we found that these fitness-neutral duplications decreased coding site count by 3\% (bootstrapped 95\% CI [6.4, 7.3] sites; Supplementary Figure \ref{fig:nulldist}). % 6.8 sites
+This effect remained robust in genomes with high phenotypic complexity; for instance, neutral duplications decreased coding site count by 3\% and 5\% on average in genomes with 4- and 5-NAND traits, respectively (bootstrapped 95\% CIs [8.5, 9.9] and [7.2, 9.3] sites; Supplementary Figure \ref{fig:nulldist}).
 % 9.2 and 8.3 sites
 Thus, short-term effects of gene duplication did, in fact, improve robustness.
 
