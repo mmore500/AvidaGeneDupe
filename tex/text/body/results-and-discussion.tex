@@ -12,11 +12,11 @@ To test whether genome size alone could account for gene duplication's adaptive 
 \input{fig/adaptive-evolution-rate.tex}
 
 The long-genome control also outperformed adaptation under 100-site baseline conditions (Supplementary Figure \ref{fig:adaptive-evolution-rate-agg}).
-However, disaggregating by task complexity reveals that the adaptive benefit of genome expansion alone favors simple traits.
+However, disaggregating by task complexity reveals that genome expansion alone primarily favors simple traits.
 For traits requiring 3 or fewer NANDs, adaptation in the long-genome control matched or exceeded gene duplication when compared generation-by-generation (Figure \ref{fig:adaptive-evolution-rate}).
-By contrast, increased genome size alone failed to match duplication in promoting complex 4- and 5-NAND traits (Fisher's exact tests; 36/60 vs. 24/60, $p<0.05$ [4 components]; 10/30 vs. 2/30, $p<0.03$ [5 components]; Figure \ref{fig:adaptive-evolution-rate}).
+By contrast, the larger genome control failed to match duplication in promoting complex 4- and 5-NAND traits (Fisher's exact tests; 36/60 vs. 24/60, $p<0.05$ [4 components]; 10/30 vs. 2/30, $p<0.03$ [5 components]; Figure \ref{fig:adaptive-evolution-rate}).
 % https://github.com/chaynes2019/AvidaGeneDupe/blob/538ede79c7301f10718ca96c8dd38782b6882632/binder/adaptive-evolution-rate.ipynb
-Thus, in this case, duplication specifically advantaged complex adaptation.
+Thus, duplication specifically advantaged complex adaptation.
 
 % ---
 % @AML: Moved to discussion
@@ -35,7 +35,7 @@ We found adaptation to strongly depend on the content of duplicated inserts.
 In all cases, partial analogs of gene duplication provided no adaptive benefit --- except for \textit{slip-scramble}, which randomized sequence order within duplicated regions (two-tailed Mann-Whitney U test, $p < 0.0001$; \Cref{fig:results_panels:ablation}).
 However, \textit{slip-scramble} still underperformed full-fledged \textit{slip-duplicate}, tested via 100 additional trials to avoid multiple comparison (two-tailed Mann-Whitney U test, $W = 4305$; Bonferroni-adjusted $p < 0.02$).
 % p = 0.011
-Notably, sequence order of inserts especially affected genome expansion, with \textit{slip-duplicate} yielding genomes nearly twice as large as \textit{slip-scramble} (252 $\pm$ SD 105 vs. 491 $\pm$ SD 223 sites; two-tailed Mann-Whitney U test, $U = 734$, $p < 0.001$; Supplementary Figure~\ref{fig:ablation-site-counts}).
+Sequence order of inserts notably affected genome expansion, with \textit{slip-duplicate} yielding genomes nearly twice as large as \textit{slip-scramble} (252 $\pm$ SD 105 vs. 491 $\pm$ SD 223 sites; two-tailed Mann-Whitney U test, $U = 734$, $p < 0.001$; Supplementary Figure~\ref{fig:ablation-site-counts}).
 
 % @AML: Moved next line into discussion
 % These results indicate that both the content and structure of duplicated genetic material contribute to facilitating adaptive evolution.
@@ -87,7 +87,7 @@ Notably, sequence order of inserts especially affected genome expansion, with \t
 
 \input{fig/potentiation}
 
-Thus far, we have established that gene duplication can promote evolution of novel traits, with this effect biasing toward complex traits.
+Thus far, we have established that content of duplicative inserts can promote evolution of novel traits, with this effect biasing toward complex traits.
 % We next sought to characterize aspects of genetic architecture through which slip duplication drives adaptation.
 We next sought to test whether duplicated genetic material itself exhibits elevated potential to code for novel traits.
 
@@ -96,7 +96,7 @@ High density for later coding sites would suggest that these regions are ``poten
 Figure \ref{fig:potentiation} compares the involvement of sites having undergone duplication --- versus those that had not --- in coding for novel traits.
 For the simplest tasks, requiring only one NAND component, we found no potentiation by gene duplication.
 % https://github.com/chaynes2019/AvidaGeneDupe/blob/2d31c0bd0cc9bdbf4bb49224859d6bd165cd36c8/binder/hard-task-gain2.ipynb
-However, we found significant potentiation in duplicated regions for traits with two or more NAND components (one-sample Wilcoxon signed-rank tests; $n=56,59,52,20$ observations).
+However, we found significant potentiation in duplicated regions for traits with two or more NAND components (one-sample Wilcoxon signed-rank tests; $n=56,59,52,20$ observations; Figure \ref{fig:potentiation}).
 Effect sizes on probability to code for novel traits were $1.6\times$, $1.6\times$, $1.2\times$, and $1.2\times$, respectively.
 Smaller effect sizes for 4- and 5-NAND tasks may in part reflect scarcity of unduplicated material at later generations (Supplementary Figure \ref{fig:potentiation-supp}).
 
@@ -133,12 +133,12 @@ This effect remained robust in genomes with high phenotypic complexity; for inst
 % 9.2 and 8.3 sites
 Thus, short-term effects of gene duplication did, in fact, improve robustness.
 
-Despite short-term robustness gains, however, \textit{slip-duplication} accrued many more critical coding sites over the long term --- 3.5$\times$ as many as baseline conditions by generation 600 (Mann-Whitney U test, $U=854$, $p << 0.0001$; Figure \ref{fig:num-coding-sites:active}). % p = 2.275468732265418e-09
+Despite short-term robustness gains, however, gene duplication accrued many more critical coding sites over the long term --- 3.5$\times$ as many as baseline conditions by generation 600 (Mann-Whitney U test, $U=854$, $p << 0.0001$; Figure \ref{fig:num-coding-sites:active}). % p = 2.275468732265418e-09
 At least in part, this effect likely arises from genome expansion.
 By generation 600, \textit{slip-duplicate} accrued about as many active coding sites as the long-genome control (Mann-Whitney U test, $U=361$, $p=0.19$; Figure \ref{fig:num-coding-sites:active}).
 % https://github.com/chaynes2019/AvidaGeneDupe/blob/binder/binder/gain-mechanism.ipynb
-Despite similarity in active coding sites, however, gene duplication accumulated 2.1$\times$ more vestigial coding sites (i.e., previously, but no longer, coding) compared to the long-genome control (Mann-Whitney U test, $U=630$, $p<0.01$; Figure \ref{fig:num-coding-sites:vestigial}). % p = 0.00794769551964776
-Thus, gene duplication does appear to drive accumulation of unconstrained coding material, potentially recruitable for later innovation.
+Despite comparable active coding sites, however, gene duplication accumulated 2.1$\times$ more vestigial coding sites (i.e., previously, but no longer, coding) compared to the long-genome control (Mann-Whitney U test, $U=630$, $p<0.01$; Figure \ref{fig:num-coding-sites:vestigial}). % p = 0.00794769551964776
+Thus, gene duplication appears to drive accumulation of unconstrained coding material, potentially recruitable for later innovation.
 
 % @AML: moved next line into discussion
 % Within our study system, slip duplication appears to increase the net supply of coding material in the genome available to neutral processes, but not significantly affect accumulation of genetic brittleness.
@@ -154,7 +154,7 @@ Thus, gene duplication does appear to drive accumulation of unconstrained coding
 % @AML: Some of the discussion sections that I looked at (but not all) lead with a recap of authors' approach / questions.
 %       - The recap can be nice for readers who jump around sections, but I'd be fine cutting it if we need the space or if folks feel that it's too redundant with the rest of the manuscript.
 %      - Pretty much copied over the key findings from the cover letter
-In this work, we used an \textit{in silico} model to experimentally test whether and how gene duplication can facilitate the evolution of novel adaptation and biological complexity.
+In this work, we used an \textit{in silico} model to experimentally test whether and how gene duplication can facilitate the evolution of novel adaptation and organismal complexity.
 To conduct these experiments, we adapted an established framework developed by Lenski \textit{et al.} \citep{Lenski2003Evolutionary} to study adaptation across a well-defined spectrum of functional complexity.
 Though necessarily limited in fully reflecting natural organisms, such digital models can nonetheless provide useful footholds to biological science \citep{Fortuna2022,Adami2000Evolution,Zaman2014Coevolution,Fortuna2017GenotypePhenotype,Gupta2016,Goldsby2012,Goldsby2014,Lenski1999,Misevic2005,Clune2008,Clune2012,Covert2013,Elena2007,Wilke2001,Hazen2007}.
 
@@ -175,7 +175,7 @@ Several factors may explain this contrast, including directed evolution's shorte
 Another factor may be opportunity for open-ended, multi-gene composition in our study system.
 
 A central objective of our experimental design is not only to test whether gene duplication can facilitate adaptation, but also to identify when and how it does so.
-By examining adaptive evolution across a well-defined spectrum of trait complexity, we find that gene duplication especially drives evolution of complex traits (Figure \ref{fig:adaptive-evolution-rate}).
+By examining adaptive evolution across a spectrum of trait complexity, we find that gene duplication especially drives the evolution of complex traits (Figure \ref{fig:adaptive-evolution-rate}).
 Comparison against a long-genome control confirms that this effect cannot be attributed to genome expansion alone.
 
 A key aspect of Lenski \textit{et al.}'s model of phenotypic complexity is functional overlap between defined traits, meant to reflect the tendency of biological complexity to arise by modification of existing structures and functions \citep{Lenski2003Evolutionary}.
@@ -189,10 +189,10 @@ Among these, insertions that increase genome size without propagating genetic in
 By contrast, both sequence duplications and shuffled duplications expedited adaptation, with the former (preserving sequence order) yielding the strongest effect (Figure~\ref{fig:results_panels}).
 These results show that, rather than just side effects on genome expansion and mutation supply, adaptation can specifically harness information content of duplications --- as in classical descriptions of subfunctionalization and neofunctionalization, where gene copies gain new functionality by specializing or diverging \citep{ohno1970evolution,Lynch2000}.
 
-Unlike our long-genome control, no adaptive benefit arose from allowing neutral inserts (Figure~\ref{fig:results_panels}).
-Despite apparent opportunity to create increased genome length that advantages adaptation, relatively few neutral inserts accumulated.
+In contrast to our long-genome control, no adaptive benefit arose from allowing neutral inserts (Figure~\ref{fig:results_panels}).
+Despite opportunity to create increased genome length that advantages adaptation, relatively few neutral inserts accumulated.
 Gene duplication induced much greater genome expansion than neutral inserts --- by a factor of nearly 4$\times$, despite equivalent site-creation potential (Supplementary Figure~\ref{fig:ablation-site-counts}).
-One possible explanation is selection against the mutational load arising from additional genome sites.
+One possible explanation why few neutral inserts fixed is selection against mutational load arising from additional genome sites.
 (Indeed, in preliminary experiments we found that mutational load frequently drove genome shrinkage in founding ancestors.)
 Gene duplication's strong effect on genome expansion, compared to partial analogs that do not propagate genetic information, supports theory that ``lock-in'' by dose effects or contingent interdependencies (e.g., ``complexity ratchet'' effects \citep{Liard2020,Soyer2006,Luke2011,gould1996full}) is essential to retention of new genome content \citep{Innan2010,Wagner1998,Tautz1992,Force1999,Bergthorsson2007,Conant2008,Francino2005}.
 
@@ -202,14 +202,14 @@ Large-scale analyses of biological genomes report substantial content as having 
 In our experiments, analysis of genome history allows us to draw direct connections between gene duplication and adaptation.
 Specifically, we found that (1) an outsized fraction of new adaptations arose in duplicated regions (Figure~\ref{fig:potentiation}) and (2) many gain-of-function events (41 of 174 along analyzed lineages) directly coincided with slip duplications.
 Thus, adaptive outcomes appear to reflect a combination of both potentiation and immediate effects.
-Lastly, echoing how gene duplication especially benefited complex adaptation, lineage analysis finds that duplicated sites potentiate only complex adaptations --- lending further credence to gene duplication as acting via a ``building block'' mode of adaptation \citep{Jacob1977}.
+Lastly, echoing how gene duplication especially benefited complex adaptation, lineage analysis finds that duplicated sites potentiate only complex adaptations --- lending further credence to gene duplication as facilitating a ``building block'' mode of adaptation \citep{Jacob1977}.
 
 \subsection{Gene duplications accumulate vestigial coding material}
 
 Consistent with other findings that duplication-associated redundancy can boost robustness \citep{Lynch2000}, gene duplications tended to immediately reduce single points of failure detectable in knockouts (Supplemental Figure \ref{fig:nulldist}).
-Despite gene duplication substantially increasing genome size, though, mutationally-sensitive coding sites remain similar in quantity to the long-genome control.
-One possible explanation is that, despite duplications boosting redundancy in the short term, long-term balance between drift and mutational load ultimately drives convergence towards similar mutational sensitivity.
+Over time, however, gene duplication actually led to more mutationally-sensitive coding sites --- similar in quantity to the long-genome control.
+One possible explanation is that, despite duplications boosting redundancy in the short term, long-term balance between drift and mutational load drives convergence towards similar mutational sensitivity for large genomes.
 
-Notably, gene duplication diverges from control treatments in greatly increasing net supply of coding material, particularly vestigial coding sites no longer constrained by selection (Figure \ref{fig:num-coding-sites}).
-In sum, we observe gene duplication to reshape genome architecture by expanding size, but to also produce an outsize pool of defunct coding content --- ripe to be co-opted.
-As throughout this study, exact tracking and direct controls confirm the downstream impact of genetic information carried within duplications.
+Notably, gene duplication diverges from control treatments in greatly increasing net supply of vestigial coding sites no longer constrained by selection (Figure \ref{fig:num-coding-sites}).
+Thus, we observe gene duplication to reshape genome architecture by expanding size, but to also produce an outsize pool of defunct coding content --- ripe to be co-opted.
+Here, as throughout this study, site-by-site genome histories and robust experimental controls highlight an apparent evolutionary role of genetic information carried within duplications.

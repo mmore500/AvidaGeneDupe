@@ -5,25 +5,25 @@ Please find attached our manuscript, *Gene duplications potentiate adaptive evol
 **What is the scientific question you are addressing?**
 
 We use _in silico_ evolution experiments to directly test how gene duplication influences the evolution of (a) structural and (b) functional organismal complexity.
-We assess the specific contribution of genetic information contained in duplicative inserts, an resolve the precise causal relationships between duplications, genome expansion, and adaptive evolution.
+We assess the specific contribution of genetic information contained in duplicative inserts, and resolve precise causal relationships between duplications, genome expansion, and adaptive evolution.
 
 **What is the key finding that answers this question?**
 
 Comparing evolutionary trials with and without gene duplication, we confirm that gene duplication can systematically promote *de novo* evolution of adaptive traits.
 However, control treatments incorporating partial analogs of gene duplication reveal the mechanistic role of duplicated genetic information to differ between simple and complex adaptations.
 Genome expansion driven by insert content is sufficient to promote simple adaptations.
-By contrast, complex multi-component adaptations depend explicitly on the duplicated content of genetic insertions.
+By contrast, complex adaptations depend explicitly on the duplicated content of genetic insertions.
 Step-by-step analysis of lineage histories confirms that coding sites for complex traits, in fact, disproportionately trace back to duplicated regions --- indicating direct potentiation for later adaptive evolution.
 
 **What is the nature of the evidence you provide in support of your conclusion?**
 
-We report evolution experiments using the Avida platform for digital evolution that compare the adaptive evolution of complex traits both with and without gene duplication, in conjunction with lineage-based analyses examining genetic history underlying evolved traits.
+We report evolution experiments using the Avida platform for digital evolution that compare the adaptive evolution of complex traits across treatments applying different mutational mechanisms, alongside detailed examination of genetic history underlying evolved traits.
 In this system, self-replicating computer programs serve as a model organism for evolution experiments.
 To study phenotypic complexity, we use Lenski et al.'s Logic-9 framework --- which defines adaptive traits across an explicit spectrum of functional complexity, varying in the number of logical operations necessary to carry them out.
 
-While consideration must be taken in generalizing results from Avida to biological organisms, the computational medium enables otherwise intractable data-rich, rigorously-controlled evolutionary trials.
+While consideration must be taken in generalizing results from Avida to biological organisms, the computational medium providea a foothold for otherwise intractable data-rich, rigorously-controlled evolutionary trials.
 We use these capabilities to test partial analogs of gene duplication mechanisms, thereby separating the impact of genetic information in inserts from side effects on genome expansion and mutational supply.
-We also take advantage of detailed lineage records to examine duplication's role in the mutational history of later innovations.
+We also take advantage of detailed lineage records to directly trace duplication's role in the mutational history of later innovations.
 
 > Lenski, R. E., Ofria, C., Pennock, R. T., & Adami, C. (2003). The evolutionary origin of complex features. Nature, 423(6936), 139–144. https://doi.org/10.1038/nature01568
 
@@ -53,7 +53,7 @@ We demonstrate that:
 2. this effect is pronounced for complex traits, and
 3. genetic information content propagated in duplications contributes to this advantage.
 
-This work delivers uniquely direct, causal, and detailed experimental evidence for how gene duplication drives adaptive evolution, resolving detailed mechanistic interactions between duplicated sequence content, genome expansion, and evolutionary innovation.
+This work delivers uniquely direct and thorough experimental evidence for how gene duplication drives adaptive evolution --- resolving detailed mechanistic interactions between duplicated sequence content, genome expansion, and evolutionary innovation.
 These findings contrast notably with hypotheses that discount adaptive explanations for biological complexity.
 
 **What significance do your results have for the broader community (of biologists and/or the public)?**
@@ -64,9 +64,8 @@ From a science communication perspective, research working with ``evolution in a
 
 **What other novel findings do you present?**
 
-- Propagation of intact genetic sequence content by slip duplication yielded markedly larger final genome size, compared to ablation treatments where duplications did not preserve sequence content --- including treatments where inserts comprised fully neutral content.
-- Ablation experiments also demonstrated that propagation of intact genetic sequence content contributes in facilitating adaptive innovation.
-- Slip duplication accelerated the accumulation of vestigial coding sites in the genome, beyond the impact of increased genome size alone.
+- **Content of duplicative inserts drives genome expansion:** Gene duplication produced markedly larger genome size, compared to ablation treatments where duplications did not preserve sequence content --- including treatments where inserts comprised fully neutral content.
+- **Gene duplication boosts accumulation of vestigial coding sites:** Duplication greatly increased previously-coding sites released from selection, beyond the impact of larger genome size alone.
 
 **Is there additional information that we should take into account?**
 
