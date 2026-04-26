@@ -5,23 +5,24 @@ Please find attached our manuscript, *Gene duplications potentiate adaptive evol
 **What is the scientific question you are addressing?**
 
 We use _in silico_ evolution experiments to directly test how gene duplication influences the evolution of (a) structural and (b) functional organismal complexity.
-We assess the specific contribution of genetic information contained in duplicative inserts, and resolve precise causal relationships between duplications, genome expansion, and adaptive evolution.
+We assess the specific contribution of genetic information contained in duplicative inserts, and resolve detailed causal relationships between duplications, genome expansion, and adaptive evolution.
 
 **What is the key finding that answers this question?**
 
 Comparing evolutionary trials with and without gene duplication, we confirm that gene duplication can systematically promote *de novo* evolution of adaptive traits.
-However, control treatments incorporating partial analogs of gene duplication reveal the mechanistic role of duplicated genetic information to differ between simple and complex adaptations.
+However, control treatments incorporating partial analogs of gene duplication reveal different mechanisms underlying simple versus complex adaptations.
 Genome expansion driven by insert content is sufficient to promote simple adaptations.
 By contrast, complex adaptations depend explicitly on the duplicated content of genetic insertions.
 Step-by-step analysis of lineage histories confirms that coding sites for complex traits, in fact, disproportionately trace back to duplicated regions --- indicating direct potentiation for later adaptive evolution.
 
 **What is the nature of the evidence you provide in support of your conclusion?**
 
-We report evolution experiments using the Avida platform for digital evolution that compare the adaptive evolution of complex traits across treatments applying different mutational mechanisms, alongside detailed examination of genetic history underlying evolved traits.
+We report evolution experiments using the Avida platform for digital evolution.
 In this system, self-replicating computer programs serve as a model organism for evolution experiments.
 To study phenotypic complexity, we use Lenski et al.'s Logic-9 framework --- which defines adaptive traits across an explicit spectrum of functional complexity, varying in the number of logical operations necessary to carry them out.
+Our experiments compare adaptive evolution of complex traits across different mutational mechanisms, alongside detailed examination of genetic history underlying evolved traits.
 
-While consideration must be taken in generalizing results from Avida to biological organisms, the computational medium providea a foothold for otherwise intractable data-rich, rigorously-controlled evolutionary trials.
+While consideration must be taken in generalizing results from Avida to biological organisms, this computational medium provides a foothold for otherwise intractable data-rich and rigorously-controlled evolutionary trials.
 We use these capabilities to test partial analogs of gene duplication mechanisms, thereby separating the impact of genetic information in inserts from side effects on genome expansion and mutational supply.
 We also take advantage of detailed lineage records to directly trace duplication's role in the mutational history of later innovations.
 
@@ -69,7 +70,7 @@ From a science communication perspective, research working with ``evolution in a
 
 **Is there additional information that we should take into account?**
 
-Our project builds on an impactful body of experimental work using Avida to study the evolution of complexity, notably including two works appearing in PLOS Biology --- Zaman et al. 2014 (doi:[10.1371/journal.pbio.1002023](https://doi.org/10.1371/journal.pbio.1002023)) and Goldsby et al. 2014 (doi:[10.1371/journal.pbio.1001858](https://doi.org/10.1371/journal.pbio.1001858)).
+Our project builds on a rich body of experimental work using Avida to study the evolution of complexity, notably including two works appearing in PLOS Biology --- Zaman et al. 2014 (doi:[10.1371/journal.pbio.1002023](https://doi.org/10.1371/journal.pbio.1002023)) and Goldsby et al. 2014 (doi:[10.1371/journal.pbio.1001858](https://doi.org/10.1371/journal.pbio.1001858)).
 
 Note also that a precursor of this work appeared at the 2017 Artificial Life conference (doi:[10.1162/isal_a_045](https://doi.org/10.1162/isal_a_045)).
 
