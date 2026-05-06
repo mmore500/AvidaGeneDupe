@@ -1,6 +1,7 @@
 Dear Editor,
 
-Please find attached our manuscript, *Gene duplications potentiate adaptive evolution of complex traits*, for your consideration.
+Ohno's 1970 hypothesis --- that gene duplication is a primary engine of evolutionary innovation --- has shaped half a century of molecular evolution research, yet direct experimental tests of its core claims remain remarkably scarce.
+Please find attached our manuscript, *Gene duplications potentiate adaptive evolution of complex traits*, which provides what we believe is the most direct evidence to date that gene duplication can potentiate _de novo_ evolution of complex adaptive traits.
 
 **What is the scientific question you are addressing?**
 
@@ -9,11 +10,12 @@ We assess the specific contribution of genetic information contained in duplicat
 
 **What is the key finding that answers this question?**
 
-Comparing evolutionary trials with and without gene duplication, we confirm that gene duplication can systematically promote *de novo* evolution of adaptive traits.
+Comparing evolutionary trials with and without gene duplication, we demonstrate directly that gene duplication can systematically promote *de novo* evolution of adaptive traits.
 However, control treatments incorporating partial analogs of gene duplication reveal different mechanisms underlying simple versus complex adaptations.
-Genome expansion driven by insert content is sufficient to promote simple adaptations.
-By contrast, complex adaptations depend explicitly on the duplicated content of genetic insertions.
-Step-by-step analysis of lineage histories confirms that coding sites for complex traits, in fact, disproportionately trace back to duplicated regions --- indicating direct potentiation for later adaptive evolution.
+
+Genome expansion entrenched by sequence content of inserts promotes simple adaptations.
+By contrast, complex adaptations depend more critically on the duplicated content of genetic insertions.
+Correspondingly, step-by-step analysis of lineage histories confirms that coding sites for complex traits disproportionately trace back to duplicated regions --- indicating direct potentiation for later adaptive evolution.
 
 **What is the nature of the evidence you provide in support of your conclusion?**
 
@@ -34,7 +36,7 @@ We also take advantage of detailed lineage records to directly trace duplication
 elifesciences.org
 
 Compares rate of improvement for coGFP fluorescence strength between single- vs. dual-copy populations under directed evolution conditions in an *E. coli* model.
-The two-copy strain does not exhibit adaptive advantage, contrasting notably with present work.
+The two-copy strain does not exhibit adaptive advantage, contrasting notably with present work --- though our results suggest this difference may hinge on trait complexity.
 
 > Tong, K., Datta, S., Cheng, V., Haas, D. J., Gourisetti, S., Yopp, H. L., Day, T. C., Lac, D. T., Conlin, P. L., Bozdag, G. O., & Ratcliff, W. C. (2025). Genome duplication in a long-term multicellularity evolution experiment. Nature, 639, 691–699. doi:10.1038/s41586-025-08689-6
 
@@ -55,18 +57,20 @@ We demonstrate that:
 3. genetic information content propagated in duplications contributes to this advantage.
 
 This work delivers uniquely direct and thorough experimental evidence for how gene duplication drives adaptive evolution --- resolving detailed mechanistic interactions between duplicated sequence content, genome expansion, and evolutionary innovation.
-These findings contrast notably with hypotheses that discount adaptive explanations for biological complexity.
+
+Experimental study of gene duplication's evolutionary consequences has recently begun to gain traction, with foundational _in vivo_ tests appearing in the past year (e.g., Mihajlovic et al. 2025, Tong et al. 2025).
+These initial efforts open an exciting empirical frontier, and our _in silico_ experiments offer a complementary lens that can help direct experimental focus by identifing the mechanisms and trait contexts where duplication's adaptive effects may be most pronounced.
 
 **What significance do your results have for the broader community (of biologists and/or the public)?**
 
 For application-oriented work harnessing evolution as an optimization process, both *in vivo* and *in silico* (e.g., directed evolution or evolutionary computation), our findings identify specific problem contexts where gene duplication processes may be most impactful (e.g., multi-component problems with potential to assemble functional building blocks).
 
-From a science communication perspective, research working with ``evolution in action'' provides an exciting opportunity to broaden public perceptions of evolutionary processes as an ongoing story rather than a historical record.
+From a science communication perspective, research working with "evolution in action" provides an exciting opportunity to broaden public perceptions of evolutionary processes as an ongoing story rather than a just historical record.
 
 **What other novel findings do you present?**
 
-- **Content of duplicative inserts drives genome expansion:** Gene duplication produced markedly larger genome size, compared to ablation treatments where duplications did not preserve sequence content --- including treatments where inserts comprised fully neutral content.
-- **Gene duplication boosts accumulation of vestigial coding sites:** Duplication greatly increased previously-coding sites released from selection, beyond the impact of larger genome size alone.
+- ***Content of duplicative inserts entrenches genome expansion:*** Gene duplication produced markedly larger genome size, compared to ablation treatments where duplications did not preserve sequence content --- including treatments where inserts comprised fully neutral content.
+- ***Gene duplication boosts accumulation of vestigial coding sites:*** Duplication greatly increased previously-coding sites released from selection, beyond the impact of larger genome size alone.
 
 **Is there additional information that we should take into account?**
 
@@ -76,5 +80,7 @@ Note also that a precursor of this work appeared at the 2017 Artificial Life con
 
 By presenting our findings in PLOS Biology, we look forward to furthering the scientific conversation around how and why biological complexity evolves.
 
+
 Thank you for your consideration,
+
 The Authors
