@@ -5,7 +5,7 @@
 \input{fig/results_panels_new.tex}
 
 In a first set of experiments, we investigated whether gene duplication can promote \textit{de novo} evolution of adaptive phenotypic traits.
-In evolutionary trials, \textit{slip-duplicate} replicates allowing duplications did evolve more adaptive traits than under baseline conditions (median 7 vs. 9 traits; two-tailed Mann-Whitney U test, $W = 562.5$, Bonferroni-adjusted $p << 0.0001$; Figure \ref{fig:results_panels:slip_duplication}).
+In evolutionary trials, \textit{slip-duplicate} replicates allowing duplications did evolve more adaptive traits than under baseline conditions (median 9 vs. 7 traits; two-tailed Mann-Whitney U test, $W = 562.5$, Bonferroni-adjusted $p << 0.0001$; Figure \ref{fig:results_panels:slip_duplication}).
 In many cases, gene duplication drove substantial genome expansion --- inflations up to 10-fold in size, mean 546 sites (Figure \ref{fig:num-coding-sites:total}).
 To test whether genome size alone could account for gene duplication's adaptive benefit, we performed additional experiments incorporating a ``long-genome'' control treatment with 1,000-site genomes.
 
@@ -104,12 +104,12 @@ One possible confounding factor in coding site analysis is mutational sensitivit
 These sites are critical to viability, with lethal outcomes when knocked out.
 We found that these critical sites were indeed less likely to be involved in duplication and also less likely to be involved in coding for \textit{de novo} traits.
 % Hence, a spurious correlation could be introduced.
-However, after excluding fitness-critical sites from analysis, we still found generally similar potentiation signatures from duplication (Supplemental Figure \ref{fig:potentiation-supp}).
+However, after excluding fitness-critical sites from analysis, we still found generally similar potentiation signatures from duplication (Supplementary Figure \ref{fig:potentiation-supp}).
 
 In addition to potentiating effects, gene duplications are also hypothesized to facilitate adaptation through direct effects --- for example, by altering gene product dosage \citep{kondrashov2012gene}.
 % https://github.com/chaynes2019/AvidaGeneDupe/blob/61ea29d989ebc8ad83dcfee94f3fa556b81e3f78/binder/gain-mechanism.ipynb
 Indeed, we observed such direct effects in our system: a substantial fraction of novel gain-of-function steps on lineages coincided with duplications --- 41 of 174, or 23.6\%.
-However, in cases where duplication produced immediate gain-of-function, we still found evidence that sites coding for a new trait were more likely than chance to have been involved in earlier duplications (Supplemental Figure \ref{fig:potentiation-supp}).
+However, in cases where duplication produced immediate gain-of-function, we still found evidence that sites coding for a new trait were more likely than chance to have been involved in earlier duplications (Supplementary Figure \ref{fig:potentiation-supp}).
 % @AML, moved the line below to the discussion
 % Thus, the adaptive characteristics of slip duplication observed in our system seem likely to result from a combination of potentiation and direct facilitation.
 
@@ -206,10 +206,10 @@ Lastly, echoing how gene duplication especially benefited complex adaptation, li
 
 \subsection{Gene duplications accumulate vestigial coding material}
 
-Consistent with other findings that duplication-associated redundancy can boost robustness \citep{Lynch2000}, gene duplications tended to immediately reduce single points of failure detectable in knockouts (Supplemental Figure \ref{fig:nulldist}).
+Consistent with other findings that duplication-associated redundancy can boost robustness \citep{Lynch2000}, gene duplications tended to immediately reduce single points of failure detectable in knockouts (Supplementary Figure \ref{fig:nulldist}).
 Over time, however, gene duplication actually led to more mutationally-sensitive coding sites --- similar in quantity to the long-genome control.
 One possible explanation is that, despite duplications boosting redundancy in the short term, long-term balance between drift and mutational load drives convergence towards similar mutational sensitivity for large genomes.
 
 Notably, gene duplication diverges from control treatments in greatly increasing net supply of vestigial coding sites no longer constrained by selection (Figure \ref{fig:num-coding-sites}).
-Thus, we observe gene duplication to reshape genome architecture by expanding size, but to also produce an outsize pool of defunct coding content --- ripe to be co-opted.
+Thus, we observe gene duplication to reshape genome architecture by expanding size, but to also produce an outsized pool of defunct coding content --- ripe to be co-opted.
 Here, as throughout this study, site-by-site genome histories and robust experimental controls highlight an apparent evolutionary role of genetic information carried within duplications.
